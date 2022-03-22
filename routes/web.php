@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RoleController;
+
+use App\Http\Controllers\Admin\PermissionController;
+
 use App\Http\Controllers\Admin\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +32,9 @@ Route::resource('admin/doctor',DoctorController::class);
 Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
 Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
 Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
+
+
+
 Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role.view');
 Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
 Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
@@ -40,3 +47,4 @@ Route::get('/user/add',[UserController::class, 'u_add'])->name('user.add');
 Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store');
 Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
+
