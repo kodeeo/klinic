@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,4 @@ Route::resource('admin/doctor',DoctorController::class);
 Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
 Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
 Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
+

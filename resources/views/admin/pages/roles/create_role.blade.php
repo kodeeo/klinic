@@ -5,7 +5,6 @@
 <h1>Add Role</h1>
 
     
-@endif
 <form action="{{route('role.store')}}" method='POST' enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
