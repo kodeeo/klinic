@@ -12,6 +12,10 @@
     <!-- ===============================================-->
     <title>CMS | Dashboard &amp; Web App</title>
 
+    <!-- toastr cdn -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <!-- close toastr -->
+
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
