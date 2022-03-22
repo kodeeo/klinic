@@ -25,6 +25,7 @@ Role::create([
 
    'name'=>$request->name
 ]);
+
 Toastr::success('Role Created Successfully', 'success');
 return redirect()->back();
    }
