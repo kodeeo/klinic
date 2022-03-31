@@ -15,14 +15,20 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->string('d_name');
-            $table->string('d_id')->unique();
-            $table->string('d_designation');
-            $table->integer('d_age');
-            $table->string('d_gender');
-            $table->string('d_email');
-            $table->integer('d_contact_no');
-            $table->string('d_pass');
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('age');
+            $table->string('gender');
+            $table->string('department_id');
+            $table->string('designation');
+            $table->string('details');
+            $table->string('available');
+            $table->string('room_no');
+            $table->string('fee');
+            $table->string('image')->nullable();
+            $table->string('password');
             $table->timestamps();
         });
     }
