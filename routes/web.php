@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\UserController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('admin.dashboard');
+    return view('admin.master');
 });
 
 Route::get('admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
