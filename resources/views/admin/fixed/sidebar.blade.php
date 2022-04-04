@@ -99,6 +99,13 @@
               </a>
           </li>
           <li class="side-nav-item">
+              <a href="{{route('show.department')}}" class="side-nav-link">
+                  <i class="uil-copy-alt"></i>
+                 <span> Departments </span>
+              </a>
+          </li>
+
+          <li class="side-nav-item">
               <a href="" class="side-nav-link">
                   <i class="uil-copy-alt"></i>
                  <span> Doctors </span>
