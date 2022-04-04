@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\PermissionController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ Authenticate
 Route::group(['prefix'=>'admin'],function(){
 Route::get('/login',[LoginController::class,'login'])->name('master.login');
 Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin');
@@ -53,5 +53,8 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
     Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 });       
+
+Route::get('/', function () {
+    return view('admin.master'); 
 });
 
