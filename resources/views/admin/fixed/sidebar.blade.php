@@ -112,12 +112,12 @@
               </a>
           </li>
 
-          <li class="side-nav-item">
+          {{-- <li class="side-nav-item">
               <a href="" class="side-nav-link">
                   <i class="uil-copy-alt"></i>
                   <span> Patients </span>
               </a>
-          </li>
+          </li> --}}
 
           <li class="side-nav-item">
               <a href="" class="side-nav-link">
@@ -137,16 +137,16 @@
           <li class="side-nav-item">
               <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                   <i class="uil-clipboard-alt"></i>
-                  <span> Demo </span>
+                  <span> Patient </span>
                   <span class="menu-arrow"></span>
               </a>
               <div class="collapse" id="sidebarTasks">
                   <ul class="side-nav-second-level">
                       <li>
-                          <a href="apps-tasks.html">Demo1</a>
+                          <a href="{{route('patient.list')}}">Patients List</a>
                       </li>
                       <li>
-                          <a href="apps-tasks-details.html">Demo2</a>
+                          <a href="apps-tasks-details.html">Admission</a>
                       </li>
                   </ul>
               </div>

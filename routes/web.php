@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\PatientController;
 
 
 use App\Http\Controllers\Admin\LoginController;
@@ -89,6 +90,13 @@ Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store'
 Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
+
+//Patient
+
+Route::get('/patients/list',[PatientController::class, 'patientlist'])->name('patient.list');
+Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
+Route::post('/patients/store',[PatientController::class, 'patientStore'])->name('patient.store');
+
 //doctor_department
 Route::controller(DepartmentController::class)->group(function () {
 
@@ -101,4 +109,5 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
 
 });
+
 
