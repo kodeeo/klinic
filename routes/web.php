@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DoctorController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RoleController;
-
-use App\Http\Controllers\Admin\PermissionController;
-
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DoctorController;
+
+use App\Http\Controllers\Admin\DashboardController;
+
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\PermissionController;
 
 
 /*
@@ -48,3 +49,15 @@ Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store'
 Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
+//doctor_department
+Route::controller(DepartmentController::class)->group(function () {
+
+    Route::get('/show/department','show')->name('show.department'); 
+    Route::get('/create/department','create')->name('create.department'); 
+    Route::post('/store/department','store')->name('store.department'); 
+    Route::get('/view/department/{id}','view')->name('view.department'); 
+    Route::get('/edit/department/{id}','edit')->name('edit.department');
+    Route::put('/update/department/{id}','update')->name('update.department');
+    Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
+
+});
