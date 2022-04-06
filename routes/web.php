@@ -28,11 +28,11 @@ use App\Http\Controllers\Admin\LoginController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/ Authenticate
-Route::group(['prefix'=>'admin'],function(){
+// */ 
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+
 Route::get('/login',[LoginController::class,'login'])->name('master.login');
 Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin');
-Route::group(['middleware'=>['auth','admin']],function(){
 
     Route::get('/', function () {
         return redirect()->route('admin.dashboard');
@@ -60,6 +60,8 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store');
     Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
     Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
+
+
 });       
 
 Route::get('/', function () {
@@ -109,5 +111,7 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
 
 });
+//doctor
+Route::resource('doctor',DoctorController::class);
 
 

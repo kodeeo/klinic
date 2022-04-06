@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use PhpParser\Comment\Doc;
 
 class DoctorController extends Controller
 {
@@ -14,7 +17,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.doctors_list');
+        $doctors=Doctor::all();
+
+         return view('admin.pages.doctor.index',compact('doctors'));
     }
 
     /**
@@ -24,7 +29,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.doctor.create');
     }
 
     /**
@@ -35,7 +40,40 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'address'=>'required',
+            'age'=>'required',
+            'gender'=>'required',
+            'department_id'=>'required',
+            'designation'=>'required',
+            'details'=>'required',
+            'available'=>'required',
+            'room_no'=>'required',
+            'fee'=>'required',
+            'password'=>'required',
+
+        ]);
+        Doctor::create([
+            'name'=>$request->name,   
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+            'age'=>$request->age,
+            'gender'=>$request->gender,
+            'department_id'=>$request->department_id,
+            'designation'=>$request->designation,
+            'details'=>$request->details,
+            'available'=>$request->available,
+            'room_no'=>$request->room_no,
+            'fee'=>$request->fee,
+            'password'=>bcrypt($request->password),
+
+        ]);
+        Toastr::success('Doctor Added Successfully');
+        return redirect()->route('doctor.index');
     }
 
     /**
@@ -46,7 +84,8 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        //
+        $doctor=Doctor::find($id);
+        return view('admin.pages.doctor.view',compact('doctor'));
     }
 
     /**
@@ -57,7 +96,8 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $doctor=Doctor::find($id);
+        return view('admin.pages.doctor.edit',compact('doctor'));
     }
 
     /**
@@ -69,7 +109,26 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $doctor=Doctor::find($id);
+        $doctor->update([
+            'name'=>$request->name,   
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+            'age'=>$request->age,
+            'gender'=>$request->gender,
+            'department_id'=>$request->department_id,
+            'designation'=>$request->designation,
+            'details'=>$request->details,
+            'available'=>$request->available,
+            'room_no'=>$request->room_no,
+            'fee'=>$request->fee,
+            'password'=>bcrypt($request->password),
+
+        ]);
+        Toastr::success('Doctor Updated Successfully');
+        return redirect()->route('doctor.index');
+
     }
 
     /**
@@ -80,6 +139,8 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Doctor::find($id)->delete();
+        Toastr::error('Doctor Deleted Successfully');
+        return redirect()->back();        
     }
 }
