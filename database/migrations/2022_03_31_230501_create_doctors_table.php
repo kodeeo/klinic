@@ -19,14 +19,12 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('address');
-            $table->string('age');
+            $table->date('date_of_birth');
             $table->string('gender');
             $table->string('department_id');
+            $table->string('degree');
             $table->string('designation');
             $table->string('details');
-            $table->string('available');
-            $table->string('room_no');
-            $table->string('fee');
             $table->string('image')->nullable();
             $table->string('password');
             $table->timestamps();

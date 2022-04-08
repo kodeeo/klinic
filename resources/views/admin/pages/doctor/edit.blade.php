@@ -29,8 +29,8 @@
             <input type="text" class="form-control" id="address" name="address" value="{{$doctor->address}}" placeholder="Enter Address" required>
         </div>
         <div class="form-group col-6 mt-2">
-            <label for="age">Age</label>
-            <input type="number" class="form-control" id="age" name="age" value="{{$doctor->age}}" placeholder="Enter Age" required>
+            <label for="date_of_birth">Date of Birth</label>
+            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{$doctor->date_of_birth}}" placeholder="Enter Date of Birth" required>
         </div>
         <div class="form-group col-6 mt-2">
             <label for="gender">Gender</label>
@@ -43,11 +43,17 @@
         </div>
         <div class="form-group col-6 mt-2">
             <label for="department">Department</label>
-            <select class="form-select" name="department_id" value="{{$doctor->department_id}}" aria-label="Default select example">
-                <option selected>Department</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select class="form-select" name="department_id" aria-label="Default select example">
+                <option>Select Department</option>
+
+                @foreach ($department as $item)
+          
+          
+                <option
+                @if($item->id==$doctor->department_id)
+                      selected
+                      @endif
+                  value="{{$item->id}}">{{$item->name}}</option>                @endforeach
               </select>
         </div>
         <div class="form-group col-6 mt-2">
@@ -55,30 +61,17 @@
             <input type="text" class="form-control" id="designation" name="designation" value="{{$doctor->designation}}" placeholder="Enter Designation" required>
         </div>
         <div class="form-group col-6 mt-2">
+            <label for="degree">Degree</label>
+            <input type="text" class="form-control" id="degree" name="degree" value="{{$doctor->degree}}" placeholder="Enter Degree" required>
+        </div>
+        <div class="form-group col-6 mt-2">
             <label for="details">Details</label>
             <input type="text" class="form-control" id="details" name="details" value="{{$doctor->details}}" placeholder="Enter Details">
         </div>
-        <div class="form-group col-6 mt-2">
-            <label for="available">Availability</label>
-            <select class="form-select" name="available" value="{{$doctor->available}}" aria-label="Default select example">
-                <option selected>Availability</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-        </div>
-        <div class="form-group col-6 mt-2">
-            <label for="room_no">Room No</label>
-            <input type="number" class="form-control" id="room_no" name="room_no" value="{{$doctor->room_no}}" placeholder="Enter Room No" required> 
-        </div>
-        <div class="form-group col-6 mt-2">
-            <label for="fee">Fees</label>
-            <input type="number" class="form-control" id="fee" name="fee" value="{{$doctor->fee}}" placeholder="Enter Fees" required>
-        </div>
        
         <div class="mt-2">
-            <label for="image" class="form-label">Insert Image</label>
-            <input class="form-control" type="file" id="image" name="image">
+            <label for="doctor_image" class="form-label">Insert Image</label>
+            <input class="form-control" type="file" id="doctor_image" name="doctor_image">
         </div>
     </div>
     

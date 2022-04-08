@@ -15,15 +15,15 @@
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Addess</th>
-                    <th scope="col">Available</th>
-                    <th scope="col">Room No</th>
-                    <th scope="col">Fees</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Degree</th>    
                     <th scope="col">Image</th>
                     <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($doctors as $key=>$value) 
+               
 
                   <tr>
                     
@@ -33,9 +33,11 @@
                     <td>{{$value->email}}</td>
                     <td>{{$value->phone}}</td>
                     <td>{{$value->address}}</td>
-                    <td>{{$value->available}}</td>
-                    <td>{{$value->room_no}}</td>
-                    <td>{{$value->fee}}</td>
+                    <td>{{$value->department->name}}</td>
+                    <td>{{$value->degree}}</td>
+                    <td><img src="{{url('/uploads/doctors/'.$value->image)}}" style="border-radius:4px" width="100px" alt="doctor image"></td>
+
+                   
                     <td>
                         <a class="btn btn-success btn-sm" href="{{route('doctor.show',$value->id)}}"><i class="fas fa-eye"></i></a> 
                         <a class="btn btn-warning btn-sm" href="{{route('doctor.edit',$value->id)}}"><i class="fas fa-edit"></i></a>

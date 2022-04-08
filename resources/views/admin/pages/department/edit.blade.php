@@ -5,7 +5,7 @@
 <h1>Department Details</h1>
 
 
-<form action="{{route('update.department',$department->id)}}" method="POST">
+<form action="{{route('update.department',$department->id)}}" method="POST" enctype="multipart/form-data">
     
         @method('PUT')
         @csrf
@@ -19,6 +19,10 @@
               <label for="email">Details</label>
               <input type="text" class="form-control" id="details" name="details" value="{{ $department->details}}"placeholder="Enter Department Details">
           </div> 
+          <div class="mt-2">
+            <label for="department_image" class="form-label">Insert Image</label>
+            <input class="form-control" type="file" id="department_image" name="department_image">
+        </div>
 
         </div>    
     <br>
