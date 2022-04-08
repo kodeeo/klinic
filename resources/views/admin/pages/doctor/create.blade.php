@@ -28,25 +28,28 @@
             <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" required>
         </div>
         <div class="form-group col-6 mt-2">
-            <label for="age">Age</label>
-            <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" required>
+            <label for="age">Date of Birth</label>
+            <input type="date" class="form-control" id="age" name="date_of_birth" placeholder="Enter Age" required>
         </div>
         <div class="form-group col-6 mt-2">
             <label for="gender">Gender</label>
             <select class="form-select" name="gender" aria-label="Default select example">
-                <option selected>Gender</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
+                <option selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
             
               </select>
         </div>
         <div class="form-group col-6 mt-2">
             <label for="department">Department</label>
             <select class="form-select" name="department_id" aria-label="Default select example">
-                <option selected>Department</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option>Select Department</option>
+
+                @foreach ($department as $item)
+          
+          
+                <option value="{{$item->id}}">{{$item->name}}</option>
+                @endforeach
               </select>
         </div>
         <div class="form-group col-6 mt-2">
@@ -54,32 +57,21 @@
             <input type="text" class="form-control" id="designation" name="designation" placeholder="Enter Designation" required>
         </div>
         <div class="form-group col-6 mt-2">
+            <label for="designation">Degree</label>
+            <input type="text" class="form-control" id="designation" name="degree" placeholder="Enter Designation" required>
+        </div>
+        <div class="form-group col-6 mt-2">
             <label for="details">Details</label>
             <input type="text" class="form-control" id="details" name="details" placeholder="Enter Details">
         </div>
-        <div class="form-group col-6 mt-2">
-            <label for="available">Availability</label>
-            <select class="form-select" name="available" aria-label="Default select example">
-                <option selected>Availability</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-        </div>
-        <div class="form-group col-6 mt-2">
-            <label for="room_no">Room No</label>
-            <input type="number" class="form-control" id="room_no" name="room_no" placeholder="Enter Room No" required> 
-        </div>
-        <div class="form-group col-6 mt-2">
-            <label for="fee">Fees</label>
-            <input type="number" class="form-control" id="fee" name="fee" placeholder="Enter Fees" required>
-        </div>
+      
         <div class="form-group col-6 mt-2">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
         </div>
         <div class="mt-2">
             <label for="image" class="form-label">Insert Image</label>
-            <input class="form-control" type="file" id="image" name="image">
+            <input class="form-control" type="file" id="image" name="doctor_image">
         </div>
     </div>
     

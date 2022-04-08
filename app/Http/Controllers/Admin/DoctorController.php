@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Doctor;
+use App\Models\Department;
+use PhpParser\Comment\Doc;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
-use PhpParser\Comment\Doc;
 
 class DoctorController extends Controller
 {
@@ -29,7 +30,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.doctor.create');
+        $department=Department::all();
+        return view('admin.pages.doctor.create',compact('department'));
     }
 
     /**
@@ -40,19 +42,25 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+
+        $image_name=null;
+        if($request->hasFile('doctor_image'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('doctor_image')->getClientOriginalExtension();
+            $request->file('doctor_image')->storeAs('/doctors',$image_name);
+        }
+
         $request->validate([
             'name'=>'required',
             'email'=>'required',
             'phone'=>'required',
             'address'=>'required',
-            'age'=>'required',
+            'date_of_birth'=>'required',
             'gender'=>'required',
             'department_id'=>'required',
             'designation'=>'required',
+            'degree'=>'required',
             'details'=>'required',
-            'available'=>'required',
-            'room_no'=>'required',
-            'fee'=>'required',
             'password'=>'required',
 
         ]);
@@ -61,15 +69,15 @@ class DoctorController extends Controller
             'email'=>$request->email,
             'phone'=>$request->phone,
             'address'=>$request->address,
-            'age'=>$request->age,
+            'date_of_birth'=>$request->date_of_birth,
             'gender'=>$request->gender,
             'department_id'=>$request->department_id,
             'designation'=>$request->designation,
+            'degree'=>$request->degree,
             'details'=>$request->details,
-            'available'=>$request->available,
-            'room_no'=>$request->room_no,
-            'fee'=>$request->fee,
             'password'=>bcrypt($request->password),
+            'image'=>$image_name,
+
 
         ]);
         Toastr::success('Doctor Added Successfully');
@@ -97,7 +105,8 @@ class DoctorController extends Controller
     public function edit($id)
     {
         $doctor=Doctor::find($id);
-        return view('admin.pages.doctor.edit',compact('doctor'));
+        $department=Department::all();
+        return view('admin.pages.doctor.edit',compact('doctor','department'));
     }
 
     /**
@@ -110,20 +119,34 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
         $doctor=Doctor::find($id);
+
+        $image_name=$doctor->image;
+        //              step 1: check image exist in this request.
+                if($request->hasFile('doctor_image'))
+                {
+                    // step 2: generate file name
+                    $image_name=date('Ymdhis') .'.'. $request->file('doctor_image')->getClientOriginalExtension();
+        
+                    //step 3 : store into project directory
+        
+                    $request->file('doctor_image')->storeAs('/doctors',$image_name);
+        
+                }
+        
         $doctor->update([
             'name'=>$request->name,   
             'email'=>$request->email,
             'phone'=>$request->phone,
             'address'=>$request->address,
-            'age'=>$request->age,
+            'date_of_birth'=>$request->date_of_birth,
             'gender'=>$request->gender,
             'department_id'=>$request->department_id,
             'designation'=>$request->designation,
+            'degree'=>$request->degree,
             'details'=>$request->details,
-            'available'=>$request->available,
-            'room_no'=>$request->room_no,
-            'fee'=>$request->fee,
             'password'=>bcrypt($request->password),
+            'image'=>$image_name,
+
 
         ]);
         Toastr::success('Doctor Updated Successfully');

@@ -7,16 +7,17 @@
     <p><b>Email: {{$doctor->email}}</b></p>
     <p><b>Phone: {{$doctor->phone}}</b></p>
     <p><b>Address: {{$doctor->address}}</b></p>
-    <p><b>Age: {{$doctor->age}}</b></p>
+    <p><b>Date of Birth: {{$doctor->date_of_birth}}</b></p>
     <p><b>Gender: {{$doctor->gender}}</b></p>
-    <p><b>Department: {{$doctor->department_id}}</b></p>
+    <p><b>Department: {{$doctor->department->name}}</b></p>
     <p><b>Designation: {{$doctor->designation}}</b></p>
+    <p><b>Degree: {{$doctor->degree}}</b></p>
     <p><b>Details: {{$doctor->details}}</b></p>
     <p><b>Availability: {{$doctor->available}}</b></p>
     <p><b>Room No: {{$doctor->room_no}}</b></p>
     <p><b>Fees: {{$doctor->fee}}</b></p>
-        {{-- <p>
-        <td><img src="{{url('/uploads/volunteers/'.$volunteer->image)}}" style="border-radius:4px" width="200px" alt="cause image"></td>
-        </p> --}}
+    <p>
+        <td><img src="{{url('/uploads/doctors/'.$doctor->image)}}" style="border-radius:4px" width="200px" alt="doctor image"></td>
+    </p> 
     </div>
 @endsection

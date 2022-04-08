@@ -46,7 +46,9 @@
                           
                             <th>{{$key+1}}</th>
                             <td>{{$value->name}}</td>
-                            <td>{{$value->details}}</td>  
+                            <td>{{$value->details}}</td>
+                            <td><img src="{{url('/uploads/departments/'.$value->image)}}" style="border-radius:4px" width="100px" alt="department image"></td>
+
                             <td>
                               <a class="btn btn-success btn-sm" href="{{route('view.department',$value->id)}}"><i class="fas fa-eye"></i></a>  
                               <a class="btn btn-warning btn-sm" href="{{route('edit.department',$value->id)}}"><i class="fas fa-edit"></i></a>
