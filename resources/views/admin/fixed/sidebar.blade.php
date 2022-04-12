@@ -95,19 +95,11 @@
           </li> --}}
 
           <li class="side-nav-item">
-              <a href="" class="side-nav-link">
+              <a href="{{ route('admin.service.list') }}" class="side-nav-link">
                   <i class="uil-comments-alt"></i>
                   <span> Services </span>
               </a>
           </li>
-
-          
-
-          
-
-          
-
-          
 
           <li class="side-nav-item">
               <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">

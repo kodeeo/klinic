@@ -14,10 +14,7 @@ use App\Http\Controllers\Admin\PatientController;
 
 
 use App\Http\Controllers\Admin\LoginController;
-
-
-
-
+use App\Http\Controllers\admin\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,5 +110,23 @@ Route::controller(DepartmentController::class)->group(function () {
 });
 //doctor
 Route::resource('doctor',DoctorController::class);
+
+
+#services
+Route::get('/services',[ServiceController::class,'serviceForm'])->name('admin.service.form');
+Route::post('/services',[ServiceController::class,'postService'])->name('admin.service.post');
+Route::get('/service/list',[ServiceController::class,'serviceList'])->name('admin.service.list');
+#services CRUD
+Route::get('/service/details/{id}',[ServiceController::class,'serviceDetails'])->name('admin.service.details');
+Route::get('/service/edit/{id}',[ServiceController::class,'serviceEdit'])->name('admin.service.edit');
+Route::put('/service/edit/{id}',[ServiceController::class,'serviceUpdate'])->name('admin.service.update');
+Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->name('admin.service.delete');
+#status update
+Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
+
+
+
+
+
 
 
