@@ -13,9 +13,6 @@
     <p><b>Designation: {{$doctor->designation}}</b></p>
     <p><b>Degree: {{$doctor->degree}}</b></p>
     <p><b>Details: {{$doctor->details}}</b></p>
-    <p><b>Availability: {{$doctor->available}}</b></p>
-    <p><b>Room No: {{$doctor->room_no}}</b></p>
-    <p><b>Fees: {{$doctor->fee}}</b></p>
     <p>
         <td><img src="{{url('/uploads/doctors/'.$doctor->image)}}" style="border-radius:4px" width="200px" alt="doctor image"></td>
     </p> 

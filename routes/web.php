@@ -14,10 +14,7 @@ use App\Http\Controllers\Admin\PatientController;
 
 
 use App\Http\Controllers\Admin\LoginController;
-
-
-
-
+use App\Http\Controllers\Admin\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,55 +26,46 @@ use App\Http\Controllers\Admin\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 // */ 
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
-
-Route::get('/login',[LoginController::class,'login'])->name('master.login');
+Route::get('/',[LoginController::class,'login'])->name('master.login');
 Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin');
 
-    Route::get('/', function () {
-        return redirect()->route('admin.dashboard');
-    });
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+Route::get('/logout',[LoginController::class,'logout'])->name('admin.logout');
+
     
-    Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
-    
-    Route::resource('/doctor',DoctorController::class);
+Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
+
     // role
-    Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
-    Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
-    Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
-    
-    
-    
-    Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role.view');
-    Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
-    Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
-    Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('role.delete');
+Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
+Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
+Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
+Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role.view');
+Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
+Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
+Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('role.delete');
     
     
     //users
-    Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
-    Route::get('/user/add',[UserController::class, 'u_add'])->name('user.add');
-    Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store');
-    Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
-    Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
+Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
+Route::get('/user/add',[UserController::class, 'u_add'])->name('user.add');
+Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store');
+Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
+Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
 
-});       
-
-Route::get('/', function () {
-    return view('admin.master'); 
-});
+      
 
 
-Route::get('admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
 
-Route::resource('admin/doctor',DoctorController::class);
+
+// Route::get('admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
+
+
 // role
 Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
 Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
 Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
-
-
 
 Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role.view');
 Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
@@ -111,7 +99,9 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
 
 });
-//doctor
+//Doctor resource controller
 Route::resource('doctor',DoctorController::class);
+// Staff resource controller
+Route::resource('staff',StaffController::class);
 
-
+}); 
