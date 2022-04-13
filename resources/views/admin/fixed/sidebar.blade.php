@@ -87,12 +87,12 @@
               </a>
           </li>
 
-          {{-- <li class="side-nav-item">
-              <a href="" class="side-nav-link">
+          <li class="side-nav-item">
+              <a href="{{route('staff.index')}}" class="side-nav-link">
                   <i class="uil-copy-alt"></i>
-                  <span> Patients </span>
+                  <span> Staffs </span>
               </a>
-          </li> --}}
+          </li>
 
           <li class="side-nav-item">
               <a href="{{ route('admin.service.list') }}" class="side-nav-link">
