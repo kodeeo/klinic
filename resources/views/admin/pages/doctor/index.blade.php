@@ -33,9 +33,9 @@
                     <td>{{$value->email}}</td>
                     <td>{{$value->phone}}</td>
                     <td>{{$value->address}}</td>
-                    <td>{{$value->department->name}}</td>
+                    <td>{{$value->department->name ?? ""}}</td>
                     <td>{{$value->degree}}</td>
-                    <td><img src="{{url('/uploads/doctors/'.$value->image)}}" style="border-radius:4px" width="100px" alt="doctor image"></td>
+                    <td><img src="{{url('/uploads/'.$value->image)}}" style="border-radius:4px" width="100px" alt="doctor image"></td>
 
                    
                     <td>
