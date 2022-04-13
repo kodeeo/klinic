@@ -2,19 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\TestController;
+
 use App\Http\Controllers\Admin\UserController;
 
-use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\LoginController;
 
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\DashboardController;
+
 
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\PatientController;
 
 
-use App\Http\Controllers\Admin\LoginController;
+
 use App\Http\Controllers\Admin\StaffController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -98,10 +103,41 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::put('/update/department/{id}','update')->name('update.department');
     Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
 
+// Diagonistic
+// test category
+Route::get('/test/category/list',[TestCategoryController::class, 'categoryList'])->name('test.category.list');
+Route::get('/test/category/add',[TestCategoryController::class, 'categoryAdd'])->name('test.category.add');
+Route::post('/test/category/store',[TestCategoryController::class, 'categoryStore'])->name('test.category.store');
+//test
+Route::get('/test/list',[TestController::class, 'testList'])->name('test.list');
+Route::get('/test/add',[TestController::class, 'testAdd'])->name('test.add');
+Route::post('/test/store',[TestController::class, 'testStore'])->name('test.store');
+
 });
 //Doctor resource controller
 Route::resource('doctor',DoctorController::class);
 // Staff resource controller
 Route::resource('staff',StaffController::class);
 
+
 }); 
+
+
+#services
+Route::get('/services',[ServiceController::class,'serviceForm'])->name('admin.service.form');
+Route::post('/services',[ServiceController::class,'postService'])->name('admin.service.post');
+Route::get('/service/list',[ServiceController::class,'serviceList'])->name('admin.service.list');
+#services CRUD
+Route::get('/service/details/{id}',[ServiceController::class,'serviceDetails'])->name('admin.service.details');
+Route::get('/service/edit/{id}',[ServiceController::class,'serviceEdit'])->name('admin.service.edit');
+Route::put('/service/edit/{id}',[ServiceController::class,'serviceUpdate'])->name('admin.service.update');
+Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->name('admin.service.delete');
+#status update
+Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
+
+
+
+
+
+
+
