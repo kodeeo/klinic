@@ -30,7 +30,7 @@ class TestController extends Controller
         {
             $file=$request->file('image');
             $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/tests',$filename);
+            $file->storeAs('/uploads',$filename);
         }
 
         Test::create([
