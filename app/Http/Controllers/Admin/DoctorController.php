@@ -47,7 +47,7 @@ class DoctorController extends Controller
         if($request->hasFile('doctor_image'))
         {
             $image_name=date('Ymdhis').'.'.$request->file('doctor_image')->getClientOriginalExtension();
-            $request->file('doctor_image')->storeAs('/uploads',$image_name);
+            $request->file('doctor_image')->storeAs('/uploads/doctors',$image_name);
         }
 
         $request->validate([

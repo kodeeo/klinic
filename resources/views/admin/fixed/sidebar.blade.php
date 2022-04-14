@@ -73,26 +73,47 @@
                  <span> Permission </span>
               </a>
           </li>
-          <li class="side-nav-item">
-              <a href="{{route('show.department')}}" class="side-nav-link">
-                  <i class="uil-copy-alt"></i>
-                 <span> Departments </span>
-              </a>
-          </li>
+
 
           <li class="side-nav-item">
-              <a href="{{route('doctor.index')}}" class="side-nav-link">
-                  <i class="uil-copy-alt"></i>
-                 <span> Doctors </span>
-              </a>
-          </li>
+            <a data-bs-toggle="collapse" href="#staffs" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Doctors </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="staffs">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('show.department')}}">Department</a>
+                    </li>
+                    <li>
+                        <a href="{{route('doctor.index')}}">Doctor List</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+          
+
 
           <li class="side-nav-item">
-              <a href="{{route('staff.index')}}" class="side-nav-link">
-                  <i class="uil-copy-alt"></i>
-                  <span> Staffs </span>
-              </a>
-          </li>
+            <a data-bs-toggle="collapse" href="#staffs" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Staffs </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="staffs">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('staff.index')}}">Staff List</a>
+                    </li>
+                    <li>
+                        <a href="{{route('designation.index')}}">Designation</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+         
 
           <li class="side-nav-item">
               <a href="{{ route('admin.service.list') }}" class="side-nav-link">

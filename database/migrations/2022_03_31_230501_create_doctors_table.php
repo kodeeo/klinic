@@ -20,13 +20,13 @@ return new class extends Migration
             $table->string('phone',20);
             $table->string('address',50);
             $table->date('date_of_birth');
-            $table->string('gender');
-            $table->string('department_id');
-            $table->string('degree');
-            $table->string('designation');
+            $table->string('gender',20);
+            $table->string('department_id',50);
+            $table->string('degree',50);
+            $table->string('designation',50);
             $table->string('details',100);
             $table->string('image')->nullable();
-            $table->string('password',8);
+            $table->string('password',100);
             $table->timestamps();
         });
     }
