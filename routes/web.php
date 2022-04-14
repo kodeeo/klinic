@@ -8,17 +8,18 @@ use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\LoginController;
 
+use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
+
+
 use App\Http\Controllers\Admin\DashboardController;
-
-
 use App\Http\Controllers\Admin\DepartmentController;
+
+
+
 use App\Http\Controllers\Admin\PermissionController;
-
-
-
-use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\TestCategoryController;
 
 
 /*
@@ -108,10 +109,17 @@ Route::controller(DepartmentController::class)->group(function () {
 Route::get('/test/category/list',[TestCategoryController::class, 'categoryList'])->name('test.category.list');
 Route::get('/test/category/add',[TestCategoryController::class, 'categoryAdd'])->name('test.category.add');
 Route::post('/test/category/store',[TestCategoryController::class, 'categoryStore'])->name('test.category.store');
+Route::get('/test/category/edit/{category_id}',[TestCategoryController::class,'categoryEdit'])->name('test.category.edit');
+Route::put('/test/category/update/{category_id}',[TestCategoryController::class, 'categoryUpdate'])->name('test.category.update');
+Route::get('/test/category/delete/{category_id}',[TestCategoryController::class,'categoryDelete'])->name('test.category.delete');
 //test
 Route::get('/test/list',[TestController::class, 'testList'])->name('test.list');
 Route::get('/test/add',[TestController::class, 'testAdd'])->name('test.add');
 Route::post('/test/store',[TestController::class, 'testStore'])->name('test.store');
+Route::get('/test/edit/{test_id}',[TestController::class,'testEdit'])->name('test.edit');
+Route::put('/test/update/{test_id}',[TestController::class, 'testUpdate'])->name('test.update');
+Route::get('/test/delete/{test_id}',[TestController::class,'testDelete'])->name('test.delete');
+
 
 });
 //Doctor resource controller

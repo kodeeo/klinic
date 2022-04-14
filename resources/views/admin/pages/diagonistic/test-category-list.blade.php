@@ -18,11 +18,11 @@
           @foreach($test_categories as $key=>$test_category)
         
         <th scope="row">{{$key+1}}</th>
-        <td>{{$test_category->name}}</td>
+        <td>{{$test_category->name ?? ""}}</td>
         <td>
-          <a class="btn btn-success btn-sm" href=""><i class="fa-solid fa-eye"></i></a>
-          <a class="btn btn-warning btn-sm" href=""><i class="fas fa-edit"></i></a>
-          <a class="btn btn-danger btn-sm" href=""><i class="fas fa-trash"></i></a>
+          
+          <a class="btn btn-warning btn-sm" href="{{route('test.category.edit',$test_category->id)}}"><i class="fas fa-edit"></i></a>
+          <a class="btn btn-danger btn-sm" href="{{route('test.category.delete',$test_category->id)}}"><i class="fas fa-trash"></i></a>
       </td>
         </td>
       </tr>

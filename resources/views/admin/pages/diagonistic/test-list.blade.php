@@ -23,16 +23,16 @@
         @foreach($tests as $key=>$test)
         
         <th scope="row">{{$key+1}}</th>
-        <td>{{$test->category->name}}</td>
+        <td>{{$test->category->name ?? ""}}</td>
         <td>{{$test->name}}</td>
         <td>{{$test->price}}</td>
         <td>{{$test->procedure}}</td>
         <td>{{$test->description}}</td>
         <td><img src="{{url('/uploads/'.$test->image)}}" style="border-radius:4px" width="40px" alt="test image"></td>
         <td>
-          <a class="btn btn-success btn-sm" href=""><i class="fa-solid fa-eye"></i></a>
-          <a class="btn btn-warning btn-sm" href=""><i class="fas fa-edit"></i></a>
-          <a class="btn btn-danger btn-sm" href=""><i class="fas fa-trash"></i></a>
+          
+          <a class="btn btn-warning btn-sm" href="{{route('test.edit',$test->id)}}"><i class="fas fa-edit"></i></a>
+          <a class="btn btn-danger btn-sm" href="{{route('test.delete',$test->id)}}"><i class="fas fa-trash"></i></a>
       </td>
         </td>
       </tr>

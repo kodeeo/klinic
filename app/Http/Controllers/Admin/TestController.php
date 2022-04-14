@@ -45,5 +45,45 @@ class TestController extends Controller
         Toastr::success('Test added Successfully', 'success');
         return redirect()->route('test.list');
     }
+
+    public function testEdit($id){
+        $test=Test::find($id);
+        $test_categories=TestCategory::all();
+
+        return view('admin.pages.diagonistic.test-edit',compact('test','test_categories'));
+    }
+
+    public function testUpdate(Request $request, $id){
+        $test=Test::find($id);
+
+        $filename=$test->image;
+        //Check image or not
+        if($request->hasFile('image'))
+        {
+            $file=$request->file('image');
+            $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+            $file->storeAs('/uploads',$filename);
+        }
+            $test->update([
+                'test_category_id'=>$request->test_category_id,
+                'name'=>$request->name,
+                'price'=>$request->price,
+                'procedure'=>$request->procedure,
+                'description'=>$request->description,
+                'image'=>$filename
+    
+            ]);
+            Toastr::success('Test updated Successfully', 'success');
+            return redirect()->route('test.list');
+        
+    }
+
+    public function testDelete($id){
+
+        Test::find($id)->delete();
+
+        Toastr::success('Test deleted Successfully', 'success');
+            return redirect()->route('test.list');
+    }
     
 }

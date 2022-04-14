@@ -30,4 +30,28 @@ class TestCategoryController extends Controller
         Toastr::success('Test Category added Successfully', 'success');
         return redirect()->route('test.category.list');
     }
+
+    public function categoryEdit($id){
+        $test_category=TestCategory::find($id);
+        return view('admin.pages.diagonistic.test-category-edit',compact('test_category'));
+    }
+
+    public function categoryUpdate(Request $request,$id){
+        
+        $test_category=TestCategory::find($id);
+
+        $test_category->update([
+
+            'name'=>$request->name
+        ]);
+
+        Toastr::success('Test Category updated Successfully', 'success');
+        return redirect()->route('test.category.list');
+    }
+
+    public function categoryDelete($id){
+        TestCategory::find($id)->delete();
+        Toastr::success('Test Category deleted Successfully', 'success');
+        return redirect()->route('test.category.list');
+    }
 }
