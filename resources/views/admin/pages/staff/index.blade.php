@@ -28,7 +28,7 @@
                     
                     
                     <th>{{$key+1}}</th>
-                    <th>{{$value->designation_id}}</th>
+                    <th>{{$value->designation->designation}}</th>
                     <th>{{$value->email}}</th>
                     <td>{{$value->name}}</td>
                     <td>{{$value->phone}}</td>
@@ -39,7 +39,7 @@
                     <td>
                         <a class="btn btn-success btn-sm" href="{{route('staff.show',$value->id)}}"><i class="fas fa-eye"></i></a> 
                         <a class="btn btn-warning btn-sm" href="{{route('staff.edit',$value->id)}}"><i class="fas fa-edit"></i></a>
-                        <form action="{{route('doctor.destroy',$value->id)}}" method="POST">
+                        <form action="{{route('staff.destroy',$value->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <div>

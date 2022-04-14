@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Designation;
 use Brian2694\Toastr\Facades\Toastr;
 
 class StaffController extends Controller
@@ -16,8 +17,9 @@ class StaffController extends Controller
      */
     public function index()
     {
+        $designations=Designation::all();
         $staffs=Staff::all();
-        return view('admin.pages.staff.index',compact('staffs'));
+        return view('admin.pages.staff.index',compact('staffs','designations'));
     }
 
     /**
@@ -27,7 +29,8 @@ class StaffController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.staff.create');
+        $designations=Designation::all();
+        return view('admin.pages.staff.create',compact('designations'));
     }
 
     /**
@@ -42,7 +45,7 @@ class StaffController extends Controller
         if($request->hasFile('staff_image'))
         {
             $image_name=date('Ymdhis').'.'.$request->file('staff_image')->getClientOriginalExtension();
-            $request->file('staff_image')->storeAs('/staffs',$image_name);
+            $request->file('staff_image')->storeAs('/uploads/staffs',$image_name);
         }
 
         $request->validate([
@@ -86,7 +89,7 @@ class StaffController extends Controller
      */
     public function show($id)
     {
-        $staffs=Staff::all();
+        $staffs=Staff::find($id);
         return view('admin.pages.staff.view',compact('staffs'));
     }
 
@@ -98,7 +101,7 @@ class StaffController extends Controller
      */
     public function edit($id)
     {
-        $staffs=Staff::all();
+        $staffs=Staff::find($id);
         return view('admin.pages.staff.edit',compact('staffs'));
     }
 
