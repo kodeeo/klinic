@@ -9,4 +9,9 @@ class Staff extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function designation()
+    {
+        return $this->belongsTo(Designation::class,'designation_id','id');
+
+    }
 }

@@ -14,10 +14,6 @@ use App\Http\Controllers\Admin\PatientController;
 
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\DepartmentController;
-
-
-
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
 
@@ -103,6 +99,7 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('/edit/department/{id}','edit')->name('edit.department');
     Route::put('/update/department/{id}','update')->name('update.department');
     Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
+});
 
 // Diagonistic
 // test category
@@ -121,14 +118,16 @@ Route::put('/test/update/{test_id}',[TestController::class, 'testUpdate'])->name
 Route::get('/test/delete/{test_id}',[TestController::class,'testDelete'])->name('test.delete');
 
 
-});
+
 //Doctor resource controller
 Route::resource('doctor',DoctorController::class);
+
 // Staff resource controller
 Route::resource('staff',StaffController::class);
 
+//Designation resource controller
+Route::resource('designation',DesignationController::class);
 
-}); 
 
 
 #services
@@ -143,7 +142,7 @@ Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->n
 #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
 
-
+}); 
 
 
 

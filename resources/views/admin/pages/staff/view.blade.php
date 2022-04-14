@@ -3,7 +3,7 @@
 <div class="container">
     <h1>Doctor Profile Details</h1>
     <hr>
-    <p><b>Designation: {{$staffs->name}}</b></p>
+    <p><b>Designation: {{$staffs->designation->designation}}</b></p>
     <p><b>Name: {{$staffs->name}}</b></p>
     <p><b>Email: {{$staffs->email}}</b></p>
     <p><b>Phone: {{$staffs->phone}}</b></p>

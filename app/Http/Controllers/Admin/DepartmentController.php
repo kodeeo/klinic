@@ -21,7 +21,7 @@ class DepartmentController extends Controller
         if($request->hasFile('department_image'))
         {
             $image_name=date('Ymdhis').'.'.$request->file('department_image')->getClientOriginalExtension();
-            $request->file('department_image')->storeAs('/departments',$image_name);
+            $request->file('department_image')->storeAs('/uploads/departments',$image_name);
         }
         $request->validate([
             'name'=>'required',

@@ -9,10 +9,17 @@
 <form action="{{route('staff.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
-        <div class="form-group col-6">
+        <div class="form-group col-6 mt-2">
             <label for="designation">Designation</label>
-            <input type="text" class="form-control" id="designation_id" name="designation_id" placeholder="Enter Designation" required>
-          </div>
+            <select class="form-select" name="designation_id" aria-label="Default select example">
+                <option>Select Designation</option>
+
+                @foreach ($designations as $item)
+          
+                <option value="{{$item->id}}">{{$item->designation}}</option>
+                @endforeach
+              </select>
+        </div>
         <div class="form-group col-6">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
