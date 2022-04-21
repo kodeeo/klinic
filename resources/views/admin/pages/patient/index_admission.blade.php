@@ -2,7 +2,7 @@
 @section('content')
 <h1>Cause List</h1>
 <hr>
-<a href="{{route('patient.add')}}"><button class="btn btn-primary">Create Patient</button></a>
+<a href=""><button class="btn btn-primary">Create Patient</button></a>
 <br><br>
 <div> 
   <table class="table" style="text-align: center;">
@@ -37,11 +37,7 @@
         <td><img src="{{url('/uploads/patients/'.$patient->patient_image)}}" style="border-radius:4px" width="100px" alt="patient image"></td>
       {{-- <td>{{$causes->created_at->diffforhumans()}}</td> --}}
         <td>
-
-          <a class="btn btn-success btn-sm" href="{{route('patient_admisssion.add')}}">Admission</a>
-
           <a class="btn btn-success btn-sm" href="{{route('patient_admisssion.add',$patient->id)}}">Admission</a>
-
           {{-- <a class="btn btn-warning btn-sm" href="{{route('edit.cause',$causes->id)}}"><i class="fas fa-edit"></i></a>
           <a class="btn btn-danger btn-sm" href="{{route('delete.cause',$causes->id)}}"><i class="fas fa-trash"></i></a> --}}
       </td>
