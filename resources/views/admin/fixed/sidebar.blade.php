@@ -21,32 +21,7 @@
 
   <div class="h-100" id="leftside-menu-container" data-simplebar>
 
-                <li class="nav-item">
-                  <!-- label-->
-                  <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                    <div class="col-auto navbar-vertical-label">Actions</div>
-                    <div class="col ps-0">
-                      <hr class="mb-0 navbar-vertical-divider" />
-                    </div>
-                  </div>
-                  {{-- //Users --}}
-                  <!-- parent pages-->
-                  <a href="{{route('user.list')}}">
-                    <div class="d-flex align-items-center"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"/></svg></span>
-                      <span class="nav-link-text ps-1">Users</span>
-                    </div>
-                  </a>
-                  <a href="{{route('role.list')}}">
-                    <div class="d-flex align-items-center"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"/></svg></span>
-                      <span class="nav-link-text ps-1">Role</span>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="d-flex align-items-center"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"/></svg></span>
-                      <span class="nav-link-text ps-1">Permission</span>
-                    </div>
-                  </a>
-                </li>
+              
       <!--- Sidemenu -->
       <ul class="side-nav">
 
@@ -80,14 +55,14 @@
           <li class="side-nav-title side-nav-item">Apps</li>
           
           <li class="side-nav-item">
-              <a href="" class="side-nav-link">
+              <a href="{{route('user.list')}}" class="side-nav-link">
                   <i class="uil-folder-plus"></i>
                   <span> Users </span>
               </a>
           </li>
 
           <li class="side-nav-item">
-              <a href="" class="side-nav-link">
+              <a href="{{route('role.list')}}" class="side-nav-link">
                   <i class="uil-copy-alt"></i>
                  <span> Role </span>
               </a>
@@ -98,55 +73,86 @@
                  <span> Permission </span>
               </a>
           </li>
-          <li class="side-nav-item">
-              <a href="{{route('show.department')}}" class="side-nav-link">
-                  <i class="uil-copy-alt"></i>
-                 <span> Departments </span>
-              </a>
-          </li>
+
 
           <li class="side-nav-item">
-              <a href="" class="side-nav-link">
-                  <i class="uil-copy-alt"></i>
-                 <span> Doctors </span>
-              </a>
-          </li>
+            <a data-bs-toggle="collapse" href="#staffs" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Doctors </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="staffs">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('show.department')}}">Department</a>
+                    </li>
+                    <li>
+                        <a href="{{route('doctor.index')}}">Doctor List</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+          
 
-          {{-- <li class="side-nav-item">
-              <a href="" class="side-nav-link">
-                  <i class="uil-copy-alt"></i>
-                  <span> Patients </span>
-              </a>
-          </li> --}}
 
           <li class="side-nav-item">
-              <a href="" class="side-nav-link">
+            <a data-bs-toggle="collapse" href="#staffs" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Staffs </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="staffs">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('staff.index')}}">Staff List</a>
+                    </li>
+                    <li>
+                        <a href="{{route('designation.index')}}">Designation</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+         
+
+          <li class="side-nav-item">
+              <a href="{{ route('admin.service.list') }}" class="side-nav-link">
                   <i class="uil-comments-alt"></i>
                   <span> Services </span>
               </a>
           </li>
 
-          
-
-          
-
-          
-
-          
-
           <li class="side-nav-item">
-              <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+              <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                   <i class="uil-clipboard-alt"></i>
                   <span> Patient </span>
                   <span class="menu-arrow"></span>
               </a>
-              <div class="collapse" id="sidebarTasks">
+              <div class="collapse" id="patients">
                   <ul class="side-nav-second-level">
                       <li>
                           <a href="{{route('patient.list')}}">Patients List</a>
                       </li>
                       <li>
                           <a href="apps-tasks-details.html">Admission</a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+
+          <li class="side-nav-item">
+              <a data-bs-toggle="collapse" href="#diagonistic" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                  <i class="uil-clipboard-alt"></i>
+                  <span> Diagonistic </span>
+                  <span class="menu-arrow"></span>
+              </a>
+              <div class="collapse" id="diagonistic">
+                  <ul class="side-nav-second-level">
+                      <li>
+                          <a href="{{route('test.category.list')}}">Test Category</a>
+                      </li>
+                      <li>
+                          <a href="{{route('test.list')}}">Test</a>
                       </li>
                   </ul>
               </div>

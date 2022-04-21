@@ -6,17 +6,17 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background:linear-gradient(#373B44,#4286f4);
     height: 100vh;
-    background-image: url('{{url('img/event.jpg')}}');
     background-size:cover;
   }
   #login .container #login-row #login-column #login-box {
     margin-top: 100px;
     max-width: 500px;
     height: 320px;
-    border: 1px solid #9C9C9C;
-    background-color: #000000e0;
+    /* border: 1px solid #9C9C9C; */
+    background:linear-gradient(#141E30,#243B55);
+    border-radius: 20px;
     
   }
   #login .container #login-row #login-column #login-box #login-form {
@@ -41,7 +41,7 @@ body{
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
                                 <label for="email" class="text-info">Email</label><br>
-                                <input type="email" name="email" id="email" class="form-control">
+                                <input type="email" name="email" value="admin@gmail.com" id="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Password:</label><br>
