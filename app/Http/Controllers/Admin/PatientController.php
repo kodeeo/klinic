@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Visit;
 use App\Models\Patient;
+use App\Models\Admission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -105,8 +107,101 @@ class PatientController extends Controller
      }
     }
 
-    public function patientAdmissionAdd()
+    public function patientAdmissionAdd($patient_id)
     {
-        return view('admin.pages.patient.admission');
+        
+        $new_patient=Patient::find($patient_id);
+        return view('admin.pages.patient.admission',compact('new_patient'));
     }
+
+    public function patientAdmissionStore(Request $request)
+    {
+        //validation
+        $request->validate([
+            'name'=>'required',  
+            'father'=>'required',
+            'mother'=>'required',
+            'room'=>'required',
+            'doctor'=>'required',
+            'relation'=>'required',
+            'address'=>'required',
+            'mobile'=>'required',
+            'nid'=>'required',
+            'occupation'=>'required',
+            'payment'=>'required',
+            'allergies'=>'required',
+            'tendancy'=>'required',
+            'heart'=>'required',
+            'pressure'=>'required',
+            'accident'=>'required',
+            'diabetic'=>'required',
+            'others'=>'required',
+            'infection'=>'required',
+            'details'=>'required',
+            'condition'=>'required',
+            'insurance'=>'required',
+            'worksafe'=>'required',
+            'tac'=>'required',
+            'pension'=>'required',
+            'know'=>'required',
+            'visit'=>'required'
+        ]);
+
+        $admission=Admission::create([
+            'patient_id'=>$request->patient_id,
+            'name'=>$request->name,
+            'father'=>$request->father,
+            'mother'=>$request->mother,
+            'room'=>$request->room,
+            'doctor'=>$request->doctor,
+            'relation'=>$request->relation,
+            'address'=>$request->address,
+            'mobile'=>$request->mobile,
+            'nid'=>$request->nid,
+            'occupation'=>$request->occupation,
+            'payment'=>$request->payment,
+            //medical info
+            'allergies'=>$request->allergies,
+            'tendancy'=>$request->tendancy,
+            'heart'=>$request->heart,
+            'pressure'=>$request->pressure,
+            'accident'=>$request->accident,
+            'diabetic'=>$request->diabetic,
+            'others'=>$request->others,
+            'infection'=>$request->infection,
+            'details'=>$request->details,
+            'condition'=>$request->condition,
+            'insurance'=>$request->insurance,
+            'worksafe'=>$request->worksafe,
+            'tac'=>$request->tac,
+            'pension'=>$request->pension,
+            'know'=>$request->know,
+            'visit'=>$request->visit,
+           
+        ]);
+            Visit::create([
+            'admission_id'=> $admission->id,
+            'allergies'=>$request->allergies,
+            'tendancy'=>$request->tendancy,
+            'heart'=>$request->heart,
+            'pressure'=>$request->pressure,
+            'accident'=>$request->accident,
+            'diabetic'=>$request->diabetic,
+            'others'=>$request->others,
+            'infection'=>$request->infection,
+            'details'=>$request->details,
+            'condition'=>$request->condition,
+            'insurance'=>$request->insurance,
+            'worksafe'=>$request->worksafe,
+            'tac'=>$request->tac,
+            'pension'=>$request->pension,
+            'know'=>$request->know,
+            'visit'=>$request->visit,
+           
+        ]);
+
+        Toastr::success('Admission information has been  recorded Successfully', 'success');
+       
+    }
+
 }

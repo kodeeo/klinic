@@ -97,7 +97,8 @@ Route::get('/patients/list',[PatientController::class, 'patientlist'])->name('pa
 Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
 Route::post('/patients/store',[PatientController::class, 'patientStore'])->name('patient.store');
 //Patient_Admission
-Route::get('/patients/admission/add',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
+Route::get('/patients/admission/add/{patient_id}',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
+Route::post('/patients/admission/store',[PatientController::class, 'patientAdmissionStore'])->name('patient_admisssion.store');
 
 
 
