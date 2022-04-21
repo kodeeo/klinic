@@ -8,11 +8,12 @@ use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\LoginController;
 
+use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\DoctorController;
+
+
 use App\Http\Controllers\Admin\PatientController;
-
-
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
@@ -30,7 +31,7 @@ use App\Http\Controllers\Admin\TestCategoryController;
 
 
 
-*/Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+*/
 
 
 
@@ -119,6 +120,16 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
 });
 
+
+//Nurse
+Route::get('/nurse/list',[NurseController::class, 'nurseList'])->name('nurse.list');
+Route::get('/nurse/add',[NurseController::class, 'nurseAdd'])->name('nurse.add');
+Route::post('/nurse/store',[NurseController::class, 'nurseStore'])->name('nurse.store');
+Route::get('/nurse/edit/{nurse_id}',[NurseController::class,'nurseEdit'])->name('nurse.edit');
+Route::put('/nurse/update/{nurse_id}',[NurseController::class, 'nurseUpdate'])->name('nurse.update');
+Route::get('/nurse/delete/{nurse_id}',[NurseController::class,'nurseDelete'])->name('nurse.delete');
+
+
 // Diagonistic
 // test category
 Route::get('/test/category/list',[TestCategoryController::class, 'categoryList'])->name('test.category.list');
@@ -161,7 +172,6 @@ Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->n
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
 
 }); 
-
 
 
 
