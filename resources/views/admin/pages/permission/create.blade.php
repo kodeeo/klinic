@@ -11,6 +11,12 @@
         <br>
        <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline mb-4">
+                 <label class="form-label" for="form6Example1">Case Number</label>
+                <input name="case_no" style="height:3rem;"type="text" id="form6Example1" class="input-group input-group-outline" />
+        
+              </div>
              <div class="col">
                 <div class="form-outline mb-4">
                      <label class="form-label" for="form6Example1">Name</label>

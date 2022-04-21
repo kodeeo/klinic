@@ -2,7 +2,7 @@
 @section('content')
 <h1>Cause List</h1>
 <hr>
-<a href="{{route('patient.add')}}"><button class="btn btn-primary">Create Patient</button></a>
+<a href=""><button class="btn btn-primary">Create Patient</button></a>
 <br><br>
 <div> 
   <table class="table" style="text-align: center;">
