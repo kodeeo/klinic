@@ -15,9 +15,11 @@
     </ul>
 </div>
 @endif
+
 <form action="{{route('patient_admisssion.store')}}" method="POST" >
     @csrf
     <input type="hidden" name="patient_id" value="{{$new_patient->id}}">
+
     <div class="row">
 
         <div class="form-group col-6">
@@ -35,7 +37,9 @@
 
           <div class="form-group col-6 mt-2">
             <label for="exampleFormControlSelect1">Room</label>
+
             <select name="room" class="form-control" id="exampleFormControlSelect1">
+
               <option>OPD</option>
               <option>IPD</option>
             </select>
@@ -195,13 +199,19 @@
     </div>
 
   </div>
+
         
     
     
     <br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
     <button type="submit" class="btn btn-success">Submit</button>
    
   </form>
+
 
 
 

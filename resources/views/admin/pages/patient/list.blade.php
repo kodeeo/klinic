@@ -37,7 +37,11 @@
         <td><img src="{{url('/uploads/patients/'.$patient->patient_image)}}" style="border-radius:4px" width="100px" alt="patient image"></td>
       {{-- <td>{{$causes->created_at->diffforhumans()}}</td> --}}
         <td>
+
+          <a class="btn btn-success btn-sm" href="{{route('patient_admisssion.add')}}">Admission</a>
+
           <a class="btn btn-success btn-sm" href="{{route('patient_admisssion.add',$patient->id)}}">Admission</a>
+
           {{-- <a class="btn btn-warning btn-sm" href="{{route('edit.cause',$causes->id)}}"><i class="fas fa-edit"></i></a>
           <a class="btn btn-danger btn-sm" href="{{route('delete.cause',$causes->id)}}"><i class="fas fa-trash"></i></a> --}}
       </td>

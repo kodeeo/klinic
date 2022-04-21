@@ -107,6 +107,12 @@ class PatientController extends Controller
      }
     }
 
+
+    public function patientAdmissionAdd()
+    {
+        return view('admin.pages.patient.admission');
+    }
+
     public function patientAdmissionAdd($patient_id)
     {
         

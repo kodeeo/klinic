@@ -28,12 +28,15 @@ use App\Http\Controllers\Admin\TestCategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 
+
+
 */Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+
 
 
 Route::get('/login',[LoginController::class,'login'])->name('master.login');
 
-// */ 
+
 Route::get('/',[LoginController::class,'login'])->name('master.login');
 
 Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin');
@@ -96,8 +99,11 @@ Route::get('/patients/list',[PatientController::class, 'patientlist'])->name('pa
 Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
 Route::post('/patients/store',[PatientController::class, 'patientStore'])->name('patient.store');
 //Patient_Admission
+
+Route::get('/patients/admission/add',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::get('/patients/admission/add/{patient_id}',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::post('/patients/admission/store',[PatientController::class, 'patientAdmissionStore'])->name('patient_admisssion.store');
+
 
 
 
