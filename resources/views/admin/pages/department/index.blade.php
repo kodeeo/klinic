@@ -11,11 +11,11 @@
     <div class="row">
           <div class="form-group col-6">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category Name">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Department Name">
           </div>
           <div class="form-group col-6">
               <label for="email">Details</label>
-              <input type="text" class="form-control" id="details" name="details" placeholder="Enter Category Details">
+              <input type="text" class="form-control" id="details" name="details" placeholder="Enter Department Details">
           </div> 
           <div class="mt-2">
             <label for="department_image" class="form-label">Insert Image</label>
@@ -46,7 +46,9 @@
                           
                             <th>{{$key+1}}</th>
                             <td>{{$value->name}}</td>
-                            <td>{{$value->details}}</td>  
+                            <td>{{$value->details}}</td>
+                            <td><img src="{{url('/uploads/departments/'.$value->image)}}" style="border-radius:4px" width="100px" alt="department image"></td>
+
                             <td>
                               <a class="btn btn-success btn-sm" href="{{route('view.department',$value->id)}}"><i class="fas fa-eye"></i></a>  
                               <a class="btn btn-warning btn-sm" href="{{route('edit.department',$value->id)}}"><i class="fas fa-edit"></i></a>
