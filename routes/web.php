@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
+use App\Http\Controllers\Admin\DepartmentController;
 
 
 /*
