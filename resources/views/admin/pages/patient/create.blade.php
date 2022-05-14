@@ -17,7 +17,7 @@
 @endif
 <form action="{{route('patient.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="patient_id" value="{{$new_patient->id}}">
+    
     <div class="row">
 
         <div class="form-group col-6">
