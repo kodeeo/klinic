@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Cause List</h1>
+<h1>Patient List</h1>
 <hr>
 <a href="{{route('patient.add')}}"><button class="btn btn-primary">Create Patient</button></a>
 <br><br>
@@ -38,7 +38,6 @@
       {{-- <td>{{$causes->created_at->diffforhumans()}}</td> --}}
         <td>
 
-          <a class="btn btn-success btn-sm" href="{{route('patient_admisssion.add')}}">Admission</a>
 
           <a class="btn btn-success btn-sm" href="{{route('patient_admisssion.add',$patient->id)}}">Admission</a>
 

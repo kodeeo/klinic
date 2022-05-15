@@ -17,6 +17,7 @@
 @endif
 <form action="{{route('patient.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
+    
     <div class="row">
 
         <div class="form-group col-6">

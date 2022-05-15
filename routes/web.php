@@ -36,7 +36,9 @@ use App\Http\Controllers\Admin\DepartmentController;
 
 
 
+
 Route::get('/login',[LoginController::class,'login'])->name('master.login');
+
 
 
 Route::get('/',[LoginController::class,'login'])->name('master.login');
@@ -45,6 +47,7 @@ Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin
 
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+
 Route::get('/logout',[LoginController::class,'logout'])->name('admin.logout');
 
     
@@ -97,7 +100,7 @@ Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.
 
 //Patient
 
-Route::get('/patients/list',[PatientController::class, 'patientlist'])->name('patient.list');
+Route::get('/patients/list/',[PatientController::class, 'patientlist'])->name('patient.list');
 Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
 Route::post('/patients/store',[PatientController::class, 'patientStore'])->name('patient.store');
 //Patient_Admission
@@ -173,7 +176,6 @@ Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->n
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
 
 }); 
-
 
 
 

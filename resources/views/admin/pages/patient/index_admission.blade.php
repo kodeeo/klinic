@@ -3,29 +3,20 @@
 
 <h1>Admitted Patients List</h1>
 
-
-<h1>Cause List</h1>
-<hr>
-<a href=""><button class="btn btn-primary">Create Patient</button></a>
 <br><br>
-r
+
 <div> 
   <table class="table" style="text-align: center;">
     <thead class="thead-dark">
       <tr>
       <th scope="col">ID</th>
-
-      <th scope="col">Patient Id</th>
-
-      <th scope="col">Case Number</th>
-
-      <th scope="col">Name</th>
-      <th scope="col">Patient_Type</th>
-      <th scope="col">Phone</th>
-      <th scope="col">BloodGroup</th>
-      <th scope="col">Address </th>
-      <th scope="col">Added At </th>
-      <th scope="col">Image</th>
+      <th scope="col">Case No</th>
+      <th scope="col">Patient Name</th>
+      <th scope="col">Doctor Name</th>
+      <th scope="col">Room Number</th>
+      <th scope="col">Admitted by</th>
+      <th scope="col">Relation </th>
+      {{-- <th scope="col">Added At </th> --}}
       <th scope="col">Action</th> 
 
 
