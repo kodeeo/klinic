@@ -40,8 +40,8 @@
 
             <select name="room" class="form-control" id="exampleFormControlSelect1">
 
-              <option>OPD</option>
-              <option>IPD</option>
+              <option>Cabin</option>
+              <option>Word</option>
             </select>
           </div>
           <div class="form-group col-6">

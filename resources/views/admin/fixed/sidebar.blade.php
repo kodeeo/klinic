@@ -171,8 +171,11 @@
                           <a href="{{route('test.category.list')}}">Test Category</a>
                       </li>
                       <li>
-                          <a href="{{route('test.list')}}">Test</a>
+                          <a href="{{route('test.list')}}">Test List</a>
                       </li>
+                      <li>
+                        <a href="{{route('cart.index')}}">Assign Test</a>
+                    </li>
                   </ul>
               </div>
           </li>
