@@ -1,6 +1,39 @@
 @extends('admin.master')
 @section('content')
     
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" style="margin-top: 5px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Import File
+</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <form action="#" method="post" enctype="multipart/form-data">
+                 @csrf
+                 <div class="modal-body">
+  
+                     <label for="file">Upload Excel</label>
+                     <input type="file" class="form-control" name="excel">
+  
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     <button type="submit" class="btn btn-primary">Import File</button>
+                 </div>
+             </form>
+         </div>
+     </div>
+  </div>
+
 <h1>Staffs</h1>
 <hr>
 
