@@ -2,6 +2,7 @@
 @section('content')
     
 <h1>Staffs</h1>
+
 <hr>
 
  <a href="{{route('staff.create')}}"><button type="button" class="btn btn-primary">Create Staff</button></a><br><br>

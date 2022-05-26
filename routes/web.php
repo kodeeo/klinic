@@ -6,18 +6,19 @@ use App\Http\Controllers\Admin\TestController;
 
 use App\Http\Controllers\Admin\UserController;
 
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\CabinController;
 
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\StaffController;
+
+
 use App\Http\Controllers\Admin\DoctorController;
-
-
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
-use App\Http\Controllers\Admin\DepartmentController;
 
 
 /*
@@ -174,6 +175,10 @@ Route::put('/service/edit/{id}',[ServiceController::class,'serviceUpdate'])->nam
 Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->name('admin.service.delete');
 #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
+
+//Cabin resource controller
+Route::resource('cabin',CabinController::class);
+
 
 }); 
 
