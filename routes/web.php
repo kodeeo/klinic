@@ -8,6 +8,10 @@ use App\Http\Controllers\Admin\TestController;
 
 use App\Http\Controllers\Admin\UserController;
 
+
+use App\Http\Controllers\Admin\CabinController;
+
+
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\StaffController;
@@ -186,6 +190,10 @@ Route::put('/service/edit/{id}',[ServiceController::class,'serviceUpdate'])->nam
 Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->name('admin.service.delete');
 #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
+
+//Cabin resource controller
+Route::resource('cabin',CabinController::class);
+
 
 }); 
 

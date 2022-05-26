@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('admissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained('Patients')->restictionOnDelete();
+            $table->foreignId('patient_id')->constrained('patients')->restictionOnDelete();
             $table->string('name',30);
             $table->string('father',30);
             $table->string('mother',30);
