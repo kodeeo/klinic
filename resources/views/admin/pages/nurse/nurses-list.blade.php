@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Nurses List</h1>
+<h1>{{__('Nurses List')}}</h1>
 <hr>
 
 <br><br>

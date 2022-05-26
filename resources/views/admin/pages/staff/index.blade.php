@@ -34,7 +34,7 @@
      </div>
   </div>
 
-<h1>Staffs</h1>
+<h1>{{__('Staffs')}}</h1>
 <hr>
 
  <a href="{{route('staff.create')}}"><button type="button" class="btn btn-primary">Create Staff</button></a><br><br>

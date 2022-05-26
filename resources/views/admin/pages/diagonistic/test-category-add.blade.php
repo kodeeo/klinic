@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Add New Test Category</h1>
+<h1>{{__('Add New Test Category')}}</h1>
 
 <form action="{{route('test.category.store')}}" method="POST" enctype="multipart/form-data">
     @csrf

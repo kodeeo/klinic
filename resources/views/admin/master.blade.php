@@ -42,6 +42,7 @@
                 <div class="content">
                     <!-- Topbar Start -->
                     @include('admin.fixed.header')
+                    
                     <!-- end Topbar -->
 
                     <!-- Start Content-->

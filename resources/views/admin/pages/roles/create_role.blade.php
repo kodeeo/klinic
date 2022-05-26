@@ -2,7 +2,7 @@
 @section('content')
 
 
-<h1>Add Role</h1>
+<h1>{{__('Add Role')}}</h1>
 
     
 

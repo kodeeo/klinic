@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Patient List</h1>
+<h1>{{__('Patient List')}}</h1>
 <hr>
 <a href="{{route('patient.add')}}"><button class="btn btn-primary">Create Patient</button></a>
 <br><br>

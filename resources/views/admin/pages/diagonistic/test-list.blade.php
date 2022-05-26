@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Test List</h1>
+<h1>{{__('Test List')}}</h1>
 <hr>
 <a href="{{route('test.add')}}"><button class="btn btn-primary">Create Test</button></a>
 <br><br>
