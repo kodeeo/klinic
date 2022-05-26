@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\StaffController;
 
 
+use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -177,7 +178,16 @@ Route::resource('staff',StaffController::class);
 //Designation resource controller
 Route::resource('designation',DesignationController::class);
 
-
+//Clinic Setup
+Route::get('/clinic/informations',[ClinicController::class,'info'])->name('clinic.informations');
+Route::get('/clinic/setup',[ClinicController::class,'setup'])->name('clinic.setup');
+Route::post('/clinic/setup/store',[ClinicController::class,'store'])->name('clinic.setup.store');
+Route::get('/clinic/setup/edit/{id}',[ClinicController::class,'edit'])->name('clinic.setup.edit');
+Route::put('/clinic/setup/update/{id}',[ClinicController::class,'update'])->name('clinic.setup.update');
+Route::get('clinic/setup/delete/{id}',[ClinicController::class,'delete'])->name('clinic.setup.delete');
+  
+  //Cabin resource controller
+Route::resource('cabin',CabinController::class);
 
 #services
 Route::get('/services',[ServiceController::class,'serviceForm'])->name('admin.service.form');
@@ -191,8 +201,6 @@ Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->n
 #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
 
-//Cabin resource controller
-Route::resource('cabin',CabinController::class);
 
 
 }); 
