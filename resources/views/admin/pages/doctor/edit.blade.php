@@ -53,7 +53,8 @@
                 @if($item->id==$doctor->department_id)
                       selected
                       @endif
-                  value="{{$item->id}}">{{$item->name}}</option>                @endforeach
+                  value="{{$item->id}}">{{$item->name}}</option>            
+                      @endforeach
               </select>
         </div>
         <div class="form-group col-6 mt-2">
