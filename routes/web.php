@@ -8,6 +8,10 @@ use App\Http\Controllers\Admin\TestController;
 
 use App\Http\Controllers\Admin\UserController;
 
+
+use App\Http\Controllers\Admin\CabinController;
+
+
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\StaffController;
@@ -18,6 +22,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
 
@@ -157,6 +162,7 @@ Route::resource('cart',CartController::class);
 Route::get('add/cart/{test}', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('remove/cart/{id}', [CartController::class, 'removeFromCart'])->name('remove');
 Route::get('clear/clear', [CartController::class, 'clearCart'])->name('clearCart');
+Route::get('key/clear', [CartController::class, 'keyClear'])->name('key.clear');
 
 
 
@@ -172,7 +178,16 @@ Route::resource('staff',StaffController::class);
 //Designation resource controller
 Route::resource('designation',DesignationController::class);
 
-
+//Clinic Setup
+Route::get('/clinic/informations',[ClinicController::class,'info'])->name('clinic.informations');
+Route::get('/clinic/setup',[ClinicController::class,'setup'])->name('clinic.setup');
+Route::post('/clinic/setup/store',[ClinicController::class,'store'])->name('clinic.setup.store');
+Route::get('/clinic/setup/edit/{id}',[ClinicController::class,'edit'])->name('clinic.setup.edit');
+Route::put('/clinic/setup/update/{id}',[ClinicController::class,'update'])->name('clinic.setup.update');
+Route::get('clinic/setup/delete/{id}',[ClinicController::class,'delete'])->name('clinic.setup.delete');
+  
+  //Cabin resource controller
+Route::resource('cabin',CabinController::class);
 
 #services
 Route::get('/services',[ServiceController::class,'serviceForm'])->name('admin.service.form');
@@ -186,13 +201,7 @@ Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->n
 #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
 
-//Clinic Setup
-Route::get('/clinic/informations',[ClinicController::class,'info'])->name('clinic.informations');
-Route::get('/clinic/setup',[ClinicController::class,'setup'])->name('clinic.setup');
-Route::post('/clinic/setup/store',[ClinicController::class,'store'])->name('clinic.setup.store');
-Route::get('/clinic/setup/edit/{id}',[ClinicController::class,'edit'])->name('clinic.setup.edit');
-Route::put('/clinic/setup/update/{id}',[ClinicController::class,'update'])->name('clinic.setup.update');
-Route::get('clinic/setup/delete/{id}',[ClinicController::class,'delete'])->name('clinic.setup.delete');
+
 
 }); 
 

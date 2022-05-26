@@ -181,11 +181,23 @@
           </li>
 
           <li class="side-nav-item">
-              <a href="apps-file-manager.html" class="side-nav-link">
-                  <i class="uil-folder-plus"></i>
-                  <span> Demo </span>
-              </a>
-          </li>
+            <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Room </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="patients">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="#">Ward</a>
+                    </li>
+                    <li>
+                        <a href="{{route('cabin.index')}}">Cabin</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
 
           <li class="side-nav-title side-nav-item">Settings</li>
           
