@@ -84,6 +84,12 @@ class NurseController extends Controller
         
     }
 
+    public function nurseShow($id)
+    {
+        $nurse=Nurse::find($id);
+        return view('admin.pages.nurse.nurse-view',compact('nurse'));
+    }
+
     public function nurseDelete($id){
 
         Nurse::find($id)->delete();
