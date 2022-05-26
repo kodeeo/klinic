@@ -2,7 +2,77 @@
 @section('content')
 
 
-<div style="display: flex;">
+<div class="container" style="display: flex;">
+
+    @php
+    $total = 0;
+    $change = 0;
+    @endphp
+
+
+                @if(session()->has('key'))
+                {{-- @dd(session('key')) --}}
+                {{-- @foreach (session('cart') as $id => $test)
+                            {{-- @dd(session('cart')) --}}
+    
+                                {{-- @php
+                                    $subtotal = $test['price'];
+                                    $total += $subtotal;
+                                @endphp
+                                @endforeach --}}
+
+            
+    
+        {{-- @dd(session('money')) --}}
+        
+        <div class="container" style="text-align:center; width:55%">
+            <h1>Calculate</h1>
+            <hr>
+            <br> 
+            
+            <div class="container" style="display: flex; justify-content:center;">            
+                <div class="card" style="margin-left:5px; margin-right:5px; margin-bottom:5px; margin-top:2px; padding-left: 10%; padding-right: 10%; padding-top: 2%; padding-bottom: 5%; background:aqua;" >
+                    <h3>Total Due</h3>
+                    <br>
+                    <h4>BDT {{$total}}.00 /- </h4>
+                </div>
+
+                <div class="card" style="margin-left:5px; margin-right:5px; margin-bottom:5px; margin-top:2px; padding-left: 10%; padding-right: 10%; padding-top: 2%; padding-bottom: 5%; background:orange;" >
+                    <h3>Change</h3>
+                    <br>
+                    <h4>BDT {{$change}}.00 /- </h4>
+
+                </div>
+            </div>
+
+
+            <div class="container" style="display: flex; justify-content:center; background:#27a6a8; padding-bottom:5px; ">
+                <div style="margin:5px;">
+                    <h3>Amount</h3>
+                    <br>
+                    <input type="text" id="name" name="name">
+                </div>
+                    
+                <div style="margin:5px;">
+                    <h3>Payment Method</h3>
+                    <br>
+                    <select name="method" id="name" style="padding-right:50px; ">
+                        <option value="volvo">Cash</option>
+                        <option value="saab">Digital Banking</option>
+                    </select>
+                </div>
+            </div>
+        
+        </div>
+    
+    
+    
+    
+       
+    
+            
+    
+        @else
 
     <div class="container" style="text-align:center; width:55%">
         <h1>Add To Cart</h1>
@@ -25,6 +95,8 @@
                     @endforeach
                 </div>   
     </div>
+
+    @endif
 
     
         <div class="container"  style="width:45%; text-align:center;">
@@ -93,9 +165,10 @@
                 @csrf
                 <button style="background-color:rgb(10, 187, 16); padding:8px; border-radius:6px;" type="submit">Proceed To Pay</button>
                 </form>
+                
+                <br>
     
-    
-               {{-- <a href="{{route('orders.store')}}" class="btn btn-primary">Button</a> --}}
+               <a href="{{route('key.clear')}}" class="btn btn-primary">Re-Assign Test</a>
     
         </div>
     

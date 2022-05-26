@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
 
@@ -156,6 +157,7 @@ Route::resource('cart',CartController::class);
 Route::get('add/cart/{test}', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('remove/cart/{id}', [CartController::class, 'removeFromCart'])->name('remove');
 Route::get('clear/clear', [CartController::class, 'clearCart'])->name('clearCart');
+Route::get('key/clear', [CartController::class, 'keyClear'])->name('key.clear');
 
 
 
