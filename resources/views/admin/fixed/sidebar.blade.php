@@ -2,7 +2,7 @@
   <!-- LOGO -->
   <a href="index.html" class="logo text-center logo-light">
       <span class="logo-lg">
-          <img src="{{url('backend/images/fund.png')}}" alt="" height="90">
+      <h4 style="color:white"><img src="{{url('/uploads/'.$klinic->image)}}" width="50px" alt="Company Logo"><b> {{$klinic->name}}</b></h4>
       </span>
       <span class="logo-sm">
           <img src="{{url('backend/images/logo_sm.png')}}" alt="" height="16">
@@ -159,25 +159,40 @@
                           <a href="{{route('test.category.list')}}">Test Category</a>
                       </li>
                       <li>
-                          <a href="{{route('test.list')}}">Test</a>
+                          <a href="{{route('test.list')}}">Test List</a>
                       </li>
+                      <li>
+                        <a href="{{route('cart.index')}}">Assign Test</a>
+                    </li>
                   </ul>
               </div>
           </li>
 
           <li class="side-nav-item">
-              <a href="apps-file-manager.html" class="side-nav-link">
-                  <i class="uil-folder-plus"></i>
-                  <span> Demo </span>
-              </a>
-          </li>
+            <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Room </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="patients">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="#">Ward</a>
+                    </li>
+                    <li>
+                        <a href="{{route('cabin.index')}}">Cabin</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-          <li class="side-nav-title side-nav-item">Custom</li>
+
+          <li class="side-nav-title side-nav-item">Settings</li>
           
           <li class="side-nav-item">
-              <a href="apps-file-manager.html" class="side-nav-link">
+              <a href="{{route('clinic.informations')}}" class="side-nav-link">
                   <i class="uil-folder-plus"></i>
-                  <span> Demo </span>
+                  <span> Clinic Setup </span>
               </a>
           </li>
 
