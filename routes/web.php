@@ -26,7 +26,9 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
 
-
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\DesignationController;
+use App\Http\Controllers\Admin\ServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -138,7 +140,18 @@ Route::get('/nurse/add',[NurseController::class, 'nurseAdd'])->name('nurse.add')
 Route::post('/nurse/store',[NurseController::class, 'nurseStore'])->name('nurse.store');
 Route::get('/nurse/edit/{nurse_id}',[NurseController::class,'nurseEdit'])->name('nurse.edit');
 Route::put('/nurse/update/{nurse_id}',[NurseController::class, 'nurseUpdate'])->name('nurse.update');
+Route::get('/nurse/show/{nurse_id}',[NurseController::class,'nurseShow'])->name('nurse.show');
 Route::get('/nurse/delete/{nurse_id}',[NurseController::class,'nurseDelete'])->name('nurse.delete');
+
+
+//WardBoy
+Route::get('/wardboy/list',[WardboyController::class,'wardboyList'])->name('wardboy.list');
+Route::get('/wardboy/add',[WardboyController::class,'wardboyAdd'])->name('wardboy.add');
+Route::post('/wardboy/store',[WardboyController::class,'wardboyStore'])->name('wardboy.store');
+Route::get('/wardboy/edit/{wardboy_id}',[WardboyController::class,'wardboyEdit'])->name('wardboy.edit');
+Route::put('/wardboy/update/{wardboy_id}',[WardboyController::class,'wardboyUpdate'])->name('wardboy.update');
+Route::get('/wardboy/delete/{wardboy_id}',[WardboyController::class,'wardboyDelete'])->name('wardboy.delete');
+Route::get('/wardboy/show/{wardboy_id}',[WardboyController::class,'wardboyShow'])->name('wardboy.show');
 
 
 // Diagonistic

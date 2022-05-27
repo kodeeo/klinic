@@ -94,25 +94,7 @@
         </li>
 
 
-        <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#nurse" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
-                <i class="uil-clipboard-alt"></i>
-                <span> Nurses </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <div class="collapse" id="nurse">
-                <ul class="side-nav-second-level">
-                    <li>
-                        <a href="{{route('nurse.add')}}">Add Nurse</a>
-                    </li>
-                    <li>
-                        <a href="{{route('nurse.list')}}">Nurse List</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-          
-
+    
 
           <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#staffs" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
@@ -122,6 +104,12 @@
             </a>
             <div class="collapse" id="staffs">
                 <ul class="side-nav-second-level">
+                <li>
+                        <a href="{{route('nurse.list')}}">Nurse</a>
+                    </li>
+                    <li>
+                        <a href="{{route('wardboy.list')}}">WardBoy</a>
+                    </li>
                     <li>
                         <a href="{{route('staff.index')}}">Staff List</a>
                     </li>
