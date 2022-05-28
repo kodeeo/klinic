@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\CabinController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\StaffController;
-
+use App\Http\Controllers\Admin\WardboyController;
 
 use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
