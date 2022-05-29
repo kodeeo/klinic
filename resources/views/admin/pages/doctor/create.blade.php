@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Doctor Registration</h1>
+<h1>{{__('Doctor Registration')}}</h1>
 
 
 {{-- validation --}}

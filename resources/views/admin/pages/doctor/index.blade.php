@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
     
-<h1>Doctors</h1>
+<h1>{{__('Doctors')}}</h1>
 <hr>
 
  <a href="{{route('doctor.create')}}"><button type="button" class="btn btn-primary">Create Doctor</button></a><br><br>

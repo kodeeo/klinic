@@ -22,12 +22,13 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\PasswordController;
-
 use App\Http\Controllers\Admin\DepartmentController;
-
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\DesignationController;
 
 
 use App\Http\Controllers\Admin\DesignationController;
@@ -219,6 +220,8 @@ Route::put('/service/edit/{id}',[ServiceController::class,'serviceUpdate'])->nam
 Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->name('admin.service.delete');
 #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
+//localization
+Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->name('admin.language.change');
 
 
 
