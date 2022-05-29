@@ -1,0 +1,52 @@
+
+{
+
+        "Create Users":"ব্যবহারকারী তৈরি করুন",
+
+        "Roles List":"ভূমিকা তালিকা",
+        "Add Role":"ভূমিকা যোগ করুন",
+
+
+
+
+        
+    "Patient List": "রোগীর তালিকা",
+    "Add New Patient":" নতুন রোগী যোগ করুন",
+
+
+
+    "Doctors":"ডাক্তাররা",
+     "Doctor Registration":"ডাক্তার নিবন্ধন",
+
+
+     "Staffs":"স্টাফ",
+     "Staff Registration":"স্টাফ নিবন্ধন",
+
+
+
+     "Designation":"উপাধি",
+
+
+
+     "Service List":"পরিষেবা তালিকা",
+     "Add Service":"পরিষেবা যোগ করুন",
+
+
+
+
+    "Departments":"বিভাগসমূহ",
+
+
+
+
+    "Add New Nurse":"নতুন নার্স যোগ করুন",
+    "Nurses List":"নার্সদের তালিকা",
+
+
+    "Test Category List":"পরীক্ষা বিভাগের তালিকা",
+    "Add New Test Category":"নতুন পরীক্ষা বিভাগ যোগ করুন",
+    "Test List":"পরীক্ষার তালিকা",
+    "Add New Test": "নতুন পরীক্ষা যোগ করুন"
+    
+}
+    
