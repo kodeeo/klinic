@@ -1,4 +1,4 @@
-<div style="display:flex; justify-content:space-between;">
+<div style="display:flex; justify-content:space-between; align-items:center;">
     <button class="button-menu-mobile open-left">
         <i class="mdi mdi-menu"></i>
     </button>

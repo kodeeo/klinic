@@ -27,10 +27,6 @@ use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TestCategoryController;
-use App\Http\Controllers\Admin\DepartmentController;
-use App\Http\Controllers\Admin\DesignationController;
-
-
 use App\Http\Controllers\Admin\DesignationController;
 
 /*

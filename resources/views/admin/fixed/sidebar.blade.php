@@ -2,7 +2,7 @@
   <!-- LOGO -->
   <a href="index.html" class="logo text-center logo-light">
       <span class="logo-lg">
-      <h4 style="color:white"><img src="{{url('/uploads/'.$klinic->image)}}" width="50px" alt="Company Logo"><b> {{$klinic->name}}</b></h4>
+      <h4 style="color:white"><img src="{{$klinic->image}}" width="50px" alt="Company Logo"><b> {{$klinic->name}}</b></h4>
       </span>
       <span class="logo-sm">
           <img src="{{url('backend/images/logo_sm.png')}}" alt="" height="16">
