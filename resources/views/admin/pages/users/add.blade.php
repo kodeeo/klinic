@@ -91,7 +91,6 @@ body {
     <h2>{{__('Create Users')}} </h2>
   <form action="{{route('user.store')}}" method='POST' enctype="multipart/form-data">
     @csrf
-    
   <div class="row">
     <div class="col-6">
       <label for="cloth_name">Name <span style="color:red">*</span>:</label>
@@ -118,7 +117,7 @@ body {
   </div> 
   <div class="row">
     <div class="col-6"> 
-      <label for="details">Password <span style="color:red">*</span>:</label>
+      <label for="password">Password <span style="color:red">*</span>:</label>
       <textarea id="text" name="password" placeholder="Password" style="height:50px"></textarea>
     </div>
   </div>
@@ -127,7 +126,7 @@ body {
         <div class="form-group">
             <div class="form-group">
                 <label for="user_image">Image:</label>
-                <input  type="file" name="image" class="form-control" id="image">
+                <input  type="file" name="user_image" class="form-control" id="user_image">
             </div>
         </div>
     </div>

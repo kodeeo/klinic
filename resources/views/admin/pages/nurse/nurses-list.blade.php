@@ -3,7 +3,8 @@
 <h1>{{__('Nurses List')}}</h1>
 <hr>
 
-<br><br>
+ <a href="{{route('nurse.add')}}"><button type="button" class="btn btn-primary">Create Nurse</button></a><br><br>
+
 <div> 
   <table class="table" style="text-align: center;">
     <thead class="thead-dark">
@@ -30,7 +31,7 @@
         <td>{{$nurse->duty_hrs}}</td>
         <td><img src="{{url('/uploads/'.$nurse->image)}}" style="border-radius:4px" width="40px" alt="test image"></td>
         <td>
-          
+        <a class="btn btn-success btn-sm" href="{{route('nurse.show',$nurse->id)}}"><i class="fas fa-eye"></i></a> 
           <a class="btn btn-warning btn-sm" href="{{route('nurse.edit',$nurse->id)}}"><i class="fas fa-edit"></i></a>
           <a class="btn btn-danger btn-sm" href="{{route('nurse.delete',$nurse->id)}}"><i class="fas fa-trash"></i></a>
       </td>
