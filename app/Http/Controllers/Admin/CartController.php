@@ -144,4 +144,14 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    public function keyClear(Request $request)
+    {
+
+        $request->session('key');
+        session()->forget('key');
+        // dd(session()->all());
+        
+        return redirect()->back();
+    }
+
 }
