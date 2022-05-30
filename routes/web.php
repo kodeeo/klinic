@@ -9,23 +9,35 @@ use App\Http\Controllers\Admin\TestController;
 use App\Http\Controllers\Admin\UserController;
 
 
-use App\Http\Controllers\Admin\CabinController;
-
+use App\Http\Controllers\Admin\WardController;
 
 use App\Http\Controllers\Admin\LoginController;
+
+
+use App\Http\Controllers\Admin\CabinController;
 use App\Http\Controllers\Admin\NurseController;
+
 use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\WardboyController;
 
-
+use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
+
+
+
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Admin\DesignationController;
+
+
+use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\TestCategoryController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +58,11 @@ use App\Http\Controllers\Admin\TestCategoryController;
 
 Route::get('/login',[LoginController::class,'login'])->name('master.login');
 
-
+// Forget &Reset passowrd
+Route::get('/forget-passowrd', [PasswordController::class, 'forgetPassword'])->name('forget.password');
+Route::post('/forget-password', [PasswordController::class, 'forgetPasswordEmailPost'])->name('forget.password.post');
+Route::get('/reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('reset.password');
+Route::post('/reset_password', [PasswordController::class, 'resetPasswordPost'])->name('reset.password.post');
 
 Route::get('/',[LoginController::class,'login'])->name('master.login');
 
@@ -85,7 +101,6 @@ Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.
 
 // Route::get('admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
 
-
 // role
 Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
 Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
@@ -121,7 +136,6 @@ Route::post('/patients/admission/store',[PatientController::class, 'patientAdmis
 
 //doctor_department
 Route::controller(DepartmentController::class)->group(function () {
-
     Route::get('/show/department','show')->name('show.department'); 
     Route::get('/create/department','create')->name('create.department'); 
     Route::post('/store/department','store')->name('store.department'); 
@@ -138,7 +152,18 @@ Route::get('/nurse/add',[NurseController::class, 'nurseAdd'])->name('nurse.add')
 Route::post('/nurse/store',[NurseController::class, 'nurseStore'])->name('nurse.store');
 Route::get('/nurse/edit/{nurse_id}',[NurseController::class,'nurseEdit'])->name('nurse.edit');
 Route::put('/nurse/update/{nurse_id}',[NurseController::class, 'nurseUpdate'])->name('nurse.update');
+Route::get('/nurse/show/{nurse_id}',[NurseController::class,'nurseShow'])->name('nurse.show');
 Route::get('/nurse/delete/{nurse_id}',[NurseController::class,'nurseDelete'])->name('nurse.delete');
+
+
+//WardBoy
+Route::get('/wardboy/list',[WardboyController::class,'wardboyList'])->name('wardboy.list');
+Route::get('/wardboy/add',[WardboyController::class,'wardboyAdd'])->name('wardboy.add');
+Route::post('/wardboy/store',[WardboyController::class,'wardboyStore'])->name('wardboy.store');
+Route::get('/wardboy/edit/{wardboy_id}',[WardboyController::class,'wardboyEdit'])->name('wardboy.edit');
+Route::put('/wardboy/update/{wardboy_id}',[WardboyController::class,'wardboyUpdate'])->name('wardboy.update');
+Route::get('/wardboy/delete/{wardboy_id}',[WardboyController::class,'wardboyDelete'])->name('wardboy.delete');
+Route::get('/wardboy/show/{wardboy_id}',[WardboyController::class,'wardboyShow'])->name('wardboy.show');
 
 
 // Diagonistic
@@ -159,9 +184,11 @@ Route::get('/test/delete/{test_id}',[TestController::class,'testDelete'])->name(
 
 //assign test recource controller
 Route::resource('cart',CartController::class);
+
 Route::get('add/cart/{test}', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('remove/cart/{id}', [CartController::class, 'removeFromCart'])->name('remove');
 Route::get('clear/clear', [CartController::class, 'clearCart'])->name('clearCart');
+Route::get('key/clear', [CartController::class, 'keyClear'])->name('key.clear');
 
 
 
@@ -177,7 +204,20 @@ Route::resource('staff',StaffController::class);
 //Designation resource controller
 Route::resource('designation',DesignationController::class);
 
+//Permission resource controller
+Route::resource('permission',PermissionController::class);
 
+
+//Clinic Setup
+Route::get('/clinic/informations',[ClinicController::class,'info'])->name('clinic.informations');
+Route::get('/clinic/setup',[ClinicController::class,'setup'])->name('clinic.setup');
+Route::post('/clinic/setup/store',[ClinicController::class,'store'])->name('clinic.setup.store');
+Route::get('/clinic/setup/edit/{id}',[ClinicController::class,'edit'])->name('clinic.setup.edit');
+Route::put('/clinic/setup/update/{id}',[ClinicController::class,'update'])->name('clinic.setup.update');
+Route::get('clinic/setup/delete/{id}',[ClinicController::class,'delete'])->name('clinic.setup.delete');
+  
+  //Cabin resource controller
+Route::resource('cabin',CabinController::class);
 
 #services
 Route::get('/services',[ServiceController::class,'serviceForm'])->name('admin.service.form');
@@ -190,10 +230,12 @@ Route::put('/service/edit/{id}',[ServiceController::class,'serviceUpdate'])->nam
 Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->name('admin.service.delete');
 #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
+//localization
+Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->name('admin.language.change');
 
-//Cabin resource controller
-Route::resource('cabin',CabinController::class);
 
+# ward CRUD
+Route::resource('ward', WardController::class);
 
 }); 
 

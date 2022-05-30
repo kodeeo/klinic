@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Staff Registration</h1>
+<h1>{{__('Staff Registration')}}</h1>
 <hr>
 
 
