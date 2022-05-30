@@ -27,7 +27,7 @@ class ServiceController extends Controller
 
      #showing the list of the services in the blade
      public function serviceList(){
-         $services=ServiceModel::get();
+         $services=ServiceModel::paginate(10);
         //  dd($services);
          return view('admin.pages.services.serviceList',compact('services'));
      }

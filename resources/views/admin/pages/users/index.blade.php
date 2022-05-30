@@ -75,6 +75,6 @@ text-align: right;
 	
 	  </table>
 
-
+{{ $users->links()}}
     
 @endsection
