@@ -1,11 +1,33 @@
-<div class="navbar-custom">
-    <ul class="list-unstyled topbar-menu float-end mb-0">
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <button class="button-menu-mobile open-left">
+        <i class="mdi mdi-menu"></i>
+    </button>
+    <div>
+        {{-- <label for="" style="color: white;">Select Language:</label> --}}
+      
+         <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">
+             <option value="">Select language</option>
+             <option value="{{route('admin.language.change','en')}}">EN</option>
+             <option value="{{route('admin.language.change','bn')}}">BN</option>
+             <option value="{{route('admin.language.change','ar')}}">AR</option>
+         </select>  
+       
         
-        <li class="dropdown notification-list topbar-dropdown">
+                   
+        </div> 
+    
+    <ul class="list-unstyled topbar-menu float-end mb-0" style="display: flex; align-items:center;">
+        
+       
+
+        <li class="dropdown notification-list topbar-dropdown" >
             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <img src="{{url('backend/images/flags/us.jpg')}}" alt="user-image" class="me-0 me-sm-1" height="12">
                 <span class="align-middle d-none d-sm-inline-block">English</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
             </a>
+
+            
+
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu">
 
                 <!-- item-->
@@ -229,9 +251,7 @@
         </li>
 
     </ul>
-    <button class="button-menu-mobile open-left">
-        <i class="mdi mdi-menu"></i>
-    </button>
+    
     {{-- <div class="app-search dropdown d-none d-lg-block">
         <form>
             <div class="input-group">

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\ClinicSetup;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if(Schema::hasTable('clinic_setups'))
+        {
+            View::share('klinic', ClinicSetup::first());
+        }
+       
     }
 }

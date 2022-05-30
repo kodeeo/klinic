@@ -255,12 +255,12 @@ sup {
 }
 
 a {
-    color: #727cf5;
+    color: #000000;
     text-decoration: none
 }
 
 a:hover {
-    color: #6169d0
+    color: #fff
 }
 
 a:not([href]):not([class]),
@@ -14333,7 +14333,7 @@ body {
 .content-page {
     margin-left: 260px;
     overflow: hidden;
-    padding: 70px 12px 65px;
+    padding: 10px 12px 65px;
     min-height: 100vh
 }
 

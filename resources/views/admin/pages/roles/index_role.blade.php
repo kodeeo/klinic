@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
- <h1>Roles List</h1>
+ <h1>{{__('Roles List')}}</h1>
 
 <style>
 	body{

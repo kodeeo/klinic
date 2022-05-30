@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Test Category List</h1>
+<h1>{{__('Test Category List')}}</h1>
 <hr>
 <a href="{{route('test.category.add')}}"><button class="btn btn-primary">Create Test Category</button></a>
 <br><br>

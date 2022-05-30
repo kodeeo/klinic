@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Add New Patient</h1>
+<h1>{{__('Add New Patient')}}</h1>
 
 
 {{-- validation --}}
@@ -17,7 +17,13 @@
 @endif
 <form action="{{route('patient.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
+    
     <div class="row">
+
+        <div class="form-group col-6">
+            <label for="name">Case Number</label>
+            <input type="text" class="form-control" id="case_no" name="case_no" placeholder="Enter Patient Case Number">
+          </div>
         <div class="form-group col-6">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
@@ -46,6 +52,36 @@
               <option>Other</option>
             </select>
           </div>
+
+          <div class="form-group col-6 mt-2">
+            <label for="father">Father Name</label>
+            <input type="text" class="form-control" id="father" name="father" placeholder="Enter Father Name">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="mother"> Mother Name</label>
+            <input type="text" class="form-control" id="mother" name="mother" placeholder="Enter Mother Name">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="nid">NID</label>
+            <input type="text" class="form-control" id="nid" name="nid" placeholder="Enter NID Number">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="passport">Passport(if any))</label>
+            <input type="text" class="form-control" id="passport" name="passport" placeholder="Enter Passport Number">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="language">Language</label>
+            <input type="text" class="form-control" id="language" name="language" placeholder="Enter Language">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="spouse">Spouse Name</label>
+            <input type="text" class="form-control" id="spouse" name="spouse" placeholder="Enter Spouse Name">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="b_place">Birth Place</label>
+            <input type="text" class="form-control" id="b_place" name="b_place" placeholder="Enter Birth Place Name">
+        </div>
+
         <div class="form-group col-6 mt-2">
             <label for="address">Address</label>
             <input type="text" class="form-control" id="address" name="address" placeholder="Enter address">
@@ -83,6 +119,26 @@
         <div class="form-group col-6 mt-2">
             <label for="weight">Patient Weight</label>
             <input type="text" class="form-control" id="weight" name="weight" placeholder="Enter Patient Weight">
+        </div>
+        <br>
+
+        
+        <h3>For Emergency  Contact</h3>
+        <div class="form-group col-6 mt-2">
+            <label for="e_name">Name</label>
+            <input type="text" class="form-control" id="e_name" name="e_name" placeholder="Enter Nmae">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="relation">Relation</label>
+            <input type="text" class="form-control" id="relation" name="relation" placeholder="Enter Realtionship Type">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="contact_number">Emergency Contact</label>
+            <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Enter Emergency Contact">
+        </div>
+        <div class="form-group col-6 mt-2">
+            <label for="contact_number">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
         </div>
         <div class="mt-2">
             <label for="patient_image" class="form-label">Insert Image</label>

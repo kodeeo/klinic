@@ -48,7 +48,7 @@ body{
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div>
-                                <a href="#" style="padding-left: 18rem;" class="txt3">
+                                <a href="{{route('forget.password')}}" style="padding-left: 18rem;" class="txt3">
                                     Forgot Password?
                                 </a>
                             </div>

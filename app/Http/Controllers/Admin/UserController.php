@@ -15,25 +15,19 @@ class UserController extends Controller
     }
     public function u_add(){
       $roles=Role::all();
-return view( 'admin.pages.users.add', compact('roles'));
-
-
+      return view( 'admin.pages.users.add', compact('roles'));
     }
     public function u_store( Request $request){
 
    User::create([
-
      'name'=>$request->user_name,
      'role_id'=>$request->role_id,
      'email'=>$request->email,
-     'password'=>$request->password,
+     'password'=>bcrypt($request->password),
      'image'=>$request->image
    ]);
 return redirect()->route('user.list');
-
-
     }
-
     public function u_view($user_id){
    $users= User::find($user_id);
     return view('admin.pages.users.view', compact('users'));
