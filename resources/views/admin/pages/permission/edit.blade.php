@@ -2,7 +2,7 @@
 @section('content')
 <div class ="row">
     <div class="col mb-4" style="margin-left:10rem;margin-right:10rem;margin-top:4rem;">
-      <form  action="{{route('admin.permission.update',$permissionedit->id)}}" method="POST" enctype="multipart/form-data">
+      <form  action="{{route('permission.update',$permissionedit->id)}}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <h2>Add Permission Form</h2>

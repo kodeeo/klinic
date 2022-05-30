@@ -19,6 +19,8 @@ class AdminTableSeeder extends Seeder
         $role=Role::create([
          
          'name'=>'admin',
+         'status'=>'active',
+         'description'=>'ooo',
         ]);
 
     

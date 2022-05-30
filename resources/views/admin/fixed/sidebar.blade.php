@@ -68,7 +68,7 @@
               </a>
           </li>
           <li class="side-nav-item">
-              <a href="" class="side-nav-link">
+              <a href="{{ route ('permission.index') }}" class="side-nav-link">
                   <i class="uil-copy-alt"></i>
                  <span> Permission </span>
               </a>

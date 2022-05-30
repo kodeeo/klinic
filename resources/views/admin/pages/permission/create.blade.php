@@ -5,7 +5,7 @@
         @if (session()->has('msg'))
         <p class="alert alert-success">{{session()->get('msg')}}</p>
    @endif
-      <form  action="{{route('admin.permission.store')}}" method="POST" enctype="multipart/form-data">
+      <form  action="{{route('permission.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <h2>Add Permission Form</h2>
         <br>
