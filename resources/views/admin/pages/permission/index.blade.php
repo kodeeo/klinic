@@ -20,7 +20,7 @@
 	   border: 1px solid #ddd;
 	   padding: 8px;
 	 }
-	 
+	
 	 #customers tr:nth-child(even){background-color: #ccccff;}
 	 
 	 #customers tr:hover {background-color: #ddd;}
@@ -41,7 +41,7 @@
 
 	  <div id="create"> 
 
-		<a href="{{route('admin.permission.create')}}" class="btn btn-primary" type="button">Create New Permission</a>
+		<a href="{{route('permission.create')}}" class="btn btn-primary" type="button">Create New Permission</a>
 
 	  </div>
 	 
@@ -65,9 +65,9 @@
               <td>{{$permission->status}}</td>              
              <td>
               <div style="display: flex;">
-               <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(228, 11, 11)" href="{{route('admin.permission.delete',$permission->id)}}">Delete</a></div>
-              <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(32, 77, 51)" href="{{route('admin.permission.show',$permission->id)}}">view</a></div>
-              <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(32, 77, 51)" href="{{route('admin.permission.edit',$permission->id)}}">Edit</a></div>
+               <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(228, 11, 11)" href="{{route('permission.destroy',$permission->id)}}">Delete</a></div>
+              <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(32, 77, 51)" href="{{route('permission.show',$permission->id)}}">view</a></div>
+              <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(32, 77, 51)" href="{{route('permission.edit',$permission->id)}}">Edit</a></div>
              </div>
             </td> 
             </tr>
