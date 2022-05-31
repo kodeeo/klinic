@@ -26,7 +26,7 @@ use App\Http\Controllers\Admin\DoctorController;
 
 
 use App\Http\Controllers\Admin\PatientController;
-use App\Http\Controllers\admin\ServiceController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\LanguageController;
@@ -181,6 +181,7 @@ Route::get('/test/delete/{test_id}',[TestController::class,'testDelete'])->name(
 
 //assign test recource controller
 Route::resource('cart',CartController::class);
+
 Route::get('add/cart/{test}', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('remove/cart/{id}', [CartController::class, 'removeFromCart'])->name('remove');
 Route::get('clear/clear', [CartController::class, 'clearCart'])->name('clearCart');
@@ -231,7 +232,7 @@ Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->na
 
 
 # ward CRUD
-Route::resource('service', WardController::class);
+Route::resource('ward', WardController::class);
 
 }); 
 
