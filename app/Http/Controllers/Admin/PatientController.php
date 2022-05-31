@@ -15,7 +15,7 @@ class PatientController extends Controller
 {
     public function patientlist()
     {
-        $patients=Patient::all();
+        $patients=Patient::paginate(10);
         return view('admin.pages.patient.list',compact('patients'));
     }
  

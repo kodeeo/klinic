@@ -64,6 +64,7 @@
                   @endforeach
                 </tbody>
               </table>
+              {{$cabin->links()}}
               
 </div>
 @endsection

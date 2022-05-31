@@ -11,7 +11,7 @@ class WardboyController extends Controller
 {
     public function wardboyList()
     {
-        $wardboys= Wardboy::all();
+        $wardboys= Wardboy::paginate(10);
         return view('admin.pages.wardboy.list',compact('wardboys'));
     }
 
@@ -33,7 +33,7 @@ class WardboyController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'contact'=>'required',
+            'contact'=>'min:11|max:11',
             'address'=>'required',
             'joinDate'=>'required',
             'hrs'=>'required',
