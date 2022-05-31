@@ -41,6 +41,5 @@
                 @endforeach
               </tbody>
             </table>
-            {{ $wardboys->links() }}
 </div>
 @endsection

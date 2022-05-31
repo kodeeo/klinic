@@ -12,7 +12,7 @@ class TestController extends Controller
 {
     public function testList()
     {
-        $tests=Test::with('category')->paginate(10);
+        $tests=Test::with('category')->get();
         return view('admin.pages.diagonistic.test-list',compact('tests'));
     }
 

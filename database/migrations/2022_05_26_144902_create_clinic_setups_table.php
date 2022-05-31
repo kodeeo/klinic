@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slogan')->nullable();
             $table->string('address');
             $table->integer('phone');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('web');
             $table->string('image')->nullable();
             $table->timestamps();

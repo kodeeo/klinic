@@ -42,8 +42,6 @@
      
     </tbody>
   </table>
-
-  {{$clinic_infos->links()}}
 </div> 
 
 @endsection

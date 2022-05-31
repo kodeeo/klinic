@@ -87,6 +87,5 @@
                 @endforeach
               </tbody>
             </table>
-            {{$staffs->links()}}
 </div>
 @endsection

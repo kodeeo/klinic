@@ -10,7 +10,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class RoleController extends Controller
 {
    public function list(){
-      $roles = Role::paginate(10);
+      $roles = Role::all();
 
 return view('admin.pages.roles.index_role', compact('roles'));
 

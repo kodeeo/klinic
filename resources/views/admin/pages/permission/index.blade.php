@@ -76,7 +76,7 @@
 		 
 	
 	  </table>
-{{$permissions->links()}}
+
 
     
 @endsection

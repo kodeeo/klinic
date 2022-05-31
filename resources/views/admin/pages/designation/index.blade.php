@@ -61,8 +61,6 @@
                   @endforeach
                 </tbody>
               </table>
-
-              {{$designations->links()}}
               
 </div>
 @endsection

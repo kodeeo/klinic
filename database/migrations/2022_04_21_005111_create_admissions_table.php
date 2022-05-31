@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('father',30);
             $table->string('mother',30);
             $table->string('room')->nullable();
-            $table->foreignId('cabin_id')->nullable();
             $table->string('doctor')->nullable();
             $table->string('relation',30);
             $table->string('address',50);

@@ -11,7 +11,7 @@ class NurseController extends Controller
 {
     public function nurseList()
     {
-        $nurses=Nurse::paginate(10);
+        $nurses=Nurse::all();
         return view('admin.pages.nurse.nurses-list',compact('nurses'));
     }
 

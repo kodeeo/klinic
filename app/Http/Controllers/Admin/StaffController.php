@@ -18,7 +18,7 @@ class StaffController extends Controller
     public function index()
     {
         $designations=Designation::all();
-        $staffs=Staff::paginate(10);
+        $staffs=Staff::all();
         return view('admin.pages.staff.index',compact('staffs','designations'));
     }
 

@@ -8,14 +8,13 @@ use App\Models\Admission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\Cabin;
 use Brian2694\Toastr\Facades\Toastr;
 
 class PatientController extends Controller
 {
     public function patientlist()
     {
-        $patients=Patient::paginate(10);
+        $patients=Patient::all();
         return view('admin.pages.patient.list',compact('patients'));
     }
  
@@ -113,14 +112,13 @@ class PatientController extends Controller
 
     public function patientAdmissionAdd($patient_id)
     {
-        $cabin=Cabin::where('status','available')->get();
+        
         $new_patient=Patient::find($patient_id);
-        return view('admin.pages.patient.admission',compact('new_patient','cabin'));
+        return view('admin.pages.patient.admission',compact('new_patient'));
     }
 
     public function patientAdmissionStore(Request $request)
     {
-        dd($request->all());
         //validation
         $request->validate([
             'name'=>'required',  
@@ -158,7 +156,6 @@ class PatientController extends Controller
             'father'=>$request->father,
             'mother'=>$request->mother,
             'room'=>$request->room,
-            'cabin_id'=>$request->cabin_id,
             'doctor'=>$request->doctor,
             'relation'=>$request->relation,
             'address'=>$request->address,

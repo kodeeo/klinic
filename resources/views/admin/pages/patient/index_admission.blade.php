@@ -47,7 +47,6 @@
      
     </tbody>
   </table>
-  {{$patients->links()}}
 </div> 
 
 @endsection

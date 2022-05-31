@@ -9,7 +9,7 @@ use App\Models\Permission;
 class PermissionController extends Controller
 {
     public function index()
-    {  $permissions=Permission::paginate(10);
+    {  $permissions=Permission::all();
         return view('admin.pages.permission.index',compact('permissions'));
     }
 
