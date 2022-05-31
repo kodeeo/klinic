@@ -9,25 +9,35 @@ use App\Http\Controllers\Admin\TestController;
 use App\Http\Controllers\Admin\UserController;
 
 
-use App\Http\Controllers\Admin\CabinController;
-
+use App\Http\Controllers\Admin\WardController;
 
 use App\Http\Controllers\Admin\LoginController;
+
+
+use App\Http\Controllers\Admin\CabinController;
 use App\Http\Controllers\Admin\NurseController;
+
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\WardboyController;
 
 use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
+
+
+
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
+
+use App\Http\Controllers\Admin\DesignationController;
+
+
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\TestCategoryController;
 use App\Http\Controllers\Admin\DesignationController;
+use App\Http\Controllers\Admin\TestCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +100,6 @@ Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.
 
 
 // Route::get('admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
-
 
 // role
 Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
@@ -175,6 +184,7 @@ Route::get('/test/delete/{test_id}',[TestController::class,'testDelete'])->name(
 
 //assign test recource controller
 Route::resource('cart',CartController::class);
+
 Route::get('add/cart/{test}', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('remove/cart/{id}', [CartController::class, 'removeFromCart'])->name('remove');
 Route::get('clear/clear', [CartController::class, 'clearCart'])->name('clearCart');
@@ -193,6 +203,10 @@ Route::resource('staff',StaffController::class);
 
 //Designation resource controller
 Route::resource('designation',DesignationController::class);
+
+//Permission resource controller
+Route::resource('permission',PermissionController::class);
+
 
 //Clinic Setup
 Route::get('/clinic/informations',[ClinicController::class,'info'])->name('clinic.informations');
@@ -220,6 +234,8 @@ Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name
 Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->name('admin.language.change');
 
 
+# ward CRUD
+Route::resource('ward', WardController::class);
 
 }); 
 

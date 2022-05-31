@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cabins', function (Blueprint $table) {
+        Schema::create('wards', function (Blueprint $table) {
             $table->id();
-            $table->string('cabin_number',50);
-            $table->integer('admission_id')->nullable();
-            $table->integer('staff_id')->nullable();
-            $table->integer('nurse_id')->nullable();
-            $table->string('status')->default('available');
-
+            $table->foreignID('staff_id')->constrained('staff')->cascadeOnDelete();
+            $table->string('bed');
             $table->timestamps();
+            
+            
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cabins');
+        Schema::dropIfExists('wards');
     }
 };

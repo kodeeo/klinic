@@ -13,18 +13,7 @@
             <label for="cabin_number">Cabin Number</label>
             <input type="text" class="form-control" id="cabin_number" name="cabin_number" placeholder="Enter Cabin Number">
           </div>
-          <div class="form-group col-6">
-              <label for="admission_id">Admission Id</label>
-              <input type="number" class="form-control" id="admission_id" name="admission_id" placeholder="Enter Admission ID">
-          </div> 
-          <div class="form-group col-6">
-            <label for="staff_id">Staff Id</label>
-            <input type="number" class="form-control" id="staff_id" name="staff_id" placeholder="Enter Staff ID">
-        </div> 
-        <div class="form-group col-6">
-            <label for="nurse_id">Nurse Id</label>
-            <input type="number" class="form-control" id="nurse_id" name="nurse_id" placeholder="Enter Nurse ID">
-        </div> 
+         
 
     </div>   
     <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Submit</button>

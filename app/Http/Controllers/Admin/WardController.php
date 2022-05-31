@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Cabin;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Staff;
-use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 
-class CabinController extends Controller
+class WardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,7 @@ class CabinController extends Controller
      */
     public function index()
     {
-
-        $staff=Staff::all();
-        $cabin=Cabin::paginate(10);
-        return view('admin.pages.cabin.index',compact('cabin','staff'));
-
+        //
     }
 
     /**
@@ -42,28 +35,7 @@ class CabinController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-
-        
-        $request->validate([
-            'cabin_number'=>'required',
-          
-
-        ]);
-        
-
-
-        Cabin::create([
-            
-            'cabin_number'=>$request->cabin_number,
-            
-        ]);
-        
-        
-        Toastr::success('Cabin Added Successfully');
-        
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -74,8 +46,7 @@ class CabinController extends Controller
      */
     public function show($id)
     {
-        $cabin=Cabin::find($id);
-        return view('admin.pages.cabin.view', compact('cabin'));
+        //
     }
 
     /**
@@ -86,9 +57,7 @@ class CabinController extends Controller
      */
     public function edit($id)
     {
-        $cabin=Cabin::find($id);
-
-          return view('admin.pages.cabin.edit',compact('cabin'));
+        //
     }
 
     /**
@@ -100,19 +69,7 @@ class CabinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cabin=Cabin::find($id);
-        $cabin->update([
-
-            'cabin_number'=>$request->cabin_number,
-            'admission_id'=>$request->admission_id,
-            'staff_id'=>$request->staff_id,
-            'nurse_id'=>$request->nurse_id,
-        ]);
-
-        Toastr::success('Cabin Updated Successfully', 'success');
-
-
-        return redirect()->route('cabin.index');
+        //
     }
 
     /**
@@ -123,8 +80,6 @@ class CabinController extends Controller
      */
     public function destroy($id)
     {
-        Cabin::find($id)->delete();
-        Toastr::error('Cabin Deleted Successfully');
-        return redirect()->back();
+        //
     }
 }

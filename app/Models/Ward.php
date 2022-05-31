@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Staff;
-use App\Models\Admission;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Cabin extends Model
+class Ward extends Model
 {
     use HasFactory;
     protected $guarded=[];
-
 }
