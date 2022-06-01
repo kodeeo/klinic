@@ -6,7 +6,6 @@
   <div class="col">
     <a href="{{route('patient.add')}}"  class="btn btn-primary">Add Patient</a>
   </div>
-
   <div class="col-4 dt-buttons btn-group">
       <a class="btn btn-info" href="{{route('patient.data.csv')}}">
         CSV
