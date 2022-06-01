@@ -2,8 +2,28 @@
 @section('content')
 <h1>Wardboy List</h1>
 <hr>
+<div class="row" style="justify-content: space-between;">
+  <div class="col">
+    <a href="{{route('wardboy.add')}}"  class="btn btn-primary">Add Wardboy</a>
+  </div>
 
- <a href="{{route('wardboy.add')}}"><button type="button" class="btn btn-primary">Create Wardboy</button></a><br><br>
+
+  <div class="col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="{{route('wardboy.data.csv')}}">
+        CSV
+      </a>
+      <a class="btn btn-info" href="{{route('wardboy.data.excel')}}">
+        Excel
+      </a>
+      <a class="btn btn-info" href="{{route('wardboy.data.pdf')}}">
+        PDF
+      </a>
+      <a class="btn btn-info" href="{{route('wardboy.data.print')}}">
+        Print    
+      </a>
+  </div>
+</div>
+<br><br>
 
 <div> 
   <table class="table" style="text-align: center;">
