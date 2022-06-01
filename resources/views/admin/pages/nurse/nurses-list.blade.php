@@ -41,6 +41,7 @@
      
     </tbody>
   </table>
+  {{$nurses->links()}}
 </div> 
 
 @endsection
