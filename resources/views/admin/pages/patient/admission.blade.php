@@ -1,24 +1,6 @@
 @extends('admin.master')
 @section('content')
- 
-{{-- <style>
-.dropdown-menu li {
-  position: relative;
-  }
-  .dropdown-menu .dropdown-submenu {
-  display: none;
-  position: absolute;
-  left: 100%;
-  top: -7px;
-  }
-  .dropdown-menu .dropdown-submenu-left {
-  right: 100%;
-  left: auto;
-  }
-  .dropdown-menu > li:hover > .dropdown-submenu {
-  display: block;
-  }
-  </style> --}}
+    
 
 <h1> Patient Admission</h1>
 
@@ -53,55 +35,15 @@
             <input type="text" class="form-control" id="mother" name="mother" placeholder="Enter Mother Name">
           </div>
 
-         <div class="form-group col-6 mt-2">
-            <label for="cabin_number">Select Cabin</label>
-            <input type="hidden" name="room" value="Cabin">
-            <select class="form-select" name="cabin_number" aria-label="Default select example">
-                <option>Select Cabin</option>
+          <div class="form-group col-6 mt-2">
+            <label for="exampleFormControlSelect1">Room</label>
 
-                @foreach ($cabin as $item)
-          
-                <option value="{{$item->id}}">{{$item->cabin_number}}</option>
-                @endforeach
-              </select>
-        </div>
+            <select name="room" class="form-control" id="exampleFormControlSelect1">
 
-
-          {{-- <div class="dropdown col-6 mt-2" data-bs-toggle="dropdown" aria-expanded="false" type="button">
-            
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Select Room
-            </button>
-              <ul class="dropdown-menu dropdown-submenu">
-                <li>
-                  <a class="dropdown-item" href="#">Cabin &raquo; </a>
-                  <ul class="dropdown-menu dropdown-submenu">
-                    
-                      <select class="form-select" name="cabin_id" aria-label="Default select example">
-        
-                        @foreach ($cabin as $item)
-                  
-                        <option value="{{$item->id}}">{{$item->cabin_number}}</option>
-                        @endforeach
-                      </select>
-                    
-                   
-                  </ul>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Ward &raquo; </a>
-                  <ul class="dropdown-menu dropdown-submenu">
-                    <li>
-                      <a class="dropdown-item" href="#">Male</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Female</a>
-                    </li>               
-                   </li>
-              </ul>
-          
-          </div> --}}
+              <option>Cabin</option>
+              <option>Word</option>
+            </select>
+          </div>
           <div class="form-group col-6">
               <label for="doctor">Attending Physician</label>
               <input type="text" class="form-control" id="doctor" name="doctor" placeholder="Enter Email">

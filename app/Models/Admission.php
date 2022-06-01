@@ -9,11 +9,4 @@ class Admission extends Model
 {
     use HasFactory;
     protected $guarded=[];
-
-    public function cabin()
-    {
-        return $this->belongsTo(Cabin::class,'cabin_id','id');
-        
-    }
-
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Cabin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Staff;
 use Brian2694\Toastr\Facades\Toastr;
 
 class CabinController extends Controller
@@ -17,9 +16,8 @@ class CabinController extends Controller
      */
     public function index()
     {
-        $staff=Staff::all();
         $cabin=Cabin::all();
-        return view('admin.pages.cabin.index',compact('cabin','staff'));
+        return view('admin.pages.cabin.index',compact('cabin'));
     }
 
     /**
@@ -45,7 +43,9 @@ class CabinController extends Controller
         
         $request->validate([
             'cabin_number'=>'required',
-          
+            'admission_id'=>'required',
+            'staff_id'=>'required',
+            'nurse_id'=>'required',
 
         ]);
         
@@ -54,7 +54,12 @@ class CabinController extends Controller
         Cabin::create([
             
             'cabin_number'=>$request->cabin_number,
+            'admission_id'=>$request->admission_id,
+            'staff_id'=>$request->staff_id,
+            'nurse_id'=>$request->nurse_id,
             
+
+
         ]);
         
         
