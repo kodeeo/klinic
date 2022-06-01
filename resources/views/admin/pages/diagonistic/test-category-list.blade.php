@@ -51,6 +51,7 @@
      
     </tbody>
   </table>
+{{$test_categories->links()}}
 </div> 
 
 @endsection

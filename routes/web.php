@@ -21,15 +21,19 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\ClinicController;
 
 use App\Http\Controllers\Admin\DoctorController;
-
-
-
 use App\Http\Controllers\Admin\PatientController;
+
+
+
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\WardboyController;
 
 use App\Http\Controllers\Admin\LanguageController;
+
 use App\Http\Controllers\Admin\PasswordController;
+
+use App\Http\Controllers\Admin\ScheduleController;
+
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -170,7 +174,12 @@ Route::resource('staff',StaffController::class);
     //Designation resource controller
 Route::resource('designation',DesignationController::class);
 
-    //Permission resource controller
+
+//Schedule resource controller
+Route::resource('schedule',ScheduleController::class);
+
+
+//Permission resource controller
 Route::resource('permission',PermissionController::class);
 
 

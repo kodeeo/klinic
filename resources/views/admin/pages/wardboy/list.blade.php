@@ -1,12 +1,12 @@
 @extends('admin.master')
 @section('content')
-    
-<h1>WardBoys</h1>
+<h1>Wardboy List</h1>
 <hr>
 <div class="row" style="justify-content: space-between;">
   <div class="col">
     <a href="{{route('wardboy.add')}}"  class="btn btn-primary">Add Wardboy</a>
   </div>
+
 
   <div class="col-4 dt-buttons btn-group">
       <a class="btn btn-info" href="{{route('wardboy.data.csv')}}">
@@ -25,11 +25,11 @@
 </div>
 <br><br>
 
-<div>
-            <table class="table" style="text-align: center;">
-              <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
+<div> 
+  <table class="table" style="text-align: center;">
+    <thead class="thead-dark">
+      <tr>
+      <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
@@ -39,10 +39,11 @@
                     <th scope="col">Duty Hours</th>
                     <th scope="col">Image</th>
                     <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach($wardboys as $key=>$wardboy)
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      @foreach($wardboys as $key=>$wardboy)
                <th scope="row">{{$key+1}}</th>
                 <td>{{$wardboy->name}}</td>
                 <td>{{$wardboy->email}}</td>
@@ -58,7 +59,11 @@
           <a class="btn btn-danger btn-sm" href="{{route('wardboy.delete',$wardboy->id)}}"><i class="fas fa-trash"></i></a>
          </td>
                 @endforeach
-              </tbody>
-            </table>
-</div>
+     
+    </tbody>
+  </table>
+
+  {{$wardboys->links()}}
+</div> 
+
 @endsection

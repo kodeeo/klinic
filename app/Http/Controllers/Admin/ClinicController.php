@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ClinicController extends Controller
 {
     public function info(){
-        $clinic_infos=ClinicSetup::all();
+        $clinic_infos=ClinicSetup::paginate(10);
         return view('admin.pages.clinicSetup.clinic-informations',compact('clinic_infos'));
     }
 

@@ -73,5 +73,6 @@
                 @endforeach
               </tbody>
             </table>
+            {{$doctors->links()}}
 </div>
 @endsection

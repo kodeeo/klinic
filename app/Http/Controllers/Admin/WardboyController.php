@@ -11,7 +11,7 @@ class WardboyController extends Controller
 {
     public function wardboyList()
     {
-        $wardboys= Wardboy::all();
+        $wardboys= Wardboy::paginate(10);
         return view('admin.pages.wardboy.list',compact('wardboys'));
     }
 

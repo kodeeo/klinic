@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Designation;
+use App\Models\Doctor;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Brian2694\Toastr\Facades\Toastr;
-use Symfony\Component\Console\Descriptor\Descriptor;
 
-class DesignationController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        $designations=Designation::paginate(10);
-        return view('admin.pages.designation.index',compact('designations'));
+        //
     }
 
     /**
@@ -28,7 +26,8 @@ class DesignationController extends Controller
      */
     public function create()
     {
-        //
+        $doctor=Doctor::all();
+        return view('admin.pages.schedule.create',compact('doctor'));
     }
 
     /**
@@ -39,20 +38,17 @@ class DesignationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'designation'=>'required',
-            'details'=>'required',
+        Schedule::create([
+
+            'doctor_id'=>$request->doctor_id,   
+            'days'=>$request->days,
+            'fromtime'=>$request->fromtime,
+            'totime'=>$request->totime,
+            'patient_time'=>$request->patient_time,
+            'serial'=>$request->serial,
+            'status'=>$request->status
 
         ]);
-        Designation::create([
-            'designation'=>$request->designation,
-            'details'=>$request->details,
-            
-
-        ]);
-        Toastr::success('Designation Added Successfully');
-
-        return redirect()->back();
     }
 
     /**
@@ -63,8 +59,7 @@ class DesignationController extends Controller
      */
     public function show($id)
     {
-        $designations=Designation::find($id);
-        return view('admin.pages.designation.view',compact('designations'));
+        //
     }
 
     /**
@@ -75,8 +70,7 @@ class DesignationController extends Controller
      */
     public function edit($id)
     {
-        $designations=Designation::find($id);
-        return view('admin.pages.designation.edit',compact('designations'));
+        //
     }
 
     /**
@@ -88,17 +82,7 @@ class DesignationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $designations=Designation::find($id);
-        $designations->update([
-
-            'designation'=>$request->designation,
-            'details'=>$request->details,
-            
-        ]);
-
-        Toastr::success('Designation Updated Successfully', 'success');
-        return redirect()->route('designation.index');
-
+        //
     }
 
     /**
@@ -109,8 +93,6 @@ class DesignationController extends Controller
      */
     public function destroy($id)
     {
-        Designation::find($id)->delete();
-        Toastr::error('Designation Deleted Successfully');
-        return redirect()->back(); 
+        //
     }
 }
