@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Add New Nurse</h1>
+<h1>{{__('Add New Nurse')}}</h1>
 
 
 <!--server side validation start-->
@@ -29,7 +29,7 @@
 
           <div class="form-group col-6">
             <label for="name">Contact No.</label>
-            <input type="number" class="form-control"  name="contact" placeholder="Enter a valid number" required>
+            <input type="text" class="form-control"  name="contact" placeholder="Enter a valid number" required>
           </div>
 
           <div class="form-group col-6">

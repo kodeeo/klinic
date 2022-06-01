@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('patient_id')->constrained('patients')->restictionOnDelete();
             $table->string('name',30);
-            $table->string('father',30);
+            $table->string('father');
             $table->string('mother',30);
             $table->string('room')->nullable();
-            $table->foreignId('cabin_id')->nullable();
             $table->string('doctor')->nullable();
             $table->string('relation',30);
             $table->string('address',50);

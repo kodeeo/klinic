@@ -11,7 +11,7 @@ class NurseController extends Controller
 {
     public function nurseList()
     {
-        $nurses=Nurse::all();
+        $nurses=Nurse::paginate(10);
         return view('admin.pages.nurse.nurses-list',compact('nurses'));
     }
 
@@ -82,6 +82,12 @@ class NurseController extends Controller
             Toastr::success('Nurse updated Successfully', 'success');
             return redirect()->route('nurse.list');
         
+    }
+
+    public function nurseShow($id)
+    {
+        $nurse=Nurse::find($id);
+        return view('admin.pages.nurse.nurse-view',compact('nurse'));
     }
 
     public function nurseDelete($id){

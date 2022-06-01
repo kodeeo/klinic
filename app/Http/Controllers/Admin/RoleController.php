@@ -10,7 +10,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class RoleController extends Controller
 {
    public function list(){
-      $roles = Role::all();
+      $roles = Role::paginate(10);
 
 return view('admin.pages.roles.index_role', compact('roles'));
 
@@ -23,7 +23,10 @@ return view('admin.pages.roles.index_role', compact('roles'));
       
 Role::create([
 
-   'name'=>$request->name
+   'name'=>$request->name,
+   'status'=>$request->status,
+   'description'=>$request->description,
+   'slug'=>$request->slug
 ]);
 
 Toastr::success('Role Created Successfully', 'success');
@@ -51,6 +54,9 @@ return view('admin.pages.roles.details' ,compact('role'));
   $roles= Role::all();
   Role::where('id', $role_id)->update([
     'name'=>$request->name,
+    'status'=>$request->status,
+    'description'=>$request->description,
+    'slug'=>$request->slug
 
   ]);
   Toastr::success('Role Updated Successfully', 'success');

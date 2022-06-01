@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('details',100);
             $table->string('image')->nullable();
             $table->string('password',100);
+            $table->string('status')->default('available');
             $table->timestamps();
         });
     }

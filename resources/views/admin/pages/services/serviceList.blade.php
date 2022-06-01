@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Service List</h1>
+<h1>{{__('Service List')}}</h1>
 <hr>
 <a href="{{route('admin.service.form')}}"><button class="btn btn-primary">Add Service</button></a>
 <br><br>
@@ -49,6 +49,7 @@
         @endforeach
       </tbody>
   </table>
+  {{$services->links()}}
 </div> 
 
 @endsection
