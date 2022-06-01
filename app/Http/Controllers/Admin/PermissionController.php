@@ -9,7 +9,7 @@ use App\Models\Permission;
 class PermissionController extends Controller
 {
     public function index()
-    {  $permissions=Permission::all();
+    {  $permissions=Permission::paginate(10);
         return view('admin.pages.permission.index',compact('permissions'));
     }
 
@@ -17,6 +17,7 @@ class PermissionController extends Controller
     {
         return view('admin.pages.permission.create');
     }
+
 
     public function store(Request $request)
     {
@@ -28,6 +29,8 @@ class PermissionController extends Controller
       ]);
       return redirect()->back()->with('msg','permission create successfully');
     }
+
+
     public function show($permission_id)
     {
         $permissionshow=Permission::find($permission_id);
@@ -50,10 +53,11 @@ class PermissionController extends Controller
        'status'=>$request->permissionstatus,
 
        ]);
-       return redirect()->route('admin.permission.index');
+       return redirect()->route('permission.index');
     }
 
-    public function delete($permission_id)
+    
+    public function destroy($permission_id)
     {
       Permission::find($permission_id)->delete();
       return redirect()->back();
