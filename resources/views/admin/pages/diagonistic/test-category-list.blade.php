@@ -2,7 +2,28 @@
 @section('content')
 <h1>{{__('Test Category List')}}</h1>
 <hr>
-<a href="{{route('test.category.add')}}"><button class="btn btn-primary">Create Test Category</button></a>
+
+<div class="row" style="justify-content: space-between;">
+  <div class="col">
+    <a href="{{route('test.category.add')}}"  class="btn btn-primary">Create Test Category</a>
+  </div>
+
+  <div class="col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="">
+        Copy
+      </a>
+      <a class="btn btn-info" href="">
+        Excel
+      </a>
+      <a class="btn btn-info" href="">
+        PDF
+      </a>
+      <a class="btn btn-info" href="">
+        Print    
+      </a>
+  </div>
+</div>
+
 <br><br>
 <div> 
   <table class="table" style="text-align: center;">
