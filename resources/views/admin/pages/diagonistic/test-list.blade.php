@@ -9,16 +9,16 @@
   </div>
 
   <div class="col-4 dt-buttons btn-group">
-      <a class="btn btn-info" href="">
-        Copy
+      <a class="btn btn-info" href="{{route('test.data.csv')}}">
+        CSV
       </a>
-      <a class="btn btn-info" href="">
+      <a class="btn btn-info" href="{{route('test.data.excel')}}">
         Excel
       </a>
-      <a class="btn btn-info" href="">
+      <a class="btn btn-info" href="{{route('test.data.pdf')}}">
         PDF
       </a>
-      <a class="btn btn-info" href="">
+      <a class="btn btn-info" href="{{route('test.data.print')}}">
         Print    
       </a>
   </div>
