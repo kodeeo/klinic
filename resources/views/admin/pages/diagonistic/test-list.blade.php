@@ -40,6 +40,7 @@
      
     </tbody>
   </table>
+  {{$tests->links()}}
 </div> 
 
 @endsection
