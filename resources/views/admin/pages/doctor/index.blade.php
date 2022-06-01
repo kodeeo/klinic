@@ -1,29 +1,11 @@
 @extends('admin.master')
 @section('content')
     
-<h1>{{__('Doctors')}}</h1>
+<h1>Doctors</h1>
 <hr>
-<div class="row" style="justify-content: space-between;">
-  <div class="col">
-    <a href="{{route('doctor.create')}}"  class="btn btn-primary">Add Doctor</a>
-  </div>
 
-  <div class="col-4 dt-buttons btn-group">
-      <a class="btn btn-info" href="{{route('doctor.data.csv')}}">
-        CSV
-      </a>
-      <a class="btn btn-info" href="{{route('doctor.data.excel')}}">
-        Excel
-      </a>
-      <a class="btn btn-info" href="{{route('doctor.data.pdf')}}">
-        PDF
-      </a>
-      <a class="btn btn-info" href="{{route('doctor.data.print')}}">
-        Print    
-      </a>
-  </div>
-</div>
-<br><br>
+ <a href="{{route('doctor.create')}}"><button type="button" class="btn btn-primary">Create Doctor</button></a><br><br>
+
 <div>
             <table class="table" style="text-align: center;">
               <thead class="thead-dark">
@@ -73,6 +55,5 @@
                 @endforeach
               </tbody>
             </table>
-            {{$doctors->links()}}
 </div>
 @endsection

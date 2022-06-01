@@ -1,29 +1,8 @@
 @extends('admin.master')
 @section('content')
-<h1>{{__('Test Category List')}}</h1>
+<h1>Test Category List</h1>
 <hr>
-
-<div class="row" style="justify-content: space-between;">
-  <div class="col">
-    <a href="{{route('test.category.add')}}"  class="btn btn-primary">Create Test Category</a>
-  </div>
-
-  <div class="col-4 dt-buttons btn-group">
-      <a class="btn btn-info" href="{{route('test.categories.data.csv')}}">
-        CSV
-      </a>
-      <a class="btn btn-info" href="{{route('test.categories.data.excel')}}">
-        Excel
-      </a>
-      <a class="btn btn-info" href="{{route('test.categories.data.pdf')}}">
-        PDF
-      </a>
-      <a class="btn btn-info" href="{{route('test.categories.data.print')}}">
-        Print    
-      </a>
-  </div>
-</div>
-
+<a href="{{route('test.category.add')}}"><button class="btn btn-primary">Create Test Category</button></a>
 <br><br>
 <div> 
   <table class="table" style="text-align: center;">
@@ -51,7 +30,6 @@
      
     </tbody>
   </table>
-{{$test_categories->links()}}
 </div> 
 
 @endsection
