@@ -72,6 +72,12 @@
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
                     </li>
+                    <li>
+                        <a href="{{route('schedule.create')}}">Add Schedule</a>
+                    </li>
+                    <li>
+                        <a href="#">Schedule List</a>
+                    </li>
                 </ul>
             </div>
         </li>
