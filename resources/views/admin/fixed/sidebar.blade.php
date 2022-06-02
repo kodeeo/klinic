@@ -125,6 +125,13 @@
             </a>
         </li>
 
+        <li class="side-nav-item">
+            <a href="{{route('patient_admisssion.list')}}" class="side-nav-link">
+                <i class="uil-copy-alt"></i>
+               <span>Admissions</span>
+            </a>
+        </li>
+
           <li class="side-nav-item">
               <a data-bs-toggle="collapse" href="#diagonistic" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                   <i class="uil-clipboard-alt"></i>

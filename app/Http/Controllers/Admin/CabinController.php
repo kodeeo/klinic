@@ -16,7 +16,7 @@ class CabinController extends Controller
      */
     public function index()
     {
-        $cabin=Cabin::all();
+        $cabin=Cabin::paginate(10);
         return view('admin.pages.cabin.index',compact('cabin'));
     }
 

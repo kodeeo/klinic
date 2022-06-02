@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->integer('contact');
+            $table->string('contact');
             $table->string('address');
             $table->string('wardNo')->default("Not Set Yet");
             $table->string('joinDate');
