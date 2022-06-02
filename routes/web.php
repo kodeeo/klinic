@@ -8,11 +8,9 @@ use App\Http\Controllers\Admin\TestController;
 
 use App\Http\Controllers\Admin\UserController;
 
-
 use App\Http\Controllers\Admin\WardController;
 
 use App\Http\Controllers\Admin\CabinController;
-
 
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\NurseController;
@@ -22,8 +20,6 @@ use App\Http\Controllers\Admin\ClinicController;
 
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
-
-
 
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\WardboyController;
@@ -80,7 +76,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('admin.logout');
     
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
 
-    // role
+    //role
 Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
 Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
 Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
