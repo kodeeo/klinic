@@ -3,37 +3,39 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\RoleController;
-
 use App\Http\Controllers\Admin\TestController;
 
 use App\Http\Controllers\Admin\UserController;
 
-
 use App\Http\Controllers\Admin\WardController;
+
+
+use App\Http\Controllers\Admin\CabinController;
 
 use App\Http\Controllers\Admin\LoginController;
 
 
-use App\Http\Controllers\Admin\CabinController;
 use App\Http\Controllers\Admin\NurseController;
-
 use App\Http\Controllers\Admin\StaffController;
-use App\Http\Controllers\Admin\WardboyController;
 
 use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
 
-
-
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\DashboardController;
 
+
+
+use App\Http\Controllers\Admin\WardboyController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\PasswordController;
+
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\TestCategoryController;
+use App\Http\Controllers\Admin\Activities\BirthreportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -233,6 +235,8 @@ Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->na
 # ward CRUD
 Route::resource('ward', WardController::class);
 
+//Hospital Activities
+Route::resource('birth_report', BirthreportController::class);
 }); 
 
 
