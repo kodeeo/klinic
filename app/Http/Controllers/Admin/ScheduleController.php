@@ -16,7 +16,8 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
+        $schedule=Schedule::all();
+        return view('admin.pages.schedule.index',compact('schedule'));
     }
 
     /**

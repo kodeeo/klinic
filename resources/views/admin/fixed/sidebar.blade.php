@@ -76,7 +76,7 @@
                         <a href="{{route('schedule.create')}}">Add Schedule</a>
                     </li>
                     <li>
-                        <a href="#">Schedule List</a>
+                        <a href="{{route('schedule.index')}}">Schedule List</a>
                     </li>
                 </ul>
             </div>
