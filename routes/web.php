@@ -105,8 +105,7 @@ Route::post('/patients/store',[PatientController::class, 'patientStore'])->name(
 Route::get('/patients/admission/add',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::get('/patients/admission/add/{patient_id}',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::post('/patients/admission/store',[PatientController::class, 'patientAdmissionStore'])->name('patient_admisssion.store');
-
-
+Route::get('/patients/admission/lists',[PatientController::class, 'patientAdmissionList'])->name('patient_admisssion.list');
 
 
     //doctor_department
@@ -175,11 +174,11 @@ Route::resource('staff',StaffController::class);
 Route::resource('designation',DesignationController::class);
 
 
-//Schedule resource controller
+    //Schedule resource controller
 Route::resource('schedule',ScheduleController::class);
 
 
-//Permission resource controller
+    //Permission resource controller
 Route::resource('permission',PermissionController::class);
 
 
