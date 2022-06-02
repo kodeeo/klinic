@@ -7,7 +7,6 @@
     <a href="{{route('wardboy.add')}}"  class="btn btn-primary">Add Wardboy</a>
   </div>
 
-
   <div class="col-4 dt-buttons btn-group">
       <a class="btn btn-info" href="{{route('wardboy.data.csv')}}">
         CSV
@@ -33,7 +32,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Addess</th>
+                    {{-- <th scope="col">Addess</th> --}}
                     <th scope="col">Ward No.</th>
                     <th scope="col">Date_Of_Joining</th>
                     <th scope="col">Duty Hours</th>
@@ -42,13 +41,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+     
       @foreach($wardboys as $key=>$wardboy)
+       <tr>
                <th scope="row">{{$key+1}}</th>
                 <td>{{$wardboy->name}}</td>
                 <td>{{$wardboy->email}}</td>
                 <td>{{$wardboy->contact}}</td>
-                <td>{{$wardboy->address}}</td>
+                {{-- <td>{{$wardboy->address}}</td> --}}
                 <td>{{$wardboy->wardNo}}</td>
                 <td>{{$wardboy->joinDate}}</td>
                 <td>{{$wardboy->hrs}}</td>
@@ -58,7 +58,8 @@
           <a class="btn btn-warning btn-sm" href="{{route('wardboy.edit',$wardboy->id)}}"><i class="fas fa-edit"></i></a>
           <a class="btn btn-danger btn-sm" href="{{route('wardboy.delete',$wardboy->id)}}"><i class="fas fa-trash"></i></a>
          </td>
-                @endforeach
+       </tr>
+        @endforeach
      
     </tbody>
   </table>
