@@ -11,7 +11,7 @@ class TestCategoryController extends Controller
 {
     public function categoryList()
     {
-        $test_categories=TestCategory::paginate(10);
+        $test_categories=TestCategory::all();
         return view('admin.pages.diagonistic.test-category-list',compact('test_categories'));
     }
 

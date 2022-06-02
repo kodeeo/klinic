@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 
-<h1>{{__('Departments')}}</h1>
+<h1>Departments</h1>
 <hr>
 
  {{-- <a href="{{route('create.category')}}" button type="submit" class="btn btn-primary">Create Category</button> </a> --}}
@@ -21,29 +21,11 @@
             <label for="department_image" class="form-label">Insert Image</label>
             <input class="form-control" type="file" id="department_image" name="department_image">
         </div>
+
     </div>   
     <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Save</button>
   </form>
 </div>
-
-<div class="row" style="justify-content: right;;">
-
-  <div class="col-4 dt-buttons btn-group">
-      <a class="btn btn-info" href="{{route('department.data.csv')}}">
-        CSV
-      </a>
-      <a class="btn btn-info" href="{{route('department.data.excel')}}">
-        Excel
-      </a>
-      <a class="btn btn-info" href="{{route('department.data.pdf')}}">
-        PDF
-      </a>
-      <a class="btn btn-info" href="{{route('department.data.print')}}">
-        Print    
-      </a>
-  </div>
-</div>
-
 <hr>
 
 <div>
@@ -77,6 +59,6 @@
                   @endforeach
                 </tbody>
               </table>
-              {{$department->links()}}
+              
 </div>
 @endsection

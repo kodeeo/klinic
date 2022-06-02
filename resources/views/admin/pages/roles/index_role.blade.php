@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
- <h1>{{__('Roles List')}}</h1>
+ <h1>Roles List</h1>
 
 <style>
 	body{
@@ -50,8 +50,6 @@
 		  <th>SL No</th>
 		  <th>Name</th>
 		  <th>Status</th>
-		  <th>Description</th>
-		  <th>Slug</th>
 		  <th>Action</th>
 	  
 		</tr>
@@ -61,12 +59,7 @@
 			 
 		 <th scope="row">{{$key+1}}</th>
 		 <td>{{$role->name}}</td>
-		 <td>{{$role->status}}</td>
-		 <td>{{$role->description}}</td>
-		 <td>{{$role->slug}}</td>
-
-
-		 
+		 <td>#</td>
 		 <td>  <a href="{{route('role.view', $role->id)}}" class="btn btn-success" type="button">View</a>
 			 
 			<a href="{{route('role.edit', $role->id)}}" class="btn btn-warning" type="button">Edit</a>
@@ -76,7 +69,7 @@
 		  @endforeach
 	
 	  </table>
-{{$roles->links()}}
+
 
     
 @endsection

@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>{{__('Add New Patient')}}</h1>
+<h1>Add New Patient</h1>
 
 
 {{-- validation --}}
@@ -36,7 +36,7 @@
               <option>IPD</option>
             </select>
           </div>
-          <div class="form-group col-6 mt-2">
+          <div class="form-group col-6">
               <label for="email">Email</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
           </div>

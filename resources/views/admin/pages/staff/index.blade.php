@@ -34,7 +34,7 @@
      </div>
   </div>
 
-<h1>{{__('Staffs')}}</h1>
+<h1>Staffs</h1>
 
 <hr>
 
@@ -87,6 +87,5 @@
                 @endforeach
               </tbody>
             </table>
-            {{$staffs->links()}}
 </div>
 @endsection
