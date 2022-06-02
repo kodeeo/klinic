@@ -27,8 +27,9 @@ class ScheduleController extends Controller
      */
     public function create()
     {
+        $days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
         $doctor=Doctor::all();
-        return view('admin.pages.schedule.create',compact('doctor'));
+        return view('admin.pages.schedule.create',compact('doctor','days'));
     }
 
     /**
@@ -39,6 +40,13 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        $days=$request->days;
+        $fromtime=$request->fromtime;
+        $totime=$request->totime;
+        $time=[$fromtime,$totime];
+        $schedule=array_combine($days,$time);
+        dd($schedule);
         Schedule::create([
 
             'doctor_id'=>$request->doctor_id,   
