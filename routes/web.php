@@ -283,5 +283,3 @@ Route::controller(PatientExportController::class)->group(function () {
     Route::get('patient/data/pdf','pdf')->name('patient.data.pdf');
     Route::get('patient/data/print','print')->name('patient.data.print');
 });
-
-}); 
