@@ -72,6 +72,12 @@
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
                     </li>
+                    <li>
+                        <a href="{{route('schedule.create')}}">Add Schedule</a>
+                    </li>
+                    <li>
+                        <a href="{{route('schedule.index')}}">Schedule List</a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -116,6 +122,13 @@
             <a href="{{route('patient.list')}}" class="side-nav-link">
                 <i class="uil-copy-alt"></i>
                <span> Patients List </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('patient_admisssion.list')}}" class="side-nav-link">
+                <i class="uil-copy-alt"></i>
+               <span>Admissions</span>
             </a>
         </li>
 
