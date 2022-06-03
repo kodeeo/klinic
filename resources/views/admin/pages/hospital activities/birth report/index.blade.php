@@ -2,8 +2,8 @@
 @section('content')
     <h1>Birth Report</h1>
         <a class="btn btn-success" href="{{route('birth_report.create')}}">Create Birth Report</a>
-       <div>
-        <table class="table" style="text-align: center">
+       <div><br>
+        <table class="table" id="dataTable" style="text-align: center">
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -23,17 +23,16 @@
                       <td>{{$item->title}}</td>
                       <td>{{optional($item->doctor)->name}}</td>
                       <td>
-                        <a class="btn btn-success btn-sm" href="{{route('birth_report.show', $item->id)}}"><i class="fas fa-eye"></i></a> 
-                        <a class="btn btn-warning btn-sm" href="{{route('birth_report.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
-                        <form action="{{route('birth_report.destroy',$item->id)}}" method="POST">
+                        <div style="display: flex ">
+                        <a style="margin-left: 10px" class="btn btn-success btn-sm" href="{{route('birth_report.show', $item->id)}}"><i class="fas fa-eye"></i></a> 
+                        <a style="margin-left: 3px" class="btn btn-warning btn-sm m" href="{{route('birth_report.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
+                        <form style="margin-left: 5px" action="{{route('birth_report.destroy',$item->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                           
                                 <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
-                          
                         </form>
+                        </div>
                       </td>
-                      
                   </tr>
               @endforeach
             </tbody>

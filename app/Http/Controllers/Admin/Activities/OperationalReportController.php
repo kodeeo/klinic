@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Activities;
 
-use App\Http\Controllers\Controller;
-use App\Models\BirthReport;
 use App\Models\Doctor;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use App\Models\OperationActivity;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
-class BirthreportController extends Controller
+class OperationalReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class BirthreportController extends Controller
      */
     public function index()
     {
-        $birthReport=BirthReport::all();
-        return view('admin.pages.hospital activities.birth report.index', compact('birthReport'));
+        $operationReport = OperationActivity::all();
+        return view('admin.pages.hospital activities.operational report.index', compact('operationReport'));
     }
 
     /**
@@ -29,7 +29,7 @@ class BirthreportController extends Controller
     public function create()
     {
         $doctor=Doctor::all();
-        return view('admin.pages.hospital activities.birth report.create', compact('doctor'));
+        return view('admin.pages.hospital activities.operational report.create', compact('doctor'));
     }
 
     /**
@@ -40,14 +40,14 @@ class BirthreportController extends Controller
      */
     public function store(Request $request)
     {
-        BirthReport::create([
+        OperationActivity::create([
             'patient_id'=>$request->patient_id,
             'date' => $request->date,
             'title' => $request->title,
             'description' => $request->description,
             'doctor_id'=>$request->doctor_name,
         ]);
-        return redirect()->route('birth_report.index')->with(Toastr::success('Birth report created successfully'));
+        return redirect()->route('operational_activities.index')->with(Toastr::success('Operation report create successfully'));
     }
 
     /**
@@ -58,8 +58,8 @@ class BirthreportController extends Controller
      */
     public function show($id)
     {
-        $birthReport=BirthReport::find($id);
-        return view('admin.pages.hospital activities.birth report.view', compact('birthReport'));
+        $operationReport=OperationActivity::find($id);
+        return view('admin.pages.hospital activities.operational report.view', compact('operationReport'));
     }
 
     /**
@@ -70,9 +70,9 @@ class BirthreportController extends Controller
      */
     public function edit($id)
     {
-        $birthReport=BirthReport::find($id);
-        $doctor = Doctor::all();
-        return view('admin.pages.hospital activities.birth report.edit', compact('birthReport','doctor'));
+        $operationReport=OperationActivity::find($id);
+        $doctor=Doctor::all();
+        return view('admin.pages.hospital activities.operational report.edit', compact('operationReport', 'doctor'));
     }
 
     /**
@@ -84,15 +84,16 @@ class BirthreportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $birthReport=BirthReport::find($id);
-        $birthReport->update([
+        $operationReport=OperationActivity::find($id);
+        $operationReport::update([
             'patient_id'=>$request->patient_id,
             'date' => $request->date,
             'title' => $request->title,
             'description' => $request->description,
             'doctor_id'=>$request->doctor_name,
+            
         ]);
-        return redirect()->route('birth_report.index')->with(Toastr::info('Birth report updated successfully'));
+        return redirect()->route('operational_activities.index')->with(Toastr::info('Operation report has been updated'));
     }
 
     /**
@@ -103,7 +104,7 @@ class BirthreportController extends Controller
      */
     public function destroy($id)
     {
-        BirthReport::find($id)->delete();
-        return redirect()->route('birth_report.index')->with(Toastr::error('Birth report has been deleted'));
+        OperationActivity::find($id)->delete();
+        return redirect()->route('operational_activities.index')->with(Toastr::error('Operation report has been deleted'));
     }
 }

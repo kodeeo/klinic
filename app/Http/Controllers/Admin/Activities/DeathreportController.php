@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin\Activities;
 
 use App\Http\Controllers\Controller;
 use App\Models\BirthReport;
+use App\Models\DeathReport;
 use App\Models\Doctor;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
-class BirthreportController extends Controller
+class DeathreportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class BirthreportController extends Controller
      */
     public function index()
     {
-        $birthReport=BirthReport::all();
-        return view('admin.pages.hospital activities.birth report.index', compact('birthReport'));
+        $deathReport=DeathReport::all();
+        return view('admin.pages.hospital activities.death report.index', compact('deathReport'));
     }
 
     /**
@@ -29,7 +30,7 @@ class BirthreportController extends Controller
     public function create()
     {
         $doctor=Doctor::all();
-        return view('admin.pages.hospital activities.birth report.create', compact('doctor'));
+        return view('admin.pages.hospital activities.death report.create', compact('doctor'));
     }
 
     /**
@@ -40,14 +41,15 @@ class BirthreportController extends Controller
      */
     public function store(Request $request)
     {
-        BirthReport::create([
+        // dd($request->all());
+        DeathReport::create([
             'patient_id'=>$request->patient_id,
             'date' => $request->date,
             'title' => $request->title,
             'description' => $request->description,
             'doctor_id'=>$request->doctor_name,
         ]);
-        return redirect()->route('birth_report.index')->with(Toastr::success('Birth report created successfully'));
+        return redirect()->route('death_report.index')->with(Toastr::success('Death report added successfully'));
     }
 
     /**
@@ -58,8 +60,8 @@ class BirthreportController extends Controller
      */
     public function show($id)
     {
-        $birthReport=BirthReport::find($id);
-        return view('admin.pages.hospital activities.birth report.view', compact('birthReport'));
+        $deathReport=DeathReport::find($id);
+        return view('admin.pages.hospital activities.death report.view', compact('deathReport'));
     }
 
     /**
@@ -70,9 +72,9 @@ class BirthreportController extends Controller
      */
     public function edit($id)
     {
-        $birthReport=BirthReport::find($id);
-        $doctor = Doctor::all();
-        return view('admin.pages.hospital activities.birth report.edit', compact('birthReport','doctor'));
+        $deathReport=DeathReport::find($id);
+        $doctor=Doctor::all();
+        return view('admin.pages.hospital activities.death report.edit', compact('deathReport', 'doctor'));
     }
 
     /**
@@ -84,15 +86,16 @@ class BirthreportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $birthReport=BirthReport::find($id);
-        $birthReport->update([
+        $deathReport=DeathReport::find($id);
+        $deathReport->update([
             'patient_id'=>$request->patient_id,
             'date' => $request->date,
             'title' => $request->title,
             'description' => $request->description,
             'doctor_id'=>$request->doctor_name,
+            
         ]);
-        return redirect()->route('birth_report.index')->with(Toastr::info('Birth report updated successfully'));
+        return redirect()->route('death_report.index')->with(Toastr::info('Death report updated successfully'));
     }
 
     /**
@@ -103,7 +106,7 @@ class BirthreportController extends Controller
      */
     public function destroy($id)
     {
-        BirthReport::find($id)->delete();
-        return redirect()->route('birth_report.index')->with(Toastr::error('Birth report has been deleted'));
+        DeathReport::find($id)->delete();
+        return redirect()->route('death_report.index')->with(Toastr::error('Death report has been deleted'));
     }
 }

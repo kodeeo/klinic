@@ -36,6 +36,8 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\TestCategoryController;
 use App\Http\Controllers\Admin\Activities\BirthreportController;
+use App\Http\Controllers\Admin\Activities\DeathreportController;
+use App\Http\Controllers\Admin\Activities\OperationalReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -237,6 +239,8 @@ Route::resource('ward', WardController::class);
 
 //Hospital Activities
 Route::resource('birth_report', BirthreportController::class);
+Route::resource('death_report', DeathreportController::class);
+Route::resource('operational_activities', OperationalReportController::class);
 }); 
 
 

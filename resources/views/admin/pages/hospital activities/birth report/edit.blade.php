@@ -21,7 +21,8 @@
 
 <div class="form-group col-6">
 <label for="description">Description</label>
-<textarea name="description" value="{{$birthReport->description}}" class="form-control" id="description" rows="7"></textarea>
+{{-- @dd($birthReport->description) --}}
+<textarea name="description" id="summernote" value="{{$birthReport->description}}" class="form-control" id="description" rows="7">{{$birthReport->description}}</textarea>
 </div>
 
 <div class="form-group col-6">

@@ -170,7 +170,10 @@
                         <a href="{{route('birth_report.index')}}">Birth Report</a>
                     </li>
                     <li>
-                        <a href="">Death Report</a>
+                        <a href="{{route('death_report.index')}}">Death Report</a>
+                    </li>
+                    <li>
+                        <a href="{{route('operational_activities.index')}}">Operation Activity</a>
                     </li>
                 </ul>
             </div>
