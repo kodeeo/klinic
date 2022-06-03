@@ -188,6 +188,15 @@
                     <li>
                         <a href="{{route('operational_activities.index')}}">Operation Activity</a>
                     </li>
+                    <li>
+                        <a href="{{route('investigations.index')}}">Investigation Report</a>
+                    </li>
+                    <li>
+                        <a href="{{route('medicine.index')}}">Medicine</a>
+                    </li>
+                    <li>
+                        <a href="{{route('medicine_category.index')}}">Medicine Category</a>
+                    </li>
                 </ul>
             </div>
         </li>

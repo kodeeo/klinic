@@ -41,6 +41,9 @@ use App\Http\Controllers\Admin\TestCategoryController;
 
 use App\Http\Controllers\Admin\Activities\BirthreportController;
 use App\Http\Controllers\Admin\Activities\DeathreportController;
+use App\Http\Controllers\Admin\Activities\InvestigationReportController;
+use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
+use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 
 use App\Http\Controllers\Admin\Export\TestExportController;
@@ -223,6 +226,9 @@ Route::resource('ward', WardController::class);
 Route::resource('birth_report', BirthreportController::class);
 Route::resource('death_report', DeathreportController::class);
 Route::resource('operational_activities', OperationalReportController::class);
+Route::resource('investigations', InvestigationReportController::class);
+Route::resource('medicine', MedicineController::class);
+Route::resource('medicine_category', MedicinecategoryController::class);
 }); 
 
                                                 #All Exports

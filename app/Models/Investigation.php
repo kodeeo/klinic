@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\Department;
+use App\Models\Doctor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Doctor extends Model
+class Investigation extends Model
 {
     use HasFactory;
     protected $guarded=[];
 
-    public function department()
+    public function doctor()
     {
-        return $this->belongsTo(Department::class,'department_id','id');
+        return $this->belongsTo(Doctor::class);
     }
 }
