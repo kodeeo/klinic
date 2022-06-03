@@ -5,7 +5,7 @@
 <a href="{{route('clinic.setup')}}"><button class="btn btn-primary">Setup Clinic</button></a>
 <br><br>
 <div> 
-  <table class="table" style="text-align: center;">
+  <table class="table" id="dataTable" style="text-align: center;">
     <thead class="thead-dark">
       <tr>
       <th scope="col">#</th>
