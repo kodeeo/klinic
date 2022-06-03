@@ -171,6 +171,26 @@
             </div>
         </li>
 
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Hospital Activities </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="patients">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('birth_report.index')}}">Birth Report</a>
+                    </li>
+                    <li>
+                        <a href="{{route('death_report.index')}}">Death Report</a>
+                    </li>
+                    <li>
+                        <a href="{{route('operational_activities.index')}}">Operation Activity</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
           
           <li class="side-nav-item">
               <a href="{{route('clinic.informations')}}" class="side-nav-link">
@@ -178,8 +198,8 @@
                   <span> Clinic Setup </span>
               </a>
           </li>
-          
       </ul>
+      
 
       
       <!-- End Sidebar -->

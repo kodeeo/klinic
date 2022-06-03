@@ -3,25 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\RoleController;
-
 use App\Http\Controllers\Admin\TestController;
 
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\WardController;
 
+
 use App\Http\Controllers\Admin\CabinController;
 
 use App\Http\Controllers\Admin\LoginController;
+
+
 use App\Http\Controllers\Admin\NurseController;
-
 use App\Http\Controllers\Admin\StaffController;
-use App\Http\Controllers\Admin\ClinicController;
 
+use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
+
 use App\Http\Controllers\Admin\PatientController;
 
 use App\Http\Controllers\Admin\ServiceController;
+
 use App\Http\Controllers\Admin\WardboyController;
 
 use App\Http\Controllers\Admin\LanguageController;
@@ -35,6 +38,11 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\TestCategoryController;
+
+use App\Http\Controllers\Admin\Activities\BirthreportController;
+use App\Http\Controllers\Admin\Activities\DeathreportController;
+use App\Http\Controllers\Admin\Activities\OperationalReportController;
+
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
@@ -42,6 +50,7 @@ use App\Http\Controllers\Admin\Export\PatientExportController;
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -209,7 +218,15 @@ Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->na
     # ward CRUD
 Route::resource('ward', WardController::class);
 
+
+//Hospital Activities
+Route::resource('birth_report', BirthreportController::class);
+Route::resource('death_report', DeathreportController::class);
+Route::resource('operational_activities', OperationalReportController::class);
+}); 
+
                                                 #All Exports
+
 
     //Test Export
 Route::controller(TestExportController::class)->group(function () {
