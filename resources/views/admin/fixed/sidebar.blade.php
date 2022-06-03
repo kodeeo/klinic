@@ -172,12 +172,12 @@
         </li>
 
         <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+            <a data-bs-toggle="collapse" href="#hospital_activities" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
                 <span> Hospital Activities </span>
                 <span class="menu-arrow"></span>
             </a>
-            <div class="collapse" id="patients">
+            <div class="collapse" id="hospital_activities">
                 <ul class="side-nav-second-level">
                     <li>
                         <a href="{{route('birth_report.index')}}">Birth Report</a>
