@@ -40,13 +40,21 @@ class InvestigationReportController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
+        $image_name=null;
+        if($request->hasFile('investigation_img'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('investigation_img')->getClientOriginalExtension();
+            $request->file('investigation_img')->storeAs('/uploads/investigations',$image_name);
+        }
+
         Investigation::create([
             'patient_id'=>$request->patient_id,
             'date' => $request->date,
             'title' => $request->title,
             'description' => $request->description,
             'doctor_id'=>$request->doctor_name,
-            'investigation_img'=>'image',
+            'investigation_img'=>$image_name,
         ]);
         return redirect()->route('investigations.index')->with(Toastr::success('investigation created successfully'));
     }
@@ -86,13 +94,21 @@ class InvestigationReportController extends Controller
     public function update(Request $request, $id)
     {
         $investigations=Investigation::find($id);
+
+        $image_name=$investigations->investigation_img;
+        if($request->hasFile('investigation_img'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('investigation_img')->getClientOriginalExtension();
+            $request->file('investigation_img')->storeAs('/uploads/investigations',$image_name);
+        }
+
         $investigations->update([
             'patient_id'=>$request->patient_id,
             'date' => $request->date,
             'title' => $request->title,
             'description' => $request->description,
             'doctor_id'=>$request->doctor_name,
-            'investigation_img'=>'image',
+            'investigation_img'=>$image_name,
         ]);
         return redirect()->route('investigations.index')->with(Toastr::info('investigation updated successfully'));
     }

@@ -1,9 +1,10 @@
 @extends('admin.master')
 @section('content')
 <h1>Edit Investigation Report Here</h1>
-<form action="{{route('investigations.update', $investigations->id)}}" method="POST">
+<form action="{{route('investigations.update', $investigations->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
+    <td><img src="{{url('/uploads/investigations/'.$investigations->investigation_img)}}" style="border-radius:4px" width="500px" alt="Investigation image"></td>
 <div class="form-group col-6">
 <label for="name">Patient ID<i class="text-danger">*</i></label>
 <input type="text" class="form-control"  name="patient_id" value="{{$investigations->patient_id}}" placeholder="Patient ID"  required>
@@ -34,7 +35,7 @@
 </div>
 <div class="form-group col-6">
     <label for="picture">Picture<i class="text-danger">*</i></label>
-    <input type="file" class="form-control"  name="picture" placeholder="Choose File">
+    <input type="file" class="form-control"  name="investigation_img" placeholder="Choose File">
 </div>
 
 <br>
