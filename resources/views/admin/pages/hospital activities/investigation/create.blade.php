@@ -2,7 +2,7 @@
 @section('content')
 
     <h1>Create Investigation Report </h1>
-    <form action="{{route('investigations.store')}}" method="POST">
+    <form action="{{route('investigations.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="form-group col-6">
     <label for="name">Patient ID<i class="text-danger">*</i></label>
@@ -35,7 +35,7 @@
     
     <div class="form-group col-6">
     <label for="picture">Picture<i class="text-danger">*</i></label>
-    <input type="file" class="form-control"  name="picture" placeholder="Choose File">
+    <input type="file" class="form-control"  name="investigation_img" placeholder="Choose File">
     </div>
     <br>
     

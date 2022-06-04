@@ -19,7 +19,7 @@
               @foreach ($investigations as $key=>$item)
                   <tr>
                       <th scope="row">{{$key+1}}</th>
-                      <td>image</td>
+                      <td><img src="{{url('/uploads/investigations/'.$item->investigation_img)}}" style="border-radius:4px" width="100px" alt="Investigation image"></td>
                       <td>{{$item->patient_id}}</td>
                       <td>{{$item->date}}</td>
                       <td>{{$item->title}}</td>
