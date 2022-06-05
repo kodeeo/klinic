@@ -116,8 +116,8 @@
         </div>  --}}
         
         <div class="form-group col-6">
-            <label for="email">Per Patient Time</label>
-            <input type="time" class="form-control" id="patient_time" name="patient_time" placeholder="Enter Patient Time">
+            <label for="email">Per Patient Time (in minutes)</label>
+            <input type="text" class="timepicker form-control" id="patient_time" name="patient_time" placeholder="Enter Patient Time">
         </div> 
         <div class="form-group col-6">
             <label for="serial">Serial Visibity</label><br>
