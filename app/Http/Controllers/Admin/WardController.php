@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Ward;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class WardController extends Controller
 {
@@ -14,7 +16,8 @@ class WardController extends Controller
      */
     public function index()
     {
-        //
+        $wards=Ward::all();
+        return view('admin.pages.ward.index',compact('wards'));
     }
 
     /**
@@ -35,7 +38,17 @@ class WardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $b_num=$request->bed_number;
+        for ($x = 1; $x <= $b_num; $x++) {
+            $ward=Ward::insert([
+                'ward_type'=>$request->ward_type,
+                'ward_number'=>$request->ward_number,
+                'bed_number'=>$x,
+            ]);
+        }
+        
+        return redirect()->route('ward.index')->with(Toastr::info('Ward Bed Created Successfully'));
+
     }
 
     /**
@@ -80,6 +93,7 @@ class WardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ward::find($id)->delete();
+        return redirect()->route('ward.index')->with(Toastr::error('Ward Bed Deleted'));
     }
 }
