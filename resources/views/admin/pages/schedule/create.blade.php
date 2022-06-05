@@ -121,10 +121,10 @@
         </div> 
         <div class="form-group col-6">
             <label for="serial">Serial Visibity</label><br>
-  <select class="form-select" name="serial" id="serial">
-    <option value="sequential">Sequential</option>
-    <option value="timestamp">Timestamp</option>
-  </select>
+              <select class="form-select" name="serial" id="serial">
+                <option value="sequential">Sequential</option>
+                <option value="timestamp">Timestamp</option>
+              </select>
         </div> 
 
     <div class="form-group col-12 mt-2">

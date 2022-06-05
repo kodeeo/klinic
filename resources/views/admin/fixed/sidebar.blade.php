@@ -169,7 +169,7 @@
             <div class="collapse" id="patients">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="#">Ward</a>
+                        <a href="{{route('ward.index')}}">Ward</a>
                     </li>
                     <li>
                         <a href="{{route('cabin.index')}}">Cabin</a>
