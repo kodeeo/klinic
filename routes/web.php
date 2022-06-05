@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\RoleController;
@@ -25,13 +26,13 @@ use App\Http\Controllers\Admin\PatientController;
 
 use App\Http\Controllers\Admin\ServiceController;
 
-use App\Http\Controllers\Admin\WardboyController;
 
+use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\WardboyController;
 use App\Http\Controllers\Admin\LanguageController;
 
 use App\Http\Controllers\Admin\PasswordController;
 
-use App\Http\Controllers\Admin\ScheduleController;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
@@ -114,7 +115,8 @@ Route::get('/patients/admission/add',[PatientController::class, 'patientAdmissio
 Route::get('/patients/admission/add/{patient_id}',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::post('/patients/admission/store',[PatientController::class, 'patientAdmissionStore'])->name('patient_admisssion.store');
 Route::get('/patients/admission/lists',[PatientController::class, 'patientAdmissionList'])->name('patient_admisssion.list');
-
+//Appointment
+Route::resource('/appointment',AppointmentController::class);
 
     //doctor_department
 Route::controller(DepartmentController::class)->group(function () {
