@@ -124,6 +124,13 @@
                <span> Patients List </span>
             </a>
         </li>
+        
+          <li class="side-nav-item">
+            <a href="{{route('appointment.index')}}" class="side-nav-link">
+            <i class="fa-solid fa-calendar-check"></i>
+               <span> Appointment </span>
+            </a>
+        </li>
 
         <li class="side-nav-item">
             <a href="{{route('patient_admisssion.list')}}" class="side-nav-link">
