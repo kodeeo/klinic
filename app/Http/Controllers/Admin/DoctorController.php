@@ -11,6 +11,14 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class DoctorController extends Controller
 {
+
+    public function getDoctor($department)
+    {
+        $doctors=Doctor::where('department_id',$department)->get();
+        return response()->json([
+            'data'=>$doctors
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *

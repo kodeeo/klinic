@@ -119,6 +119,13 @@
             </a>
         </li>
 
+        <li class="side-nav-item">
+            <a href="{{route('appointment.index')}}" class="side-nav-link">
+            <i class="fa-solid fa-calendar-check"></i>
+               <span> Appointment </span>
+            </a>
+        </li>
+
           <li class="side-nav-item">
               <a data-bs-toggle="collapse" href="#diagonistic" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                   <i class="uil-clipboard-alt"></i>
