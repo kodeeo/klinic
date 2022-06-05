@@ -21,15 +21,33 @@
             <label for="department_image" class="form-label">Insert Image</label>
             <input class="form-control" type="file" id="department_image" name="department_image">
         </div>
-
     </div>   
     <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Save</button>
   </form>
 </div>
+
+<div class="row" style="justify-content: right;;">
+
+  <div class="col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="{{route('department.data.csv')}}">
+        CSV
+      </a>
+      <a class="btn btn-info" href="{{route('department.data.excel')}}">
+        Excel
+      </a>
+      <a class="btn btn-info" href="{{route('department.data.pdf')}}">
+        PDF
+      </a>
+      <a class="btn btn-info" href="{{route('department.data.print')}}">
+        Print    
+      </a>
+  </div>
+</div>
+
 <hr>
 
 <div>
-              <table class="table" style="text-align: center;">
+              <table class="table" id="dataTable"  style="text-align: center;">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">ID</th>
@@ -59,6 +77,6 @@
                   @endforeach
                 </tbody>
               </table>
-              
+              {{$department->links()}}
 </div>
 @endsection

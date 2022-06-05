@@ -17,7 +17,7 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        $designations=Designation::all();
+        $designations=Designation::paginate(10);
         return view('admin.pages.designation.index',compact('designations'));
     }
 

@@ -14,7 +14,7 @@ class PatientController extends Controller
 {
     public function patientlist()
     {
-        $patients=Patient::all();
+        $patients=Patient::paginate(10);
         return view('admin.pages.patient.list',compact('patients'));
     }
  
@@ -112,7 +112,6 @@ class PatientController extends Controller
 
     public function patientAdmissionAdd($patient_id)
     {
-        
         $new_patient=Patient::find($patient_id);
         return view('admin.pages.patient.admission',compact('new_patient'));
     }
@@ -205,6 +204,11 @@ class PatientController extends Controller
 
         Toastr::success('Admission information has been  recorded Successfully', 'success');
        
+    }
+
+    public function patientAdmissionList()
+    {
+        return view('admin.pages.patient.admission_list');
     }
 
 }

@@ -72,6 +72,12 @@
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
                     </li>
+                    <li>
+                        <a href="{{route('schedule.create')}}">Add Schedule</a>
+                    </li>
+                    <li>
+                        <a href="{{route('schedule.index')}}">Schedule List</a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -118,11 +124,18 @@
                <span> Patients List </span>
             </a>
         </li>
-
-        <li class="side-nav-item">
+        
+          <li class="side-nav-item">
             <a href="{{route('appointment.index')}}" class="side-nav-link">
             <i class="fa-solid fa-calendar-check"></i>
                <span> Appointment </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('patient_admisssion.list')}}" class="side-nav-link">
+                <i class="uil-copy-alt"></i>
+               <span>Admissions</span>
             </a>
         </li>
 
@@ -165,6 +178,35 @@
             </div>
         </li>
 
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#hospital_activities" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Hospital Activities </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="hospital_activities">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('birth_report.index')}}">Birth Report</a>
+                    </li>
+                    <li>
+                        <a href="{{route('death_report.index')}}">Death Report</a>
+                    </li>
+                    <li>
+                        <a href="{{route('operational_activities.index')}}">Operation Activity</a>
+                    </li>
+                    <li>
+                        <a href="{{route('investigations.index')}}">Investigation Report</a>
+                    </li>
+                    <li>
+                        <a href="{{route('medicine.index')}}">Medicine</a>
+                    </li>
+                    <li>
+                        <a href="{{route('medicine_category.index')}}">Medicine Category</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
           
           <li class="side-nav-item">
               <a href="{{route('clinic.informations')}}" class="side-nav-link">
@@ -172,8 +214,8 @@
                   <span> Clinic Setup </span>
               </a>
           </li>
-          
       </ul>
+      
 
       
       <!-- End Sidebar -->

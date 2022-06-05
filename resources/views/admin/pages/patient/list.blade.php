@@ -2,10 +2,28 @@
 @section('content')
 <h1>{{__('Patient List')}}</h1>
 <hr>
-<a href="{{route('patient.add')}}"><button class="btn btn-primary">Create Patient</button></a>
+<div class="row" style="justify-content: space-between;">
+  <div class="col">
+    <a href="{{route('patient.add')}}"  class="btn btn-primary">Add Patient</a>
+  </div>
+  <div class="col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="{{route('patient.data.csv')}}">
+        CSV
+      </a>
+      <a class="btn btn-info" href="{{route('patient.data.excel')}}">
+        Excel
+      </a>
+      <a class="btn btn-info" href="{{route('patient.data.pdf')}}">
+        PDF
+      </a>
+      <a class="btn btn-info" href="{{route('patient.data.print')}}">
+        Print    
+      </a>
+  </div>
+</div>
 <br><br>
 <div> 
-  <table class="table" style="text-align: center;">
+  <table class="table" id="dataTable" style="text-align: center;">
     <thead class="thead-dark">
       <tr>
       <th scope="col">ID</th>
@@ -50,6 +68,7 @@
      
     </tbody>
   </table>
+  {{$patients->links()}}
 </div> 
 
 @endsection
