@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('doctor_id');
-            $table->string('days',100);
-            $table->time('fromtime');
-            $table->time('totime');
-            $table->time('patient_time');
+            $table->string('days',100)->nullable();
+            $table->string('fromtime')->nullable();
+            $table->string('totime')->nullable();
+            $table->string('patient_time');
             $table->string('serial');
             $table->string('status');
 

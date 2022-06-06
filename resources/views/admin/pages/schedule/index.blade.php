@@ -34,10 +34,18 @@
                             <td>{{$value->status}}</td>
                             
 
-                            <td>
-                              <a class="btn btn-success btn-sm" href="#"><i class="fas fa-eye"></i></a>  
-                              <a class="btn btn-warning btn-sm" href="#"><i class="fas fa-edit"></i></a>
-                              <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i></a>
+                            <td style="display: flex;">
+                              <a style="margin-right:2px" class="btn btn-success btn-sm" href="{{route('schedule.show',$value->id)}}"><i class="fas fa-eye"></i></a>  
+                              <a style="margin-right:2px" class="btn btn-warning btn-sm" href="{{route('schedule.edit',$value->id)}}"><i class="fas fa-edit"></i></a>
+                              <form action="{{route('schedule.destroy',$value->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <div>
+                                    <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+        
+                                </div>
+        
+                                </form>
                             </td>  
                           </tr>
                     
