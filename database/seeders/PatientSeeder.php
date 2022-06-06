@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Wardboy;
+use App\Models\Patient;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +14,6 @@ class WardboySeeder extends Seeder
      */
     public function run()
     {
-        Wardboy::factory()->count(10)->create();
+        Patient::factory()->count(5)->create();
     }
 }
