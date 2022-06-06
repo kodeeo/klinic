@@ -20,9 +20,13 @@
             <label for="ward_number">Ward Number</label>
             <input type="text" class="form-control" id="ward_number" name="ward_number" placeholder="Enter Ward Number">
           </div> 
-          <div class="form-group col-12 mt-2">
-            <label for="bed_number">Ward Bed Number</label>
-            <input type="number" class="form-control" id="bed_number" name="bed_number" placeholder="Enter Bed Number">
+          <div class="form-group col-6 mt-2">
+            <label for="from">Start From</label>
+            <input type="number" class="form-control" id="from" name="from" placeholder="Enter Starting Number">
+          </div> 
+          <div class="form-group col-6   mt-2">
+            <label for="quantity">Quantity</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity">
           </div> 
       </div>   
     <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Submit</button>
