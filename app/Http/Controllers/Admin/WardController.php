@@ -41,7 +41,7 @@ class WardController extends Controller
         $quantity=$request->quantity;
         $from=$request->from;
         //dd($from);
-        for ($x = 0; $x <= $quantity; $x++) {
+        for ($x = 0; $x < $quantity; $x++) {
             $ward=Ward::insert([
                 'ward_type'=>$request->ward_type,
                 'ward_number'=>$request->ward_number,
