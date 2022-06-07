@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Wardboy>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Test>
  */
-class DepartmentFactory extends Factory
+class TestFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,10 @@ class DepartmentFactory extends Factory
     public function definition()
     {
         return [
+            'test_category_id'=>$this->faker->randomElements(['1','2','3','4','5']),
             'name'=>$this->faker->name(),
-            'details'=>$this->faker->text(),
-           'image'=>$this->faker->image('public/uploads/departments',640,480, null, false),
+            'procedure'=>$this->faker->text(),
+            'description'=>$this->faker->text(),
         ];
     }
 }

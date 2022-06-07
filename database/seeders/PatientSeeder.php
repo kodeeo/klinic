@@ -5,7 +5,7 @@ use App\Models\Patient;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class WardboySeeder extends Seeder
+class PatientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
