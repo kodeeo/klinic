@@ -26,5 +26,19 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceModelSeeder::class);
         $this->call(WardSeeder::class);
         $this->call(TestSeeder::class);
+        
+        
+        
+        $this->call(TestCategorySeeder::class);
+        $this->call(AppoinmentSeeder::class);
+        $this->call(DesignationSeeder::class);
+        $this->call(AdmissionSeeder::class);
+        $this->call(VisitSeeder::class);
+        $this->call(BirthSeeder::class);
+        $this->call(DeathSeeder::class);
+        $this->call(OperationSeeder::class);
+        $this->call(InvestigationSeeder::class);
+        $this->call(MedicineSeeder::class);
+        $this->call(MedicineCategorySeeder::class);
     }
 }
