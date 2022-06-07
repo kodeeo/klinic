@@ -1,59 +1,60 @@
 <?php
 
-use App\Http\Controllers\Admin\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TestController;
-
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\WardController;
 
-
 use App\Http\Controllers\Admin\CabinController;
+
 
 use App\Http\Controllers\Admin\LoginController;
 
-
 use App\Http\Controllers\Admin\NurseController;
+
+
 use App\Http\Controllers\Admin\StaffController;
-
 use App\Http\Controllers\Admin\ClinicController;
-use App\Http\Controllers\Admin\DoctorController;
 
+use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 
 use App\Http\Controllers\Admin\ServiceController;
 
-
-use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\WardboyController;
+
+
 use App\Http\Controllers\Admin\LanguageController;
-
 use App\Http\Controllers\Admin\PasswordController;
-
+use App\Http\Controllers\Admin\ScheduleController;
 
 use App\Http\Controllers\Admin\DashboardController;
+
+
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\TestCategoryController;
 
-use App\Http\Controllers\Admin\Activities\BirthreportController;
-use App\Http\Controllers\Admin\Activities\DeathreportController;
-use App\Http\Controllers\Admin\Activities\InvestigationReportController;
-use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
-use App\Http\Controllers\Admin\Activities\MedicineController;
-use App\Http\Controllers\Admin\Activities\OperationalReportController;
-
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
+use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
+
+use App\Http\Controllers\Admin\Activities\BirthreportController;
+use App\Http\Controllers\Admin\Activities\DeathreportController;
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
+use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
+use App\Http\Controllers\Admin\Activities\OperationalReportController;
+use App\Http\Controllers\Admin\Activities\InvestigationReportController;
+use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
 
 /*
@@ -290,4 +291,22 @@ Route::controller(PatientExportController::class)->group(function () {
     Route::get('patient/data/excel','excel')->name('patient.data.excel');
     Route::get('patient/data/pdf','pdf')->name('patient.data.pdf');
     Route::get('patient/data/print','print')->name('patient.data.print');
+});
+
+//Hospital Activities Export
+Route::controller(HospitalActivitiesExportController::class)->group(function () {
+    Route::get('birth/report/csv','birth_csv')->name('birth.report.csv');
+    Route::get('birth/report/excel','birth_excel')->name('birth.report.excel');
+
+    Route::get('death/report/csv','death_csv')->name('death.report.csv');
+    Route::get('death/report/excel','death_excel')->name('death.report.excel');
+
+    Route::get('operational/report/csv','operational_csv')->name('operational.report.csv');
+    Route::get('operational/report/excel','operational_excel')->name('operational.report.excel');
+
+    Route::get('medicine_category/report/csv','medicine_category_csv')->name('medicine_category.report.csv');
+    Route::get('medicine_category/report/excel','medicine_category_excel')->name('medicine_category.report.excel');
+
+    Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
+    Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
 });
