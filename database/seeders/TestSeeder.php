@@ -1,11 +1,11 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Doctor;
+use App\Models\Test;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DoctorSeeder extends Seeder
+class TestSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class DoctorSeeder extends Seeder
      */
     public function run()
     {
-        Doctor::factory()->count(5)->create();
+        Test::factory()->count(5)->create();
     }
 }

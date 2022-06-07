@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Wardboy>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class DepartmentFactory extends Factory
+class MedicineCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,7 @@ class DepartmentFactory extends Factory
     {
         return [
             'name'=>$this->faker->name(),
-            'details'=>$this->faker->text(),
-           'image'=>$this->faker->image('public/uploads/departments',640,480, null, false),
+            'description'=>$this->faker->text(),
         ];
     }
 }

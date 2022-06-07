@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('test_category_id');
             $table->string('name');
-            $table->integer('price');
+            $table->string('price');
             $table->string('procedure')->nullable();
             $table->string('description')->nullable();
             $table->string('image')->nullable();

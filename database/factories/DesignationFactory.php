@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Wardboy>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Designation>
  */
-class DepartmentFactory extends Factory
+class DesignationFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,8 @@ class DepartmentFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name(),
+            'designation'=>$this->faker->randomElements(['Doctor','Patient','Nurse','Wardboy'])[0],
             'details'=>$this->faker->text(),
-           'image'=>$this->faker->image('public/uploads/departments',640,480, null, false),
         ];
     }
 }

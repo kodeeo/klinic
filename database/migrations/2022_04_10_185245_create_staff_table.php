@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('address',50);
             $table->date('date_of_birth');
             $table->string('gender');
-            $table->string('degree',100);
+            $table->string('degree',255);
             $table->text('details',100);
             $table->string('image')->nullable();
             $table->string('password');
