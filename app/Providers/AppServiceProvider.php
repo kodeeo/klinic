@@ -30,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         {
             View::share('klinic', ClinicSetup::first());
         }
+
+        
        
     }
 }
