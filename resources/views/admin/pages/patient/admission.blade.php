@@ -37,12 +37,10 @@
 
           <div class="form-group col-6 mt-2">
             <label for="exampleFormControlSelect1">Room</label>
-
-            <select name="room" class="form-control" id="exampleFormControlSelect1">
-
-              <option>Cabin</option>
-              <option>Word</option>
-            </select>
+              <select name="room" class="form-control" id="exampleFormControlSelect1">
+                <option>Cabin</option>
+                <option>Word</option>
+              </select>
           </div>
           <div class="form-group col-6">
               <label for="doctor">Attending Physician</label>

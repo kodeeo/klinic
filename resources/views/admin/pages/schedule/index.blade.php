@@ -4,6 +4,26 @@
 <h1>{{__('Schedule List')}}</h1>
 <hr>
 
+<div class="row" style="justify-content: space-between;">
+  <div class="col">
+    <a href="#"  class="btn btn-primary">Add Schedule</a>
+  </div>
+  <div class="col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="#">
+        CSV
+      </a>
+      <a class="btn btn-info" href="#">
+        Excel
+      </a>
+      <a class="btn btn-info" href="#">
+        PDF
+      </a>
+      <button class="btn btn-info" onclick="{window.print()}">Print</button>
+  </div>
+</div>
+
+<br><br>
+
 <div>
               <table class="table" id="dataTable" style="text-align: center;">
                 <thead class="thead-dark">

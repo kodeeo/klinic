@@ -17,7 +17,7 @@
           <div class="form-group col-6 mt-2">
             <label for="test_category">Doctor Department</label>
             <i class="text-danger">*</i>
-            <select onchange="getDoctor(this.value)" class="form-select" name="d_department" aria-label="Default select example">
+            <select onclick="getDoctor(this.value)" class="form-select" name="d_department" aria-label="Default select example">
 
                @foreach ($departments as $department)
                 <option value="{{$department->id}}">{{$department->name}}</option>

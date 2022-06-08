@@ -15,12 +15,11 @@
       <a class="btn btn-info" href="{{route('nurse.data.excel')}}">
         Excel
       </a>
-      <a class="btn btn-info" href="{{route('nurse.data.pdf')}}">
+      <a class="btn btn-info" href="#">
         PDF
       </a>
-      <a class="btn btn-info" href="{{route('nurse.data.print')}}">
-        Print    
-      </a>
+      <button class="btn btn-info" onclick="{window.print()}">Print</button>
+
   </div>
 </div>
 <br><br>

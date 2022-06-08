@@ -21,7 +21,7 @@
             <input type="text" class="form-control" id="ward_number" name="ward_number" placeholder="Enter Ward Number">
           </div> 
           <div class="form-group col-6 mt-2">
-            <label for="from">Start From</label>
+            <label for="from">Bed Number Start From</label>
             <input type="number" class="form-control" id="from" name="from" placeholder="Enter Starting Number">
           </div> 
           <div class="form-group col-6   mt-2">

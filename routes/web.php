@@ -240,54 +240,40 @@ Route::resource('medicine_category', MedicinecategoryController::class);
 Route::controller(TestExportController::class)->group(function () {
     Route::get('test/data/csv','csv')->name('test.data.csv');
     Route::get('test/data/excel','excel')->name('test.data.excel');
-    Route::get('test/data/pdf','pdf')->name('test.data.pdf');
-    Route::get('test/data/print','print')->name('test.data.print');
 });
-    
+
     //Text Category Export
 Route::controller(TestCategoryExportController::class)->group(function () {
     Route::get('test/categories/data/csv','csv')->name('test.categories.data.csv');
     Route::get('test/categories/data/excel','excel')->name('test.categories.data.excel');
-    Route::get('test/categories/data/pdf','pdf')->name('test.categories.data.pdf');
-    Route::get('test/categories/data/print','print')->name('test.categories.data.print');
 });
 
     //Nurse Export
 Route::controller(NurseExportController::class)->group(function () {
     Route::get('nurse/data/csv','csv')->name('nurse.data.csv');
     Route::get('nurse/data/excel','excel')->name('nurse.data.excel');
-    Route::get('nurse/data/pdf','pdf')->name('nurse.data.pdf');
-    Route::get('nurse/data/print','print')->name('nurse.data.print');
 });
 
     //Wardboy Export
 Route::controller(WardBoyExportController::class)->group(function () {
     Route::get('wardboy/data/csv','csv')->name('wardboy.data.csv');
     Route::get('wardboy/data/excel','excel')->name('wardboy.data.excel');
-    Route::get('wardboy/data/pdf','pdf')->name('wardboy.data.pdf');
-    Route::get('wardboy/data/print','print')->name('wardboy.data.print');
 });
 
     //Doctor Export
 Route::controller(DoctorExportController::class)->group(function () {
     Route::get('doctor/data/csv','csv')->name('doctor.data.csv');
     Route::get('doctor/data/excel','excel')->name('doctor.data.excel');
-    Route::get('doctor/data/pdf','pdf')->name('doctor.data.pdf');
-    Route::get('doctor/data/print','print')->name('doctor.data.print');
 });
 
     //Doctor Department Export
 Route::controller(DoctorDeptExportController::class)->group(function () {
     Route::get('department/data/csv','csv')->name('department.data.csv');
     Route::get('department/data/excel','excel')->name('department.data.excel');
-    Route::get('department/data/pdf','pdf')->name('department.data.pdf');
-    Route::get('department/data/print','print')->name('department.data.print');
 });
 
     //Patient Export
 Route::controller(PatientExportController::class)->group(function () {
     Route::get('patient/data/csv','csv')->name('patient.data.csv');
     Route::get('patient/data/excel','excel')->name('patient.data.excel');
-    Route::get('patient/data/pdf','pdf')->name('patient.data.pdf');
-    Route::get('patient/data/print','print')->name('patient.data.print');
 });
