@@ -3,6 +3,31 @@
 <h1>{{__('Opeation Report')}}</h1>
 <a class="btn btn-success" href="{{route('operational_activities.create')}}">Create Operation Report</a>
 <div><br>
+
+<div class="row" style="justify-content: space-between;">
+  <div class="col">
+  <a class="btn btn-success" href="{{route('operational_activities.create')}}">Create Operation Report</a>
+  </div>
+
+  <div class="col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="{{route('operational.report.csv')}}">
+        CSV
+      </a>
+      <a class="btn btn-info" href="{{route('operational.report.excel')}}">
+        Excel
+      </a>
+      <a class="btn btn-info" href="">
+        PDF
+      </a>
+      <a class="btn btn-info" href="">
+        Print    
+      </a>
+  </div>
+</div>
+<br><br>
+<div>
+
+
 <table class="table" id="dataTable" style="text-align: center">
     <thead>
       <tr>

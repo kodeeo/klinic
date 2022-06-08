@@ -1,59 +1,69 @@
 <?php
 
-use App\Http\Controllers\Admin\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TestController;
-
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\WardController;
 
-
 use App\Http\Controllers\Admin\CabinController;
 
+
+
+// use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\LoginController;
-
-
 use App\Http\Controllers\Admin\NurseController;
+
+
 use App\Http\Controllers\Admin\StaffController;
-
 use App\Http\Controllers\Admin\ClinicController;
-use App\Http\Controllers\Admin\DoctorController;
 
+use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 
 use App\Http\Controllers\Admin\ServiceController;
 
-
-use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\WardboyController;
+
+
+
+// use App\Http\Controllers\Admin\PatientController;
+// use App\Http\Controllers\Admin\ServiceController;
+// use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Admin\LanguageController;
-
 use App\Http\Controllers\Admin\PasswordController;
-
+use App\Http\Controllers\Admin\ScheduleController;
 
 use App\Http\Controllers\Admin\DashboardController;
+
+
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\TestCategoryController;
 
-use App\Http\Controllers\Admin\Activities\BirthreportController;
-use App\Http\Controllers\Admin\Activities\DeathreportController;
-use App\Http\Controllers\Admin\Activities\InvestigationReportController;
-use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
-use App\Http\Controllers\Admin\Activities\MedicineController;
-use App\Http\Controllers\Admin\Activities\OperationalReportController;
+// use App\Http\Controllers\Admin\DesignationController;
 
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
+use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
+
+use App\Http\Controllers\Admin\Activities\BirthreportController;
+use App\Http\Controllers\Admin\Activities\DeathreportController;
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
+use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
+use App\Http\Controllers\Admin\Activities\OperationalReportController;
+use App\Http\Controllers\Admin\Activities\InvestigationReportController;
+use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
+
 
 
 /*
@@ -97,6 +107,9 @@ Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role
 Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
 Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
 Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('role.delete');
+
+// role permission
+
     
     //users
 Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
@@ -105,7 +118,36 @@ Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store'
 Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
-    //Patient
+
+      
+
+
+
+
+// Route::get('admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
+
+// role
+// Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
+// Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
+// Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
+
+// Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role.view');
+// Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
+// Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
+// Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('role.delete');
+
+
+//users
+Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
+Route::get('/user/add',[UserController::class, 'u_add'])->name('user.add');
+Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store');
+Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
+Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
+
+
+//Patient
+
+
 Route::get('/patients/list/',[PatientController::class, 'patientlist'])->name('patient.list');
 Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
 Route::post('/patients/store',[PatientController::class, 'patientStore'])->name('patient.store');
@@ -118,7 +160,13 @@ Route::get('/patients/admission/lists',[PatientController::class, 'patientAdmiss
 //Appointment
 Route::resource('/appointment',AppointmentController::class);
 
+
+
+
+//doctor_department
+
     //doctor_department
+
 Route::controller(DepartmentController::class)->group(function () {
     Route::get('/show/department','show')->name('show.department'); 
     Route::get('/create/department','create')->name('create.department'); 
@@ -190,6 +238,10 @@ Route::resource('schedule',ScheduleController::class);
 
     //Permission resource controller
 Route::resource('permission',PermissionController::class);
+Route::get('permission/list/{role_id}',[PermissionController::class,'permissionList'])->name('permission.list');
+Route::post('/permission/assign/{role_id}', [PermissionController::class, 'assign'])->name('permission.assign');
+Route::get('/permission/edit/{role_id}', [PermissionController::class, 'permissionEdit'])->name('permission.edit');
+Route::put('/permission/update/{role_id}', [PermissionController::class, 'permissionUpdate'])->name('permission.update');
 
 
     //Clinic Setup
@@ -217,7 +269,12 @@ Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->n
     #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
 
+
+
+
+//localization
     //localization
+
 Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->name('admin.language.change');
 
     # ward CRUD
@@ -234,6 +291,7 @@ Route::resource('medicine_category', MedicinecategoryController::class);
 }); 
 
                                                 #All Exports
+
 
 
     //Test Export
@@ -290,4 +348,23 @@ Route::controller(PatientExportController::class)->group(function () {
     Route::get('patient/data/excel','excel')->name('patient.data.excel');
     Route::get('patient/data/pdf','pdf')->name('patient.data.pdf');
     Route::get('patient/data/print','print')->name('patient.data.print');
+});
+
+//Hospital Activities Export
+Route::controller(HospitalActivitiesExportController::class)->group(function () {
+    Route::get('birth/report/csv','birth_csv')->name('birth.report.csv');
+    Route::get('birth/report/excel','birth_excel')->name('birth.report.excel');
+
+    Route::get('death/report/csv','death_csv')->name('death.report.csv');
+    Route::get('death/report/excel','death_excel')->name('death.report.excel');
+
+
+    Route::get('operational/report/csv','operational_csv')->name('operational.report.csv');
+    Route::get('operational/report/excel','operational_excel')->name('operational.report.excel');
+
+    Route::get('medicine_category/report/csv','medicine_category_csv')->name('medicine_category.report.csv');
+    Route::get('medicine_category/report/excel','medicine_category_excel')->name('medicine_category.report.excel');
+
+    Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
+    Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
 });
