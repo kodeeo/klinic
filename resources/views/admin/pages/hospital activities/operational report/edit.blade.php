@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Edit Operation Report Here</h1>
+<h1>{{__('Edit Operation Report Here')}}</h1>
 <form action="{{route('death_report.update', $operationReport->id)}}" method="POST">
     @csrf
     @method('PUT')

@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-    <h1>Medicine Categories</h1>
+    <h1>{{__('Medicine Categories')}}</h1>
         <a class="btn btn-success" href="{{route('medicine_category.create')}}">Add Medicine Category</a>
        <div><br>
         <table class="table" id="dataTable" style="text-align: center">

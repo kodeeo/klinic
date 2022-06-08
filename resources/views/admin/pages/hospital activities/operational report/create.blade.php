@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Operational Activity </h1>
+<h1>{{__('Operational Activity')}} </h1>
 <form action="{{route('operational_activities.store')}}" method="POST">
     @csrf
 <div class="form-group col-6">

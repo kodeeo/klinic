@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Death Report</h1>
+<h1>{{__('Death Report')}}</h1>
 <a class="btn btn-success" href="{{route('death_report.create')}}">Create Death Report</a>
 <div><br>
 <table class="table" id="dataTable" style="text-align: center">

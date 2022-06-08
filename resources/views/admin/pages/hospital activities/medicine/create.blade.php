@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 
-    <h1>Add Medicine</h1>
+    <h1>{{__('Add Medicine')}}</h1>
     <form action="{{route('medicine.store')}}" method="POST">
         @csrf
     <div class="form-group col-6">

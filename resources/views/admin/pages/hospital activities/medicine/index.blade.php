@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-    <h1>Medicines</h1>
+    <h1>{{__('Medicines')}}</h1>
         <a class="btn btn-success" href="{{route('medicine.create')}}">Add Medicine</a>
        <div><br>
         <table class="table" id="dataTable" style="text-align: center">

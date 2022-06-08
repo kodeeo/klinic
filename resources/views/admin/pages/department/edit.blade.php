@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Department Update</h1>
+<h1>{{__('Department Update')}}</h1>
 
 
 <form action="{{route('update.department',$department->id)}}" method="POST" enctype="multipart/form-data">

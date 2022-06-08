@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
     
-<h3> Cabin </h3>
+<h3> {{__('Cabin')}} </h3>
 
 <p><b>Cabin Number: {{$cabin->cabin_number}}</b></p>
 <p><b>Admission ID: {{$cabin->admission_id}}</b></p>
