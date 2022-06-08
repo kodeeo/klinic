@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Export;
+namespace App\Http\Controllers\Admin\Activities;
 
-use App\Http\Controllers\Controller;
-use App\Models\Investigation;
 use Illuminate\Http\Request;
+use App\Models\Investigation;
+use App\Http\Controllers\Controller;
 
-class InvestigationReportController extends Controller
+class InvestigationController extends Controller
 {
     /**
      * Display a listing of the resource.
