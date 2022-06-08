@@ -64,11 +64,14 @@
                 <span> Doctors </span>
                 <span class="menu-arrow"></span>
             </a>
+            
             <div class="collapse" id="doctors">
                 <ul class="side-nav-second-level">
+                    @if(hasAnyPermissions('show.department'))
                     <li>
                         <a href="{{route('show.department')}}">Department</a>
                     </li>
+                    @endif
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
                     </li>

@@ -1,8 +1,34 @@
 @extends('admin.master')
 @section('content')
-    <h1>Birth Report</h1>
+    <h1>{{__('Birth Report')}}</h1>
         <a class="btn btn-success" href="{{route('birth_report.create')}}">Create Birth Report</a>
        <div><br>
+
+         
+       <div class="row" style="justify-content: space-between;">
+  <div class="col">
+  <a class="btn btn-success" href="{{route('birth_report.create')}}">Create Birth Report</a>
+  </div>
+
+  <div class="col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="{{route('birth.report.csv')}}">
+        CSV
+      </a>
+      <a class="btn btn-info" href="{{route('birth.report.excel')}}">
+        Excel
+      </a>
+      <a class="btn btn-info" href="">
+        PDF
+      </a>
+      <a class="btn btn-info" href="">
+        Print    
+      </a>
+  </div>
+</div>
+<br><br>
+<div>
+
+       <br>
         <table class="table" id="dataTable" style="text-align: center">
             <thead>
               <tr>

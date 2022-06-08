@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
     <div class="container">
-        <h1>Investigations Report Details</h1>
+        <h1>{{__('Investigations Report Details')}}</h1>
         <hr>
         <td><img src="{{url('/uploads/investigations/'.$investigations->investigation_img)}}" style="border-radius:4px" width="500px" alt="Investigation image"></td>
         <p><b>Patient ID: {{$investigations->patient_id}}</b></p>

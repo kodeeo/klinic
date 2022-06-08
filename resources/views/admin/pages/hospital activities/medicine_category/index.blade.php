@@ -1,8 +1,34 @@
 @extends('admin.master')
 @section('content')
-    <h1>Medicine Categories</h1>
+    <h1>{{__('Medicine Categories')}}</h1>
         <a class="btn btn-success" href="{{route('medicine_category.create')}}">Add Medicine Category</a>
        <div><br>
+
+       
+        <div class="row" style="justify-content: space-between;">
+  <div class="col">
+  <a class="btn btn-success" href="{{route('medicine_category.create')}}">Add Medicine Category</a>
+  </div>
+
+  <div class="col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="{{route('medicine_category.report.csv')}}">
+        CSV
+      </a>
+      <a class="btn btn-info" href="{{route('medicine_category.report.excel')}}">
+        Excel
+      </a>
+      <a class="btn btn-info" href="">
+        PDF
+      </a>
+      <a class="btn btn-info" href="">
+        Print    
+      </a>
+  </div>
+</div>
+<br><br>
+<div>
+
+
         <table class="table" id="dataTable" style="text-align: center">
             <thead>
               <tr>

@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Add New WardBoy</h1>
+<h1>{{__('Add New WardBoy')}}</h1>
 
 
 <!--server side validation start-->

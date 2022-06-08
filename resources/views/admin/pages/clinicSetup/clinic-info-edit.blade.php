@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Setup Clinic Informations</h1>
+<h1>{{__('Setup Clinic Informations')}}</h1>
 
 @if ($errors->any())
      <div class="alert alert-danger" role="alert">

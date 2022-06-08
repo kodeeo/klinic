@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Edit Test Category</h1>
+<h1>{{__('Edit Test Category')}}</h1>
 
 <form action="{{route('test.category.update',$test_category->id)}}" method="post" enctype="multipart/form-data">
 @method('put')    

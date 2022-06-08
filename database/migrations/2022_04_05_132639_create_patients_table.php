@@ -28,21 +28,21 @@ return new class extends Migration
             $table->string('passport',15)->nullable();
             $table->string('language',10);
             $table->string('spouse');
-            $table->string('b_place',50);
+            $table->string('b_place');
             //*
             $table->string('address',80);
-            $table->string('phone',15);
-            $table->string('occupation',15);
+            $table->string('phone');
+            $table->string('occupation');
             $table->string('blood',5);
             $table->string('status');
-            $table->string('religion',10);
+            $table->string('religion');
             $table->string('height',5);
             $table->string('weight',5);
             //*
             $table->string('e_name',50);
-            $table->string('relation',50);
-            $table->string('contact_number',15);
-            $table->string('password',10);
+            $table->string('relation');
+            $table->string('contact_number');
+            $table->string('password');
             $table->string('patient_image')->nullable;
             $table->timestamps();
         });

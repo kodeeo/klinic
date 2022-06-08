@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Create Appointment</h1>
+<h1>{{__('Create Appointment')}}</h1>
 
 <form action="{{route('appointment.store')}}" method="POST" enctype="multipart/form-data">
     @csrf

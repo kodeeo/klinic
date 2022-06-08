@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Appointment</h1>
+<h1>{{__('Appointment')}}</h1>
 <hr>
 <a href="{{route('appointment.create')}}"><button class="btn btn-primary">Add Appointment</button></a>
 <br><br>

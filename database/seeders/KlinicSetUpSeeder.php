@@ -24,5 +24,6 @@ class KlinicSetUpSeeder extends Seeder
             'web'=>'www.kodeeo.com',
             'image'=>'klinic.png'
         ]);
+        
     }
 }

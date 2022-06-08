@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Update Medicine</h1>
+<h1>{{__('Update Medicine')}}</h1>
 <form action="{{route('medicine.update', $medicine->id)}}" method="POST">
     @csrf
     @method('PUT')

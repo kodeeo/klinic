@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 
-    <h1>Create Birth Report </h1>
+    <h1>{{__('Create Birth Report')}} </h1>
     <form action="{{route('birth_report.store')}}" method="POST">
         @csrf
 <div class="form-group col-6">

@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<h1>Wardboy List</h1>
+<h1>{{__('Wardboy List')}}</h1>
 <hr>
 <div class="row" style="justify-content: space-between;">
   <div class="col">

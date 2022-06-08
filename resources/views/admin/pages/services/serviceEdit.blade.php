@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Add Service</h1>
+<h1>{{__('Edit Service')}}</h1>
 
 {{-- validation --}}
 @if($errors->any())
