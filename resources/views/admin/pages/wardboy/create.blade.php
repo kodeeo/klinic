@@ -45,7 +45,7 @@
 
           <div class="form-group col-6">
             <label for="joinDate">Join Date</label>
-            <input type="text" class="form-control"  name="joinDate" placeholder="Enter Joining Date" >
+            <input type="date" class="form-control"  name="joinDate" placeholder="Enter Joining Date" >
           </div>
 
           <div class="form-group col-6">

@@ -36,7 +36,7 @@
               <option>IPD</option>
             </select>
           </div>
-          <div class="form-group col-6">
+          <div class="form-group col-6 mt-2">
               <label for="email">Email</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
           </div>

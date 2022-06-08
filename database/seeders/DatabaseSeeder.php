@@ -20,5 +20,27 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminTableSeeder::class);
         $this->call(KlinicSetUpSeeder::class);
         $this->call(PermissionSeeder::class);
+        $this->call(WardboySeeder::class);
+        $this->call(DoctorSeeder::class);
+        $this->call(PatientSeeder::class);
+        $this->call(DepartmentSeeder::class);
+        $this->call(NurseSeeder::class);
+        $this->call(ServiceModelSeeder::class);
+        $this->call(WardSeeder::class);
+        $this->call(TestSeeder::class);
+        
+        
+        
+        $this->call(TestCategorySeeder::class);
+        $this->call(AppoinmentSeeder::class);
+        $this->call(DesignationSeeder::class);
+        $this->call(AdmissionSeeder::class);
+        $this->call(VisitSeeder::class);
+        $this->call(BirthSeeder::class);
+        $this->call(DeathSeeder::class);
+        $this->call(OperationSeeder::class);
+        $this->call(InvestigationSeeder::class);
+        $this->call(MedicineSeeder::class);
+        $this->call(MedicineCategorySeeder::class);
     }
 }

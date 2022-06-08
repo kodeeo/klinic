@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('wards', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('staff_id')->constrained('staff')->cascadeOnDelete();
-            $table->string('bed');
+            $table->string('ward_type');
+            $table->string('ward_number');
+            $table->string('bed_number');
+            $table->string('status')->default('available');
             $table->timestamps();
             
             

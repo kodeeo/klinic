@@ -78,7 +78,7 @@
 		  @endforeach
 	
 	  </table>
-
+{{$roles->links()}}
 
     
 @endsection

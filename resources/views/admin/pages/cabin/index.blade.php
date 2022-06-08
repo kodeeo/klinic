@@ -33,7 +33,7 @@
 <hr>
 
 <div>
-              <table class="table" style="text-align: center;">
+              <table class="table" id="dataTable" style="text-align: center;">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">ID</th>
@@ -75,6 +75,7 @@
                   @endforeach
                 </tbody>
               </table>
+              {{$cabin->links()}}
               
 </div>
 @endsection

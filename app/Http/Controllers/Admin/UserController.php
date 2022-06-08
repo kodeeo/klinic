@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function u_list(){
-        $users= User::all();
+        $users= User::paginate(10);
         return view('admin.pages.users.index', compact('users'));
     }
     public function u_add(){
