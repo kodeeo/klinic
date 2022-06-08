@@ -21,6 +21,7 @@ class AdminTableSeeder extends Seeder
          'name'=>'admin',
          'status'=>'active',
          'description'=>'ooo',
+         'slug'=>'abc'
         ]);
 
     

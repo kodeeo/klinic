@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Role;
 use App\Models\Permission;
+use Illuminate\Http\Request;
+use App\Models\Role_Permission;
+use App\Http\Controllers\Controller;
 
 class PermissionController extends Controller
 {
@@ -61,5 +63,38 @@ class PermissionController extends Controller
     {
       Permission::find($permission_id)->delete();
       return redirect()->back();
+    }
+
+    public function permissionList($role_id){
+        $role = Role::find($role_id);
+        $permissions=Permission::all();
+        return view('admin.pages.permission.permissions', compact('permissions','role'));
+    }
+
+
+
+
+    public function assign(Request $request, $role_id){
+        $role=Role::find($role_id);
+        $role->rolepermission()->sync($request->permission_ids);
+        return redirect()->back();
+        
+
+    }
+
+
+    public function permissionEdit($role_id){
+        $role=Role::with('rolepermission')->find($role_id);
+        $permission=Permission::get();
+        // dd($permission->all());
+        return view('admin.pages.permission.permissionEdit', compact('role','permission'));
+    }
+
+    public function permissionUpdate(Request $request, $role_id){
+        $role=Role::with('rolepermission')->find($role_id);
+        $role->rolepermission()->sync($request->permission_ids);
+        return redirect()->back();
+
+
     }
 }

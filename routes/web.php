@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\CabinController;
 
 
-use App\Http\Controllers\Admin\LoginController;
+// use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\NurseController;
 
 use App\Http\Controllers\Admin\StaffController;
@@ -32,16 +32,16 @@ use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
 
-use App\Http\Controllers\Admin\PatientController;
-use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\DashboardController;
+// use App\Http\Controllers\Admin\PatientController;
+// use App\Http\Controllers\Admin\ServiceController;
+// use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\TestCategoryController;
-use App\Http\Controllers\Admin\DesignationController;
+// use App\Http\Controllers\Admin\DesignationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +88,9 @@ Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role
 Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
 Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
 Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('role.delete');
+
+// role permission
+
     
     
     //users
@@ -106,14 +109,14 @@ Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.
 // Route::get('admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
 
 // role
-Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
-Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
-Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
+// Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
+// Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
+// Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
 
-Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role.view');
-Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
-Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
-Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('role.delete');
+// Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role.view');
+// Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
+// Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
+// Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('role.delete');
 
 
 //users
@@ -134,7 +137,6 @@ Route::post('/patients/store',[PatientController::class, 'patientStore'])->name(
 Route::get('/patients/admission/add',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::get('/patients/admission/add/{patient_id}',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::post('/patients/admission/store',[PatientController::class, 'patientAdmissionStore'])->name('patient_admisssion.store');
-
 
 
 
@@ -209,6 +211,10 @@ Route::resource('designation',DesignationController::class);
 
 //Permission resource controller
 Route::resource('permission',PermissionController::class);
+Route::get('permission/list/{role_id}',[PermissionController::class,'permissionList'])->name('permission.list');
+Route::post('/permission/assign/{role_id}', [PermissionController::class, 'assign'])->name('permission.assign');
+Route::get('/permission/edit/{role_id}', [PermissionController::class, 'permissionEdit'])->name('permission.edit');
+Route::put('/permission/update/{role_id}', [PermissionController::class, 'permissionUpdate'])->name('permission.update');
 
 
 //Clinic Setup
@@ -233,6 +239,9 @@ Route::put('/service/edit/{id}',[ServiceController::class,'serviceUpdate'])->nam
 Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->name('admin.service.delete');
 #status update
 Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
+
+
+
 //localization
 Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->name('admin.language.change');
 
@@ -244,7 +253,7 @@ Route::resource('service', WardController::class);
 
 
 
-}); 
+
 
 
 
