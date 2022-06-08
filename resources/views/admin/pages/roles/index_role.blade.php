@@ -67,10 +67,12 @@
 
 
 		 
-		 <td>  <a href="{{route('role.view', $role->id)}}" class="btn btn-success" type="button">View</a>
-			 
+		 <td>  
+			<a href="{{route('role.view', $role->id)}}" class="btn btn-success" type="button">View</a>	 
 			<a href="{{route('role.edit', $role->id)}}" class="btn btn-warning" type="button">Edit</a>
 			<a href="{{route('role.delete', $role->id)}}" class="btn btn-danger" type="button">Delete</a>
+			<a href="{{route('permission.list', $role->id)}}" class="btn btn-danger" type="button">Assign</a>
+
 		</td>
 		  </tr>
 		  @endforeach
