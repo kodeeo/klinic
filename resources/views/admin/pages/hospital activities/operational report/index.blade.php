@@ -1,7 +1,8 @@
 @extends('admin.master')
 @section('content')
-<h1>Opeation Report</h1>
-
+<h1>{{__('Opeation Report')}}</h1>
+<a class="btn btn-success" href="{{route('operational_activities.create')}}">Create Operation Report</a>
+<div><br>
 
 <div class="row" style="justify-content: space-between;">
   <div class="col">

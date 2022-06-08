@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 
-    <h1>Create Investigation Report </h1>
+    <h1>{{__('Create Investigation Report ')}}</h1>
     <form action="{{route('investigations.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="form-group col-6">

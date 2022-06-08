@@ -1,8 +1,9 @@
 @extends('admin.master')
 @section('content')
-    <h1>Medicines</h1>
-       
-       
+    <h1>{{__('Medicines')}}</h1>
+        <a class="btn btn-success" href="{{route('medicine.create')}}">Add Medicine</a>
+       <div><br>
+
 
         <div class="row" style="justify-content: space-between;">
   <div class="col">

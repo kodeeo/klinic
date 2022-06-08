@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
     <div class="container">
-        <h1>Birth Report Details</h1>
+        <h1>{{__('Birth Report Details')}}</h1>
         <hr>
         <p><b>Patient ID: {{$birthReport->patient_id}}</b></p>
         <p><b>Date: {{$birthReport->date}}</b></p>

@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 
-<h1>Cabin</h1>
+<h1>{{__('Cabin')}}</h1>
 <hr>
 
  {{-- <a href="{{route('create.category')}}" button type="submit" class="btn btn-primary">Create Category</button> </a> --}}

@@ -2,7 +2,7 @@
 @section('content')
     
 
-<h1>Setup Clinic Informations</h1>
+<h1>{{__('Setup Clinic Informations')}}</h1>
 
 <form action="{{route('clinic.setup.store')}}" method="POST" enctype="multipart/form-data">
     @csrf

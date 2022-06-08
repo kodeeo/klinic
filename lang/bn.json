@@ -12,41 +12,127 @@
         
     "Patient List": "রোগীর তালিকা",
     "Add New Patient":" নতুন রোগী যোগ করুন",
+    "Admitted Patients List":"ভর্তি রোগীদের তালিকা",
+    "Patient Admission":"রোগী ভর্তি",
 
 
 
     "Doctors":"ডাক্তাররা",
      "Doctor Registration":"ডাক্তার নিবন্ধন",
+     "Doctor Profile Details":"ডাক্তারের প্রোফাইলের বিবরণ",
 
 
      "Staffs":"স্টাফ",
      "Staff Registration":"স্টাফ নিবন্ধন",
+     "Staff Update":"স্টাফ আপডেট",
+     "Staff Profile Details":"স্টাফ প্রোফাইল বিবরণ",
 
 
 
      "Designation":"উপাধি",
+     "Designation Update":"পদবী আপডেট",
 
 
 
      "Service List":"পরিষেবা তালিকা",
      "Add Service":"পরিষেবা যোগ করুন",
+     "Service Details":"পরিষেবার বিবরণ",
+     "Edit Service":"পরিষেবা সম্পাদনা করুন",
 
 
 
 
     "Departments":"বিভাগসমূহ",
+    "Department Update":"বিভাগ আপডেট",
 
 
 
 
     "Add New Nurse":"নতুন নার্স যোগ করুন",
     "Nurses List":"নার্সদের তালিকা",
+    "Edit Nurse":"নার্স সম্পাদনা করুন",
+    "Nurse Profile Details":"নার্স প্রোফাইল বিবরণ",
 
 
     "Test Category List":"পরীক্ষা বিভাগের তালিকা",
     "Add New Test Category":"নতুন পরীক্ষা বিভাগ যোগ করুন",
+    "Edit Test Category":"পরীক্ষা বিভাগ সম্পাদনা করুন",
     "Test List":"পরীক্ষার তালিকা",
-    "Add New Test": "নতুন পরীক্ষা যোগ করুন"
+    "Add New Test": "নতুন পরীক্ষা যোগ করুন",
     
+
+
+
+    "Appointment":"নিয়োগ",
+    "Create Appointment":"অ্যাপয়েন্টমেন্ট তৈরি করুন",
+    "Edit Appointment":"",
+
+
+
+    "Admissions":"ভর্তি",
+
+
+    "Add To Cart":"কার্টে যোগ করুন",
+    "Cart":"কার্ট",
+
+
+
+    "Cabin":"কেবিন",
+    "Cabin Update":"কেবিন আপডেট",
+
+
+    "Setup Clinic Informations":"সেটআপ ক্লিনিক তথ্য",
+    "Clinic Informations":"ক্লিনিক তথ্য",
+
+    
+    
+   "Create Birth Report":"জন্ম রিপোর্ট তৈরি করুন",
+    "Edit Birth Report Here":"এখানে জন্ম রিপোর্ট সম্পাদনা করুন",
+    "Birth Report":"জন্ম রিপোর্ট",
+    "Birth Report Details":"জন্ম রিপোর্ট বিশদ",
+
+
+
+    "Create Death Report":"মৃত্যু রিপোর্ট তৈরি করুন",
+    "Edit Death Report Here":"এখানে মৃত্যু রিপোর্ট সম্পাদনা করুন",
+    "Death Report":"মৃত্যু রিপোর্ট",
+    "Death Report Details":"মৃত্যুর রিপোর্টের বিবরণ",
+
+
+
+    "Create Investigation Report":"তদন্ত প্রতিবেদন তৈরি করুন",
+    "Edit Investigation Report Here":"এখানে তদন্ত প্রতিবেদন সম্পাদনা করুন",
+    "Investigation Report":"তদন্ত প্রতিবেদন",
+    "Investigations Report Details":"তদন্ত রিপোর্ট বিশদ",
+
+
+
+    "Add Medicine":"ওষুধ যোগ করুন",
+    "Update Medicine":"মেডিসিন আপডেট করুন",
+    "Medicines":"ওষুধগুলো",
+    "Medicine Details":"ওষুধের বিবরণ",
+
+
+    "Add Medicine Category":"মেডিসিন বিভাগ যোগ করুন",
+    "Update Medicine Category":"মেডিসিন বিভাগ আপডেট করুন",
+    "Medicine Categories":"ঔষধ বিভাগ",
+    "Medicine Category Details":"মেডিসিন বিভাগ বিশদ",
+
+
+    "Operational Activity":"অপারেশনাল কার্যকলাপ",
+    "Edit Operation Report Here":"এখানে অপারেশন রিপোর্ট সম্পাদনা করুন",
+    "Opeation Report":"অপারেশন রিপোর্ট",
+    "Operation Report Details":"অপারেশন রিপোর্ট বিশদ",
+
+
+
+    "Ward Update":"ওয়ার্ড আপডেট",
+    "Ward":"ওয়ার্ড",
+
+
+    "Add New WardBoy":"নতুন ওয়ার্ডবয় যোগ করুন",
+    "Edit WardBoy":"ওয়ার্ডবয় সম্পাদনা করুন",
+    "Wardboy List":"ওয়ার্ডবয় তালিকা",
+    "Wardboy Profile Details":"ওয়ার্ডবয় প্রোফাইলের বিবরণ"
 }
     
