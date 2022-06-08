@@ -59,9 +59,9 @@ use App\Http\Controllers\Admin\Activities\BirthreportController;
 use App\Http\Controllers\Admin\Activities\DeathreportController;
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
+use App\Http\Controllers\Admin\Export\InvestigationReportController;
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
-use App\Http\Controllers\Admin\Activities\InvestigationReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
 
