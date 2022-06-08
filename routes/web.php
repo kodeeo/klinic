@@ -336,6 +336,7 @@ Route::controller(PatientExportController::class)->group(function () {
     Route::get('patient/data/excel','excel')->name('patient.data.excel');
     Route::get('patient/data/pdf','pdf')->name('patient.data.pdf');
     Route::get('patient/data/print','print')->name('patient.data.print');
+});
 
 
 //Hospital Activities Export
@@ -355,3 +356,5 @@ Route::controller(HospitalActivitiesExportController::class)->group(function () 
 
     Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
     Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
+
+});
