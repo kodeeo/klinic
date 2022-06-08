@@ -19,13 +19,4 @@ class DoctorDeptExportController extends Controller
         return Excel::download(new DoctorDeptExport(),date('Y-m-d').'.xlsx');
     }
 
-    public function pdf()
-    {
-        return 'pdf';
-    }
-
-    public function print()
-    {
-        return 'print';
-    }
 }

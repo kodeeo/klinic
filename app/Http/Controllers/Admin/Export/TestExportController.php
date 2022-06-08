@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class TestExportController extends Controller
 {
-    public function copy()
+    public function csv()
     {
         return Excel::download(new TestExport(),date('Y-m-d').'.csv');
     }
@@ -19,13 +19,4 @@ class TestExportController extends Controller
         return Excel::download(new TestExport(),date('Y-m-d').'.xlsx');
     }
 
-    public function pdf()
-    {
-        return 'pdf';
-    }
-
-    public function print()
-    {
-        return 'print';
-    }
 }

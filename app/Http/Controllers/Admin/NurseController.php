@@ -29,7 +29,7 @@ class NurseController extends Controller
         {
             $file=$request->file('image');
             $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$filename);
+            $file->storeAs('/uploads/nurse',$filename);
         }
 
          //server side validation start

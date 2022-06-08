@@ -40,7 +40,6 @@ class WardController extends Controller
     {
         $quantity=$request->quantity;
         $from=$request->from;
-        //dd($from);
         for ($x = 0; $x < $quantity; $x++) {
             $ward=Ward::insert([
                 'ward_type'=>$request->ward_type,
@@ -48,9 +47,7 @@ class WardController extends Controller
                 'bed_number'=>$from+$x,
             ]);
         }
-        
         return redirect()->route('ward.index')->with(Toastr::info('Ward Bed Created Successfully'));
-
     }
 
     /**

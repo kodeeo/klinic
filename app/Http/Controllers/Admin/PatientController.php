@@ -35,7 +35,7 @@ class PatientController extends Controller
            
             $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
             // step 3: store project directory
-             $request->File('patient_image')->storeAs('/patients',$image_name);
+             $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
         }
         {
             // dd($request->all());
