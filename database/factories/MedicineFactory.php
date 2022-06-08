@@ -19,7 +19,7 @@ class MedicineFactory extends Factory
         return [
             'name'=>$this->faker->name(),
             'category_id'=>$this->faker->numerify('##'),
-            'price'=>$this->faker->number(),
+            'price'=>$this->faker->numerify('##'),
             'manufactured_by'=>$this->faker->text(),
             'description'=>$this->faker->text(),
         ];

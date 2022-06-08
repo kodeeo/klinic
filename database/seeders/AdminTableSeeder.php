@@ -22,7 +22,7 @@ class AdminTableSeeder extends Seeder
          'status'=>'active',
          'description'=>'ooo',
 
-         'slug'=>'abc'
+         'slug'=>'abc',
 
          'slug'=>'default',
 
