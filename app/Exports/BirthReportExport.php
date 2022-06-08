@@ -1,4 +1,4 @@
-DeathReportExport<?php
+<?php
 
 namespace App\Exports;
 
