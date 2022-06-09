@@ -164,12 +164,39 @@
           </li>
 
           <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+            <a data-bs-toggle="collapse" href="#bedManager" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Bed Manager </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="bedManager">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('beds.create')}}">Add Bed</a>
+                    </li>
+                    <li>
+                        <a href="{{route('beds.index')}}">Bed List</a>
+                    </li>
+                    <li>
+                        <a href="{{route('assign.bed')}}">Bed Assign</a>
+                    </li>
+                    <li>
+                        <a href="#">Assign Bed List</a>
+                    </li>
+                    <li>
+                        <a href="#">Report</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+          <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
                 <span> Room </span>
                 <span class="menu-arrow"></span>
             </a>
-            <div class="collapse" id="patients">
+            <div class="collapse" id="room">
                 <ul class="side-nav-second-level">
                     <li>
                         <a href="{{route('ward.index')}}">Ward</a>

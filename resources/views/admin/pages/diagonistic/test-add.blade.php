@@ -10,13 +10,10 @@
     <div class="form-group col-6 mt-2">
             <label for="test_category">Test Category</label>
             <select class="form-select" name="test_category_id" aria-label="Default select example">
-
                 @foreach ($test_categories as $test_category)
-          
-          
                 <option value="{{$test_category->id}}">{{$test_category->name}}</option>
                 @endforeach
-              </select>
+            </select>
         </div>
 
         <div class="form-group col-6">
