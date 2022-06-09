@@ -20,7 +20,7 @@ class KlinicSetUpSeeder extends Seeder
             'name'=>'Kodeeo Klinic',
             'address'=>'Uttara, Dhaka-1230',
             'phone'=>'01700537174',
-            'email'=>'sajjadnayem819@gmail.com',
+            'email'=>'klinic@gmail.com',
             'web'=>'www.kodeeo.com',
             'image'=>'klinic.png'
         ]);

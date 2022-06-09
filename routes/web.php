@@ -4,28 +4,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TestController;
+
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\WardController;
 
-use App\Http\Controllers\Admin\CabinController;
-
 
 
 // use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\CabinController;
 use App\Http\Controllers\Admin\LoginController;
+
+
 use App\Http\Controllers\Admin\NurseController;
-
-
 use App\Http\Controllers\Admin\StaffController;
-use App\Http\Controllers\Admin\ClinicController;
 
+use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
+
 use App\Http\Controllers\Admin\PatientController;
 
 use App\Http\Controllers\Admin\ServiceController;
-
-use App\Http\Controllers\Admin\WardboyController;
 
 
 
@@ -33,28 +32,29 @@ use App\Http\Controllers\Admin\WardboyController;
 // use App\Http\Controllers\Admin\ServiceController;
 // use App\Http\Controllers\Admin\DashboardController;
 
+use App\Http\Controllers\Admin\WardboyController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\PasswordController;
+
 use App\Http\Controllers\Admin\ScheduleController;
 
+
 use App\Http\Controllers\Admin\DashboardController;
-
-
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
-use App\Http\Controllers\Admin\TestCategoryController;
 
 // use App\Http\Controllers\Admin\DesignationController;
 
+use App\Http\Controllers\Admin\TestCategoryController;
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
-use App\Http\Controllers\Admin\Export\WardBoyExportController;
 
+use App\Http\Controllers\Admin\Export\WardBoyExportController;
 use App\Http\Controllers\Admin\Activities\BirthreportController;
 use App\Http\Controllers\Admin\Activities\DeathreportController;
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
@@ -62,6 +62,7 @@ use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
+use App\Http\Controllers\Admin\BedController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
 
@@ -254,6 +255,13 @@ Route::get('clinic/setup/delete/{id}',[ClinicController::class,'delete'])->name(
   
   //Cabin resource controller
 Route::resource('cabin',CabinController::class);
+
+
+    //Bed Manager
+Route::get('beds/assign', [BedController::class, 'assign_bed'])->name('assign.bed');
+Route::post('beds/assign/done', [BedController::class, 'assign_bed_store'])->name('assign.bed.store');
+Route::resource('beds', BedController::class);
+
 
     #services
 Route::get('/services',[ServiceController::class,'serviceForm'])->name('admin.service.form');
