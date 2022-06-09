@@ -15,12 +15,11 @@
       <a class="btn btn-info" href="{{route('test.categories.data.excel')}}">
         Excel
       </a>
-      <a class="btn btn-info" href="{{route('test.categories.data.pdf')}}">
+      <a class="btn btn-info" href="#">
         PDF
       </a>
-      <a class="btn btn-info" href="{{route('test.categories.data.print')}}">
-        Print    
-      </a>
+      <button class="btn btn-info" onclick="{window.print()}">Print</button>
+
   </div>
 </div>
 

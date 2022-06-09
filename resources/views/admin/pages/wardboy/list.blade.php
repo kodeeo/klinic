@@ -14,12 +14,11 @@
       <a class="btn btn-info" href="{{route('wardboy.data.excel')}}">
         Excel
       </a>
-      <a class="btn btn-info" href="{{route('wardboy.data.pdf')}}">
+      <a class="btn btn-info" href="#">
         PDF
       </a>
-      <a class="btn btn-info" href="{{route('wardboy.data.print')}}">
-        Print    
-      </a>
+      <button class="btn btn-info" onclick="{window.print()}">Print</button>
+
   </div>
 </div>
 <br><br>

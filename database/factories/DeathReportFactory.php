@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class OperationFactory extends Factory
+class DeathReportFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,11 +17,11 @@ class OperationFactory extends Factory
     public function definition()
     {
         return [
-            'patient_id'=>$this->faker->numerify('####'),
+            'patient_id'=>$this->faker->numerify('##'),
             'date'=>$this->faker->date(),
             'title'=>$this->faker->text(),
             'description'=>$this->faker->text(),
-            'doctor_id'=>$this->faker->numerify('####'),
+            'doctor_id'=>$this->faker->numerify('##'),
         ];
     }
 }

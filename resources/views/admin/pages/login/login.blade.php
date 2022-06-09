@@ -45,7 +45,7 @@ body{
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Password:</label><br>
-                                <input type="password" name="password" id="password" class="form-control">
+                                <input type="password" name="password" value="1234" id="password" class="form-control">
                             </div>
                             <div>
                                 <a href="{{route('forget.password')}}" style="padding-left: 18rem;" class="txt3">

@@ -22,6 +22,7 @@ class InvestigationFactory extends Factory
             'title'=>$this->faker->text(),
             'description'=>$this->faker->text(),
             'doctor_id'=>$this->faker->numerify('####'),
+            'investigation_img'=>$this->faker->numerify('####'),
         ];
     }
 }

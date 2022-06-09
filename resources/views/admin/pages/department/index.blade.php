@@ -1,11 +1,11 @@
 @extends('admin.master')
 @section('content')
 
-<h1>{{__('Departments')}}</h1>
+<h1 class="d-print-none">{{__('Departments')}}</h1>
 <hr>
 
  {{-- <a href="{{route('create.category')}}" button type="submit" class="btn btn-primary">Create Category</button> </a> --}}
-<div style="padding-left: 250px; padding-right: 250px; text-align:center;">
+<div class="d-print-none" style="padding-left: 250px; padding-right: 250px; text-align:center;">
   <form action="{{route('store.department')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
@@ -26,7 +26,7 @@
   </form>
 </div>
 
-<div class="row" style="justify-content: right;;">
+<div class="d-print-none row" style="justify-content: right;;">
 
   <div class="col-4 dt-buttons btn-group">
       <a class="btn btn-info" href="{{route('department.data.csv')}}">
@@ -35,12 +35,10 @@
       <a class="btn btn-info" href="{{route('department.data.excel')}}">
         Excel
       </a>
-      <a class="btn btn-info" href="{{route('department.data.pdf')}}">
+      <a class="btn btn-info" href="#">
         PDF
       </a>
-      <a class="btn btn-info" href="{{route('department.data.print')}}">
-        Print    
-      </a>
+      <button class="btn btn-info" onclick="{window.print()}">Print</button>
   </div>
 </div>
 

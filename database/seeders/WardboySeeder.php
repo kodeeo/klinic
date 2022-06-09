@@ -14,6 +14,6 @@ class WardboySeeder extends Seeder
      */
     public function run()
     {
-        Wardboy::factory()->count(10)->create();
+        Wardboy::factory()->count(5)->create();
     }
 }
