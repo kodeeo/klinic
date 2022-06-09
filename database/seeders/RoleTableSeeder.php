@@ -1,11 +1,12 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Department;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 
-class DepartmentSeeder extends Seeder
+use App\Models\Role;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+class RoleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        Department::factory()->count(10)->create();
+        Role::factory()->count(5)->create();
     }
 }

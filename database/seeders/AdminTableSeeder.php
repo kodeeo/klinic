@@ -19,14 +19,12 @@ class AdminTableSeeder extends Seeder
         $role=Role::create([
          'name'=>'admin',
          'status'=>'active',
-         'description'=>'ooo',
-         'slug'=>'admin',
+         'description'=>'default',
         ]);
-
 
       User::create([
             'role_id'=>$role->id,
-            'name'=>'Admin',
+            'username'=>'admin',
             'email'=>'admin@gmail.com',
             'password'=>bcrypt('1234'),
         ]);

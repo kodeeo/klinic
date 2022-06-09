@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->constrained('medicine_categories')->restrictOnDelete();
+            $table->string('name',50);
             $table->double('price');
             $table->string('manufactured_by');
-            $table->string('description');
+            $table->text('description',100);
             $table->timestamps();
         });
     }

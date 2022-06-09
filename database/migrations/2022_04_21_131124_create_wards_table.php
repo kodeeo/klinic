@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('wards', function (Blueprint $table) {
             $table->id();
-            $table->string('ward_type');
-            $table->string('ward_number');
-            $table->string('bed_number');
-            $table->string('status')->default('available');
+            $table->string('ward_type',50);
+            $table->string('ward_number',50);
+            $table->string('bed_number',50);
+            $table->string('status',20)->default('available');
             $table->timestamps();
             
             

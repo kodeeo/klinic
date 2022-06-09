@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MedicineCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class MedicineCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        MedicineCategory::factory()->count(5)->create();
     }
 }

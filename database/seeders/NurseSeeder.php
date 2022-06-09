@@ -1,9 +1,9 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Nurse;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class NurseSeeder extends Seeder
 {
@@ -14,6 +14,6 @@ class NurseSeeder extends Seeder
      */
     public function run()
     {
-        Nurse::factory()->count(5)->create();
+        User::factory()->count(5)->create();
     }
 }

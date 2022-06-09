@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('wardboys', function (Blueprint $table) {
+        Schema::create('medicine_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
-            $table->string('contact');
-            $table->string('address');
-            $table->string('wardNo')->default("Not Set Yet");
-            $table->string('joinDate');
-            $table->string('hrs');
-            $table->string('image');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wardboys');
+        Schema::dropIfExists('medicine_categories');
     }
 };

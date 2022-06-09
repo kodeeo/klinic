@@ -17,11 +17,11 @@ class OperationActivityFactory extends Factory
     public function definition()
     {
         return [
-            'patient_id'=>$this->faker->numerify('####'),
+            'patient_id'=>$this->faker->numberBetween(1,5),
             'date'=>$this->faker->date(),
             'title'=>$this->faker->text(),
             'description'=>$this->faker->text(),
-            'doctor_id'=>$this->faker->numerify('####'),
+            'doctor_id'=>$this->faker->numberBetween(1,5),
         ];
     }
 }

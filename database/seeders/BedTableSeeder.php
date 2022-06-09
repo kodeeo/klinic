@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Bed;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class AppoinmentSeeder extends Seeder
+class BedTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class AppoinmentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Bed::factory()->count(5)->create();
     }
 }

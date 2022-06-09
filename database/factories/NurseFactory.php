@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Nurse>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
 class NurseFactory extends Factory
 {
@@ -17,11 +17,14 @@ class NurseFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name(),
+            'first_name'=>$this->faker->firstName(),
+            'last_name'=>$this->faker->lastName(),
+            'username'=>$this->faker->userName(),
             'email'=>$this->faker->email(),
-            'address'=>$this->faker->address(),
-            'password'=>$this->faker->password(),
-            'image'=>$this->faker->image('public/uploads/',640,480, null, false)
+            'password'=>bcrypt('1234'),
+            'gender'=>$this->faker->randomElement(['Male','Female']),
+            'mobile'=>$this->faker->phoneNumber(),
+            'role_id'=>$this->faker->default('nurse'),
         ];
     }
 }

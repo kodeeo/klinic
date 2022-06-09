@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('clinic_setups', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slogan')->nullable();
-            $table->string('address');
-            $table->integer('phone');
-            $table->string('email');
-            $table->string('web');
-            $table->string('image')->nullable();
+            $table->string('name',50);
+            $table->string('slogan',50)->nullable();
+            $table->text('address');
+            $table->string('phone',20);
+            $table->string('email',64)->unique();
+            $table->string('web',50);
+            $table->string('image',50)->nullable();
             $table->timestamps();
         });
     }

@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id')->constrained('departments')->restrictOnDelete();
+            $table->foreignId('doctor_id')->constrained('doctors')->restrictOnDelete();
             $table->string('appointment_id')->unique();
-            $table->string('p_id');
-            $table->string('d_department');
-            $table->string('doctor');
-            $table->string('date');
-            $table->string('problem')->nullable();
-            $table->string('status');
+            $table->string('patient_id');
+            $table->date('date');
+            $table->text('problem')->nullable();
+            $table->string('status',20);
             $table->timestamps();
         });
     }

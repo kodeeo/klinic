@@ -18,9 +18,10 @@ class KlinicSetUpSeeder extends Seeder
     {
         DB::table('clinic_setups')->insert([
             'name'=>'Kodeeo Klinic',
+            'slogan'=>'Amader Klinic',
             'address'=>'Uttara, Dhaka-1230',
-            'phone'=>'01700537174',
-            'email'=>'sajjadnayem819@gmail.com',
+            'phone'=>'01700000000',
+            'email'=>'kodeeo@gmail.com',
             'web'=>'www.kodeeo.com',
             'image'=>'klinic.png'
         ]);
