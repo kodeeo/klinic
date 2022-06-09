@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'klinick'),
+    'name' => env('APP_NAME', 'klinic'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/klinick-management-system/public'),
+    'url' => env('APP_URL', 'http://localhost/klinic/public'),
 
     'asset_url' => env('ASSET_URL'),
 
@@ -163,7 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        
+
 
         /*
          * Package Service Providers...
@@ -195,6 +195,6 @@ return [
         // ...
     ])->toArray(),
 
-   
+
 
 ];

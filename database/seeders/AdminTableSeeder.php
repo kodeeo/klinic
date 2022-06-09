@@ -17,21 +17,16 @@ class AdminTableSeeder extends Seeder
     public function run()
     {
         $role=Role::create([
-         
          'name'=>'admin',
          'status'=>'active',
          'description'=>'ooo',
-
-         'slug'=>'abc',
-
-         'slug'=>'default',
-
+         'slug'=>'admin',
         ]);
 
-    
+
       User::create([
             'role_id'=>$role->id,
-            'name'=>'Foysal',
+            'name'=>'Admin',
             'email'=>'admin@gmail.com',
             'password'=>bcrypt('1234'),
         ]);

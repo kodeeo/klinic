@@ -5,23 +5,25 @@
     
     <ul class="list-unstyled topbar-menu mb-0" style="display: flex; align-items:center; padding-right: 6%;">
         <li class="dropdown notification-list">
+
              <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">
                  <option value="">Select language</option>
                  <option value="{{route('admin.language.change','en')}}">EN</option>
                  <option value="{{route('admin.language.change','bn')}}">BN</option>
                  <option value="{{route('admin.language.change','ar')}}">AR</option>
-             </select>          
-        </li>
+
+             </select>
+        </div>
 
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none" style="border:none;" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                 aria-expanded="false">
                 <span class="account-user-avatar">
-                    <h4>Company Logo</h4>
+                    <img src="" alt="">
                 </span>
                 <span>
-                    <span class="account-user-name">{{$klinic->name}}</span>
+                    <span class="account-user-name">{{auth()->user()->name}}</span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -40,7 +42,7 @@
         </li>
 
     </ul>
-    
+
     {{-- <div class="app-search dropdown d-none d-lg-block">
         <form>
             <div class="input-group">

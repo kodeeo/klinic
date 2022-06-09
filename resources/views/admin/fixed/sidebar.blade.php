@@ -23,7 +23,7 @@
 
   <div class="h-100" id="leftside-menu-container" data-simplebar>
 
-              
+
       <!--- Sidemenu -->
       <ul class="side-nav">
 
@@ -36,7 +36,7 @@
                 <span> Dashboard</span>
             </a>
         </li>
-          
+
           <li class="side-nav-item">
               <a href="{{route('user.list')}}" class="side-nav-link">
                   <i class="uil-folder-plus"></i>
@@ -64,7 +64,7 @@
                 <span> Doctors </span>
                 <span class="menu-arrow"></span>
             </a>
-            
+
             <div class="collapse" id="doctors">
                 <ul class="side-nav-second-level">
                     @if(hasAnyPermissions('show.department'))
@@ -86,7 +86,7 @@
         </li>
 
 
-    
+
 
           <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#staffs" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
@@ -112,7 +112,7 @@
             </div>
         </li>
 
-         
+
 
           <li class="side-nav-item">
               <a href="{{ route('admin.service.list') }}" class="side-nav-link">
@@ -127,7 +127,7 @@
                <span> Patients List </span>
             </a>
         </li>
-        
+
           <li class="side-nav-item">
             <a href="{{route('appointment.index')}}" class="side-nav-link">
             <i class="fa-solid fa-calendar-check"></i>
@@ -237,7 +237,7 @@
                 </ul>
             </div>
         </li>
-          
+
           <li class="side-nav-item">
               <a href="{{route('clinic.informations')}}" class="side-nav-link">
                   <i class="uil-folder-plus"></i>
@@ -245,9 +245,9 @@
               </a>
           </li>
       </ul>
-      
 
-      
+
+
       <!-- End Sidebar -->
       <div class="clearfix"></div>
 
