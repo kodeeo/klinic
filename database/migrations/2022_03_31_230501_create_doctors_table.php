@@ -15,19 +15,23 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
-            $table->string('email')->unique();
-            $table->string('phone',20);
-            $table->string('address',100);
-            $table->date('date_of_birth');
+            $table->foreignId('department_id')->constrained('departments')->restrictOnDelete();
+            $table->string('first_name',50);
+            $table->string('last_name',50);
+            $table->string('username',50);
+            $table->string('email',64)->unique();
+            $table->string('password');
+            $table->text('degree')->nullable();
+            $table->text('bio')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('mobile');
+            $table->text('address')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->string('gender',20);
-            $table->string('department_id',50);
-            $table->string('degree',255);
-            $table->string('designation',255);
-            $table->string('details',255);
-            $table->string('image')->nullable();
-            $table->string('password',100);
-            $table->string('status')->default('available');
+            $table->string('blood_group',20)->nullable();
+            $table->string('specialist',50)->nullable();;
+            $table->text('image')->nullable();
+            $table->string('status',15)->default('active');
             $table->timestamps();
         });
     }

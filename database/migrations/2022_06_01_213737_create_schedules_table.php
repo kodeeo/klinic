@@ -15,14 +15,13 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('doctor_id');
-            $table->string('days',100)->nullable();
-            $table->string('fromtime')->nullable();
-            $table->string('totime')->nullable();
-            $table->string('patient_time');
-            $table->string('serial');
-            $table->string('status');
-
+            $table->foreignId('doctor_id')->constrained('doctors')->restrictOnDelete();
+            $table->string('days',50)->nullable();
+            $table->string('fromtime',20)->nullable();
+            $table->string('totime',20)->nullable();
+            $table->string('patient_time',30);
+            $table->string('serial',20);
+            $table->string('status',20);
             $table->timestamps();
         });
     }

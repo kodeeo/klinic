@@ -2,9 +2,31 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Database\Seeders\TestSeeder;
+use Database\Seeders\WardSeeder;
+use Database\Seeders\BirthSeeder;
+use Database\Seeders\DeathSeeder;
+use Database\Seeders\NurseSeeder;
+use Database\Seeders\VisitSeeder;
+use Database\Seeders\DoctorSeeder;
+use Database\Seeders\PatientSeeder;
+use Database\Seeders\BedTableSeeder;
+use Database\Seeders\MedicineSeeder;
+use Database\Seeders\OperationSeeder;
+use Database\Seeders\RoleTableSeeder;
+use Database\Seeders\AdminTableSeeder;
+use Database\Seeders\AppoinmentSeeder;
+use Database\Seeders\DepartmentSeeder;
 use Database\Seeders\PermissionSeeder;
 use Database\Seeders\KlinicSetUpSeeder;
+use Database\Seeders\ServiceModelSeeder;
+use Database\Seeders\TestCategorySeeder;
+use Database\Seeders\InvestigationSeeder;
+use Database\Seeders\AdmissionTableSeeder;
+use Database\Seeders\AppointmentTableSeeder;
+use Database\Seeders\MedicineCategorySeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -17,27 +39,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call(RoleTableSeeder::class);
         $this->call(AdminTableSeeder::class);
         $this->call(KlinicSetUpSeeder::class);
         $this->call(PermissionSeeder::class);
-        $this->call(WardboySeeder::class);
-        $this->call(DoctorSeeder::class);
-        $this->call(PatientSeeder::class);
         $this->call(DepartmentSeeder::class);
+        $this->call(DoctorSeeder::class);
         $this->call(NurseSeeder::class);
+        $this->call(PatientSeeder::class);
         $this->call(ServiceModelSeeder::class);
         $this->call(WardSeeder::class);
-        // $this->call(TestSeeder::class);
-        // $this->call(TestCategorySeeder::class);
-        $this->call(AppoinmentSeeder::class);
-        // $this->call(DesignationSeeder::class);
-        // $this->call(AdmissionSeeder::class);
+        $this->call(TestCategorySeeder::class);
+        $this->call(TestSeeder::class);
+        $this->call(BedTableSeeder::class);
+        $this->call(AppointmentTableSeeder::class);
+        $this->call(AdmissionTableSeeder::class);
         $this->call(VisitSeeder::class);
         $this->call(BirthSeeder::class);
         $this->call(DeathSeeder::class);
         $this->call(OperationSeeder::class);
         $this->call(InvestigationSeeder::class);
-        $this->call(MedicineSeeder::class);
         $this->call(MedicineCategorySeeder::class);
+        $this->call(MedicineSeeder::class);
     }
 }

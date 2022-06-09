@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('investigations', function (Blueprint $table) {
             $table->id();
-            $table->string('patient_id');
-            $table->date('date');
-            $table->string('title');
-            $table->longText('description');
-            $table->string('doctor_id');
-            $table->string('investigation_img');
+            $table->foreignId('patient_id')->constrained('patients')->restrictOnDelete();
+            $table->foreignId('doctor_id')->constrained('doctors')->restrictOnDelete();
+            $table->date('date',20);
+            $table->text('title');
+            $table->text('description',100);
+            $table->string('investigation_img',50);
             $table->timestamps();
         });
     }

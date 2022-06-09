@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,13 @@ class AppointmentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'department_id'=>$this->faker->numberBetween(1,5),
+            'doctor_id'=>$this->faker->numberBetween(1,5),
+            'appointment_id'=>Str::random(10),
+            'patient_id'=>$this->faker->numberBetween(1,5),
+            'date'=>$this->faker->date(),
+            'problem'=>$this->faker->text(),
+            'status'=>$this->faker->randomElement(['Active','Inactive']),
         ];
     }
 }

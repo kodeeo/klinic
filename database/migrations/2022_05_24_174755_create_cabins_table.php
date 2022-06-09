@@ -16,11 +16,7 @@ return new class extends Migration
         Schema::create('cabins', function (Blueprint $table) {
             $table->id();
             $table->string('cabin_number',50);
-            $table->integer('admission_id');
-            $table->integer('staff_id');
-            $table->integer('nurse_id');
-            $table->string('status')->default('active');
-
+            $table->string('status',10)->default('active');
             $table->timestamps();
         });
     }

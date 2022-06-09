@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('service_models', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name',50)->unique();
             $table->string('status')->default('Active');
-            $table->string('description');  
+            $table->text('description');  
             $table->timestamps();
         });
     }

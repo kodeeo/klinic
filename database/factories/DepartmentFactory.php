@@ -18,8 +18,7 @@ class DepartmentFactory extends Factory
     {
         return [
             'name'=>$this->faker->name(),
-            'details'=>$this->faker->text(),
-           'image'=>$this->faker->image('public/uploads/departments',640,480, null, false),
+            'description'=>$this->faker->text(),
         ];
     }
 }
