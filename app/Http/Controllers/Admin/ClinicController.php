@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ClinicController extends Controller
 {
     public function info(){
-        $clinic_infos=ClinicSetup::paginate(10);
+        $clinic_infos=ClinicSetup::all();
         return view('admin.pages.clinicSetup.clinic-informations',compact('clinic_infos'));
     }
 
@@ -25,7 +25,7 @@ class ClinicController extends Controller
         {
             $file=$request->file('image');
             $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$filename);
+            $file->storeAs('/uploads/klinicLogo',$filename);
         }
 
         $request->validate([
@@ -65,7 +65,7 @@ class ClinicController extends Controller
         {
             $file=$request->file('image');
             $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$filename);
+            $file->storeAs('/uploads/klinicLogo',$filename);
         }
 
         $clinic_info->update([

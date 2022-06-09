@@ -30,20 +30,19 @@
         <td>0{{$clinic_info->phone}}</td>
         <td>{{$clinic_info->email}}</td>
         <td>{{$clinic_info->web}}</td>
-        <td><img src="{{url('/uploads/'.$clinic_info->image)}}" style="border-radius:4px" width="40px" alt="test image"></td>
         <td>
-          
-          <a class="btn btn-warning btn-sm" href="{{route('clinic.setup.edit',$clinic_info->id)}}"><i class="fas fa-edit"></i></a>
-          <a class="btn btn-danger btn-sm" href="{{route('clinic.setup.delete',$clinic_info->id)}}"><i class="fas fa-trash"></i></a>
-      </td>
+          <img src="{{url('/uploads/klinicLogo/'.$clinic_info->image)}}" style="border-radius:4px" width="100px" alt="Logo">
+        </td>
+        <td>
+            <a class="btn btn-warning btn-sm" href="{{route('clinic.setup.edit',$clinic_info->id)}}"><i class="fas fa-edit"></i></a>
+            <a class="btn btn-danger btn-sm" href="{{route('clinic.setup.delete',$clinic_info->id)}}"><i class="fas fa-trash"></i></a>
+        </td>
         </td>
       </tr>
     @endforeach
      
     </tbody>
   </table>
-
-  {{$clinic_infos->links()}}
 </div> 
 
 @endsection

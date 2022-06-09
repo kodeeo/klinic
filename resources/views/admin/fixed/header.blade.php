@@ -1,22 +1,23 @@
 <div style="display:flex; justify-content:space-between; align-items:center;">
     <button class="button-menu-mobile open-left">
         <i class="mdi mdi-menu"></i>
-    </button>
+    </button> 
+    
+    <ul class="list-unstyled topbar-menu mb-0" style="display: flex; align-items:center; padding-right: 6%;">
+        <li class="dropdown notification-list">
 
-    <ul class="list-unstyled topbar-menu float-end mb-0" style="display: flex; align-items:center;">
-        <div>
-            {{-- <label for="" style="color: white;">Select Language:</label> --}}
              <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">
                  <option value="">Select language</option>
                  <option value="{{route('admin.language.change','en')}}">EN</option>
                  <option value="{{route('admin.language.change','bn')}}">BN</option>
                  <option value="{{route('admin.language.change','ar')}}">AR</option>
+
              </select>
         </div>
 
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+            <a class="nav-link dropdown-toggle nav-user arrow-none" style="border:none;" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                 aria-expanded="false">
                 <span class="account-user-avatar">
                     <img src="" alt="">
