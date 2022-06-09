@@ -17,9 +17,10 @@ class TestFactory extends Factory
     public function definition()
     {
         return [
-            'test_category_id'=>$this->faker->randomElements(['1','2','3','4','5']),
+            'test_category_id'=>1,
             'name'=>$this->faker->name(),
             'procedure'=>$this->faker->text(),
+            'price'=>100,
             'description'=>$this->faker->text(),
         ];
     }

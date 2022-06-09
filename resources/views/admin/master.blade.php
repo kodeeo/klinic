@@ -1,114 +1,97 @@
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Klinic Management System</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{url('backend/images/favicon.ico')}}">
+    <meta charset="utf-8"/>
+    <title>Klinic Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta content="Coderthemes" name="author"/>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{url('backend/images/favicon.ico')}}">
 
-        <!-- third party css -->
-        <link href="{{url('backend/css/vendor/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
+    <!-- third party css -->
+{{--    <link href="{{url('backend/css/vendor/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css"/>--}}
+    <!-- third party css end -->
 
-        <!-- App css -->
-        <link href="{{url('backend/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{url('backend/css/app.min.css')}}" rel="stylesheet" type="text/css" id="light-style" />
-        <link href="{{url('backend/css/app-dark.min.css')}}" rel="stylesheet" type="text/css" id="dark-style" />
+    <!-- App css -->
+    <link href="{{url('backend/css/icons.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{url('backend/css/app.min.css')}}" rel="stylesheet" type="text/css" id="light-style"/>
+{{--    <link href="{{url('backend/css/app-dark.min.css')}}" rel="stylesheet" type="text/css" id="dark-style"/>--}}
 
-        <!-- font awesome cdn-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- font awesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        <!-- toastr cdn -->
-         <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-        <!-- close toastr -->
-        <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-        <!-- include summernote css/js-->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- toastr cdn -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <!-- close toastr -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- include summernote css/js-->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-        {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
 
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-        
+<body class="loading"
+      data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+<!-- Begin page -->
+<div class="wrapper">
 
-    </head>
+    @include('admin.fixed.sidebar')
 
-    <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
-        <!-- Begin page -->
-        <div class="wrapper">
-
-            @include('admin.fixed.sidebar')
-
-            <div class="content-page">
-                    @include('admin.fixed.header')
-                    <div class="container">
-                        @yield('content')
-                    </div>
-            </div>
-
-            @include('admin.fixed.footer')
-
+    <div class="content-page">
+        @include('admin.fixed.header')
+        <div class="container">
+            @yield('content')
         </div>
-                
-    <!--    JavaScripts-->
-    <!-- ===============================================-->
-    {{-- summernote scripts --}}
-    <script>
-        $('#summernote').summernote({
-         tabsize: 2,
-         height: 100
-       });
- </script>
- {{-- summernote scripts --}}
-    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script src="{{url('js/popper.min.js')}}"></script>
-    <script src="{{url('js/bootstrap.min.js')}}"></script>
-    <script src="{{url('js/anchor.min.js')}}"></script>
-    <script src="{{url('js/is.min.js')}}"></script>
-    <script src="{{url('js/echarts.min.js')}}"></script>
-    <script src="{{url('js/all.min.js')}}"></script>
-    <script src="{{url('js/lodash.min.js')}}"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="{{url('js/list.min.js')}}"></script>
-    <script src="{{url('js/theme.js')}}"></script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-    {!! Toastr::message() !!}
-  </body>
-        </div>
+    </div>
 
-        <div class="rightbar-overlay"></div>
-        <!-- /End-bar -->
+    @include('admin.fixed.footer')
 
-        <!-- bundle -->
-        <script src="{{url('backend/js/vendor.min.js')}}"></script>
-        <script src="{{url('backend/js/app.min.js')}}"></script>
+</div>
+<!--    JavaScripts-->
 
-        <!-- third party js -->
-        <script src="{{url('backend/js/vendor/apexcharts.min.js')}}"></script>
-        <script src="{{url('backend/js/vendor/jquery-jvectormap-1.2.2.min.js')}}"></script>
-        <script src="{{url('backend/js/vendor/jquery-jvectormap-world-mill-en.js')}}"></script>
-        <!-- third party js ends -->
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
 
-        <!-- demo app -->
-        <script src="{{url('backend/js/pages/demo.dashboard.js')}}"></script>
-        <!-- end demo js-->
-        <!--toaster script-->
-        <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{{--<script src="{{url('js/popper.min.js')}}"></script>--}}
+{{--<script src="{{url('js/bootstrap.min.js')}}"></script>--}}
+{{--<script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>--}}
+{{--<script src="{{url('js/list.min.js')}}"></script>--}}
+{{--<script src="{{url('js/theme.js')}}"></script>--}}
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
+
+<script src="{{url('backend/js/vendor.min.js')}}"></script>
+<script src="{{url('backend/js/app.min.js')}}"></script>
+
+<!-- third party js -->
+{{--<script src="{{url('backend/js/vendor/apexcharts.min.js')}}"></script>--}}
+{{--<script src="{{url('backend/js/vendor/jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
+{{--<script src="{{url('backend/js/vendor/jquery-jvectormap-world-mill-en.js')}}"></script>--}}
+<!-- third party js ends -->
+
+<!-- demo app -->
+<script src="{{url('backend/js/pages/demo.dashboard.js')}}"></script>
+<!-- end demo js-->
 
 
-        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-       
-        {{-- summernote script file --}}
-        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-        <script>
-            $(document).ready( function () {
-            $('#dataTable').DataTable();
-        } );
-        </script>
-    </body>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+{{-- summernote script file --}}
+<script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+</script>
+
+<script>
+    $('#summernote').summernote({
+        tabsize: 2,
+        height: 100
+    });
+</script>
+</body>
 </html>

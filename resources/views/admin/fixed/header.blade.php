@@ -1,8 +1,8 @@
 <div style="display:flex; justify-content:space-between; align-items:center;">
     <button class="button-menu-mobile open-left">
         <i class="mdi mdi-menu"></i>
-    </button> 
-    
+    </button>
+
     <ul class="list-unstyled topbar-menu float-end mb-0" style="display: flex; align-items:center;">
         <div>
             {{-- <label for="" style="color: white;">Select Language:</label> --}}
@@ -11,7 +11,7 @@
                  <option value="{{route('admin.language.change','en')}}">EN</option>
                  <option value="{{route('admin.language.change','bn')}}">BN</option>
                  <option value="{{route('admin.language.change','ar')}}">AR</option>
-             </select>          
+             </select>
         </div>
 
 
@@ -19,10 +19,10 @@
             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                 aria-expanded="false">
                 <span class="account-user-avatar">
-                    <h4>Company Logo</h4>
+                    <img src="" alt="">
                 </span>
                 <span>
-                    <span class="account-user-name">{{$klinic->name}}</span>
+                    <span class="account-user-name">{{auth()->user()->name}}</span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -41,7 +41,7 @@
         </li>
 
     </ul>
-    
+
     {{-- <div class="app-search dropdown d-none d-lg-block">
         <form>
             <div class="input-group">

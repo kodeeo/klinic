@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('nurses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('user_id')->constrained();
             $table->bigInteger('contact_no')->nullable();
             $table->string('email')->unique();
-            $table->string('address');
+            $table->text('address');
             $table->integer('duty_hrs')->nullable();
             $table->string('password');
             $table->string('image')->nullable();

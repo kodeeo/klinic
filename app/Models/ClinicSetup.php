@@ -15,8 +15,6 @@ class ClinicSetup extends Model
     {
         if($image){
             return Storage::url('/klinic/'.$image);
-            
         }
-       
     }
 }
