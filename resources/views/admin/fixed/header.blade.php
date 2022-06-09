@@ -1,8 +1,8 @@
 <div style="display:flex; justify-content:space-between; align-items:center;">
     <button class="button-menu-mobile open-left">
         <i class="mdi mdi-menu"></i>
-    </button> 
-    
+    </button>
+
     <ul class="list-unstyled topbar-menu mb-0" style="display: flex; align-items:center; padding-right: 6%;">
         <li class="dropdown notification-list">
 
@@ -13,7 +13,7 @@
                  <option value="{{route('admin.language.change','ar')}}">AR</option>
 
              </select>
-        </div>
+        </li>
 
 
         <li class="dropdown notification-list">
