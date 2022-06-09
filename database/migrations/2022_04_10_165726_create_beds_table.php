@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->double('capacity',50);
             $table->double('charge',50);
-            $table->string('status',15)->default('Avaiable');
+            $table->string('status',15)->default('Available');
             $table->timestamps();
         });
     }
