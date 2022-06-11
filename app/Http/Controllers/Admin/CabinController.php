@@ -40,28 +40,24 @@ class CabinController extends Controller
     {
         // dd($request->all());
 
-        
+        $quantity=$request->quantity;
+    
+        // dd($request->all());
         $request->validate([
-            'cabin_number'=>'required',
-            'admission_id'=>'required',
-            'staff_id'=>'required',
-            'nurse_id'=>'required',
-
+            'cabin_number'=>'required',         
         ]);
-        
-
-
-        Cabin::create([
-            
-            'cabin_number'=>$request->cabin_number,
-            'admission_id'=>$request->admission_id,
-            'staff_id'=>$request->staff_id,
-            'nurse_id'=>$request->nurse_id,
-            
-
-
+    
+    
+        // dd($request->all());
+        $request->validate([
+            'cabin_number'=>'required',         
         ]);
-        
+        for ($x = 0; $x < $quantity; $x++) {
+                $cabin=([
+                'cabin_number'=>$request->cabin_number+$x
+            ]);
+            Cabin::insert($cabin);
+        }
         
         Toastr::success('Cabin Added Successfully');
         
