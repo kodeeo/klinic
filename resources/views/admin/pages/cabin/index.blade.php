@@ -13,18 +13,10 @@
             <label for="cabin_number">Cabin Number</label>
             <input type="text" class="form-control" id="cabin_number" name="cabin_number" placeholder="Enter Cabin Number">
           </div>
-          <div class="form-group col-6">
-              <label for="admission_id">Admission Id</label>
-              <input type="number" class="form-control" id="admission_id" name="admission_id" placeholder="Enter Admission ID">
+          <div class="form-group col-6   mt-2">
+            <label for="quantity">Quantity</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" required>
           </div> 
-          <div class="form-group col-6">
-            <label for="staff_id">Staff Id</label>
-            <input type="number" class="form-control" id="staff_id" name="staff_id" placeholder="Enter Staff ID">
-        </div> 
-        <div class="form-group col-6">
-            <label for="nurse_id">Nurse Id</label>
-            <input type="number" class="form-control" id="nurse_id" name="nurse_id" placeholder="Enter Nurse ID">
-        </div> 
 
     </div>   
     <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Submit</button>
@@ -38,9 +30,6 @@
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Cabin Number</th>
-                    <th scope="col">Admission ID</th>
-                    <th scope="col">Staff ID</th>
-                    <th scope="col">Nurse ID</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -51,16 +40,20 @@
                           <tr>
                           
                             <th>{{$key+1}}</th>
-                            <td>{{$value->cabin_number}}</td>
-                            <td>{{$value->admission_id}}</td>
-                            <td>{{$value->staff_id}}</td>
-                            <td>{{$value->nurse_id}}</td>
-                            <td>{{$value->status}}</td>
-
+                            <td>Cabin-{{$value->cabin_number}}</td>
+                            
                             <td>
-                              <a class="btn btn-success btn-sm" href="{{route('cabin.show',$value->id)}}"><i class="fas fa-eye"></i></a>  
-                              <a class="btn btn-warning btn-sm" href="{{route('cabin.edit',$value->id)}}"><i class="fas fa-edit"></i></a>
-                              <form action="{{route('cabin.destroy',$value->id)}}" method="POST">
+                              @if($value->status=='active')
+                              <button class="btn btn-lg" style="background:#1bcc1b; border-radius:50%; border: 2px inset;"></button>
+                              @else
+                              <button class="btn btn-lg" style="background:red; border-radius:50%; border: 2px inset;"></button>
+                              @endif
+                            </td>
+
+                            <td style="display: flex">
+                              <a style="margin-left: 4px" class="btn btn-success btn-sm" href="{{route('cabin.show',$value->id)}}"><i class="fas fa-eye"></i></a>  
+                              <a style="margin-left: 4px" class="btn btn-warning btn-sm" href="{{route('cabin.edit',$value->id)}}"><i class="fas fa-edit"></i></a>
+                              <form style="margin-left: 4px" action="{{route('cabin.destroy',$value->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <div>
@@ -69,7 +62,7 @@
                                 </div>
         
                                 </form>
-                              </td>  
+                              </td>   
                           </tr>
                     
                   @endforeach
