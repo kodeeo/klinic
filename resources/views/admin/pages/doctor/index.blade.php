@@ -63,7 +63,6 @@
                         @method('DELETE')
                         <div>
                             <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
-
                         </div>
 
                         </form>
@@ -72,6 +71,5 @@
                 @endforeach
               </tbody>
             </table>
-            {{$doctors->links()}}
 </div>
 @endsection
