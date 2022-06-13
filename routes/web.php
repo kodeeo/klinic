@@ -1,51 +1,42 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BedController;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\RoleController;
+
 use App\Http\Controllers\Admin\TestController;
 
 use App\Http\Controllers\Admin\UserController;
 
-use App\Http\Controllers\Admin\WardController;
-
 
 
 // use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\WardController;
 use App\Http\Controllers\Admin\CabinController;
 use App\Http\Controllers\Admin\LoginController;
 
-
 use App\Http\Controllers\Admin\NurseController;
-use App\Http\Controllers\Admin\StaffController;
 
+use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
 
+
 use App\Http\Controllers\Admin\PatientController;
-
 use App\Http\Controllers\Admin\ServiceController;
-
-
-
-// use App\Http\Controllers\Admin\PatientController;
-// use App\Http\Controllers\Admin\ServiceController;
-// use App\Http\Controllers\Admin\DashboardController;
-
 use App\Http\Controllers\Admin\WardboyController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\PasswordController;
 
+// use App\Http\Controllers\Admin\DesignationController;
+
 use App\Http\Controllers\Admin\ScheduleController;
-
-
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
-
-// use App\Http\Controllers\Admin\DesignationController;
 
 use App\Http\Controllers\Admin\TestCategoryController;
 use App\Http\Controllers\Admin\Export\TestExportController;
@@ -53,7 +44,6 @@ use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
-
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
 use App\Http\Controllers\Admin\Activities\BirthreportController;
 use App\Http\Controllers\Admin\Activities\DeathreportController;
@@ -62,10 +52,7 @@ use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
-use App\Http\Controllers\Admin\BedController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -120,23 +107,6 @@ Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
 
-      
-
-
-
-
-// Route::get('admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
-
-// role
-// Route::get('/role/list',[RoleController::class, 'list'])->name('role.list');
-// Route::get('/role/create',[RoleController::class, 'create'])->name('role.create');
-// Route::post('/role/store',[RoleController::class, 'store'])->name('role.store');
-
-// Route::get('/role/view/{role_id}',[RoleController::class, 'detail'])->name('role.view');
-// Route::get('/roles/edit/{role_id}',[RoleController::class, 'edit'])->name('role.edit');
-// Route::post('/roles/update/{role_id}',[RoleController::class, 'update'])->name('role.update');
-// Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('role.delete');
-
 
 //users
 Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
@@ -147,7 +117,6 @@ Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.
 
 
 //Patient
-
 
 Route::get('/patients/list/',[PatientController::class, 'patientlist'])->name('patient.list');
 Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
@@ -177,25 +146,6 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::put('/update/department/{id}','update')->name('update.department');
     Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
 });
-
-    //Nurse
-Route::get('/nurse/list',[NurseController::class, 'nurseList'])->name('nurse.list');
-Route::get('/nurse/add',[NurseController::class, 'nurseAdd'])->name('nurse.add');
-Route::post('/nurse/store',[NurseController::class, 'nurseStore'])->name('nurse.store');
-Route::get('/nurse/edit/{nurse_id}',[NurseController::class,'nurseEdit'])->name('nurse.edit');
-Route::put('/nurse/update/{nurse_id}',[NurseController::class, 'nurseUpdate'])->name('nurse.update');
-Route::get('/nurse/show/{nurse_id}',[NurseController::class,'nurseShow'])->name('nurse.show');
-Route::get('/nurse/delete/{nurse_id}',[NurseController::class,'nurseDelete'])->name('nurse.delete');
-
-    //WardBoy
-Route::get('/wardboy/list',[WardboyController::class,'wardboyList'])->name('wardboy.list');
-Route::get('/wardboy/add',[WardboyController::class,'wardboyAdd'])->name('wardboy.add');
-Route::post('/wardboy/store',[WardboyController::class,'wardboyStore'])->name('wardboy.store');
-Route::get('/wardboy/edit/{wardboy_id}',[WardboyController::class,'wardboyEdit'])->name('wardboy.edit');
-Route::put('/wardboy/update/{wardboy_id}',[WardboyController::class,'wardboyUpdate'])->name('wardboy.update');
-Route::get('/wardboy/delete/{wardboy_id}',[WardboyController::class,'wardboyDelete'])->name('wardboy.delete');
-Route::get('/wardboy/show/{wardboy_id}',[WardboyController::class,'wardboyShow'])->name('wardboy.show');
-
 
 // Diagonistic
 
@@ -227,7 +177,13 @@ Route::get('key/clear', [CartController::class, 'keyClear'])->name('key.clear');
 Route::resource('doctor',DoctorController::class);
 
     //Staff resource controller
-Route::resource('staff',StaffController::class);
+Route::resource('staffs',StaffController::class);
+
+    //Nurse
+Route::resource('nurses',NurseController::class);
+
+    //WardBoy
+Route::resource('wardboys', WardboyController::class);
 
     //Designation resource controller
 Route::resource('designation',DesignationController::class);
