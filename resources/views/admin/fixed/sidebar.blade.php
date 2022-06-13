@@ -67,9 +67,16 @@
 
             <div class="collapse" id="doctors">
                 <ul class="side-nav-second-level">
+
                     <li>
-                        <a href="{{route('show.department')}}">Department</a>
+                        <a href="{{route('show.department')}}">Add Department</a>
                     </li>
+
+                    <li>
+                        <a href="{{route('doctor.create')}}">Add Doctor </a>
+                    </li>
+                   
+
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
                     </li>

@@ -1,26 +1,25 @@
 @extends('admin.master')
 @section('content')
     <h1>{{__('Medicines')}}</h1>
-        <a class="btn btn-success" href="{{route('medicine.create')}}">Add Medicine</a>
-       <div><br>
+        <hr>
 
 
         <div class="row" style="justify-content: space-between;">
   <div class="col">
-  <a class="btn btn-success" href="{{route('medicine.create')}}">Add Medicine</a>
+  <a class="d-print-none btn btn-success" href="{{route('medicine.create')}}">Add Medicine</a>
   </div>
 
   <div class="col-4 dt-buttons btn-group">
-      <a class="btn btn-info" href="{{route('medicine.report.csv')}}">
+      <a class="d-print-none btn btn-info" href="{{route('medicine.report.csv')}}">
         CSV
       </a>
-      <a class="btn btn-info" href="{{route('medicine.report.excel')}}">
+      <a class="d-print-none btn btn-info" href="{{route('medicine.report.excel')}}">
         Excel
       </a>
-      <a class="btn btn-info" href="">
+      <a class="d-print-none btn btn-info" href="">
         PDF
       </a>
-      <a class="btn btn-info" href="">
+      <a onclick="{window.print()}" class="d-print-none btn btn-info" href="">
         Print    
       </a>
   </div>
@@ -38,7 +37,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
                 <th scope="col">Manufactured By</th>
-                <th scope="col">Action</th>
+                <th class="d-print-none" scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -50,7 +49,7 @@
                       <td>{{$item->description}}</td>
                       <td>{{$item->price}}</td>
                       <td>{{$item->manufactured_by}}</td>
-                      <td>
+                      <td class="d-print-none">
                         <div style="display: flex ">
                         <a style="margin-left: 10px" class="btn btn-success btn-sm" href="{{route('medicine.show', $item->id)}}"><i class="fas fa-eye"></i></a> 
                         <a style="margin-left: 3px" class="btn btn-warning btn-sm m" href="{{route('medicine.edit', $item->id)}}"><i class="fas fa-edit"></i></a>

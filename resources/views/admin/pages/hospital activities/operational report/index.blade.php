@@ -1,25 +1,24 @@
 @extends('admin.master')
 @section('content')
 <h1>{{__('Opeation Report')}}</h1>
-<a class="btn btn-success" href="{{route('operational_activities.create')}}">Create Operation Report</a>
-<div><br>
+<hr>
 
 <div class="row" style="justify-content: space-between;">
   <div class="col">
-  <a class="btn btn-success" href="{{route('operational_activities.create')}}">Create Operation Report</a>
+  <a class="d-print-none btn btn-success" href="{{route('operational_activities.create')}}">Create Operation Report</a>
   </div>
 
   <div class="col-4 dt-buttons btn-group">
-      <a class="btn btn-info" href="{{route('operational.report.csv')}}">
+      <a class="d-print-none btn btn-info" href="{{route('operational.report.csv')}}">
         CSV
       </a>
-      <a class="btn btn-info" href="{{route('operational.report.excel')}}">
+      <a class="d-print-none btn btn-info" href="{{route('operational.report.excel')}}">
         Excel
       </a>
-      <a class="btn btn-info" href="">
+      <a class="d-print-none btn btn-info" href="">
         PDF
       </a>
-      <a class="btn btn-info" href="">
+      <a onclick="{window.print()}" class="d-print-none btn btn-info" href="">
         Print    
       </a>
   </div>
@@ -36,7 +35,7 @@
         <th scope="col">Date</th>
         <th scope="col">Title</th>
         <th scope="col">Doctors Name</th>
-        <th scope="col">Action</th>
+        <th class="d-print-none" scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -47,7 +46,7 @@
               <td>{{$item->date}}</td>
               <td>{{$item->title}}</td>
               <td>{{optional($item->doctor)->name}}</td>
-              <td>
+              <td class="d-print-none">
                 <div style="display: flex ">
                 <a style="margin-left: 10px" class="btn btn-success btn-sm" href="{{route('operational_activities.show', $item->id)}}"><i class="fas fa-eye"></i></a> 
                 <a style="margin-left: 3px" class="btn btn-warning btn-sm m" href="{{route('operational_activities.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
