@@ -4,11 +4,11 @@
 <hr>
 
  <div class="row" style="justify-content: space-between;">
-  <div class="col">
+  <div class="d-print-none col">
     <a href="{{route('staffs.create')}}"  class="btn btn-primary">Add Staffs</a>
   </div>
 
-  <div class="col-4 dt-buttons btn-group">
+  <div class="d-print-none col-4 dt-buttons btn-group">
       <a class="btn btn-info" href="{{route('nurse.data.csv')}}">
         CSV
       </a>
