@@ -127,18 +127,11 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
         $doctor=Doctor::find($id);
-
         $image_name=$doctor->image;
-        //              step 1: check image exist in this request.
                 if($request->hasFile('doctor_image'))
                 {
-                    // step 2: generate file name
                     $image_name=date('Ymdhis') .'.'. $request->file('doctor_image')->getClientOriginalExtension();
-        
-                    //step 3 : store into project directory
-        
-                    $request->file('doctor_image')->storeAs('/doctors',$image_name);
-        
+                    $request->file('doctor_image')->storeAs('/uploads/doctors',$image_name);
                 }
         
         $doctor->update([
@@ -154,8 +147,6 @@ class DoctorController extends Controller
             'details'=>$request->details,
             'password'=>bcrypt($request->password),
             'image'=>$image_name,
-
-
         ]);
         Toastr::success('Doctor Updated Successfully');
         return redirect()->route('doctor.index');

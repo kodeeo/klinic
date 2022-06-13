@@ -53,19 +53,18 @@
                     <td>{{$value->department->name ?? ""}}</td>
                     <td>{{$value->degree}}</td>
                     <td><img src="{{url('/uploads/doctors/'.$value->image)}}" style="border-radius:4px" width="100px" alt="doctor image"></td>
-
-                   
                     <td>
+                      <div style="display: flex">
                         <a class="btn btn-success btn-sm" href="{{route('doctor.show',$value->id)}}"><i class="fas fa-eye"></i></a> 
-                        <a class="btn btn-warning btn-sm" href="{{route('doctor.edit',$value->id)}}"><i class="fas fa-edit"></i></a>
-                        <form action="{{route('doctor.destroy',$value->id)}}" method="POST">
+                        <a style="margin-left: 3px" class="btn btn-warning btn-sm" href="{{route('doctor.edit',$value->id)}}"><i class="fas fa-edit"></i></a>
+                        <form style="margin-left: 3px" action="{{route('doctor.destroy',$value->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <div>
                             <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
                         </div>
-
                         </form>
+                      </div>
                     </td> 
                   </tr>
                 @endforeach

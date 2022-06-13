@@ -2,97 +2,112 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Wardboy;
-use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 
 class WardboyController extends Controller
 {
-    public function wardboyList()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $wardboys= Wardboy::paginate(10);
-        return view('admin.pages.wardboy.list',compact('wardboys'));
+        $role=Role::where('name','WardBoy')->first();
+        $wardboys=User::where('role_id',$role->id)->get();
+        return view('admin.pages.staff.wardboy.index',compact('wardboys'));
     }
 
-    public function wardboyAdd()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        return view('admin.pages.wardboy.create');
+        //
     }
 
-    public function wardboyStore(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $filename='';
-        if($request->hasFile('image'))
-        {
-            $file=$request->file('image');
-            $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$filename);
-        }
+        //
+    }
 
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required',
-            'contact'=>'required',
-            'address'=>'required',
-            'joinDate'=>'required',
-            'hrs'=>'required',
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $wardboy=User::find($id);
+        return view('admin.pages.staff.wardboy.show',compact('wardboy'));
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $roles=Role::whereNot('name','Admin')->get();
+        $wardboy=User::find($id);
+        $genders=['Male','Female','Others'];
+        return view('admin.pages.staff.wardboy.edit',compact('wardboy','roles','genders'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $wardboy=User::find($id);
+        $image_name=$wardboy->image;
+                if($request->hasFile('image'))
+                {
+                    $image_name=date('Ymdhis') .'.'. $request->file('image')->getClientOriginalExtension();
+                    $request->file('image')->storeAs('/uploads/staffs',$image_name);
+                }
+
+        $wardboy->update([  
+            'first_name'=>$request->first_name,   
+            'last_name'=>$request->last_name,   
+            'email'=>$request->email,
+            'mobile'=>$request->mobile,
+            'address'=>$request->address,
+            'date_of_birth'=>$request->date_of_birth,
+            'gender'=>$request->gender,
+            'image'=>$image_name,
         ]);
-        Wardboy::create([
-           'name'=>$request->name,
-           'email'=>$request->email,
-           'contact'=>$request->contact,
-           'address'=>$request->address,
-           'joinDate'=>$request->joinDate,
-           'hrs'=>$request->hrs,
-           'image'=>$filename,
-        ]);
-        Toastr::success('Wardboy added Successfully', 'success');
-        return redirect()->route('wardboy.list');
+        return redirect()->route('wardboys.index')->with(Toastr::success('Wardboy Updated Successfully'));
     }
 
-    public function wardboyEdit($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $wardboy=Wardboy::find($id);
-        return view('admin.pages.wardboy.edit',compact('wardboy'));
-    }
-
-    public function wardboyUpdate(Request $request, $id)
-    {
-        $wardboy=Wardboy::find($id);
-        $filename=$wardboy->image;
-
-        if($request->hasFile('image'))
-        {
-            $file=$request->file('image');
-            $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$filename);
-        }
-        $wardboy->update([
-           'name'=>$request->name,
-           'email'=>$request->email,
-           'contact'=>$request->contact,
-           'address'=>$request->address,
-           'joinDate'=>$request->joinDate,
-           'hrs'=>$request->hrs,
-           'image'=>$filename,
-        ]);
-        Toastr::success('Wardboy updated Successfully', 'success');
-        return redirect()->route('wardboy.list');
-
-    }
-
-    public function wardboyShow($id)
-    {
-        $wardboys=Wardboy::find($id);
-        return view('admin.pages.wardboy.view',compact('wardboys'));
-    }
-
-    public function wardboyDelete($id)
-    {
-        Wardboy::find($id)->delete();
-        Toastr::success('Wardboy deleted Successfully', 'success');
-        return redirect()->route('wardboy.list');
+        $wardboy=User::find($id)->delete();
+        return redirect()->back()->with(Toastr::error('Wardboy Deleted Successully'));
     }
 }
