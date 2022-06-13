@@ -2,102 +2,112 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Nurse;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 
 class NurseController extends Controller
 {
-    public function nurseList()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $nurses=Nurse::paginate(10);
-        return view('admin.pages.nurse.nurses-list',compact('nurses'));
+        $role=Role::where('name','Nurse')->first();
+        $nurses=User::where('role_id',$role->id)->get();
+        return view('admin.pages.staff.nurse.index',compact('nurses'));
     }
 
-    public function nurseAdd()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-      
-        return view('admin.pages.nurse.nurse-add');
+        //
     }
 
-    public function nurseStore(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
+        //
+    }
 
-        $filename='';
-        if($request->hasFile('image'))
-        {
-            $file=$request->file('image');
-            $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads/nurse',$filename);
-        }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $nurse=User::find($id);
+        return view('admin.pages.staff.nurse.show',compact('nurse'));
+    }
 
-         //server side validation start
-         $request->validate([
-            'contact_no'=>'min:11|max:11',
-            'email'=>'unique:nurses'
-        ]);
-        //server side validation end
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $roles=Role::whereNot('name','Admin')->get();
+        $nurse=User::find($id);
+        $genders=['Male','Female','Others'];
+        return view('admin.pages.staff.nurse.edit',compact('nurse','roles','genders'));
+    }
 
-        Nurse::create([
-            'name'=>$request->name,
-            'contact_no'=>$request->contact,
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $nurse=User::find($id);
+        $image_name=$nurse->image;
+                if($request->hasFile('image'))
+                {
+                    $image_name=date('Ymdhis') .'.'. $request->file('image')->getClientOriginalExtension();
+                    $request->file('image')->storeAs('/uploads/staffs',$image_name);
+                }
+
+        $nurse->update([  
+            'first_name'=>$request->first_name,   
+            'last_name'=>$request->last_name,   
             'email'=>$request->email,
+            'mobile'=>$request->mobile,
             'address'=>$request->address,
-            'duty_hrs'=>$request->hrs,
-            'password'=>bcrypt($request->password),
-            'image'=>$filename
-
+            'date_of_birth'=>$request->date_of_birth,
+            'gender'=>$request->gender,
+            'image'=>$image_name,
         ]);
-        Toastr::success('Nurse added Successfully', 'success');
-        return redirect()->route('nurse.list');
+        return redirect()->route('nurses.index')->with(Toastr::success('Nurse Updated Successfully'));
     }
 
-    public function nurseEdit($id){
-        $nurse=Nurse::find($id);
-
-        return view('admin.pages.nurse.nurse-edit',compact('nurse'));
-    }
-
-    public function nurseUpdate(Request $request, $id){
-        $nurse=Nurse::find($id);
-
-        $filename=$nurse->image;
-        //Check image or not
-        if($request->hasFile('image'))
-        {
-            $file=$request->file('image');
-            $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$filename);
-        }
-            $nurse->update([
-                'name'=>$request->name,
-                'contact_no'=>$request->contact,
-                'email'=>$request->email,
-                'address'=>$request->address,
-                'duty_hrs'=>$request->hrs,
-                'image'=>$filename
-    
-            ]);
-            Toastr::success('Nurse updated Successfully', 'success');
-            return redirect()->route('nurse.list');
-        
-    }
-
-    public function nurseShow($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $nurse=Nurse::find($id);
-        return view('admin.pages.nurse.nurse-view',compact('nurse'));
+        $nurse=User::find($id)->delete();
+        return redirect()->back()->with(Toastr::error('Nurse Deleted Successully'));
     }
-
-    public function nurseDelete($id){
-
-        Nurse::find($id)->delete();
-
-        Toastr::success('Nurse deleted Successfully', 'success');
-            return redirect()->route('nurse.list');
-    }
-    
-
-
 }

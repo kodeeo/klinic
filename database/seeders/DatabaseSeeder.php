@@ -8,7 +8,6 @@ use Database\Seeders\TestSeeder;
 use Database\Seeders\WardSeeder;
 use Database\Seeders\BirthSeeder;
 use Database\Seeders\DeathSeeder;
-use Database\Seeders\NurseSeeder;
 use Database\Seeders\VisitSeeder;
 use Database\Seeders\DoctorSeeder;
 use Database\Seeders\PatientSeeder;
@@ -16,6 +15,7 @@ use Database\Seeders\BedTableSeeder;
 use Database\Seeders\MedicineSeeder;
 use Database\Seeders\OperationSeeder;
 use Database\Seeders\RoleTableSeeder;
+use Database\Seeders\UserTableSeeder;
 use Database\Seeders\AdminTableSeeder;
 use Database\Seeders\AppoinmentSeeder;
 use Database\Seeders\DepartmentSeeder;
@@ -39,13 +39,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(RoleTableSeeder::class);
         $this->call(AdminTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
+        $this->call(UserTableSeeder::class);
         $this->call(KlinicSetUpSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(DepartmentSeeder::class);
         $this->call(DoctorSeeder::class);
-        $this->call(NurseSeeder::class);
         $this->call(PatientSeeder::class);
         $this->call(ServiceModelSeeder::class);
         $this->call(WardSeeder::class);

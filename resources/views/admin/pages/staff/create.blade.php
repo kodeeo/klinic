@@ -5,71 +5,62 @@
 <h1>{{__('Staff Registration')}}</h1>
 <hr>
 
-
-<form action="{{route('staff.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('staffs.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
-        <div class="form-group col-6 mt-2">
-            <label for="designation">Designation</label>
-            <select class="form-select" name="designation_id" aria-label="Default select example">
-                <option>Select Designation</option>
-
-                @foreach ($designations as $item)
-          
-                <option value="{{$item->id}}">{{$item->designation}}</option>
+        <div class="form-group col-12">
+            <label for="role">Staff's Role <span style="color: red">*</span></label>
+            <select class="form-select" name="role_id" aria-label="Default select example">
+                @foreach ($roles as $item)
+                    <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
               </select>
         </div>
-        <div class="form-group col-6">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
-          </div>
-          <div class="form-group col-6">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
-          </div>
+
+        <div class="form-group col-6 mt-2">
+            <label for="first_name">First Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name">
+        </div>
+
+        <div class="form-group col-6 mt-2">
+            <label for="last_name">Last Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name">
+        </div>
+
+        <div class="form-group col-6 mt-2">
+            <label for="email">Email <span style="color: red">*</span></label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+        </div>
         
-          <div class="form-group col-6 mt-2">
-            <label for="phone">Phone</label>
-            <input type="text" class="form-control" id="password" name="phone" placeholder="Enter Phone" required>
-        </div>
         <div class="form-group col-6 mt-2">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" required>
+            <label for="mobile">Mobile No <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile Number">
         </div>
+
         <div class="form-group col-6 mt-2">
-            <label for="age">Date of Birth</label>
-            <input type="date" class="form-control" id="age" name="date_of_birth" placeholder="Enter Age" required>
-        </div>
-        <div class="form-group col-6 mt-2">
-            <label for="gender">Gender</label>
+            <label for="gender">Gender <span style="color: red">*</span></label>
             <select class="form-select" name="gender" aria-label="Default select example">
-                <option selected>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            
-              </select>
+                @foreach($genders as $gender)
+                    <option value="{{$gender}}">{{$gender}}</option>
+                @endforeach
+            </select>
         </div>
+
         <div class="form-group col-6 mt-2">
-            <label for="degree">Degree</label>
-            <input type="text" class="form-control" id="degree" name="degree" placeholder="Enter Degree">
+            <label for="age">Date of Birth <span style="color: red">*</span></label>
+            <input type="date" class="form-control" id="age" name="date_of_birth" placeholder="Enter Age">
         </div>
-       
+
         <div class="form-group col-6 mt-2">
-            <label for="details">Details</label>
-            <input type="text" class="form-control" id="details" name="details" placeholder="Enter Details">
+            <label for="address">Address <span style="color: red">*</span></label>
+            <textarea name="address" class="form-control" rows="5"></textarea>
         </div>
-      
+
         <div class="form-group col-6 mt-2">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
-        </div>
-        <div class="mt-2">
-            <label for="staff_image" class="form-label">Insert Image</label>
-            <input class="form-control" type="file" id="staff_image" name="staff_image">
+            <label for="image">Image</label>
+            <input name="image" type="file" class="form-control">
         </div>
     </div>
-    
     
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>

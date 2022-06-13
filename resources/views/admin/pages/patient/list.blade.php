@@ -50,24 +50,17 @@
         <td>{{$patient->phone}}</td>
         <td>{{$patient->blood}}</td>
         <td>{{$patient->address}}</td>
-       <td>{{$patient->created_at}}</td> 
+        <td>{{$patient->created_at}}</td> 
         <td><img src="{{url('/uploads/patients/'.$patient->patient_image)}}" style="border-radius:4px" width="100px" alt="patient image"></td>
-      {{-- <td>{{$causes->created_at->diffforhumans()}}</td> --}}
         <td>
-
-
           <a class="btn btn-success btn-sm" href="{{route('patient_admisssion.add',$patient->id)}}">Admission</a>
-
-          {{-- <a class="btn btn-warning btn-sm" href="{{route('edit.cause',$causes->id)}}"><i class="fas fa-edit"></i></a>
-          <a class="btn btn-danger btn-sm" href="{{route('delete.cause',$causes->id)}}"><i class="fas fa-trash"></i></a> --}}
-      </td>
+        </td>
         </td>
       </tr>
       @endforeach
      
     </tbody>
   </table>
-  {{$patients->links()}}
 </div> 
 
 @endsection
