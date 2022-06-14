@@ -7,11 +7,12 @@ use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Models\Role_Permission;
 use App\Http\Controllers\Controller;
+use App\Models\Module;
 
 class PermissionController extends Controller
 {
     public function index()
-    {  $permissions=Permission::paginate(10);
+    {  $permissions=Permission::all();
         return view('admin.pages.permission.index',compact('permissions'));
     }
 
@@ -67,27 +68,23 @@ class PermissionController extends Controller
 
     public function permissionList($role_id){
         $role = Role::find($role_id);
-        $permissions=Permission::all();
-        return view('admin.pages.permission.permissions', compact('permissions','role'));
+        $modules = Module::with('permissions')->get();
+        return view('admin.pages.permission.permissions', compact('role', 'modules'));
     }
-
-
 
 
     public function assign(Request $request, $role_id){
         $role=Role::find($role_id);
-        $role->rolepermission()->sync($request->permission_ids);
+        $role->permissions()->sync($request->permission_ids);
         return redirect()->back();
-        
-
     }
 
 
     public function permissionEdit($role_id){
-        $role=Role::with('rolepermission')->find($role_id);
-        $permission=Permission::get();
+        $role=Role::find($role_id);
+        $modules = Module::with('permissions')->get();
         // dd($permission->all());
-        return view('admin.pages.permission.permissionEdit', compact('role','permission'));
+        return view('admin.pages.permission.permissionEdit', compact('role','modules'));
     }
 
     public function permissionUpdate(Request $request, $role_id){

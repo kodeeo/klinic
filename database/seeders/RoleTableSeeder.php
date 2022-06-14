@@ -17,12 +17,15 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $roles = ['Manager','Nurse','Wardboy'];
+
+        // Role::factory()->count(5)->create();
+        $roles = ['Admin','Manager','Nurse','Wardboy'];
         foreach($roles as $data)
         {
             Role::insert([
                 'name'=>$data,
-                'description'=>Str::random(30)
+                'description'=>Str::random(30),
+                'slug' => strtolower("$data")
             ]);
         }
     }

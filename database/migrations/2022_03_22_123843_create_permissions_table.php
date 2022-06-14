@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('permissions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->foreignId('module_id');
             $table->string('name',30);
             $table->string('status',10)->default('active');
             $table->string('slug');
