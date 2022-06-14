@@ -25,6 +25,5 @@ class RoleTableSeeder extends Seeder
                 'description'=>Str::random(30)
             ]);
         }
-        
     }
 }
