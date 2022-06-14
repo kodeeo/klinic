@@ -26,7 +26,7 @@
 		@foreach($users as $key=>$user)
 		<th scope="row">{{$key+1}}</th>
 		 <td>{{$user->username}}</td>
-		 <td>{{$user->role->name}}</td>
+		 <td>{{optional($user->role)->name}}</td>
 		 <td>{{$user->email}}</td>
 		 <td>#</td>
          <td>

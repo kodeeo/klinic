@@ -33,29 +33,38 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Name </label>
-                <input name="name" placeholder="Enter Role Name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $role->name }}" readonly >
+                <input name="name" value="{{ $role->name }}" placeholder="Enter Role Name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  readonly >
             </div>
 
             <div>
                 <h4 style="text-align: center">Permissions list</h4>
             </div>
+    
             <div style="margin-left: 120px">
                 <input type="checkbox" id="select-all">
                 <span style="font-size: 18px">Select All / Unselect All</span>
             </div>
+    
             <div class="mt-5 mt-3" style="margin-left: 100px">
-                
-
-                        @foreach($permission as $value)
+                @foreach($modules as $module)
+                    <div class="mb-8">
+                        <div>
+                            <h6 style="margin-left: 25px">{{$module->name}}</h6>
+                        </div>
+    
+                        @foreach($module->permissions as $permission)
                             <div style="margin-left: 50px; margin-top: 5px">
-                                <input {{ in_array($value->id, $role->rolepermission->pluck('id')->toArray()) ? 'checked': '' }}
+                                <input {{(in_array($permission->id,$role->permissions->pluck('id')->toArray())) ? 'checked' : ''}}
                                     type="checkbox"
                                     name="permission_ids[]"
-                                    value="{{$value->id}}" multiple
+                                    value="{{$permission->id}}" multiple
                                 />
-                                <span style="font-size: 15px;margin-top: 2px">{{$value->name}}</span>
+                                <span style="font-size: 15px;margin-top: 2px">{{$permission->name}}</span>
+                                {{-- <span style="font-size: 15px;margin-top: 2px">{{ucwords(str_replace(array('.','_'), ' ', $permission->name))}}</span> --}}
                             </div>
                         @endforeach
+                    </div>
+                @endforeach
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
@@ -70,7 +79,7 @@
         $(document).ready(function() {
             $('#select-all').click(function() {
                 var checked = this.checked;
-                $('input[type="checkbox"]').forEach(function() {
+                $('input[type="checkbox"]').each(function() {
                     this.checked = checked;
                 });
             })

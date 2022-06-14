@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
+use App\Models\Permission;
 use Illuminate\Database\Seeder;
 use Database\Seeders\TestSeeder;
 use Database\Seeders\WardSeeder;
@@ -38,10 +40,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+       
         // \App\Models\User::factory(10)->create();
         $this->call(RoleTableSeeder::class);
         $this->call(AdminTableSeeder::class);
         $this->call(KlinicSetUpSeeder::class);
+        $this->call(ModuleTableSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(DepartmentSeeder::class);
         $this->call(DoctorSeeder::class);
@@ -61,5 +65,8 @@ class DatabaseSeeder extends Seeder
         $this->call(InvestigationSeeder::class);
         $this->call(MedicineCategorySeeder::class);
         $this->call(MedicineSeeder::class);
+        $role = Role::where('name', '=', 'admin')->first();
+        $role->permissions()->sync(Permission::get()->pluck('id'));
     }
+    
 }
