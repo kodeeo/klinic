@@ -22,11 +22,8 @@
                                                                     href="{{route('show.department')}}"><i
                         style="font-size: 35px;" class="fa fa-apartment"></i> Add Department</a></div>
             <div class="col-md-2 card-body" style="padding:3px;"><a class="btn btn-success size"
-                                                                    href="{{route('nurse.add')}}"><i
-                        style="font-size: 30px;" class="fa fa-user-nurse"></i> Add Nurse</a></div>
-            <div class="col-md-2 card-body" style="padding:3px;"><a class="btn btn-success size"
-                                                                    href="{{route('wardboy.add')}}"><i
-                        style="font-size: 30px;" class="fa fa-person-digging"></i> Add Wardboy</a></div>
+                                                                    href="{{route('staffs.create')}}"><i
+                        style="font-size: 30px;" class="fa fa-user-nurse"></i> Add Staffs</a></div>
         </div>
         <div class="row" style="height: 90px;">
             <div class="col-md-2 card-body" style="padding:3px;"><a class="btn btn-success size" href="{{route('cabin.index')}}"><i

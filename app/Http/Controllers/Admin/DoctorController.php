@@ -39,7 +39,9 @@ class DoctorController extends Controller
     public function create()
     {
         $department=Department::all();
-        return view('admin.pages.doctor.create',compact('department'));
+        $blood=['A+','A-','B+','B-','O+','O-','AB+','AB-'];
+
+        return view('admin.pages.doctor.create',compact('department','blood'));
     }
 
     /**
@@ -59,30 +61,34 @@ class DoctorController extends Controller
         }
 
         $request->validate([
-            'name'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'username'=>'required',
             'email'=>'required',
-            'phone'=>'required',
+            'mobile'=>'required',
             'address'=>'required',
             'date_of_birth'=>'required',
             'gender'=>'required',
             'department_id'=>'required',
-            'designation'=>'required',
+            'specialist'=>'required',
             'degree'=>'required',
-            'details'=>'required',
             'password'=>'required',
 
         ]);
         Doctor::create([
-            'name'=>$request->name,   
+            'first_name'=>$request->first_name,   
+            'last_name'=>$request->last_name,   
+            'username'=>$request->username,   
             'email'=>$request->email,
             'phone'=>$request->phone,
+            'mobile'=>$request->mobile,
             'address'=>$request->address,
             'date_of_birth'=>$request->date_of_birth,
             'gender'=>$request->gender,
+            'blood_group'=>$request->blood_group,
             'department_id'=>$request->department_id,
-            'designation'=>$request->designation,
             'degree'=>$request->degree,
-            'details'=>$request->details,
+            'bio'=>$request->bio,
             'password'=>bcrypt($request->password),
             'image'=>$image_name,
 
@@ -111,10 +117,11 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {    
+        $blood=['A+','A-','B+','B-','O+','O-','AB+','AB-'];
         $doctor=Doctor::find($id);
         $department=Department::all();
-        return view('admin.pages.doctor.edit',compact('doctor','department'));
+        return view('admin.pages.doctor.edit',compact('doctor','department','blood'));
     }
 
     /**
@@ -127,18 +134,11 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
         $doctor=Doctor::find($id);
-
         $image_name=$doctor->image;
-        //              step 1: check image exist in this request.
                 if($request->hasFile('doctor_image'))
                 {
-                    // step 2: generate file name
                     $image_name=date('Ymdhis') .'.'. $request->file('doctor_image')->getClientOriginalExtension();
-        
-                    //step 3 : store into project directory
-        
-                    $request->file('doctor_image')->storeAs('/doctors',$image_name);
-        
+                    $request->file('doctor_image')->storeAs('/uploads/doctors',$image_name);
                 }
         
         $doctor->update([
@@ -154,8 +154,6 @@ class DoctorController extends Controller
             'details'=>$request->details,
             'password'=>bcrypt($request->password),
             'image'=>$image_name,
-
-
         ]);
         Toastr::success('Doctor Updated Successfully');
         return redirect()->route('doctor.index');

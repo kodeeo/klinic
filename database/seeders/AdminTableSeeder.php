@@ -17,22 +17,27 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
+        
 
-        $role = Role::where('name', '=', 'admin')->first();
-        $role->permissions()->sync(Permission::get()->pluck('id'));
 
-        $role=Role::create([
-         'name'=>'admin',
-         'status'=>'active',
-         'description'=>'default',
-         'slug' => 'admin'
-        ]);
+        // $role=Role::create([
+        //  'name'=>'Admin',
+        //  'status'=>'active',
+        //  'description'=>'default',
+        //  'slug' => 'admin'
+        // ]);
         
       User::create([
-            'role_id' => Role::where('name', '=', 'admin')->first()->id,
+
+            'role_id' => Role::where('name', '=', 'Admin')->first()->id,
             'username'=>'admin',
             'email'=>'admin@gmail.com',
             'password'=>bcrypt('1234'),
+            // 'slug' => 'admin'
         ]);
+
+        $role = Role::where('name', '=', 'Admin')->first();
+        $role->permissions()->sync(Permission::get()->pluck('id'));
+       
     }
 }

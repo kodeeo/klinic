@@ -65,7 +65,7 @@
         </li>
           @endif
 
-          @if (hasAnyPermissions('doctor.index'))
+          
               
           <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#doctors" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
@@ -77,10 +77,15 @@
             <div class="collapse" id="doctors">
                 <ul class="side-nav-second-level">
                     @if (hasAnyPermissions('show.department'))
+
                     <li>
-                        <a href="{{route('show.department')}}">Department</a>
+                        <a href="{{route('show.department')}}">Add Department</a>
+                    </li>
+                    <li>
+                        <a href="{{route('doctor.create')}}">Add Doctor </a>
                     </li>
                     @endif
+                    
                     @if (hasAnyPermissions('doctor.index'))
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
@@ -96,7 +101,6 @@
             </div>
         </li>
 
-          @endif
 
 
 
@@ -108,17 +112,14 @@
             </a>
             <div class="collapse" id="staffs">
                 <ul class="side-nav-second-level">
-                <li>
-                        <a href="{{route('nurse.list')}}">Nurse</a>
+                    <li>
+                        <a href="{{route('staffs.create')}}">Add Staffs</a>
                     </li>
                     <li>
-                        <a href="{{route('wardboy.list')}}">WardBoy</a>
+                        <a href="{{route('nurses.index')}}">Nurse List</a>
                     </li>
                     <li>
-                        <a href="{{route('staff.index')}}">Staff List</a>
-                    </li>
-                    <li>
-                        <a href="{{route('designation.index')}}">Designation</a>
+                        <a href="{{route('wardboys.index')}}">WardBoy List</a>
                     </li>
                 </ul>
             </div>
