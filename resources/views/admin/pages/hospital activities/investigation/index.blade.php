@@ -1,6 +1,7 @@
 @extends('admin.master')
 @section('content')
     <h1>{{__('Investigation Report')}}</h1>
+    <hr>
         <a class="btn btn-success" href="{{route('investigations.create')}}">Create Investigation Report</a>
        <div><br>
         <table class="table" id="dataTable" style="text-align: center">

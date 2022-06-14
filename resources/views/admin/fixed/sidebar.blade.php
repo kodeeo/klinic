@@ -67,11 +67,14 @@
 
             <div class="collapse" id="doctors">
                 <ul class="side-nav-second-level">
-                    @if(hasAnyPermissions('show.department'))
+                   
                     <li>
-                        <a href="{{route('show.department')}}">Department</a>
+                        <a href="{{route('show.department')}}">Add Department</a>
                     </li>
-                    @endif
+                    <li>
+                        <a href="{{route('doctor.create')}}">Add Doctor </a>
+                    </li>
+                   
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
                     </li>

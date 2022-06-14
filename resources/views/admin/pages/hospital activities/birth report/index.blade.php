@@ -1,26 +1,26 @@
 @extends('admin.master')
 @section('content')
     <h1>{{__('Birth Report')}}</h1>
-        <a class="btn btn-success" href="{{route('birth_report.create')}}">Create Birth Report</a>
-       <div><br>
+    <hr>
+       
 
          
        <div class="row" style="justify-content: space-between;">
   <div class="col">
-  <a class="btn btn-success" href="{{route('birth_report.create')}}">Create Birth Report</a>
+  <a class="d-print-none btn btn-success" href="{{route('birth_report.create')}}">Create Birth Report</a>
   </div>
 
   <div class="col-4 dt-buttons btn-group">
-      <a class="btn btn-info" href="{{route('birth.report.csv')}}">
+      <a class="d-print-none btn btn-info" href="{{route('birth.report.csv')}}">
         CSV
       </a>
-      <a class="btn btn-info" href="{{route('birth.report.excel')}}">
+      <a class="d-print-none btn btn-info" href="{{route('birth.report.excel')}}">
         Excel
       </a>
-      <a class="btn btn-info" href="">
+      <a class="d-print-none btn btn-info" href="">
         PDF
       </a>
-      <a class="btn btn-info" href="">
+      <a onclick="{window.print()}" class="d-print-none btn btn-info" href="">
         Print    
       </a>
   </div>
@@ -36,8 +36,8 @@
                 <th scope="col">Patient ID</th>
                 <th scope="col">Date</th>
                 <th scope="col">Title</th>
-                <th scope="col">Doctors Name</th>
-                <th scope="col">Action</th>
+                <th scope="col">Doctor's Name</th>
+                <th class="d-print-none" scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -47,8 +47,8 @@
                       <td>{{$item->patient_id}}</td>
                       <td>{{$item->date}}</td>
                       <td>{{$item->title}}</td>
-                      <td>{{optional($item->doctor)->name}}</td>
-                      <td>
+                      <td>{{$item->doctor->name}}</td>
+                      <td class="d-print-none">
                         <div style="display: flex ">
                         <a style="margin-left: 10px" class="btn btn-success btn-sm" href="{{route('birth_report.show', $item->id)}}"><i class="fas fa-eye"></i></a> 
                         <a style="margin-left: 3px" class="btn btn-warning btn-sm m" href="{{route('birth_report.edit', $item->id)}}"><i class="fas fa-edit"></i></a>

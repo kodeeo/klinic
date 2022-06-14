@@ -17,21 +17,16 @@ class DepartmentController extends Controller
     }
     public function store(Request $request)
     {
-        $image_name=null;
-        if($request->hasFile('department_image'))
-        {
-            $image_name=date('Ymdhis').'.'.$request->file('department_image')->getClientOriginalExtension();
-            $request->file('department_image')->storeAs('/uploads/departments',$image_name);
-        }
+       
         $request->validate([
             'name'=>'required',
-            'details'=>'required',
+            'description'=>'required',
 
         ]);
         Department::create([
             'name'=>$request->name,
-            'details'=>$request->details,
-            'image'=>$image_name
+            'description'=>$request->description,
+            
 
         ]);
         Toastr::success('Department Added Successfully');
@@ -76,7 +71,7 @@ class DepartmentController extends Controller
           $department->update([
 
              'name'=>$request->name,
-             'details'=>$request->details,
+             'description'=>$request->description,
              'image'=>$image_name
          ]);
 
