@@ -180,10 +180,10 @@
                         <a href="{{route('beds.index')}}">Bed List</a>
                     </li>
                     <li>
-                        <a href="{{route('assign.bed')}}">Bed Assign</a>
+                        <a href="{{route('assign.bed.create')}}">Bed Assign</a>
                     </li>
                     <li>
-                        <a href="#">Assign Bed List</a>
+                        <a href="{{route('assign.bed.index')}}">Assigned Bed List</a>
                     </li>
                     <li>
                         <a href="#">Report</a>
