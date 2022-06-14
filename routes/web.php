@@ -214,8 +214,9 @@ Route::resource('cabin',CabinController::class);
 
 
     //Bed Manager
-Route::get('beds/assign', [BedController::class, 'assign_bed'])->name('assign.bed');
-Route::post('beds/assign/done', [BedController::class, 'assign_bed_store'])->name('assign.bed.store');
+Route::get('beds/assign/create', [BedController::class, 'assign_bed_create'])->name('assign.bed.create');
+Route::get('beds/assign/index', [BedController::class, 'assigned_bed_index'])->name('assign.bed.index');
+Route::post('beds/assign/store', [BedController::class, 'assign_bed_store'])->name('assign.bed.store');
 Route::resource('beds', BedController::class);
 
 

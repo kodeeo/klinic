@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DateTime;
 use App\Models\Bed;
+use App\Models\Bed_Assign;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Bed_Assign;
 use Brian2694\Toastr\Facades\Toastr;
 
 class BedController extends Controller
@@ -104,24 +105,35 @@ class BedController extends Controller
         $beds=Bed::find($id)->delete();
         return redirect()->back()->with(Toastr::error('Bed Deleted Successfully'));
     }
+
+    public function assigned_bed_index()
+    {
+        $assign_beds=Bed_Assign::with('beds')->get();
+        return view('admin.pages.bed.assign_bed_index',compact('assign_beds'));
+    }
     
-    public function assign_bed()
+    public function assign_bed_create()
     {
         $bed_types=Bed::all();
-        return view('admin.pages.bed.assign_bed',compact('bed_types'));
+        return view('admin.pages.bed.assign_bed_create',compact('bed_types'));
     }
 
     public function assign_bed_store(Request $request)
     {
+        $from=new DateTime($request->assign_date);
+        $to=new DateTime($request->discharge_date);
+        $days= (($from->diff($to))->format('%a'))+1;
+
         Bed_Assign::create([
             'patient_id'=>$request->patient_id,
             'bed_type_id'=>$request->bed_type,
             'assign_date'=>$request->assign_date,
             'discharge_date'=>$request->discharge_date,
+            'days'=>$days,
             'description'=>$request->description,
-            'status'=>$request->status,
+            'assigned_by'=>auth()->user()->role->name,
         ]);
-        return 'ok';
+        return redirect()->route('assign.bed.index');
     }
 
 }
