@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('admission_id')->constrained('admissions')->restictionOnDelete();
+            $table->string('weight',20);
             $table->string('allergies',5);
             $table->string('tendancy',5);
-            $table->string('heart');
-            $table->string('pressure');
+            $table->string('heart_diseases');
+            $table->string('high_BP');
             $table->string('accident');
             $table->string('diabetic');
             $table->string('others');
@@ -29,8 +30,8 @@ return new class extends Migration
             $table->string('insurance');
             $table->string('worksafe');
             $table->string('tac');
-            $table->string('pension');
-            $table->string('know');
+            $table->string('quota');
+            $table->string('referred_by');
             $table->string('visit');
             $table->timestamps();
         });

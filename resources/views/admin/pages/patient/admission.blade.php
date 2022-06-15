@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-    
+
 
 <h1> {{__('Patient Admission')}}</h1>
 
@@ -27,24 +27,28 @@
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
           </div>
         <div class="form-group col-6">
-            <label for="name">For Minor Name of Parents</label>
-            <input type="text" class="form-control" id="father" name="father" placeholder="Enter Father Name">
+            <label for="father_name">For Minor Name of Parents</label>
+            <input type="text" class="form-control" id="father_name" name="father_name" placeholder="Enter Father Name">
           </div>
           <div class="form-group col-6">
-            <label for="name"></label>
-            <input type="text" class="form-control" id="mother" name="mother" placeholder="Enter Mother Name">
+            <label for="mother_name"></label>
+            <input type="text" class="form-control" id="mother_name" name="mother_name" placeholder="Enter Mother Name">
           </div>
+          <div class="form-group col-6">
+            <label for="bed_id">Room</label>
+            <input type="text" class="form-control" id="bed_id" name="bed_id" placeholder="Enter Room Type">
+        </div>
 
-          <div class="form-group col-6 mt-2">
+          {{-- <div class="form-group col-6 mt-2">
             <label for="exampleFormControlSelect1">Room</label>
-              <select name="room" class="form-control" id="exampleFormControlSelect1">
+              <select name="bed_id" class="form-control" id="exampleFormControlSelect1">
                 <option>Cabin</option>
                 <option>Word</option>
               </select>
-          </div>
+          </div> --}}
           <div class="form-group col-6">
               <label for="doctor">Attending Physician</label>
-              <input type="text" class="form-control" id="doctor" name="doctor" placeholder="Enter Email">
+              <input type="text" class="form-control" id="doctor_id" name="doctor_id" placeholder="Enter Email">
           </div>
           <div class="form-group col-6 mt-2">
             <label for="relation">Relation To Patient</label>
@@ -63,7 +67,7 @@
             <label for="nid">NID</label>
             <input type="text" class="form-control" id="nid" name="nid" placeholder="Enter NID Number">
         </div>
-    
+
       <div class="form-group col-6 mt-2">
          <label for="occupation">Occupation</label>
          <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Enter Occupation">
@@ -73,11 +77,17 @@
         <input type="text" class="form-control" id="payment" name="payment" placeholder="Enter Total Payment Amount">
     </div>
 
- 
+
     <div class="form-group col-12">
-      
+
            <h1> Patient Medical Information</h1>
           </div>
+
+          <div class="form-group col-6">
+            <label for="weight">Enter Your Weight?</label>
+            <input type="text" class="form-control" id=" weight" name=" weight" placeholder="Enter Your Weight?">
+          </div>
+          <br>
 
       <div class="form-group col-6">
             <label for="allergies">Do you have allergies to any medicine or food?</label>
@@ -93,10 +103,10 @@
           </div>
           <div class="form-group col-6 mt-2">
           </div>
-  
+
           <div class="form-group col-6 mt-2">
             <label for="exampleFormControlSelect1">Heart Diseases</label>
-            <select name="heart" class="form-control" id="exampleFormControlSelect1">
+            <select name="heart_diseases" class="form-control" id="exampleFormControlSelect1">
               <option>Yes</option>
               <option>No</option>
             </select>
@@ -105,7 +115,7 @@
           </div>
           <div class="form-group col-6 mt-2">
             <label for="exampleFormControlSelect1">HighBlood Pressure</label>
-            <select name="pressure" class="form-control" id="exampleFormControlSelect1">
+            <select name="high_BP" class="form-control" id="exampleFormControlSelect1">
               <option>Yes</option>
               <option>No</option>
             </select>
@@ -132,7 +142,7 @@
             <option>No</option>
           </select>
         </div>
-    
+
       <div class="form-group col-6 mt-2">
         <label for="exampleFormControlSelect1">Do you Consider yourself to be in a high risk group for infectious diseases?</label>
         <select name="infection" class="form-control" id="exampleFormControlSelect1">
@@ -149,7 +159,7 @@
           <label for="exampleFormControlTextarea">Please list your current medical conditions and medicals</label>
           <textarea name="condition"class="form-control" id="exampleFormControlTextarea" rows="3"></textarea>
         </div>
-    
+
      <div class="form-group col-6 mt-2">
       <label for="exampleFormControlSelect1"> Are You under Private  Health Insurance  Extras covering Acupuncture or chiese Herbal Medicine?</label>
       <select name="insurance" class="form-control" id="exampleFormControlSelect1">
@@ -173,7 +183,7 @@
     </div>
     <div class="form-group col-6 mt-2">
       <label for="exampleFormControlSelect1">Are you a Pensioner,Student,Low-Income Healtcare Card Holder </label>
-      <select name="pension" class="form-control" id="exampleFormControlSelect1">
+      <select name="quota" class="form-control" id="exampleFormControlSelect1">
         <option>Pensioner</option>
         <option>Student</option>
         <option>Low-Income Healtcare Card Holder</option>
@@ -181,7 +191,7 @@
     </div>
     <div class="form-group col-6 mt-2">
       <label for="exampleFormControlSelect1">How do you know our Clinic</label>
-      <select name="know" class="form-control" id="exampleFormControlSelect1">
+      <select name="referred_by" class="form-control" id="exampleFormControlSelect1">
         <option>Friend</option>
         <option>Yellow Page</option>
         <option>Google</option>
@@ -192,21 +202,21 @@
       <select name="visit" class="form-control" id="exampleFormControlSelect1">
         <option>Yes</option>
         <option> No</option>
-       
+
       </select>
     </div>
 
   </div>
 
-        
-    
-    
+
+
+
     <br>
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
-  
+
 
 
 

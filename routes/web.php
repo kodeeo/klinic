@@ -84,7 +84,7 @@ Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
 Route::get('/logout',[LoginController::class,'logout'])->name('admin.logout');
-    
+
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
 
     //role
@@ -98,7 +98,7 @@ Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('r
 
 // role permission
 
-    
+
     //users
 Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
 Route::get('/user/add',[UserController::class, 'u_add'])->name('user.add');
@@ -122,7 +122,7 @@ Route::get('/patients/list/',[PatientController::class, 'patientlist'])->name('p
 Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
 Route::post('/patients/store',[PatientController::class, 'patientStore'])->name('patient.store');
 
-    //Patient_Admission
+//Patient_Admission
 Route::get('/patients/admission/add',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::get('/patients/admission/add/{patient_id}',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
 Route::post('/patients/admission/store',[PatientController::class, 'patientAdmissionStore'])->name('patient_admisssion.store');
@@ -138,10 +138,10 @@ Route::resource('/appointment',AppointmentController::class);
     //doctor_department
 
 Route::controller(DepartmentController::class)->group(function () {
-    Route::get('/show/department','show')->name('show.department'); 
-    Route::get('/create/department','create')->name('create.department'); 
-    Route::post('/store/department','store')->name('store.department'); 
-    Route::get('/view/department/{id}','view')->name('view.department'); 
+    Route::get('/show/department','show')->name('show.department');
+    Route::get('/create/department','create')->name('create.department');
+    Route::post('/store/department','store')->name('store.department');
+    Route::get('/view/department/{id}','view')->name('view.department');
     Route::get('/edit/department/{id}','edit')->name('edit.department');
     Route::put('/update/department/{id}','update')->name('update.department');
     Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
@@ -208,7 +208,7 @@ Route::post('/clinic/setup/store',[ClinicController::class,'store'])->name('clin
 Route::get('/clinic/setup/edit/{id}',[ClinicController::class,'edit'])->name('clinic.setup.edit');
 Route::put('/clinic/setup/update/{id}',[ClinicController::class,'update'])->name('clinic.setup.update');
 Route::get('clinic/setup/delete/{id}',[ClinicController::class,'delete'])->name('clinic.setup.delete');
-  
+
   //Cabin resource controller
 Route::resource('cabin',CabinController::class);
 
@@ -252,7 +252,7 @@ Route::resource('operational_activities', OperationalReportController::class);
 Route::resource('investigations', InvestigationController::class);
 Route::resource('medicine', MedicineController::class);
 Route::resource('medicine_category', MedicinecategoryController::class);
-}); 
+});
 
                                                 #All Exports
 

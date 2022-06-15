@@ -18,8 +18,8 @@ class AdmissionFactory extends Factory
     {
         return [
             'patient_id'=>$this->faker->numberBetween(1,5),
-            'doctor_id'=>$this->faker->numberBetween(1,5), 
-            'bed_id'=>$this->faker->numberBetween(1,5), 
+            'doctor_id'=>$this->faker->numberBetween(1,5),
+            'bed_id'=>$this->faker->numberBetween(1,5),
             'name'=>$this->faker->name(),
             'father_name'=>$this->faker->name(),
             'mother_name'=>$this->faker->name(),
@@ -29,6 +29,7 @@ class AdmissionFactory extends Factory
             'nid'=>$this->faker->numberBetween(100000,900000),
             'occupation'=>$this->faker->company(),
             'payment'=>$this->faker->numberBetween(100,500),
+            'weight'=>$this->faker->numberBetween(10,150),
             'allergies'=>$this->faker->randomElement(['Yes','NO']),
             'tendancy'=>$this->faker->randomElement(['Yes','NO']),
             'heart_diseases'=>$this->faker->randomElement(['Yes','NO']),
@@ -45,7 +46,7 @@ class AdmissionFactory extends Factory
             'quota'=>$this->faker->randomElement(['Student','Employee']),
             'referred_by'=>$this->faker->randomElement(['Doctor','Another Doctor']),
             'visit'=>$this->faker->numberBetween(500,1000),
-             
+
         ];
     }
 }

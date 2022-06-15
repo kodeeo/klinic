@@ -17,22 +17,22 @@ class PatientController extends Controller
         $patients=Patient::paginate(10);
         return view('admin.pages.patient.list',compact('patients'));
     }
- 
+
     public function patientAdd()
     {
         return view('admin.pages.patient.create');
     }
     public function patientStore(Request $request)
     {
-     
+
 
         $image_name=null;
         // step1
         if ($request->hasFile('patient_image'))
-        
+
         // step 2 genertae file name
         {
-           
+
             $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
             // step 3: store project directory
              $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
@@ -40,62 +40,37 @@ class PatientController extends Controller
         {
             // dd($request->all());
             $request->validate([
-              'case_no'=>'required',  
-              'name'=>'required',
-              'ptype'=>'required',
-              'email'=>'required',
-              'birthdate'=>'required',
-              'gender'=>'required',
-              'father'=>'required',
-              'mother'=>'required',
-              'nid'=>'required',
-              'passport'=>'required',
-              'language'=>'required',
-              'spouse'=>'required',
-              'b_place'=>'required',
-              'address'=>'required',
-              'phone'=>'required',
-              'occupation'=>'required',
-              'blood'=>'required',
-              'status'=>'required',
-              'religion'=>'required',
-              'height'=>'required',
-              'weight'=>'required',
-              'e_name'=>'required',
-              'relation'=>'required',
-              'contact_number'=>'required',
-              'patient_image'=>'required'
-              
-             ]);
-            
+                'first_name'=>'required',
+                'last_name'=>'required',
+                'case_id'=>'required',
+                'p_type'=>'required',
+                'email'=>'required',
+                'password'=>'required',
+                'gender'=>'required',
+                'date_of_birth'=>'required',
+                'address'=>'required',
+                'phoneNumber'=>'required',
+                'blood_group'=>'required',
+                'patient_image'=>'required'
+               ]);
+
+
+
+
             //creating new patients
-     
+
         Patient::create([
             'case_no'=>$request->case_no,
-            'name'=>$request->name,
-            'ptype'=>$request->ptype,
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'p_type'=>$request->p_type,
             'email'=>$request->email,
-            'birthdate'=>$request->birthdate,
-            'gender'=>$request->gender,
-            'father'=>$request->father,
-            'mother'=>$request->mother,
-            'nid'=>$request->nid,
-            'passport'=>$request->passport,
-            'language'=>$request->language,
-            'spouse'=>$request->spouse,
-            'b_place'=>$request->b_place,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
-            'occupation'=>$request->occupation,
-            'blood'=>$request->blood,
-            'status'=>$request->status,
-            'religion'=>$request->religion,
-            'height'=>$request->height,
-            'weight'=>$request->weight,
-            'e_name'=>$request->e_name,
-            'relation'=>$request->relation,
-            'contact_number'=>$request->contact_number,
             'password'=>$request->password,
+            'date_of_birth'=>$request->date_of_birth,
+            'gender'=>$request->gender,
+            'address'=>$request->address,
+            'phoneNumber'=>$request->phoneNumber,
+            'blood_group'=>$request->blood_group,
             'patient_image'=>$image_name
         ]);
         Log::Channel('custom')->info("Patient has been craeted successfully");
@@ -103,12 +78,12 @@ class PatientController extends Controller
         Toastr::success('Patitent Created Successfully', 'success');
         return redirect()->route('patient.list');
 
- 
+
      }
     }
 
 
-  
+
 
     public function patientAdmissionAdd($patient_id)
     {
@@ -120,21 +95,21 @@ class PatientController extends Controller
     {
         //validation
         $request->validate([
-            'name'=>'required',  
-            'father'=>'required',
-            'mother'=>'required',
-            'room'=>'required',
-            'doctor'=>'required',
+            'name'=>'required',
+            'father_name'=>'required',
+            'mother_name'=>'required',
+
             'relation'=>'required',
             'address'=>'required',
             'mobile'=>'required',
             'nid'=>'required',
             'occupation'=>'required',
             'payment'=>'required',
+            'weight'=>'required',
             'allergies'=>'required',
             'tendancy'=>'required',
-            'heart'=>'required',
-            'pressure'=>'required',
+            'heart_diseases'=>'required',
+            'high_BP'=>'required',
             'accident'=>'required',
             'diabetic'=>'required',
             'others'=>'required',
@@ -144,18 +119,19 @@ class PatientController extends Controller
             'insurance'=>'required',
             'worksafe'=>'required',
             'tac'=>'required',
-            'pension'=>'required',
-            'know'=>'required',
+            'quota'=>'required',
+            'referred_by'=>'required',
             'visit'=>'required'
         ]);
 
         $admission=Admission::create([
             'patient_id'=>$request->patient_id,
+            'bed_id'=>$request->bed_id,
+            'doctor_id'=>$request->doctor_id,
             'name'=>$request->name,
-            'father'=>$request->father,
-            'mother'=>$request->mother,
-            'room'=>$request->room,
-            'doctor'=>$request->doctor,
+            'father_name'=>$request->father_name,
+            'mother_name'=>$request->mother_name,
+
             'relation'=>$request->relation,
             'address'=>$request->address,
             'mobile'=>$request->mobile,
@@ -163,10 +139,11 @@ class PatientController extends Controller
             'occupation'=>$request->occupation,
             'payment'=>$request->payment,
             //medical info
+            'weight'=>$request->weight,
             'allergies'=>$request->allergies,
             'tendancy'=>$request->tendancy,
-            'heart'=>$request->heart,
-            'pressure'=>$request->pressure,
+            'heart_diseases'=>$request->heart_diseases,
+            'high_BP'=>$request->high_BP,
             'accident'=>$request->accident,
             'diabetic'=>$request->diabetic,
             'others'=>$request->others,
@@ -176,17 +153,18 @@ class PatientController extends Controller
             'insurance'=>$request->insurance,
             'worksafe'=>$request->worksafe,
             'tac'=>$request->tac,
-            'pension'=>$request->pension,
-            'know'=>$request->know,
+            'quota'=>$request->quota,
+            'referred_by'=>$request->referred_by,
             'visit'=>$request->visit,
-           
+
         ]);
             Visit::create([
             'admission_id'=> $admission->id,
+            'weight'=>$request->weight,
             'allergies'=>$request->allergies,
             'tendancy'=>$request->tendancy,
-            'heart'=>$request->heart,
-            'pressure'=>$request->pressure,
+            'heart_diseases'=>$request->heart_diseases,
+            'high_BP'=>$request->high_BP,
             'accident'=>$request->accident,
             'diabetic'=>$request->diabetic,
             'others'=>$request->others,
@@ -196,14 +174,14 @@ class PatientController extends Controller
             'insurance'=>$request->insurance,
             'worksafe'=>$request->worksafe,
             'tac'=>$request->tac,
-            'pension'=>$request->pension,
-            'know'=>$request->know,
+            'quota'=>$request->quota,
+            'referred_by'=>$request->referred_by,
             'visit'=>$request->visit,
-           
+
         ]);
 
         Toastr::success('Admission information has been  recorded Successfully', 'success');
-       
+
     }
 
     public function patientAdmissionList()
