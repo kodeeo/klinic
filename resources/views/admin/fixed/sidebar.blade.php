@@ -252,30 +252,15 @@
         </li>
 
         <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#hospital_activities" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+            <a data-bs-toggle="collapse" href="#billing" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
                 <span> Billing </span>
                 <span class="menu-arrow"></span>
             </a>
-            <div class="collapse" id="hospital_activities">
+            <div class="collapse" id="billing">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="#">Add Bill</a>
-                    </li>
-                    <li>
-                        <a href="#">Death Report</a>
-                    </li>
-                    <li>
-                        <a href="#">Operation Activity</a>
-                    </li>
-                    <li>
-                        <a href="#">Investigation Report</a>
-                    </li>
-                    <li>
-                        <a href="#">Medicine</a>
-                    </li>
-                    <li>
-                        <a href="#">Medicine Category</a>
+                        <a href="{{route('bill.index')}}">Bill List</a>
                     </li>
                 </ul>
             </div>
