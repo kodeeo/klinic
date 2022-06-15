@@ -69,7 +69,7 @@
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
     </div>
-    <a href="{{ route('permission.edit',$role->id) }}" class="btn btn-primary" type="button">Edit</a>	 
+    {{-- <a href="{{ route('permission.edit',$role->id) }}" class="btn btn-primary" type="button">Edit</a>	  --}}
 
 
 @endsection

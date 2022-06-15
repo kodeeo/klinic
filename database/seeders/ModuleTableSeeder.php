@@ -51,6 +51,14 @@ class ModuleTableSeeder extends Seeder
                 'description' => 'Staff'
             ],
             [
+                'name' => 'Nurse',
+                'description' => 'Nurse'
+            ],
+            [
+                'name' => 'WardBoy',
+                'description' => 'WardBoy'
+            ],
+            [
                 'name' => 'Services',
                 'description' => 'Services'
             ],
@@ -67,20 +75,52 @@ class ModuleTableSeeder extends Seeder
                 'description' => 'Admission'
             ],
             [
-                'name' => 'Diagnostic',
-                'description' => 'Diagnostic'
+                'name' => 'Test Category',
+                'description' => 'Test Category'
+            ],
+            [
+                'name' => 'Test',
+                'description' => 'Test'
+            ],
+            [
+                'name' => 'Assign Test',
+                'description' => 'Assign Test'
             ],
             [
                 'name' => 'Manage Bed',
                 'description' => 'Manage Bed'
             ],
             [
-                'name' => 'Room',
-                'description' => 'Room'
+                'name' => 'Ward',
+                'description' => 'Ward'
             ],
             [
-                'name' => 'Hospital Activities',
-                'description' => 'Hospital Activities'
+                'name' => 'Cabin',
+                'description' => 'Cabin'
+            ],
+            [
+                'name' => 'Birth Report',
+                'description' => 'Birth Report'
+            ],
+            [
+                'name' => 'Death Report',
+                'description' => 'Death Report'
+            ],
+            [
+                'name' => 'Operational Activities',
+                'description' => 'Operational Activities'
+            ],
+            [
+                'name' => 'Investigation',
+                'description' => 'Investigation'
+            ],
+            [
+                'name' => 'Medicine',
+                'description' => 'Medicine'
+            ],
+            [
+                'name' => 'Medicine Category',
+                'description' => 'Medicine Category'
             ],
             [
                 'name' => 'Clinic SetUp',
