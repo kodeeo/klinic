@@ -251,6 +251,36 @@
             </div>
         </li>
 
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#hospital_activities" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Billing </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="hospital_activities">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="#">Add Bill</a>
+                    </li>
+                    <li>
+                        <a href="#">Death Report</a>
+                    </li>
+                    <li>
+                        <a href="#">Operation Activity</a>
+                    </li>
+                    <li>
+                        <a href="#">Investigation Report</a>
+                    </li>
+                    <li>
+                        <a href="#">Medicine</a>
+                    </li>
+                    <li>
+                        <a href="#">Medicine Category</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
           <li class="side-nav-item">
               <a href="{{route('clinic.informations')}}" class="side-nav-link">
                   <i class="uil-folder-plus"></i>
