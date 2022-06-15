@@ -19,8 +19,9 @@ return new class extends Migration
             $table->foreignId('bed_type_id');
             $table->string('assign_date');
             $table->string('discharge_date');
+            $table->string('days');
             $table->string('description');
-            $table->string('status');
+            $table->string('assigned_by');
             $table->timestamps();
         });
     }

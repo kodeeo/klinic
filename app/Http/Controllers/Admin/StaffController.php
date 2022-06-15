@@ -96,8 +96,7 @@ class StaffController extends Controller
      */
     public function show($id)
     {
-        $staffs=User::find($id);
-        return view('admin.pages.staff.view',compact('staffs'));
+        //
     }
 
     /**

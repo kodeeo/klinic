@@ -30,34 +30,43 @@
 
           <li class="side-nav-title side-nav-item">Navigation</li>
 
+          @if(hasAnyPermissions('admin.dashboard'))
           <li class="side-nav-item">
             <a href="{{route('admin.dashboard')}}" class="side-nav-link">
                 <i class="uil-folder-plus"></i>
                 <span> Dashboard</span>
             </a>
         </li>
+          @endif
 
+          @if (hasAnyPermissions('user.list'))
           <li class="side-nav-item">
-              <a href="{{route('user.list')}}" class="side-nav-link">
-                  <i class="uil-folder-plus"></i>
-                  <span> Users </span>
-              </a>
-          </li>
+            <a href="{{route('user.list')}}" class="side-nav-link">
+                <i class="uil-folder-plus"></i>
+                <span> Users </span>
+            </a>
+        </li>    
+          @endif
 
+          @if (hasAnyPermissions('role.list'))
           <li class="side-nav-item">
-              <a href="{{route('role.list')}}" class="side-nav-link">
-                  <i class="uil-copy-alt"></i>
-                 <span> Role </span>
-              </a>
-          </li>
+            <a href="{{route('role.list')}}" class="side-nav-link">
+                <i class="uil-copy-alt"></i>
+               <span> Role </span>
+            </a>
+        </li>
+          @endif
+          @if (hasAnyPermissions('permission.list'))
           <li class="side-nav-item">
-              <a href="{{ route ('permission.index') }}" class="side-nav-link">
-                  <i class="uil-copy-alt"></i>
-                 <span> Permission </span>
-              </a>
-          </li>
+            <a href="{{ route ('permission.index') }}" class="side-nav-link">
+                <i class="uil-copy-alt"></i>
+               <span> Permission </span>
+            </a>
+        </li>
+          @endif
 
-
+          
+              
           <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#doctors" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
@@ -67,19 +76,21 @@
 
             <div class="collapse" id="doctors">
                 <ul class="side-nav-second-level">
+                    @if (hasAnyPermissions('show.department'))
 
                     <li>
                         <a href="{{route('show.department')}}">Add Department</a>
                     </li>
-
                     <li>
                         <a href="{{route('doctor.create')}}">Add Doctor </a>
                     </li>
-                   
-
+                    @endif
+                    
+                    @if (hasAnyPermissions('doctor.index'))
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
                     </li>
+                    @endif
                     <li>
                         <a href="{{route('schedule.create')}}">Add Schedule</a>
                     </li>
@@ -180,10 +191,10 @@
                         <a href="{{route('beds.index')}}">Bed List</a>
                     </li>
                     <li>
-                        <a href="{{route('assign.bed')}}">Bed Assign</a>
+                        <a href="{{route('assign.bed.create')}}">Bed Assign</a>
                     </li>
                     <li>
-                        <a href="#">Assign Bed List</a>
+                        <a href="{{route('assign.bed.index')}}">Assigned Bed List</a>
                     </li>
                     <li>
                         <a href="#">Report</a>

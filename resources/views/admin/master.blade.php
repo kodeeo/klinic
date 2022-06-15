@@ -93,5 +93,6 @@
         height: 100
     });
 </script>
+@stack('js')
 </body>
 </html>

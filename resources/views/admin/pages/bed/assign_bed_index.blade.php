@@ -1,12 +1,12 @@
 @extends('admin.master')
 @section('content')
 
-<h1>{{__('Bed Manager')}}</h1>
+<h1>{{__('Assigned Bed List')}}</h1>
 <hr>
 
 <div class="row" style="justify-content: space-between;">
   <div class="col">
-    <a href="{{route('beds.create')}}"  class="btn btn-primary">Add Bed</a>
+    <a href="{{route('assign.bed.create')}}"  class="btn btn-primary">+ Assign Bed</a>
   </div>
 
   <div class="col-4 dt-buttons btn-group">
@@ -28,32 +28,41 @@
               <table class="table" id="dataTable" style="text-align: center;">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">SL.NO</th>
+                    <th scope="col">Patient ID</th>
                     <th scope="col">Bed Type</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Capacity</th>
                     <th scope="col">Charge</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Day</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Assign Date</th>
+                    <th scope="col">Discharge Date</th>
+                    <th scope="col">Assigned By</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($beds as $key=>$bed) 
-
+                  @foreach($assign_beds as $key=>$item)
                           <tr>
-                          
                             <th>{{$key+1}}</th>
-                            <td>{{$bed->type}}</td>
-                            <td>{{$bed->description}}</td>
-                            <td>{{$bed->capacity}}</td>
-                            <td>{{$bed->charge}}</td>
-                            <td>{{$bed->status}}</td>
+                            <td>{{$item->patient_id}}</td>
+                            <td>{{$item->beds->type}}</td>
+                            <td>{{$item->description}}</td>
+                            <td>{{$item->beds->charge}}</td>
+                            <td>{{$item->days}}</td>
 
+                                <?php
+                                    $total=$item->days*$item->beds->charge;
+                                  ?>
+
+                            <td>{{$total}}</td>
+                            <td>{{$item->assign_date}}</td>
+                            <td>{{$item->discharge_date}}</td>
+                            <td>{{$item->assigned_by}}</td>
                             <td>
                               <div style="display: flex">
-                              <a class="btn btn-success btn-sm" href="{{route('beds.show',$bed->id)}}"><i class="fas fa-eye"></i></a>  
-                              <a style="margin-left: 2px" class="btn btn-warning btn-sm" href="{{route('beds.edit',$bed->id)}}"><i class="fas fa-edit"></i></a>
-                              <form style="margin-left: 2px;" action="{{route('beds.destroy',$bed->id)}}" method="POST">
+                              <a style="margin-left: 2px" class="btn btn-warning btn-sm" href="#"><i class="fas fa-edit"></i></a>
+                              <form style="margin-left: 2px;" action="#" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <div>
