@@ -15,7 +15,7 @@
           </div> 
           <div class="form-group col-6">
             <label for="bed_type">Bed Type <span class="text-danger">*</span></label>
-            <select class="form-select" name="bed_type" aria-label="Select Bed Type">
+            <select class="form-select" name="bed_type_id" aria-label="Select Bed Type">
               @foreach ($bed_types as $item)
                 <option value="{{$item->id}}">{{$item->type}}</option>
               @endforeach

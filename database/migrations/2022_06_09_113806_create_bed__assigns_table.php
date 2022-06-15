@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('assign_date');
             $table->string('discharge_date');
             $table->string('days');
-            $table->string('total');
             $table->string('description');
             $table->string('assigned_by');
             $table->timestamps();

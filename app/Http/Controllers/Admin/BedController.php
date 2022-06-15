@@ -126,13 +126,20 @@ class BedController extends Controller
 
         Bed_Assign::create([
             'patient_id'=>$request->patient_id,
-            'bed_type_id'=>$request->bed_type,
+            'bed_type_id'=>$request->bed_type_id,
             'assign_date'=>$request->assign_date,
             'discharge_date'=>$request->discharge_date,
             'days'=>$days,
             'description'=>$request->description,
             'assigned_by'=>auth()->user()->role->name,
         ]);
+
+        $beds=Bed::where('id',$request->bed_type_id)->first();
+
+        $beds->update([
+            'capacity'=>$beds->capacity-1
+        ]);
+
         return redirect()->route('assign.bed.index');
     }
 

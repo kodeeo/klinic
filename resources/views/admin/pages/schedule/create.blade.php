@@ -14,13 +14,35 @@
             <label for="doctor_name">Doctor's Name</label>
             <select class="form-select" name="doctor_id" aria-label="Default select example">
                 <option>Select Doctor</option>
-
-                @foreach ($doctor as $item)
-          
+                  @foreach ($doctor as $item)
                 <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
-              </select>
+            </select>
           </div>
+
+          <div class="form-group col-6">
+            <label for="email">Per Patient Time (in minutes)</label>
+            <input type="text" class="timepicker form-control" id="patient_time" name="patient_time" placeholder="Enter Patient Time">
+        </div>
+
+        <div class="form-group col-6 mt-2">
+          <label for="serial">Serial Visibity</label><br>
+            <select class="form-select" name="serial" id="serial">
+              <option value="sequential">Sequential</option>
+              <option value="timestamp">Timestamp</option>
+            </select>
+      </div> 
+
+        <div class="form-group col-6 mt-2">
+          <label for="status">Status</label><br>
+          <div style="display: flex; justify-content:center; margin-top:3px;">
+            <input type="radio" id="active" name="status" value="active">
+            <label for="status" style="margin-right: 10px">Active</label><br>
+            <input type="radio" id="inactive" name="status" value="inactive">
+            <label for="status">Inactive</label><br>
+          </div>
+          
+        </div> 
           {{-- <div class="form-group col-6">
               <label for="email">Availabe Days</label>
               <input type="text" class="form-control" id="days" name="days" placeholder="Enter Availabe Days"><br>
@@ -114,29 +136,6 @@
             </div>
           
         </div>  --}}
-        
-        <div class="form-group col-6">
-            <label for="email">Per Patient Time (in minutes)</label>
-            <input type="text" class="timepicker form-control" id="patient_time" name="patient_time" placeholder="Enter Patient Time">
-        </div> 
-        <div class="form-group col-6">
-            <label for="serial">Serial Visibity</label><br>
-              <select class="form-select" name="serial" id="serial">
-                <option value="sequential">Sequential</option>
-                <option value="timestamp">Timestamp</option>
-              </select>
-        </div> 
-
-    <div class="form-group col-12 mt-2">
-        <label for="status">Status:</label><br>
-
-        <input type="radio" id="active" name="status" value="active">
-          <label for="status">Active</label><br>
-          <input type="radio" id="inactive" name="status" value="inactive">
-          <label for="status">Inactive</label><br>
-        </div> 
-
-       
 
     </div>   
     <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Save</button>
