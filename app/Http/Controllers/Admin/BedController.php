@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DateTime;
 use App\Models\Bed;
-use App\Models\Bed_Assign;
+use App\Models\AssignBed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
@@ -108,14 +108,14 @@ class BedController extends Controller
 
     public function assigned_bed_index()
     {
-        $assign_beds=Bed_Assign::with('beds')->get();
-        return view('admin.pages.bed.assign_bed_index',compact('assign_beds'));
+        $assign_beds=AssignBed::with('beds')->get();
+        return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
     public function assign_bed_create()
     {
         $bed_types=Bed::all();
-        return view('admin.pages.bed.assign_bed_create',compact('bed_types'));
+        return view('admin.pages.bed.assign.create',compact('bed_types'));
     }
 
     public function assign_bed_store(Request $request)
@@ -124,7 +124,7 @@ class BedController extends Controller
         $to=new DateTime($request->discharge_date);
         $days= (($from->diff($to))->format('%a'))+1;
 
-        Bed_Assign::create([
+        AssignBed::create([
             'patient_id'=>$request->patient_id,
             'bed_type_id'=>$request->bed_type_id,
             'assign_date'=>$request->assign_date,

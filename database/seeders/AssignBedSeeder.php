@@ -1,11 +1,12 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\TestCategory;
+
+use App\Models\AssignBed;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TestCategorySeeder extends Seeder
+class AssignBedSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class TestCategorySeeder extends Seeder
      */
     public function run()
     {
-        TestCategory::factory()->count(5)->create();
+        AssignBed::factory()->count(5)->create();
     }
 }
