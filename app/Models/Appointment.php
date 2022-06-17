@@ -12,15 +12,15 @@ class Appointment extends Model
     use HasFactory;
     protected $guarded=[];
 
-    public function departmentRelation()
+    public function departments()
     {
-        return $this->belongsTo(Department::class,'d_department','id');
+        return $this->belongsTo(Department::class,'department_id','id');
         
     }
 
-    public function doctorRelation()
+    public function doctors()
     {
-        return $this->belongsTo(Doctor::class,'doctor','id');
+        return $this->belongsTo(Doctor::class,'doctor_id','id');
         
     }
 }
