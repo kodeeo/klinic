@@ -10,10 +10,10 @@
     <div class="container" style="display: grid; margin-left: -15px;">
         <div class="row" style="height: 90px;">
             <div class="col-md-2 card-body" style="padding:3px;"><a class="btn btn-success size"
-                                                                    href="{{route('patient.list')}}"><i
+                                                                    href="{{route('patients.index')}}"><i
                         style="font-size: 30px;" class="fa fa-wheelchair"></i> Patient Admission</a></div>
             <div class="col-md-2 card-body" style="padding:3px;"><a class="btn btn-success size"
-                                                                    href="{{route('patient.add')}}"><i
+                                                                    href="{{route('patients.create')}}"><i
                         style="font-size: 30px;" class="fa fa-truck-medical"></i> Add Patient</a></div>
             <div class="col-md-2 card-body" style="padding:3px;"><a class="btn btn-success size"
                                                                     href="{{route('doctor.create')}}"><i

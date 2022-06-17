@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('investigations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained('patients')->restrictOnDelete();
-            $table->foreignId('doctor_id')->constrained('doctors')->restrictOnDelete();
+            $table->string('unique_patient_id',10)->unique();
+            $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
             $table->date('date',20);
             $table->text('title');
             $table->text('description',100);

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class InvestigationFactory extends Factory
     public function definition()
     {
         return [
-            'patient_id'=>$this->faker->numberBetween(1,5),
+            'unique_patient_id'=>strtoupper(Str::random(10)),
             'date'=>$this->faker->date(),
             'title'=>$this->faker->text(),
             'description'=>$this->faker->text(),

@@ -14,6 +14,6 @@ class BirthSeeder extends Seeder
      */
     public function run()
     {
-        BirthReport::factory()->count(5)->create();
+        BirthReport::factory()->count(20)->create();
     }
 }
