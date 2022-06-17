@@ -131,8 +131,6 @@
             </div>
         </li>
 
-
-
           <li class="side-nav-item">
               <a href="{{ route('admin.service.list') }}" class="side-nav-link">
                   <i class="uil-comments-alt"></i>
@@ -140,11 +138,23 @@
               </a>
           </li>
 
+
           <li class="side-nav-item">
-            <a href="{{route('patient.list')}}" class="side-nav-link">
-                <i class="uil-copy-alt"></i>
-               <span> Patients List </span>
+            <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> Patients </span>
+                <span class="menu-arrow"></span>
             </a>
+            <div class="collapse" id="patients">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('patients.create')}}">Add Patients</a>
+                    </li>
+                    <li>
+                        <a href="{{route('patients.index')}}">Patients List</a>
+                    </li>
+                </ul>
+            </div>
         </li>
 
           <li class="side-nav-item">
@@ -155,7 +165,7 @@
         </li>
 
         <li class="side-nav-item">
-            <a href="{{route('patient_admisssion.list')}}" class="side-nav-link">
+            <a href="{{route('admissions.index')}}" class="side-nav-link">
                 <i class="uil-copy-alt"></i>
                <span>Admissions</span>
             </a>

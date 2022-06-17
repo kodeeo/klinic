@@ -1,9 +1,10 @@
 @extends('admin.master')
 @section('content')
 <style>
-.required {
- color: red;
-}
+    .required {
+        color: red;
+    }
+
 </style>
 
 <h1>{{__('Doctor Registration')}}</h1>
@@ -17,21 +18,25 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="first_name" cl>First Name <span class="required">*</span></label>
-            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required><br>
-          </div>
-          <div class="form-group col-6">
-              <label for="last_name">Last Name <span class="required">*</span> </label>
-              <input type="last_name" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" required>
-          </div>
-          <div class="form-group col-6">
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name"
+                required><br>
+        </div>
+        <div class="form-group col-6">
+            <label for="last_name">Last Name <span class="required">*</span> </label>
+            <input type="last_name" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name"
+                required>
+        </div>
+        <div class="form-group col-6">
             <label for="username">User Name <span class="required">*</span> </label>
-            <input type="username" class="form-control" id="username" name="username" placeholder="Enter User Name" required>
+            <input type="username" class="form-control" id="username" name="username" placeholder="Enter User Name"
+                required>
         </div>
         <div class="form-group col-6">
             <label for="email">Email Address <span class="required">*</span> </label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" required><br>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address"
+                required><br>
         </div>
-          <div class="form-group col-6 mt-2">
+        <div class="form-group col-6 mt-2">
             <label for="phone">Phone No</label>
             <input type="text" class="form-control" id="password" name="phone" placeholder="Enter Phone No">
         </div>
@@ -53,28 +58,30 @@
                 <option selected>Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-            
-              </select>
+
+            </select>
         </div>
         <div class="form-group col-6 mt-2">
             <label for="blood">Blood Group <span class="required">*</span></label>
-            <select id="blood" name="blood_group" class="form-control"> 
+            <select id="blood" name="blood_group" class="form-control">
                 @foreach($blood as $blood_group)
                 <option value="{{$blood_group}}">
                     {{$blood_group}}
-            </option> 
-            @endforeach
-        </select>
+                </option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group row">
             <label for="degree" class="col-xs-3 col-form-label">Education/Degree <span class="required">*</span></label>
             <div class="col-xs-9">
-                <textarea name="degree" class="form-control" placeholder="Enter Education/Degree" maxlength="140" rows="7"></textarea>
+                <textarea name="degree" class="form-control" placeholder="Enter Education/Degree" maxlength="140"
+                    rows="7"></textarea>
             </div>
-        </div>  
+        </div>
         <div class="form-group col-6 mt-2">
             <label for="specialist">Specialist <span class="required">*</span></label>
-            <input type="text" class="form-control" id="specialist" name="specialist" placeholder="Specialist For" required>
+            <input type="text" class="form-control" id="specialist" name="specialist" placeholder="Specialist For"
+                required>
         </div>
         <div class="form-group col-6 mt-2">
             <label for="department">Department <span class="required">*</span></label>
@@ -82,22 +89,24 @@
                 <option>Select Department</option>
 
                 @foreach ($department as $item)
-          
+
                 <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
-              </select>
+            </select>
         </div>
-       
+
         <div class="form-group row">
             <label for="bio" class="col-xs-3 col-form-label">Short Biography</label>
             <div class="col-xs-9">
-                <textarea name="bio" class="form-control" placeholder="Enter Short Biography" maxlength="140" rows="7"></textarea>
+                <textarea name="bio" class="form-control" placeholder="Enter Short Biography" maxlength="140"
+                    rows="7"></textarea>
             </div>
         </div>
-      
+
         <div class="form-group col-6 mt-2">
             <label for="password">Password <span class="required">*</span></label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"
+                required>
         </div>
         <div class="mt-2">
             <label for="image" class="form-label">Insert Image</label>
@@ -109,12 +118,12 @@
 
         <input type="radio" id="active" name="status" value="active">
           <label for="status">Active</label><br>
-          <input type="radio" id="inactive" name="status" value="inactive" >
+          <input type="radio" id="inactive" name="status" value="inactive">
           <label for="status">Inactive</label><br>
-        </div> 
-    
-    
+    </div>
+
+
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  @endsection
+</form>
+@endsection

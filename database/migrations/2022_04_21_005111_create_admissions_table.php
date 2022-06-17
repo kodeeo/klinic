@@ -15,36 +15,34 @@ return new class extends Migration
     {
         Schema::create('admissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained('patients')->restictionOnDelete();
-            $table->foreignId('bed_id')->constrained()->restictionOnDelete();
-            $table->foreignId('doctor_id')->constrained()->restictionOnDelete();
-            $table->string('name',100);
-            $table->string('father_name',100);
-            $table->string('mother_name',100);
-            $table->string('relation',100);
-            $table->text('address',100);
-            $table->string('mobile');
-            $table->string('nid',20)->nullable();
-            $table->string('occupation',50);
-            $table->double('payment',50);
+            $table->string('unique_admission_id',10)->unique();
+            $table->string('unique_patient_id',10)->unique();
+            $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
+            $table->string('admission_date',15);
+            $table->string('discharge_date',15)->nullable();
+            $table->string('package',50)->nullable();
+            $table->string('insurance',50)->nullable();
+
             //medical information
-            $table->string('weight',20);
+            $table->string('height',10);
+            $table->string('weight',10);
             $table->string('allergies',10);
             $table->string('tendancy',10);
             $table->string('heart_diseases',10);
             $table->string('high_BP',10);
             $table->string('accident',10);
             $table->string('diabetic',10);
-            $table->text('others',50);
             $table->string('infection',10);
-            $table->text('details',100);
-            $table->text('condition',50);
-            $table->string('insurance',50);
-            $table->string('worksafe',10);
-            $table->string('tac',10);
             $table->string('quota',20);
-            $table->string('referred_by',20);
-            $table->string('visit',20);
+            $table->text('others')->nullable();
+
+            //guardian info
+            $table->string('guardian_name',50);
+            $table->string('guardian_relation',20);
+            $table->string('guardian_contact',20);
+            $table->text('guardian_address');
+            $table->string('status',20)->default('Admitted');
+
             $table->timestamps();
         });
     }

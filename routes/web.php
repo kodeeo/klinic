@@ -53,6 +53,7 @@ use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
+use App\Http\Controllers\Admin\AdmissionController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
 /*
@@ -116,23 +117,15 @@ Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store'
 Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
-
 //Patient
 
-Route::get('/patients/list/',[PatientController::class, 'patientlist'])->name('patient.list');
-Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
-Route::post('/patients/store',[PatientController::class, 'patientStore'])->name('patient.store');
+Route::resource('patients', PatientController::class);
 
 //Patient_Admission
-Route::get('/patients/admission/add',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
-Route::get('/patients/admission/add/{patient_id}',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
-Route::post('/patients/admission/store',[PatientController::class, 'patientAdmissionStore'])->name('patient_admisssion.store');
-Route::get('/patients/admission/lists',[PatientController::class, 'patientAdmissionList'])->name('patient_admisssion.list');
+Route::resource('admissions', AdmissionController::class);
+
 //Appointment
-Route::resource('/appointment',AppointmentController::class);
-
-
-
+Route::resource('appointment',AppointmentController::class);
 
 //doctor_department
 

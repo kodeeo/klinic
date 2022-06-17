@@ -42,10 +42,10 @@
       @foreach ($deathReport as $key=>$item)
           <tr>
               <th scope="row">{{$key+1}}</th>
-              <td>{{$item->patient_id}}</td>
+              <td>{{$item->unique_patient_id}}</td>
               <td>{{$item->date}}</td>
               <td>{{$item->title}}</td>
-              <td>{{optional($item->doctor)->name}}</td>
+              <td>{{$item->doctors->first_name}} {{$item->doctors->last_name}}</td>
               <td class="d-print-none">
                 <div style="display: flex ">
                 <a style="margin-left: 10px" class="btn btn-success btn-sm" href="{{route('death_report.show', $item->id)}}"><i class="fas fa-eye"></i></a> 
