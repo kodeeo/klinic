@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('test_categories', function (Blueprint $table) {
+        Schema::create('assign_beds', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('details');
+            $table->string('unique_patient_id',15);
+            $table->foreignId('bed_type_id');
+            $table->string('assign_date',20);
+            $table->string('discharge_date',20);
+            $table->string('days',5);
+            $table->text('description');
+            $table->string('assigned_by',10);
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_categories');
+        Schema::dropIfExists('assign_beds');
     }
 };
