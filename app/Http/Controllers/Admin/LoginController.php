@@ -31,6 +31,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('master.login')->with('message','Logged out.');
+        return redirect()->route('home')->with('message','Logged out.');
     }
 }
