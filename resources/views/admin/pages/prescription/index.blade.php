@@ -48,9 +48,9 @@
                     
                     
                     <th>{{$key+1}}</th>
-                    <td>{{$value->patient_id}}</td>
+                    <td>{{$value->unique_patient_id}}</td>
                     <td>{{$value->appointment_id}}</td>
-                    <td>{{$value->doctor_id}}</td>
+                    <td>{{$value->doctors->first_name}} {{$value->doctors->last_name}}</td>
                     <td>{{$value->weight}}</td>
                     <td>{{$value->blood_pressure}}</td>
                     <td>{{$value->reference}}</td>

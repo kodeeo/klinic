@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Activities;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
-use App\Models\Medicine_Category;
+use App\Models\MedicineCategory;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -17,7 +17,7 @@ class MedicinecategoryController extends Controller
      */
     public function index()
     {
-        $medicine_category=Medicine_Category::all();
+        $medicine_category=MedicineCategory::all();
         return view('admin.pages.hospital activities.medicine_category.index', compact('medicine_category'));
     }
 
@@ -28,7 +28,7 @@ class MedicinecategoryController extends Controller
      */
     public function create()
     {
-        $medicine_category=Medicine_Category::all();
+        $medicine_category=MedicineCategory::all();
         return view('admin.pages.hospital activities.medicine_category.create', compact('medicine_category'));
     }
 
@@ -40,7 +40,7 @@ class MedicinecategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Medicine_Category::create([
+        MedicineCategory::create([
             'name'=>$request->name,
             'description' => $request->description,
         ]);
@@ -55,7 +55,7 @@ class MedicinecategoryController extends Controller
      */
     public function show($id)
     {
-        $medicine_category=Medicine_Category::find($id);
+        $medicine_category=MedicineCategory::find($id);
         return view('admin.pages.hospital activities.medicine_category.view', compact('medicine_category'));
     }
 
@@ -67,7 +67,7 @@ class MedicinecategoryController extends Controller
      */
     public function edit($id)
     {
-        $medicine_category=Medicine_Category::find($id);
+        $medicine_category=MedicineCategory::find($id);
         $doctor = Doctor::all();
         return view('admin.pages.hospital activities.medicine_category.edit', compact('medicine_category','doctor'));
     }
@@ -81,7 +81,7 @@ class MedicinecategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $medicine_category=Medicine_Category::find($id);
+        $medicine_category=MedicineCategory::find($id);
         $medicine_category->update([
             'name'=>$request->name,
             'description' => $request->description,
@@ -97,7 +97,7 @@ class MedicinecategoryController extends Controller
      */
     public function destroy($id)
     {
-        Medicine_Category::find($id)->delete();
+        MedicineCategory::find($id)->delete();
         return redirect()->route('medicine_category.index')->with(Toastr::error('Medicine category has been deleted'));
     }
 }
