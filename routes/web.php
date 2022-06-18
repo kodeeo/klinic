@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
 
+use App\Http\Controllers\Admin\PrescriptionController;
 use App\Http\Controllers\Admin\TestCategoryController;
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
@@ -176,6 +177,9 @@ Route::get('key/clear', [CartController::class, 'keyClear'])->name('key.clear');
     //Doctor resource controller
 Route::resource('doctor',DoctorController::class);
 
+   //Prescription resource controller
+Route::resource('prescription',PrescriptionController::class);
+
     //Staff resource controller
 Route::resource('staffs',StaffController::class);
 
@@ -238,7 +242,6 @@ Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name
 
 
 //localization
-    //localization
 
 Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->name('admin.language.change');
 

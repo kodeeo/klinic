@@ -27,6 +27,7 @@ use Database\Seeders\ServiceModelSeeder;
 use Database\Seeders\TestCategorySeeder;
 use Database\Seeders\InvestigationSeeder;
 use Database\Seeders\AdmissionTableSeeder;
+use Database\Seeders\PrescriptionTableSeeder;
 use Database\Seeders\AppointmentTableSeeder;
 use Database\Seeders\MedicineCategorySeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -65,6 +66,7 @@ class DatabaseSeeder extends Seeder
         $this->call(InvestigationSeeder::class);
         $this->call(MedicineCategorySeeder::class);
         $this->call(MedicineSeeder::class);
+        $this->call(PrescriptionTableSeeder::class);
         $role = Role::where('name', '=', 'admin')->first();
         $role->permissions()->sync(Permission::get()->pluck('id'));
     }
