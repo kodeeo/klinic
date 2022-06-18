@@ -285,6 +285,9 @@
                 <div class="collapse" id="billing">
                     <ul class="side-nav-second-level">
                         <li>
+                            <a href="{{route('bill.create')}}">Add Bill</a>
+                        </li>
+                        <li>
                             <a href="{{route('bill.index')}}">Bill List</a>
                         </li>
                     </ul>
