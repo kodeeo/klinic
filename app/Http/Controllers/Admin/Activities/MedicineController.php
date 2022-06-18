@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Activities;
 use App\Models\Doctor;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
-use App\Models\Medicine_Category;
+use App\Models\MedicineCategory;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -30,7 +30,7 @@ class MedicineController extends Controller
     public function create()
     {
         $medicine=Medicine::all();
-        $medicine_category=Medicine_Category::all();
+        $medicine_category=MedicineCategory::all();
         return view('admin.pages.hospital activities.medicine.create', compact('medicine','medicine_category'));
     }
 
@@ -73,7 +73,7 @@ class MedicineController extends Controller
     public function edit($id)
     {
         $medicine=Medicine::find($id);
-        $medicine_category=Medicine_Category::all();
+        $medicine_category=MedicineCategory::all();
         return view('admin.pages.hospital activities.medicine.edit', compact('medicine','medicine_category'));
     }
 

@@ -10,4 +10,7 @@ class Patient extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded=[];
+   
+        
+    
 }

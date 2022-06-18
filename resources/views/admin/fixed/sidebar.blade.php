@@ -99,7 +99,7 @@
                             <a href="{{route('schedule.index')}}">Schedule List</a>
                         </li>
                         <li>
-                            <a href="#">Add Prescription</a>
+                            <a href="{{route('prescription.create')}}">Add Prescription</a>
                         </li>
                         <li>
                             <a href="{{route('prescription.index')}}">Prescription List</a>
