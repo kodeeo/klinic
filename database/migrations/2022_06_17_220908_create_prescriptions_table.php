@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('medicine_type',50);
             $table->text('medicine_instruction');
             $table->string('days',50);
-            $table->foreignId('test_id')->constrained('tests')->cascadeOnDelete();
-            $table->text('test_instruction');
+            $table->foreignId('test_id')->constrained('tests')->cascadeOnDelete()->nullable();
+            $table->text('test_instruction')->nullable();
             $table->double('fees',50);
             $table->text('patient_note');         
             $table->timestamps();
