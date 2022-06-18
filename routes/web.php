@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BedController;
 use App\Http\Controllers\Admin\CartController;
@@ -82,7 +83,8 @@ Route::post('/forget-password', [PasswordController::class, 'forgetPasswordEmail
 Route::get('/reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('reset.password');
 Route::post('/reset_password', [PasswordController::class, 'resetPasswordPost'])->name('reset.password.post');
 
-Route::get('/',[LoginController::class,'login'])->name('master.login');
+Route::get('/',[HomeController::class,'home'])->name('home');
+Route::get('/login',[LoginController::class,'login'])->name('master.login');
 
 Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin');
 
