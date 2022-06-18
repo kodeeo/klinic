@@ -25,7 +25,7 @@
 <br><br>
 
 <div>
-              <table class="table" id="dataTable" style="text-align: center;">
+              <table class="table" id="dataTable" style="text-align: center">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">SL.NO</th>
@@ -45,7 +45,7 @@
                   @foreach($assign_beds as $key=>$item)
                           <tr>
                             <th>{{$key+1}}</th>
-                            <td>{{$item->patient_id}}</td>
+                            <td>{{$item->unique_patient_id}}</td>
                             <td>{{$item->beds->type}}</td>
                             <td>{{$item->description}}</td>
                             <td>{{$item->beds->charge}}</td>

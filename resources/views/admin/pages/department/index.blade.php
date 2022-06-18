@@ -83,6 +83,7 @@
                               <a style="margin-left: 4px" class="btn btn-success btn-sm" href="{{route('view.department',$value->id)}}"><i class="fas fa-eye"></i></a>  
                               <a style="margin-left: 4px" class="btn btn-warning btn-sm" href="{{route('edit.department',$value->id)}}"><i class="fas fa-edit"></i></a>
                               <a style="margin-left: 4px" class="btn btn-danger btn-sm" href="{{route('delete.department',$value->id)}}"><i class="fas fa-trash"></i></a>
+
                             </td>  
                           </tr>
                     

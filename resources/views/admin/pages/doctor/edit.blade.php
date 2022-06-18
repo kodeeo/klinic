@@ -50,8 +50,7 @@
                 <option selected>Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-            
-              </select>
+            </select>
         </div>
         <div class="form-group col-6 mt-2">
             <label for="blood">Blood Group</label>

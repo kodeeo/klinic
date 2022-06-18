@@ -15,20 +15,23 @@ use Database\Seeders\DoctorSeeder;
 use Database\Seeders\PatientSeeder;
 use Database\Seeders\BedTableSeeder;
 use Database\Seeders\MedicineSeeder;
+use Database\Seeders\AssignBedSeeder;
 use Database\Seeders\OperationSeeder;
 use Database\Seeders\RoleTableSeeder;
 use Database\Seeders\UserTableSeeder;
 use Database\Seeders\AdminTableSeeder;
 use Database\Seeders\AppoinmentSeeder;
+use Database\Seeders\AssignTestSeeder;
 use Database\Seeders\DepartmentSeeder;
 use Database\Seeders\PermissionSeeder;
 use Database\Seeders\KlinicSetUpSeeder;
+use Database\Seeders\ModuleTableSeeder;
 use Database\Seeders\ServiceModelSeeder;
-use Database\Seeders\TestCategorySeeder;
 use Database\Seeders\InvestigationSeeder;
 use Database\Seeders\AdmissionTableSeeder;
 use Database\Seeders\AppointmentTableSeeder;
 use Database\Seeders\MedicineCategorySeeder;
+use Database\Seeders\PrescriptionTableSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -53,9 +56,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PatientSeeder::class);
         $this->call(ServiceModelSeeder::class);
         $this->call(WardSeeder::class);
-        $this->call(TestCategorySeeder::class);
         $this->call(TestSeeder::class);
+        $this->call(AssignTestSeeder::class);
         $this->call(BedTableSeeder::class);
+        $this->call(AssignBedSeeder::class);
         $this->call(AppointmentTableSeeder::class);
         $this->call(AdmissionTableSeeder::class);
         $this->call(VisitSeeder::class);
@@ -65,6 +69,7 @@ class DatabaseSeeder extends Seeder
         $this->call(InvestigationSeeder::class);
         $this->call(MedicineCategorySeeder::class);
         $this->call(MedicineSeeder::class);
+        $this->call(PrescriptionTableSeeder::class);
         $role = Role::where('name', '=', 'admin')->first();
         $role->permissions()->sync(Permission::get()->pluck('id'));
     }

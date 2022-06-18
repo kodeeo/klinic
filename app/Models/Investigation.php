@@ -11,8 +11,8 @@ class Investigation extends Model
     use HasFactory;
     protected $guarded=[];
 
-    public function doctor()
+    public function doctors()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class,'doctor_id','id');
     }
 }

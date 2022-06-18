@@ -17,10 +17,9 @@ class TestFactory extends Factory
     public function definition()
     {
         return [
-            'test_category_id'=>$this->faker->numberBetween(1,5),
             'name'=>$this->faker->name(),
             'procedure'=>$this->faker->text(),
-            'price'=>100,
+            'price'=>$this->faker->numberBetween(300,1200),
             'description'=>$this->faker->text(),
         ];
     }

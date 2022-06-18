@@ -21,10 +21,10 @@
                   <tr>
                       <th scope="row">{{$key+1}}</th>
                       <td><img src="{{url('/uploads/investigations/'.$item->investigation_img)}}" style="border-radius:4px" width="100px" alt="Investigation image"></td>
-                      <td>{{$item->patient_id}}</td>
+                      <td>{{$item->unique_patient_id}}</td>
                       <td>{{$item->date}}</td>
                       <td>{{$item->title}}</td>
-                      <td>{{optional($item->doctor)->name}}</td>
+                      <td>{{$item->doctors->first_name}} {{$item->doctors->last_name}}</td>
                       <td>
                         <div style="display: flex ">
                         <a style="margin-left: 10px" class="btn btn-success btn-sm" href="{{route('investigations.show', $item->id)}}"><i class="fas fa-eye"></i></a> 

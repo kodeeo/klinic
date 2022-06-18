@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bed__assigns', function (Blueprint $table) {
+        Schema::create('assign_tests', function (Blueprint $table) {
             $table->id();
-            $table->string('patient_id');
-            $table->foreignId('bed_type_id');
-            $table->string('assign_date');
-            $table->string('discharge_date');
-            $table->string('days');
-            $table->string('description');
-            $table->string('assigned_by');
+            $table->string('unique_patient_id',15);
+            $table->foreignId('test_id');
+            $table->text('note');
+            $table->string('assigned_by',10);
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bed__assigns');
+        Schema::dropIfExists('assign_tests');
     }
 };

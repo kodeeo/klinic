@@ -1,11 +1,12 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\TestCategory;
+
+use App\Models\Prescription;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TestCategorySeeder extends Seeder
+class PrescriptionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,7 @@ class TestCategorySeeder extends Seeder
      */
     public function run()
     {
-        TestCategory::factory()->count(5)->create();
+        Prescription::factory()->count(5)->create();
+
     }
 }

@@ -24,7 +24,10 @@
     <!-- toastr cdn -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <!-- close toastr -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    {{-- datatable css--}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+    
     <!-- include summernote css/js-->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -76,11 +79,11 @@
 <script src="{{url('backend/js/pages/demo.dashboard.js')}}"></script>
 <!-- end demo js-->
 
-
+{{-- summernote script file --}}
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
-{{-- summernote script file --}}
-<script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+{{-- datatable js --}}
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#dataTable').DataTable();
