@@ -1,6 +1,6 @@
 <div class="leftside-menu">
   <!-- LOGO -->
-  <a href="index.html" class="logo text-center logo-light">
+  <a href="{{route('admin.dashboard')}}" class="logo text-center logo-light">
       <span class="logo-lg">
       <h4 style="color:white"><img src="{{$klinic->image}}" width="50px" alt="Company Logo">
         <br>
@@ -45,7 +45,7 @@
                 <i class="uil-folder-plus"></i>
                 <span> Users </span>
             </a>
-        </li>    
+        </li>
           @endif
 
           @if (hasAnyPermissions('role.list'))
@@ -65,8 +65,8 @@
         </li>
           @endif
 
-          
-              
+
+
           <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#doctors" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
@@ -85,7 +85,7 @@
                         <a href="{{route('doctor.create')}}">Add Doctor </a>
                     </li>
                     @endif
-                    
+
                     @if (hasAnyPermissions('doctor.index'))
                     <li>
                         <a href="{{route('doctor.index')}}">Doctor List</a>
