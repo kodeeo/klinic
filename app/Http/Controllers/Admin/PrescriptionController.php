@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Test;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Medicine;
 use App\Models\Appointment;
+use App\Models\ClinicSetup;
 use App\Models\Prescription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,7 +42,9 @@ class PrescriptionController extends Controller
         $doctor=Doctor::all();
         $medicines=Medicine::all();
         $tests=Test::all();
-        return view('admin.pages.prescription.create',compact('doctor','medicines','tests'));
+        $clinic=ClinicSetup::where('id',1)->first();
+        $date = Carbon::now()->format('d-m-Y');
+        return view('admin.pages.prescription.create',compact('doctor','medicines','tests','clinic','date'));
 
     }
 
