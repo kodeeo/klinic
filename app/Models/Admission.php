@@ -9,4 +9,10 @@ class Admission extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+
+    public function doctors()
+    {
+        return $this->belongsTo(Doctor::class,'doctor_id','id');
+    }
 }

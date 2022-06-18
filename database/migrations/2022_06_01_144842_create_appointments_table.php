@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->constrained('departments')->restrictOnDelete();
-            $table->foreignId('doctor_id')->constrained('doctors')->restrictOnDelete();
-            $table->string('appointment_id')->unique();
-            $table->string('patient_id');
+            $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
+            $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
+            $table->string('unique_appointment_id')->unique();
+            $table->string('unique_patient_id');
             $table->date('date');
             $table->text('problem')->nullable();
             $table->string('status',20);

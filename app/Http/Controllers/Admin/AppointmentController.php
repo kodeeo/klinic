@@ -19,8 +19,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments=Appointment::with('departmentRelation','doctorRelation')->get();
-        return view('admin.pages.appointment.appointment-list',compact('appointments'));
+        $appointments=Appointment::with('departments','doctors')->get();
+        return view('admin.pages.appointment.index',compact('appointments'));
     }
 
     /**
@@ -31,7 +31,8 @@ class AppointmentController extends Controller
     public function create()
     {
         $departments=Department::all();
-        return view('admin.pages.appointment.appointment-create',compact('departments'));
+        $doctors=Doctor::all();
+        return view('admin.pages.appointment.create',compact('departments','doctors'));
     }
 
     /**
@@ -46,10 +47,10 @@ class AppointmentController extends Controller
 
 
         Appointment::create([
-            'appointment_id'=>Str::random(8),
-            'p_id'=>$request->p_id,
-            'd_department'=>$request->d_department,
-            'doctor'=>$request->doctor,
+            'unique_appointment_id'=>strtoupper(Str::random(10)),
+            'unique_patient_id'=>strtoupper($request->unique_patient_id),
+            'department_id'=>$request->department_id,
+            'doctor_id'=>$request->doctor_id,
             'date'=>$request->date,
             'problem'=>$request->problem,
             'status'=>$request->status
@@ -80,7 +81,7 @@ class AppointmentController extends Controller
     {
         $departments=Department::all();
         $appointment=Appointment::find($id);
-        return view('admin.pages.appointment.appointment-edit',compact('departments','appointment'));
+        return view('admin.pages.appointment.edit',compact('departments','appointment'));
     }
 
     /**

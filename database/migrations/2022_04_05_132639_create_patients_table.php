@@ -15,20 +15,20 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name',50);
-            $table->string('last_name',50);
-            $table->string('username',50);
-            $table->string('email',64)->unique();
+            $table->string('unique_patient_id',10)->unique();
+            $table->string('first_name',100);
+            $table->string('last_name',100);
+            $table->string('email',100)->unique();
             $table->string('password');
-            $table->string('phone')->nullable();
             $table->string('mobile');
-            $table->text('address')->nullable();
-            $table->date('date_of_birth')->nullable();
+            $table->date('date_of_birth',50);
             $table->string('gender',20);
             $table->string('blood_group')->nullable();
             $table->string('patient_image',50)->nullable();
-            $table->string('status',15)->default('admitted');
+            $table->text('address',100)->nullable();
+            $table->string('status',15)->default('registered');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

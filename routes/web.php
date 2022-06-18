@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\RoleController;
 
 use App\Http\Controllers\Admin\TestController;
-
 use App\Http\Controllers\Admin\UserController;
 
 
@@ -38,7 +37,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
 
-use App\Http\Controllers\Admin\TestCategoryController;
+use App\Http\Controllers\Admin\PrescriptionController;
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
@@ -52,8 +51,13 @@ use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
+
 use App\Http\Controllers\Admin\Bill\BillController;
+
+use App\Http\Controllers\Admin\AdmissionController;
+
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
+use App\Models\Test;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +89,7 @@ Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
 Route::get('/logout',[LoginController::class,'logout'])->name('admin.logout');
-    
+
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
 
     //role
@@ -99,7 +103,7 @@ Route::get('/role/delete/{role_id}', [RoleController::class, 'delete'])->name('r
 
 // role permission
 
-    
+
     //users
 Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
 Route::get('/user/add',[UserController::class, 'u_add'])->name('user.add');
@@ -116,66 +120,47 @@ Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store'
 Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
-
 //Patient
 
-Route::get('/patients/list/',[PatientController::class, 'patientlist'])->name('patient.list');
-Route::get('/patients/add',[PatientController::class, 'patientAdd'])->name('patient.add');
-Route::post('/patients/store',[PatientController::class, 'patientStore'])->name('patient.store');
+Route::resource('patients', PatientController::class);
 
-    //Patient_Admission
-Route::get('/patients/admission/add',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
-Route::get('/patients/admission/add/{patient_id}',[PatientController::class, 'patientAdmissionAdd'])->name('patient_admisssion.add');
-Route::post('/patients/admission/store',[PatientController::class, 'patientAdmissionStore'])->name('patient_admisssion.store');
-Route::get('/patients/admission/lists',[PatientController::class, 'patientAdmissionList'])->name('patient_admisssion.list');
+//Patient_Admission
+Route::resource('admissions', AdmissionController::class);
+
 //Appointment
-Route::resource('/appointment',AppointmentController::class);
-
-
-
+Route::resource('appointment',AppointmentController::class);
 
 //doctor_department
 
     //doctor_department
 
 Route::controller(DepartmentController::class)->group(function () {
-    Route::get('/show/department','show')->name('show.department'); 
-    Route::get('/create/department','create')->name('create.department'); 
-    Route::post('/store/department','store')->name('store.department'); 
-    Route::get('/view/department/{id}','view')->name('view.department'); 
+    Route::get('/show/department','show')->name('show.department');
+    Route::get('/create/department','create')->name('create.department');
+    Route::post('/store/department','store')->name('store.department');
+    Route::get('/view/department/{id}','view')->name('view.department');
     Route::get('/edit/department/{id}','edit')->name('edit.department');
     Route::put('/update/department/{id}','update')->name('update.department');
-    Route::get('/deletevoluteer/{id}','delete')->name('delete.department');
+    Route::get('/delete/department/{id}','delete')->name('delete.department');
 });
 
 // Diagonistic
 
-    // permission/list category
-Route::get('/test/category/list',[TestCategoryController::class, 'categoryList'])->name('test.category.list');
-Route::get('/test/category/add',[TestCategoryController::class, 'categoryAdd'])->name('test.category.add');
-Route::post('/test/category/store',[TestCategoryController::class, 'categoryStore'])->name('test.category.store');
-Route::get('/test/category/edit/{category_id}',[TestCategoryController::class,'categoryEdit'])->name('test.category.edit');
-Route::put('/test/category/update/{category_id}',[TestCategoryController::class, 'categoryUpdate'])->name('test.category.update');
-Route::get('/test/category/delete/{category_id}',[TestCategoryController::class,'categoryDelete'])->name('test.category.delete');
-
     //test
-Route::get('/test/list',[TestController::class, 'testList'])->name('test.list');
-Route::get('/test/add',[TestController::class, 'testAdd'])->name('test.add');
-Route::post('/test/store',[TestController::class, 'testStore'])->name('test.store');
-Route::get('/test/edit/{test_id}',[TestController::class,'testEdit'])->name('test.edit');
-Route::put('/test/update/{test_id}',[TestController::class, 'testUpdate'])->name('test.update');
-Route::get('/test/delete/{test_id}',[TestController::class,'testDelete'])->name('test.delete');
+Route::resource('tests',TestController::class);
 
-    //assign test recource controller
-Route::resource('cart',CartController::class);
-
-Route::get('add/cart/{test}', [CartController::class, 'addToCart'])->name('addToCart');
-Route::get('remove/cart/{id}', [CartController::class, 'removeFromCart'])->name('remove');
-Route::get('clear/clear', [CartController::class, 'clearCart'])->name('clearCart');
-Route::get('key/clear', [CartController::class, 'keyClear'])->name('key.clear');
+    //assign test
+Route::controller(TestController::class)->group(function () {
+    Route::get('/assign/tests/list', 'assignTestIndex')->name('assign.test.index');
+    Route::get('/assign/tests/form', 'assignTestCreate')->name('assign.test.create');
+    Route::post('/assign/tests/store', 'assignTestStore')->name('assign.test.store');
+});
 
     //Doctor resource controller
 Route::resource('doctor',DoctorController::class);
+
+   //Prescription resource controller
+Route::resource('prescription',PrescriptionController::class);
 
     //Staff resource controller
 Route::resource('staffs',StaffController::class);
@@ -209,7 +194,7 @@ Route::post('/clinic/setup/store',[ClinicController::class,'store'])->name('clin
 Route::get('/clinic/setup/edit/{id}',[ClinicController::class,'edit'])->name('clinic.setup.edit');
 Route::put('/clinic/setup/update/{id}',[ClinicController::class,'update'])->name('clinic.setup.update');
 Route::get('clinic/setup/delete/{id}',[ClinicController::class,'delete'])->name('clinic.setup.delete');
-  
+
   //Cabin resource controller
 Route::resource('cabin',CabinController::class);
 
@@ -239,7 +224,6 @@ Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name
 
 
 //localization
-    //localization
 
 Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->name('admin.language.change');
 
@@ -259,6 +243,7 @@ Route::resource('medicine_category', MedicinecategoryController::class);
 //Bill resouce
 Route::resource('bill', BillController::class);
 }); 
+
 
                                                 #All Exports
 
