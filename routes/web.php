@@ -51,7 +51,11 @@ use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
+
+use App\Http\Controllers\Admin\Bill\BillController;
+
 use App\Http\Controllers\Admin\AdmissionController;
+
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 use App\Models\Test;
 
@@ -234,7 +238,12 @@ Route::resource('operational_activities', OperationalReportController::class);
 Route::resource('investigations', InvestigationController::class);
 Route::resource('medicine', MedicineController::class);
 Route::resource('medicine_category', MedicinecategoryController::class);
-});
+
+
+//Bill resouce
+Route::resource('bill', BillController::class);
+}); 
+
 
                                                 #All Exports
 
@@ -303,4 +312,5 @@ Route::controller(HospitalActivitiesExportController::class)->group(function () 
     Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
     Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
 
+    
 });
