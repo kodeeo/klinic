@@ -16,7 +16,7 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        // $patient_unique_id=Patient::where('')
+        // $patient_unique_id=Patient::where('patient_id')
         $prescriptions=Prescription::all();
         return view('admin.pages.prescription.index',compact('prescriptions'));
     }
