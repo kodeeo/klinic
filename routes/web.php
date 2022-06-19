@@ -58,6 +58,7 @@ use App\Http\Controllers\Admin\Bill\BillController;
 use App\Http\Controllers\Admin\AdmissionController;
 
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
+use App\Http\Controllers\Admin\InsuranceController;
 use App\Models\Test;
 
 /*
@@ -244,7 +245,12 @@ Route::resource('medicine_category', MedicinecategoryController::class);
 
 //Bill resouce
 Route::resource('bill', BillController::class);
+//Insurance
+Route::resource('insurance', InsuranceController::class);
 }); 
+
+
+
 
 
                                                 #All Exports
