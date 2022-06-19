@@ -4,16 +4,16 @@
     </button>
 
     <ul class="list-unstyled topbar-menu mb-0" style="display: flex; align-items:center; padding-right: 6%;">
-        <li class="dropdown notification-list">
+{{--        <li class="dropdown notification-list">--}}
 
-             <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">
-                 <option value="">Select language</option>
-                 <option value="{{route('admin.language.change','en')}}">EN</option>
-                 <option value="{{route('admin.language.change','bn')}}">BN</option>
-                 <option value="{{route('admin.language.change','ar')}}">AR</option>
+{{--             <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">--}}
+{{--                 <option value="">Select language</option>--}}
+{{--                 <option value="{{route('admin.language.change','en')}}">EN</option>--}}
+{{--                 <option value="{{route('admin.language.change','bn')}}">BN</option>--}}
+{{--                 <option value="{{route('admin.language.change','ar')}}">AR</option>--}}
 
-             </select>
-        </li>
+{{--             </select>--}}
+{{--        </li>--}}
 
 
         <li class="dropdown notification-list">
@@ -35,7 +35,7 @@
 
                 <!-- item-->
 
-                
+
 
                 <a href="{{route('profile',auth()->user()->id)}}" class="dropdown-item notify-item">
                 <i class="fa-solid fa-user"></i>
