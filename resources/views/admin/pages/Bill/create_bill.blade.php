@@ -126,7 +126,7 @@
         </div><br>
 
 
-        <div id="parentx" class="table-responsive" style="overflow: auto;">
+        <div id="table" class="table-responsive" style="overflow: auto;">
             
         <table id="fixTable" class="table table-bordered table-striped">
                 <thead>
@@ -138,12 +138,12 @@
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Sub Total</th>
                     </tr>
                 </thead>
-                <tbody id="services">
+                <tbody id="table_body">
                 <tr>
                     <td>
                         <div class="btn btn-group">
-                            <button type="button" class="addMore btn btn-sm btn-success">+</button>
-                            <button type="button" class="remove btn btn-sm btn-danger">-</button>
+                            <button type="button"  class="table-add btn btn-sm btn-success" onclick="create_tr('table_body')">+</button>
+                            <button type="button"  class="remove btn btn-sm btn-danger" onclick="remove_tr(this)">-</button>
                         </div>
                     </td>
                     <td>
@@ -160,27 +160,7 @@
                         <input name="subtotal[]" class="form-control subtotal" type="text" placeholder="Sub" total="" value="0.00" required="">
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <div class="btn btn-group">
-                            <button type="button" class="addMore btn btn-sm btn-success">+</button>
-                            <button type="button" class="remove btn btn-sm btn-danger">-</button>
-                        </div>
-                    </td>
-                    <td>
-                        <input name="service_name[]" class="form-control service_name service_data" type="text" placeholder="Service" required="">
-                        <input name="service_id[]" type="hidden" class="service_id" required="">
-                    </td>
-                    <td>
-                        <input name="quantity[]" class="form-control quantity item-calc" type="text" placeholder="Quantity" value="1" required="">
-                    </td>
-                    <td>
-                        <input name="amount[]" class="form-control amount item-calc" type="text" placeholder="Amount" value="0.00" required="">
-                    </td>
-                    <td>
-                        <input name="subtotal[]" class="form-control subtotal" type="text" placeholder="Sub" total="" value="0.00" required="">
-                    </td>
-                </tr>
+
             </tbody>
         </table>
     </div>
@@ -302,5 +282,39 @@
         </div>
 
     </form>  
-</div
+</div>
+<script>
+function create_tr(table_id) {
+    let table_body = document.getElementById(table_id),
+        first_tr   = table_body.firstElementChild
+        tr_clone   = first_tr.cloneNode(true);
+
+    table_body.append(tr_clone);
+
+    clean_first_tr(table_body.firstElementChild);
+}
+
+function clean_first_tr(firstTr) {
+    let children = firstTr.children;
+    
+    children = Array.isArray(children) ? children : Object.values(children);
+    children.forEach(x=>{
+        if(x !== firstTr.lastElementChild)
+        {
+            x.firstElementChild.value = '';
+        }
+    });
+}
+
+
+
+function remove_tr(This) {
+    if(This.closest('tbody').childElementCount == 1)
+    {
+        alert("You Don't have Permission to Delete This ?");
+    }else{
+        This.closest('tr').remove();
+    }
+}
+ </script>
 @endsection

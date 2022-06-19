@@ -26,7 +26,7 @@
                     <span class="account-user-name">{{auth()->user()->name}}</span>
                 </span>
             </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+            <div class="dropdown-menu dropdown-menu-end dropd2own-menu-animated topbar-dropdown-menu profile-dropdown">
                 <!-- item-->
                 <div class=" dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Welcome !</h6>
