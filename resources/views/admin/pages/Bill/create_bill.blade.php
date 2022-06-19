@@ -133,6 +133,7 @@
                     <tr>
                         <th width="100" style="background-color: rgb(235, 237, 242); position: relative; top: 0px;"><i class="fa fa-cogs" style="font-family: FontAwesome, Bangla530, sans-serif;"></i></th>
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Service Name</th>
+                        <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Test Name</th>
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Quantity</th>
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Rate</th>
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Sub Total</th>
@@ -149,6 +150,9 @@
                     <td>
                         <input name="service_name[]" class="form-control service_name service_data" type="text" placeholder="Service" required="">
                         <input name="service_id[]" type="hidden" class="service_id" required="">
+                    </td>
+                    <td>
+                        <input name="test_name[]" class="form-control test" type="text" placeholder="Test Name" required="">
                     </td>
                     <td>
                         <input name="quantity[]" class="form-control quantity item-calc" type="text" placeholder="Quantity" value="1" required="">
