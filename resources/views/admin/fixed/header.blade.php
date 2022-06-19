@@ -34,6 +34,25 @@
 
 
                 <!-- item-->
+
+                
+
+                <a href="{{route('profile',auth()->user()->id)}}" class="dropdown-item notify-item">
+                <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+
+                <a href="{{route('profile.edit',auth()->user()->id)}}" class="dropdown-item notify-item">
+                <i class="fa-solid fa-address-card"></i>
+                    <span>Edit Profile</span>
+                </a>
+
+                <a href="{{route('password.edit',auth()->user()->id)}}" class="dropdown-item notify-item">
+                <i class="fa-solid fa-key"></i>
+                    <span>Update Password</span>
+                </a>
+
+
                 <a href="{{route('admin.logout')}}" class="dropdown-item notify-item">
                     <i class="mdi mdi-logout me-1"></i>
                     <span>Logout</span>
