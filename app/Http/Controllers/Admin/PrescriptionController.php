@@ -12,6 +12,7 @@ use App\Models\ClinicSetup;
 use App\Models\Prescription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class PrescriptionController extends Controller
 {
@@ -56,7 +57,50 @@ class PrescriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'unique_patient_id'=>'required',
+        //     'patient_name'=>'required',
+        //     'weight'=>'required',
+        //     'blood_pressure'=>'required',
+        //     'reference'=>'required',
+            
+
+        // ]);
+        // dd($request->all());
+        // dd(auth()->user()->username);
+        $medicine_id=$request->medicine_id;
+        // dd($medicine_id);
+        $medicine_type=$request->medicine_type;
+        $medicine_instruction=$request->medicine_instruction;
+        $days=$request->days;
+        $test_id=$request->test_id;
+        $test_instruction=$request->test_instruction;
+
+    foreach($medicine_id as $key=>$data)
+    {
+     Prescription::insert([
+            'medicine_id'=>$data,
+            'doctor_id'=>auth()->user()->username,
+            'medicine_type'=>$medicine_type[$key],
+            'medicine_instruction'=>$medicine_instruction[$key],
+            'days'=>$days[$key],
+            'unique_patient_id'=>$request->unique_patient_id,      
+            'weight'=>$request->weight,   
+            'blood_pressure'=>$request->blood_pressure,
+            'reference'=>$request->reference,
+            'type'=>$request->type,
+            'fees'=>$request->fees,
+            'patient_note'=>$request->patient_note,
+            'complain'=>$request->complain,
+            'insurance'=>$request->insurance,
+            'test_id'=>$test_id[$key],
+            'test_instruction'=>$test_instruction[$key],
+        ]);
+                    
+            }   
+       
+        Toastr::success('Prescription Added Successfully');
+        return redirect()->route('prescription.index');
     }
 
     /**
