@@ -26,7 +26,8 @@ use Database\Seeders\DepartmentSeeder;
 use Database\Seeders\PermissionSeeder;
 use Database\Seeders\KlinicSetUpSeeder;
 use Database\Seeders\ModuleTableSeeder;
-use Database\Seeders\ServiceModelSeeder;
+use Database\Seeders\PackageTableSeeder;
+use Database\Seeders\ServiceTableSeeder;
 use Database\Seeders\InvestigationSeeder;
 use Database\Seeders\AdmissionTableSeeder;
 use Database\Seeders\AppointmentTableSeeder;
@@ -54,7 +55,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentSeeder::class);
         $this->call(DoctorSeeder::class);
         $this->call(PatientSeeder::class);
-        $this->call(ServiceModelSeeder::class);
+        $this->call(ServiceTableSeeder::class);
         $this->call(WardSeeder::class);
         $this->call(TestSeeder::class);
         $this->call(AssignTestSeeder::class);
@@ -70,6 +71,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MedicineCategorySeeder::class);
         $this->call(MedicineSeeder::class);
         $this->call(PrescriptionTableSeeder::class);
+        $this->call(PackageTableSeeder::class);
         $role = Role::where('name', '=', 'admin')->first();
         $role->permissions()->sync(Permission::get()->pluck('id'));
     }

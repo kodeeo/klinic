@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Package;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 
-class ServiceController extends Controller
+class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,10 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $packages=Package::all();
         $services=Service::all();
-         return view('admin.pages.services.index',compact('services'));
+        return view('admin.pages.packages.index',compact('packages','services'));
     }
 
     /**
@@ -27,7 +29,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.services.create');
+        $services=Service::all();
+        return view('admin.pages.packages.create',compact('services'));
     }
 
     /**
@@ -38,15 +41,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
-        Service::create([
-            'name'=>$request->name,
-            'description'=>$request->description,
-            'rate'=>$request->rate,
-        ]);
-        return redirect()->route('services.index');
+        $services=$request->service_id;
+        $quantity=$request->quantity;
+        $rate=$request->rate;
+
+        foreach($services as $key=>$service){
+
+            Package::create([
+                'name'=>$request->name,
+                'description'=>$request->description,
+                'service_id'=>$request->service_id[$key],
+                'service_quantity'=>$request->service_quantity[$key],
+                'service_rate'=>$request->service_rate[$key],
+                'discount'=>$request->discount,
+                'status'=>$request->status,
+            ]);
+            
+        }
+
+        return redirect()->route('packages.index')->with(Toastr::success('Package Added Successfully'));
     }
 
     /**
@@ -57,8 +70,7 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service=Service::find($id);
-        return view('admin.pages.services.show',compact('service'));
+        //
     }
 
     /**
@@ -69,8 +81,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service=Service::find($id);
-        return view('admin.pages.services.edit',compact('service'));
+        //
     }
 
     /**
@@ -82,13 +93,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $service=Service::find($id);
-         $service->update([
-            'name'=>$request->name,
-            'description'=>$request->description,
-            'rate'=>$request->rate,
-         ]);
-         return redirect()->route('services.index');
+        //
     }
 
     /**
@@ -99,18 +104,16 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        Service::find($id)->delete();
-        return redirect()->back()->with(Toastr::error('Service Deleted Successfully'));
+        //
     }
 
     public function statusUpdate(Request $request,$id){
-        // dd($request->all());
-        $services=Service::find($id);
-        if($services){
-            $services->update([
+        $packages=Package::find($id);
+        if($packages){
+            $packages->update([
                 'status'=>$request->status,
             ]);
         }
         return redirect()->back();
-    }
+}
 }
