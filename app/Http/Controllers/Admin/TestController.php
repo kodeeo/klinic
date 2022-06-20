@@ -122,7 +122,7 @@ class TestController extends Controller
     public function destroy($id)
     {
         Test::find($id)->delete();
-        Toastr::success('Test deleted Successfully', 'success');
+        Toastr::error('Test deleted Successfully');
             return redirect()->route('tests.index');
     }
 
