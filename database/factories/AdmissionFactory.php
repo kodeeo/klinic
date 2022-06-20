@@ -18,8 +18,8 @@ class AdmissionFactory extends Factory
     public function definition()
     {
         return [
-            'unique_admission_id'=>strtoupper(Str::random(10)),
-            'unique_patient_id'=>strtoupper(Str::random(10)),
+            'admission_id'=>strtoupper(Str::random(10)),
+            'patient_id'=>strtoupper(Str::random(10)),
             'doctor_id'=>$this->faker->numberBetween(1,5),
             'admission_date'=>$this->faker->date(),
             'discharge_date'=>$this->faker->date(),

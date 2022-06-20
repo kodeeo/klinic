@@ -18,7 +18,7 @@ class PatientFactory extends Factory
     public function definition()
     {
         return [
-            'unique_patient_id'=>strtoupper(Str::random(10)),
+            'patient_id'=>strtoupper(Str::random(10)),
             'first_name'=>$this->faker->name(),
             'last_name'=>$this->faker->name(),
             'email'=>$this->faker->email(),

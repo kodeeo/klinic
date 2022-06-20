@@ -46,7 +46,7 @@
             @foreach($assign_beds as $key=>$item)
                 <tr>
                     <th>{{ $key+1 }}</th>
-                    <td>{{ $item->unique_patient_id }}</td>
+                    <td>{{ $item->patient_id }}</td>
                     <td>{{ $item->beds->type }}</td>
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->beds->charge }}</td>

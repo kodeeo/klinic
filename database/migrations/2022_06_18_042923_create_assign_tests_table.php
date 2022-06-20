@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('assign_tests', function (Blueprint $table) {
             $table->id();
-            $table->string('unique_patient_id',15);
+            $table->string('patient_id',15);
             $table->foreignId('test_id');
             $table->text('note');
             $table->string('assigned_by',10);

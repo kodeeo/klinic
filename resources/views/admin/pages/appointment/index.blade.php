@@ -26,8 +26,8 @@
                 @foreach($appointments as $key=>$appointment)
 
                     <th scope="row">{{ $key+1 }}</th>
-                    <td>{{ $appointment->unique_appointment_id }}</td>
-                    <td>{{ $appointment->unique_patient_id }}</td>
+                    <td>{{ $appointment->appointment_id }}</td>
+                    <td>{{ $appointment->patient_id }}</td>
                     <td>{{ $appointment->departments->name }}</td>
                     <td>{{ $appointment->doctors->first_name }} {{ $appointment->doctors->last_name }}</td>
                     <td>{{ $appointment->id }}</td>
@@ -41,7 +41,7 @@
                                 class="fas fa-edit"></i></a>
 
                         <a class="btn btn-success btn-sm"
-                            href="{{ route('prescription.create',['patient_id'=>$appointment->unique_patient_id]) }}"><i
+                            href="{{ route('prescription.create',['patient_id'=>$appointment->patient_id]) }}"><i
                                 class="fas fa-plus"></i></a>
                         &nbsp;
                         <form action="{{ route('appointment.destroy', $appointment->id) }}"

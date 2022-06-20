@@ -42,7 +42,7 @@
                 @foreach($assigntests as $key=>$test)
 
                     <th scope="row">{{ $key+1 }}</th>
-                    <td>{{ $test->unique_patient_id }}</td>
+                    <td>{{ $test->patient_id }}</td>
                     <td>{{ $test->tests->name }}</td>
                     <td>{{ $test->tests->price }}</td>
                     <td>{{ $test->note }}</td>
