@@ -560,92 +560,55 @@ class PermissionSeeder extends Seeder
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Test List ',
-        'slug' => 'test.list' 
+        'slug' => 'tests.index' 
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Add Test',
-        'slug' => 'test.add' 
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $testModule->id,
-        'name' => 'Add Test',
-        'slug' => 'test.add' 
+        'slug' => 'tests.create' 
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Store Test',
-        'slug' => 'test.store' 
+        'slug' => 'tests.store' 
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Edit Test',
-        'slug' => 'test.edit' 
+        'slug' => 'tests.edit' 
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Update Test',
-        'slug' => 'test.update' 
+        'slug' => 'tests.update' 
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Delete Test',
-        'slug' => 'test.delete' 
+        'slug' => 'tests.destroy' 
     ]);
     $assignTestModule = Module::updateOrCreate([
         'name' => 'Assign Test',
         'description' => 'Assign Test'
     ]);
+
     Permission::updateOrCreate([
         'module_id' => $assignTestModule->id,
-        'name' => 'Cart List',
-        'slug' => 'cart.index'
+        'name' => 'Assign Bed',
+        'slug' => 'assign.test.create'
     ]);
     Permission::updateOrCreate([
         'module_id' => $assignTestModule->id,
-        'name' => 'Create Cart',
-        'slug' => 'cart.create'
+        'name' => 'Store Assign Test',
+        'slug' => 'assign.test.store'
     ]);
     Permission::updateOrCreate([
         'module_id' => $assignTestModule->id,
-        'name' => 'Store Cart',
-        'slug' => 'cart.store'
+        'name' => 'Store Assign Test',
+        'slug' => 'assign.test.index'
     ]);
-    Permission::updateOrCreate([
-        'module_id' => $assignTestModule->id,
-        'name' => 'View Cart',
-        'slug' => 'cart.view'
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $assignTestModule->id,
-        'name' => 'Edit Cart',
-        'slug' => 'cart.edit'
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $assignTestModule->id,
-        'name' => 'Update Cart',
-        'slug' => 'cart.update'
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $assignTestModule->id,
-        'name' => 'Delete Cart',
-        'slug' => 'cart.destroy'
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $assignTestModule->id,
-        'name' => 'Add Test To Cart',
-        'slug' => 'addToCart' 
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $assignTestModule->id,
-        'name' => 'Remove Test From Cart',
-        'slug' => 'remove' 
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $assignTestModule->id,
-        'name' => 'Clear Test From Cart',
-        'slug' => 'clearCart' 
-    ]);
+
+
     $manageBedModule= Module::updateOrCreate([
         'name' => 'Manage Bed',
         'description' => 'Manage Bed'
@@ -688,13 +651,19 @@ class PermissionSeeder extends Seeder
     Permission::updateOrCreate([
         'module_id' => $manageBedModule->id,
         'name' => 'Assign Bed',
-        'slug' => 'assign.bed'
+        'slug' => 'assign.bed.create'
     ]);
     Permission::updateOrCreate([
         'module_id' => $manageBedModule->id,
         'name' => 'Store Assign Bed',
         'slug' => 'assign.bed.store'
     ]);
+    Permission::updateOrCreate([
+        'module_id' => $manageBedModule->id,
+        'name' => 'Store Assign Bed',
+        'slug' => 'assign.bed.index'
+    ]);
+    
     $wardModule = Module::updateOrCreate([
         'name' => 'Ward',
         'description' => 'Ward'
