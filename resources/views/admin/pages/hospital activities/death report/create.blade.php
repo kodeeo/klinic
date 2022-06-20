@@ -20,7 +20,7 @@
 
 <div class="form-group col-6">
 <label for="description">Description</label>
-<textarea name="description" class="form-control" id="summernote" rows="7"></textarea>
+<textarea name="description" class="form-control" rows="7"></textarea>
 </div>
 
 <div class="form-group col-6">
