@@ -16,18 +16,18 @@
                     <div class="form-group col-6">
                         <label for="patient_id">Patient ID</label>
                         <input type="text" class="form-control" id="unique_patient_id" name="unique_patient_id"
-                            placeholder="Enter Patient ID">
+                            placeholder="Enter Patient ID" readonly value="{{$patient->unique_patient_id}}">
                     </div>
                     <div class="form-group col-6">
                         <label for="patient_name">Patient Name</label>
                         <input type="text" class="form-control" id="patient_name" name="patient_name"
-                            placeholder="Enter Patient Name">
+                            placeholder="Enter Patient Name" value="{{$patient->first_name.' ' .$patient->last_name}}">
                     </div>
 
                     <div class="form-group col-6">
                         <label for="weight">Weight</label>
                         <input type="text" class="form-control" id="weight" name="weight"
-                            placeholder="Enter Patient Weight">
+                            placeholder="Enter Patient Weight" value="">
                     </div>
                     <div class="form-group col-6">
                         <label for="blood_pressure">Blood Pressure</label>
@@ -39,18 +39,14 @@
                         <input type="text" class="form-control" id="reference" name="reference"
                             placeholder="Enter Reference">
                     </div>
-                    <div class="form-group col-6">
-                        <label for="complain">Cheif Complain</label>
-                        <input type="text" class="form-control" id="complain" name="complain"
-                            placeholder="Enter Cheif complain">
-                    </div>
+
                     <div class="form-group col-6 mt-2">
                       <label for="insurance">Select Insurance</label>
                       <select class="form-select" name="insurance" aria-label="Default select example">
                           <option selected>Select insurance</option>
                           <option value="BUPA">BUPA</option>
                           <option value="IFIC">IFIC</option>
-          
+
                       </select>
                   </div>
 
@@ -66,9 +62,9 @@
                 </div>
             </div>
             <div class="col-3" style="text-align: right">
-                <p>Date: {{$date}}</p>
-                <p>{{$clinic->name}}</p>
-                <p>{{$clinic->address}}</p>
+                <p>Date: {{now()->format('Y-m-d')}}</p>
+                <p>{{$klinic->name}}</p>
+                <p>{{$klinic->address}}</p>
             </div>
         </div>
 
@@ -122,9 +118,9 @@
                 var maxField = 10; //Input fields increment limitation
                 var addMedicineButton = $('.add_medicine_button'); //Add button selector
                 var medicinewrapper = $('.medicine_field_wrapper'); //Input field wrapper
-                var fieldHTML =
-                    '<div class="medicine row d-flex"><div class="col-3"><select id="medicine_id" name="medicine_id[]" class="form-control"> @foreach($medicines as $medicine)<option value="{{$medicine->id}}">{{$medicine->name}}</option> @endforeach</select></div><div class="col-2"><input type="text" name="medicine_type[]" class="form-control" placeholder="Medicine Type" value=""/></div><div class="col-4"><textarea type="text" name="medicine_instruction[]" class="form-control" placeholder"Enter Instruction" value=""/></textarea></div><div class="col-1"><input type="text" name="days" class="form-control" placeholder="Days" value=""/></div><div class="col-2"><a href="javascript:void(0);" class="remove_medicine_button btn btn-danger">Remove</a></div><hr class="row" style="height:1px; margin-left:0.5rem; margin-top: 1rem;"></div>'; //New input field html 
                 var x = 1; //Initial field counter is 1
+                var fieldHTML =
+                    '<div class="medicine row d-flex"><div class="col-3"><select id="medicine_id" name="medicine[id][]" class="form-control"> @foreach($medicines as $medicine)<option value="{{$medicine->id}}">{{$medicine->name}}</option> @endforeach</select></div><div class="col-2"><input type="text" name="medicine[medicine_type][]" class="form-control" placeholder="Medicine Type" value=""/></div><div class="col-4"><textarea type="text" name="medicine[medicine_instruction][]" class="form-control" placeholder"Enter Instruction" value=""/></textarea></div><div class="col-1"><input type="text" name="medicine[days][]" class="form-control" placeholder="Days" value=""/></div><div class="col-2"><a href="javascript:void(0);" class="remove_medicine_button btn btn-danger">Remove</a></div><hr class="row" style="height:1px; margin-left:0.5rem; margin-top: 1rem;"></div>'; //New input field html
 
                 //Once add button is clicked
                 $(addMedicineButton).click(function () {
@@ -199,7 +195,7 @@
                 var addDiagnosisButton = $('.add_diagnosis_button'); //Add button selector
                 var diagnosiswrapper = $('.diagnosis_field_wrapper'); //Input field wrapper
                 var fieldHTML =
-                    '<div class="diagnosis row d-flex"><div class="col-3"><select id="test_id" name="test_id[]" class="form-control"> @foreach($tests as $test)<option value="{{$test->id}}">{{$test->name}}</option> @endforeach</select></div><div class="col-7"><textarea type="text" name="test_instruction[]" class="form-control" placeholder"Enter Instruction" value=""/></textarea></div><div class="col-2"><a href="javascript:void(0);" class="remove_diagnosis_button btn btn-danger">Remove</a></div><hr class="row" style="height:1px; margin-left:0.5rem; margin-top: 1rem;"></div>'; //New input field html 
+                    '<div class="diagnosis row d-flex"><div class="col-3"><select id="test_id" name="test[id][]" class="form-control"> @foreach($tests as $test)<option value="{{$test->id}}">{{$test->name}}</option> @endforeach</select></div><div class="col-7"><textarea type="text" name="test[test_instruction][]" class="form-control" placeholder"Enter Instruction" value=""/></textarea></div><div class="col-2"><a href="javascript:void(0);" class="remove_diagnosis_button btn btn-danger">Remove</a></div><hr class="row" style="height:1px; margin-left:0.5rem; margin-top: 1rem;"></div>'; //New input field html
                 var x = 1; //Initial field counter is 1
 
                 //Once add button is clicked

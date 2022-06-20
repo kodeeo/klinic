@@ -39,6 +39,10 @@
                         <a class="btn btn-warning btn-sm"
                             href="{{ route('appointment.edit',$appointment->id) }}"><i
                                 class="fas fa-edit"></i></a>
+
+                        <a class="btn btn-success btn-sm"
+                            href="{{ route('prescription.create',['patient_id'=>$appointment->unique_patient_id]) }}"><i
+                                class="fas fa-plus"></i></a>
                         &nbsp;
                         <form action="{{ route('appointment.destroy', $appointment->id) }}"
                             method="POST">

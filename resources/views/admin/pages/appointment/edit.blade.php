@@ -35,7 +35,7 @@
             <label for="test_category">Doctor</label>
             <i class="text-danger">*</i>
             <select id="doctor" class="form-select" name="doctor" aria-label="Default select example">
-            <option value="{{$appointment->doctor}}">{{$appointment->doctorRelation->name}}</option>
+            <option value="{{$appointment->doctor}}">{{$appointment->doctorRelation->name ?? ""}}</option>
               </select>
         </div>
 
