@@ -2,7 +2,7 @@
 @section('content')
 <div class="panel-body">
     <form action="" class="billig-form" method="post" accept-charset="utf-8">
-      <input type="hidden" name="csrf_stream_token" value="3445f819a1b9379ac048d581870f05eb">
+        @csrf
         <div class="row">
             <div class="col-sm-9">
                 <div class="row">
