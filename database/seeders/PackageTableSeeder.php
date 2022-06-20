@@ -1,11 +1,12 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\ServiceModel;
+
+use App\Models\Package;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ServiceModelSeeder extends Seeder
+class PackageTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class ServiceModelSeeder extends Seeder
      */
     public function run()
     {
-        ServiceModel::factory()->count(5)->create();
+        Package::factory()->count(5)->create();
     }
 }

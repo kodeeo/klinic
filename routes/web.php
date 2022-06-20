@@ -61,6 +61,14 @@ use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
+use App\Http\Controllers\Admin\InsuranceController;
+
+
+use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
+use App\Http\Controllers\Admin\PackageController;
+use App\Models\Test;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -209,22 +217,14 @@ Route::post('beds/assign/store', [BedController::class, 'assign_bed_store'])->na
 Route::resource('beds', BedController::class);
 
 
-    #services
-Route::get('/services',[ServiceController::class,'serviceForm'])->name('admin.service.form');
-Route::post('/services',[ServiceController::class,'postService'])->name('admin.service.post');
-Route::get('/service/list',[ServiceController::class,'serviceList'])->name('admin.service.list');
-
-    #services CRUD
-Route::get('/service/details/{id}',[ServiceController::class,'serviceDetails'])->name('admin.service.details');
-Route::get('/service/edit/{id}',[ServiceController::class,'serviceEdit'])->name('admin.service.edit');
-Route::put('/service/edit/{id}',[ServiceController::class,'serviceUpdate'])->name('admin.service.update');
-Route::get('/service/delete/{id}',[ServiceController::class,'serviceDelete'])->name('admin.service.delete');
-
-    #status update
-Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('admin.service.status.update');
+    //services
+Route::resource('services',ServiceController::class);
+Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name('service.status.update');
 
 
-
+    //packages
+Route::resource('packages',PackageController::class);
+Route::put('packages/list/{id}',[PackageController::class,'statusUpdate'])->name('package.status.update');
 
 //localization
 
@@ -245,7 +245,12 @@ Route::resource('medicine_category', MedicinecategoryController::class);
 
 //Bill resouce
 Route::resource('bill', BillController::class);
+//Insurance
+Route::resource('insurance', InsuranceController::class);
 }); 
+
+
+
 
 
                                                 #All Exports

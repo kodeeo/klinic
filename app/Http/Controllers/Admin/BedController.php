@@ -126,7 +126,9 @@ class BedController extends Controller
         $days= (($from->diff($to))->format('%a'))+1;
 
         AssignBed::create([
+
             'unique_patient_id'=>$request->unique_patient_id,
+
             'bed_type_id'=>$request->bed_type_id,
             'assign_date'=>$request->assign_date,
             'discharge_date'=>$request->discharge_date,
