@@ -50,8 +50,8 @@ class AdmissionController extends Controller
 
         $admission=Admission::create([
             
-            'unique_admission_id'=>strtoupper(Str::random(10)),
-            'unique_patient_id'=>$request->patient_unique_id,
+            'admission_id'=>strtoupper(Str::random(10)),
+            'patient_id'=>$request->patient_id,
             'doctor_id'=>$request->doctor_id,
             'admission_date'=>$request->admission_date,
             'discharge_date'=>$request->discharge_date,

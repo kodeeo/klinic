@@ -15,8 +15,8 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="patient_id">Patient ID</label>
-                        <input type="text" class="form-control" id="unique_patient_id" name="unique_patient_id"
-                            placeholder="Enter Patient ID" readonly value="{{$patient->unique_patient_id}}">
+                        <input type="text" class="form-control" id="patient_id" name="patient_id"
+                            placeholder="Enter Patient ID" readonly value="{{$patient->patient_id}}">
                     </div>
                     <div class="form-group col-6">
                         <label for="patient_name">Patient Name</label>

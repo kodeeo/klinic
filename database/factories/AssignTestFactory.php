@@ -18,7 +18,7 @@ class AssignTestFactory extends Factory
     public function definition()
     {
         return [
-            'unique_patient_id'=>strtoupper(Str::random(10)),
+            'patient_id'=>strtoupper(Str::random(10)),
             'test_id'=>$this->faker->numberBetween(1,5),
             'note'=>$this->faker->text(),
             'assigned_by'=>$this->faker->randomElement(['Admin','Nurse','Manager']),

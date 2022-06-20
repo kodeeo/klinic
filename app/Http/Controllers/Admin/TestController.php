@@ -122,7 +122,7 @@ class TestController extends Controller
     public function destroy($id)
     {
         Test::find($id)->delete();
-        Toastr::success('Test deleted Successfully', 'success');
+        Toastr::error('Test deleted Successfully');
             return redirect()->route('tests.index');
     }
 
@@ -143,7 +143,7 @@ class TestController extends Controller
         $test_id=$request->test_id;
         foreach($test_id as $key=>$item)
         AssignTest::create([
-            'unique_patient_id'=>$request->unique_patient_id,
+            'patient_id'=>$request->patient_id,
             'test_id'=>$test_id[$key],
             'note'=>$request->note,
             'assigned_by'=>ucfirst(auth()->user()->username) 

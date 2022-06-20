@@ -1,12 +1,15 @@
 @extends('admin.master')
 @section('content')
-    
-<h3> Cabin </h3>
 
-<p><b>Cabin Number: {{$cabin->cabin_number}}</b></p>
-<p><b>Admission ID: {{$cabin->admission_id}}</b></p>
-<p><b>Staff ID: {{$cabin->staff_id}}</b></p>
-<p><b>Nurse ID: {{$cabin->nurse_id}}</b></p>
-<button class="btn btn-success"><p><b>Status: {{$cabin->status}}</b></p></button>
+<h1> Bed Details </h1>
+<hr>
 
-@endsection 
+<p><b>Bed Type: {{ $bed->type }}</b></p>
+<p><b>Description: {{ $bed->description }}</b></p>
+<p><b>Capacity: {{ $bed->capacity }}</b></p>
+<p><b>Charge: {{ $bed->charge }}</b></p>
+<button class="btn btn-success">
+    <p><b>Status: {{ $bed->status }}</b></p>
+</button>
+
+@endsection

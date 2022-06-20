@@ -42,7 +42,7 @@
       @foreach ($deathReport as $key=>$item)
           <tr>
               <th scope="row">{{$key+1}}</th>
-              <td>{{$item->unique_patient_id}}</td>
+              <td>{{$item->patient_id}}</td>
               <td>{{$item->date}}</td>
               <td>{{$item->title}}</td>
               <td>{{$item->doctors->first_name}} {{$item->doctors->last_name}}</td>

@@ -18,7 +18,7 @@ class InvestigationFactory extends Factory
     public function definition()
     {
         return [
-            'unique_patient_id'=>strtoupper(Str::random(10)),
+            'patient_id'=>strtoupper(Str::random(10)),
             'date'=>$this->faker->date(),
             'title'=>$this->faker->text(),
             'description'=>$this->faker->text(),

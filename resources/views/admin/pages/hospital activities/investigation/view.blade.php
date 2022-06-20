@@ -4,7 +4,7 @@
         <h1>{{__('Investigations Report Details')}}</h1>
         <hr>
         <td><img src="{{url('/uploads/investigations/'.$investigations->investigation_img)}}" style="border-radius:4px" width="500px" alt="Investigation image"></td>
-        <p><b>Patient ID: {{$investigations->unique_patient_id}}</b></p>
+        <p><b>Patient ID: {{$investigations->patient_id}}</b></p>
         <p><b>Date: {{$investigations->date}}</b></p>
         <p><b>Title: {{$investigations->title}}</b></p>
         <p><b>Description: {{$investigations->description}}</b></p>
