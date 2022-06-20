@@ -25,7 +25,7 @@
             <div class="form-group col-6">
                 <label for="patient_id">Patient ID<span style="color:red">*</span></label>
                 <input type="text" class="form-control" id="patient_id" name="patient_id"
-                    placeholder="Enter Patient ID" required>
+                    placeholder="Enter Patient ID" required value="{{request()->patient_id??old('patient_id')}}">
             </div>
 
             <div class="form-group col-6">
@@ -44,8 +44,8 @@
             </div>
 
             <div class="form-group col-3 mt-2">
-                <label for="discharge_date">Discharge Date<span style="color:red">*</span></label></label>
-                <input type="date" class="form-control" id="discharge_date" name="discharge_date" required>
+                <label for="discharge_date">Discharge Date</label>
+                <input type="date" class="form-control" id="discharge_date" name="discharge_date">
             </div>
 
             <div class="form-group col-3 mt-2">

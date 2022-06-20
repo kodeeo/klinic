@@ -439,23 +439,19 @@ class PermissionSeeder extends Seeder
     Permission::updateOrCreate([
         'module_id' => $patientModule->id,
         'name' => 'Patient List',
-        'slug' => 'patient.list'
+        'slug' => 'patients.index'
     ]);
     Permission::updateOrCreate([
         'module_id' => $patientModule->id,
         'name' => 'Add Patient',
-        'slug' => 'patient.add'
+        'slug' => 'patients.create'
     ]);
     Permission::updateOrCreate([
         'module_id' => $patientModule->id,
         'name' => 'Store Patient',
-        'slug' => 'patient.store'
+        'slug' => 'patients.store'
     ]);
-    Permission::updateOrCreate([
-        'module_id' => $patientModule->id,
-        'name' => 'Patient List',
-        'slug' => 'patient.list'
-    ]);
+
     $appointmentModule = Module::updateOrCreate([
         'name' => 'Appointment',
         'description' => 'Appointment'
@@ -531,27 +527,27 @@ class PermissionSeeder extends Seeder
     Permission::updateOrCreate([
         'module_id' => $testCategoryModule->id,
         'name' => 'Add Test Category ',
-        'slug' => 'test.category.add' 
+        'slug' => 'test.category.add'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testCategoryModule->id,
         'name' => 'Store Test Category ',
-        'slug' => 'test.category.store' 
+        'slug' => 'test.category.store'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testCategoryModule->id,
         'name' => 'Edit Test Category ',
-        'slug' => 'test.category.edit' 
+        'slug' => 'test.category.edit'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testCategoryModule->id,
         'name' => 'Update Test Category ',
-        'slug' => 'test.category.update' 
+        'slug' => 'test.category.update'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testCategoryModule->id,
         'name' => 'Delete Test Category ',
-        'slug' => 'test.category.delete' 
+        'slug' => 'test.category.delete'
     ]);
     $testModule = Module::updateOrCreate([
         'name' => 'Test',
@@ -560,32 +556,32 @@ class PermissionSeeder extends Seeder
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Test List ',
-        'slug' => 'tests.index' 
+        'slug' => 'tests.index'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Add Test',
-        'slug' => 'tests.create' 
+        'slug' => 'tests.create'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Store Test',
-        'slug' => 'tests.store' 
+        'slug' => 'tests.store'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Edit Test',
-        'slug' => 'tests.edit' 
+        'slug' => 'tests.edit'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Update Test',
-        'slug' => 'tests.update' 
+        'slug' => 'tests.update'
     ]);
     Permission::updateOrCreate([
         'module_id' => $testModule->id,
         'name' => 'Delete Test',
-        'slug' => 'tests.destroy' 
+        'slug' => 'tests.destroy'
     ]);
     $assignTestModule = Module::updateOrCreate([
         'name' => 'Assign Test',
@@ -663,7 +659,7 @@ class PermissionSeeder extends Seeder
         'name' => 'Store Assign Bed',
         'slug' => 'assign.bed.index'
     ]);
-    
+
     $wardModule = Module::updateOrCreate([
         'name' => 'Ward',
         'description' => 'Ward'
@@ -1133,7 +1129,6 @@ class PermissionSeeder extends Seeder
         'name' => 'Delete Clinic Setup',
         'slug' => 'clinic.setup.delete'
     ]);
-    
+
     }
 }
- 

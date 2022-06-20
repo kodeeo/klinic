@@ -6,10 +6,10 @@ use App\Models\Visit;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Admission;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Brian2694\Toastr\Facades\Toastr;
 
 class AdmissionController extends Controller
 {
@@ -44,43 +44,42 @@ class AdmissionController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-            
-        // ]);
+     $checkPatient=Patient::where('patient_id',$request->patient_id)->exists();
+     if($checkPatient) {
+         $admission=new Admission();
+         $admission->create([
+             'admission_id' => 'A'.date('Ymd').$admission->latest()->first()->id+1,
+             'patient_id' => $request->patient_id,
+             'doctor_id' => $request->doctor_id,
+             'admission_date' => $request->admission_date,
+             'discharge_date' => $request->discharge_date,
+             'package' => $request->package,
+             'insurance' => $request->insurance,
 
-        $admission=Admission::create([
-            
-            'admission_id'=>strtoupper(Str::random(10)),
-            'patient_id'=>$request->patient_id,
-            'doctor_id'=>$request->doctor_id,
-            'admission_date'=>$request->admission_date,
-            'discharge_date'=>$request->discharge_date,
-            'package'=>$request->package,
-            'insurance'=>$request->insurance,
+             //medical info
+             'height' => $request->height,
+             'weight' => $request->weight,
+             'allergies' => $request->allergies,
+             'tendancy' => $request->tendancy,
+             'heart_diseases' => $request->heart_diseases,
+             'high_BP' => $request->high_BP,
+             'accident' => $request->accident,
+             'diabetic' => $request->diabetic,
+             'infection' => $request->infection,
+             'quota' => $request->quota,
+             'others' => $request->others,
 
-            //medical info
-            'height'=>$request->height,
-            'weight'=>$request->weight,
-            'allergies'=>$request->allergies,
-            'tendancy'=>$request->tendancy,
-            'heart_diseases'=>$request->heart_diseases,
-            'high_BP'=>$request->high_BP,
-            'accident'=>$request->accident,
-            'diabetic'=>$request->diabetic,
-            'infection'=>$request->infection,
-            'quota'=>$request->quota,
-            'others'=>$request->others,
-
-            //guardian info
-            'guardian_name'=>$request->guardian_name,
-            'guardian_relation'=>$request->guardian_relation,
-            'guardian_contact'=>$request->guardian_contact,
-            'guardian_address'=>$request->guardian_address,
-
-        ]);
-
-        return redirect()->route('admissions.index')->with(Toastr::success('Admission information has been recorded Successfully','success'));
-
+             //guardian info
+             'guardian_name' => $request->guardian_name,
+             'guardian_relation' => $request->guardian_relation,
+             'guardian_contact' => $request->guardian_contact,
+             'guardian_address' => $request->guardian_address,
+         ]);
+         Toastr::success('Admission information has been recorded Successfully', 'success');
+         return redirect()->back();
+     }
+       \toastr()->error('Invalid Patient ID');
+        return redirect()->back()->withInput();
     }
 
     /**

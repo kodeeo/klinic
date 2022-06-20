@@ -14,7 +14,8 @@ class ClinicSetup extends Model
     public function getImageAttribute($image)
     {
         if($image){
-            return Storage::url('/uploads/klinicLogo/20220618060639.png'.$image);
+            return Storage::url('klinicLogo/'.$image);
         }
+        return url('/uploads/klinicLogo/20220616100618.png');
     }
 }

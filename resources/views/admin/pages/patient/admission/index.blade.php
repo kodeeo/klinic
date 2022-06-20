@@ -17,10 +17,6 @@
                 <th scope="col">Admission Date</th>
                 <th scope="col">Discharge Date</th>
                 <th scope="col">Doctor Name</th>
-                <th scope="col">Package Name</th>
-                <th scope="col">Insurance Name</th>
-                <th scope="col">Guardian Name</th>
-                <th scope="col">Guardian Relation </th>
                 <th scope="col">Status</th>
             </tr>
         </thead>
@@ -28,15 +24,11 @@
             <tr>
                 @foreach($admissions as $key=>$item)
                 <th scope="row">{{$key+1}}</th>
-                <td>{{$item->unique_admission_id}}</td>
-                <td>{{$item->unique_patient_id}}</td>
+                <td>{{$item->admission_id}}</td>
+                <td>{{$item->patient_id}}</td>
                 <td>{{$item->admission_date}}</td>
                 <td>{{$item->discharge_date}}</td>
                 <td>{{$item->doctors->first_name}} {{$item->doctors->last_name}}</td>
-                <td>{{$item->package}}</td>
-                <td>{{$item->insurance}}</td>
-                <td>{{$item->guardian_name}}</td>
-                <td>{{$item->guardian_relation}}</td>
                 <td>{{$item->status}}</td>
             </tr>
             @endforeach

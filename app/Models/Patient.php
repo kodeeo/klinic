@@ -10,7 +10,14 @@ class Patient extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded=[];
-   
-        
-    
+
+    public function getPatientImageAttribute($value)
+    {
+        if($value)
+        {
+            return url('/uploads/patients/'.$value);
+        }
+        return url('/img/avatar.png');
+    }
+
 }
