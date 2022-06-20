@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Frontend\HomeController;
+use App\Models\Test;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BedController;
 use App\Http\Controllers\Admin\CartController;
@@ -24,20 +24,24 @@ use App\Http\Controllers\Admin\DoctorController;
 
 
 use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\WardboyController;
-use App\Http\Controllers\Admin\LanguageController;
-use App\Http\Controllers\Admin\PasswordController;
+use App\Http\Controllers\Frontend\HomeController;
 
 // use App\Http\Controllers\Admin\DesignationController;
 
+use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\AdmissionController;
+use App\Http\Controllers\Admin\Bill\BillController;
 use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
-
 use App\Http\Controllers\Admin\PrescriptionController;
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
@@ -48,18 +52,22 @@ use App\Http\Controllers\Admin\Export\WardBoyExportController;
 use App\Http\Controllers\Admin\Activities\BirthreportController;
 use App\Http\Controllers\Admin\Activities\DeathreportController;
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
+
 use App\Http\Controllers\Admin\Activities\InvestigationController;
+
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
+
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
+use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
-use App\Http\Controllers\Admin\Bill\BillController;
+use App\Http\Controllers\Admin\InsuranceController;
 
-use App\Http\Controllers\Admin\AdmissionController;
 
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Models\Test;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -237,7 +245,12 @@ Route::resource('medicine_category', MedicinecategoryController::class);
 
 //Bill resouce
 Route::resource('bill', BillController::class);
+//Insurance
+Route::resource('insurance', InsuranceController::class);
 }); 
+
+
+
 
 
                                                 #All Exports
@@ -306,6 +319,15 @@ Route::controller(HospitalActivitiesExportController::class)->group(function () 
 
     Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
     Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
-
     
+});
+
+
+//Profile
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('profile/details/{id}','profile')->name('profile');
+    Route::get('profile/edit/{id}','edit')->name('profile.edit');
+    Route::put('profile/update/{id}','update')->name('profile.update');
+    Route::get('password/edit/{id}','passwordEdit')->name('password.edit');
+    Route::put('password/update/{id}','passwordUpdate')->name('password.update');
 });
