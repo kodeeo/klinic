@@ -1,18 +1,18 @@
 @extends('admin.master')
 @section('content')
-<h1>{{__('Assigned Test List')}}</h1>
+<h1>{{ __('Assigned Test List') }}</h1>
 <hr>
 
 <div class="row" style="justify-content: space-between;">
     <div class="col">
-        <a href="{{route('assign.test.create')}}" class="btn btn-primary">Assign Test</a>
+        <a href="{{ route('assign.test.create') }}" class="btn btn-primary">Assign Test</a>
     </div>
 
     <div class="col-4 dt-buttons btn-group">
-        <a class="btn btn-info" href="{{route('test.data.csv')}}">
+        <a class="btn btn-info" href="{{ route('test.data.csv') }}">
             CSV
         </a>
-        <a class="btn btn-info" href="{{route('test.data.excel')}}">
+        <a class="btn btn-info" href="{{ route('test.data.excel') }}">
             Excel
         </a>
         <a class="btn btn-info" href="#">
@@ -41,15 +41,15 @@
             <tr>
                 @foreach($assigntests as $key=>$test)
 
-                <th scope="row">{{$key+1}}</th>
-                <td>{{$test->unique_patient_id}}</td>
-                <td>{{$test->tests->name}}</td>
-                <td>{{$test->tests->price}}</td>
-                <td>{{$test->note}}</td>
-                <td>{{$test->assigned_by}}</td>
-                <td><img src="{{url('/uploads/'.$test->image)}}" style="border-radius:4px" width="40px"
-                        alt="test image"></td>
-                </td>
+                    <th scope="row">{{ $key+1 }}</th>
+                    <td>{{ $test->unique_patient_id }}</td>
+                    <td>{{ $test->tests->name }}</td>
+                    <td>{{ $test->tests->price }}</td>
+                    <td>{{ $test->note }}</td>
+                    <td>{{ $test->assigned_by }}</td>
+                    <td><img src="{{ url('/uploads/'.$test->image) }}"
+                            style="border-radius:4px" width="40px" alt="test image"></td>
+                    </td>
             </tr>
             @endforeach
 
