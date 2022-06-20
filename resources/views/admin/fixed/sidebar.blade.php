@@ -134,10 +134,22 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="{{ route('admin.service.list') }}" class="side-nav-link">
-                    <i class="uil-comments-alt"></i>
+                <a data-bs-toggle="collapse" href="#services" aria-expanded="false" aria-controls="sidebarTasks"
+                    class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
                     <span> Services </span>
+                    <span class="menu-arrow"></span>
                 </a>
+                <div class="collapse" id="services">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{route('services.create')}}">Add Services</a>
+                        </li>
+                        <li>
+                            <a href="{{route('services.index')}}">Service List</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
 
@@ -285,11 +297,18 @@
                 <div class="collapse" id="billing">
                     <ul class="side-nav-second-level">
                         <li>
+                            <a href="{{route('packages.create')}}">Add Package</a>
+                        </li>
+                        <li>
+                            <a href="{{route('packages.index')}}">Package List</a>
+                        </li>
+                        <li>
                             <a href="{{route('bill.create')}}">Add Bill</a>
                         </li>
                         <li>
                             <a href="{{route('bill.index')}}">Bill List</a>
                         </li>
+                        
                     </ul>
                 </div>
             </li>
