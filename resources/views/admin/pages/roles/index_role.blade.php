@@ -4,7 +4,7 @@
 <hr>
 <div class="row" style="justify-content: space-between;">
 	<div class="col">
-	  <a href="{{route('role.create')}}"  class="btn btn-primary">Add Patient</a>
+	  <a href="{{route('role.create')}}"  class="btn btn-primary">Add Role</a>
 	</div>
 </div>
 <br><br>

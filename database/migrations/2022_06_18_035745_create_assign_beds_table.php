@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('assign_beds', function (Blueprint $table) {
             $table->id();
-            $table->string('unique_patient_id',15);
+            $table->string('patient_id',15);
             $table->foreignId('bed_type_id');
             $table->string('assign_date',20);
             $table->string('discharge_date',20);

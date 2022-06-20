@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('birth_reports', function (Blueprint $table) {
             $table->id();
-            $table->string('unique_patient_id',10)->unique();
+            $table->string('patient_id',10)->unique();
             $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
             $table->date('date',20);
             $table->text('title');

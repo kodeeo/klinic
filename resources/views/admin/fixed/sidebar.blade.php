@@ -89,7 +89,7 @@
                             <a href="{{route('doctor.create')}}">Add Doctor </a>
                         </li>
                         @endif
-                        
+
 
                         @if (hasAnyPermissions('doctor.index'))
                         <li>
@@ -210,14 +210,6 @@
             </li>
             @endif
 
-            @if (hasAnyPermissions('admissions.index'))
-            <li class="side-nav-item">
-                <a href="{{route('admissions.index')}}" class="side-nav-link">
-                    <i class="uil-copy-alt"></i>
-                    <span>Admissions</span>
-                </a>
-            </li>
-            @endif
 
             @if (hasAnyPermissions('tests.index'))
             <li class="side-nav-item">
@@ -244,11 +236,11 @@
                             <a href="{{route('assign.test.create')}}">Assign Test</a>
                         </li>
                         @endif
-                       @if (hasAnyPermissions('assign.test.index'))
-                       <li>
-                        <a href="{{route('assign.test.index')}}">Assigned Test List</a>
-                    </li>
-                       @endif
+                        @if (hasAnyPermissions('assign.test.index'))
+                        <li>
+                            <a href="{{route('assign.test.index')}}">Assigned Test List</a>
+                        </li>
+                        @endif
                     </ul>
                 </div>
             </li>
@@ -292,30 +284,30 @@
             </li>
             @endif
 
-           @if (hasAnyPermissions('ward.index'))
-           <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="sidebarTasks"
-                class="side-nav-link">
-                <i class="uil-clipboard-alt"></i>
-                <span> Room </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <div class="collapse" id="room">
-                <ul class="side-nav-second-level">
-                    @if (hasAnyPermissions('ward.index'))
-                    <li>
-                        <a href="{{route('ward.index')}}">Ward</a>
-                    </li>
-                    @endif
-                   @if (hasAnyPermissions('cabin.index'))
-                   <li>
-                    <a href="{{route('cabin.index')}}">Cabin</a>
-                </li>
-                   @endif
-                </ul>
-            </div>
-        </li>
-           @endif
+            @if (hasAnyPermissions('ward.index'))
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="sidebarTasks"
+                    class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Room </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="room">
+                    <ul class="side-nav-second-level">
+                        @if (hasAnyPermissions('ward.index'))
+                        <li>
+                            <a href="{{route('ward.index')}}">Ward</a>
+                        </li>
+                        @endif
+                        @if (hasAnyPermissions('cabin.index'))
+                        <li>
+                            <a href="{{route('cabin.index')}}">Cabin</a>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+            @endif
 
             @if (hasAnyPermissions('birth_report.index'))
             <li class="side-nav-item">
@@ -365,7 +357,8 @@
 
             @if (hasAnyPermissions('insurance.index'))
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#insurance" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#insurance" aria-expanded="false" aria-controls="sidebarTasks"
+                    class="side-nav-link">
                     <i class="uil-clipboard-alt"></i>
                     <span> Insurance </span>
                     <span class="menu-arrow"></span>
@@ -386,7 +379,8 @@
 
             @if (hasAnyPermissions('bill.index'))
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#billing" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#billing" aria-expanded="false" aria-controls="sidebarTasks"
+                    class="side-nav-link">
                     <i class="uil-clipboard-alt"></i>
                     <span> Billing </span>
                     <span class="menu-arrow"></span>
@@ -400,12 +394,18 @@
                             <a href="{{route('packages.index')}}">Package List</a>
                         </li>
                         <li>
+                            <a href="{{route('admissions.create')}}">Add Patient Admission</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admissions.index')}}">Patient Admission List</a>
+                        </li>
+                        <li>
                             <a href="{{route('bill.create')}}">Add Bill</a>
                         </li>
                         <li>
                             <a href="{{route('bill.index')}}">Bill List</a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </li>

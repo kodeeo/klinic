@@ -507,17 +507,17 @@ class PermissionSeeder extends Seeder
     Permission::updateOrCreate([
         'module_id' => $admissionModule->id,
         'name' => 'Patient Admission List',
-        'slug' => 'patient_admisssion.list'
+        'slug' => 'admisssions.index'
     ]);
     Permission::updateOrCreate([
         'module_id' => $admissionModule->id,
         'name' => 'Add Patient Admission',
-        'slug' => 'patient_admisssion.add'
+        'slug' => 'admisssions.create'
     ]);
     Permission::updateOrCreate([
         'module_id' => $admissionModule->id,
         'name' => 'Store Patient Admission',
-        'slug' => 'patient_admisssion.store'
+        'slug' => 'admisssions.store'
     ]);
     $testCategoryModule = Module::updateOrCreate([
         'name' => 'Test Category',

@@ -11,7 +11,7 @@
     <div class="form-group col-6">
         <label for="name">Patient ID</label>
         <i class="text-danger">*</i>
-        <input type="text" class="form-control" name="unique_patient_id" placeholder="Enter Patient ID" required>
+        <input type="text" class="form-control" name="patient_id" placeholder="Enter Patient ID" required>
     </div>
 
     <div class="form-group col-6 mt-2">

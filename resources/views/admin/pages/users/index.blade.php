@@ -14,7 +14,7 @@
 		<tr>
 		  <th>SL No</th>
 		  <th>Name</th>
-		  <th>Select Role_Id</th>
+		  <th>Role</th>
 		  <th>Email </th>
 		  <th>Image</th>
 		  <th>Action</th>

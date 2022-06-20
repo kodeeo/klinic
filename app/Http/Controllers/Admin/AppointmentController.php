@@ -47,8 +47,8 @@ class AppointmentController extends Controller
 
 
         Appointment::create([
-            'unique_appointment_id'=>strtoupper(Str::random(10)),
-            'unique_patient_id'=>strtoupper($request->unique_patient_id),
+            'appointment_id'=>strtoupper(Str::random(10)),
+            'patient_id'=>strtoupper($request->patient_id),
             'department_id'=>$request->department_id,
             'doctor_id'=>$request->doctor_id,
             'date'=>$request->date,

@@ -66,7 +66,7 @@ class PatientController extends Controller
             //creating new patients
 
         Patient::create([
-            'unique_id'=>strtoupper(Str::random(10)),
+            'patient_id'=>strtoupper(Str::random(10)),
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
             'email'=>$request->email,

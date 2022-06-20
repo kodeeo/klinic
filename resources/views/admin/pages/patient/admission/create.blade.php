@@ -23,8 +23,8 @@
 
         <div class="row">
             <div class="form-group col-6">
-                <label for="patient_unique_id">Patient ID<span style="color:red">*</span></label>
-                <input type="text" class="form-control" id="patient_unique_id" name="patient_unique_id"
+                <label for="patient_id">Patient ID<span style="color:red">*</span></label>
+                <input type="text" class="form-control" id="patient_id" name="patient_id"
                     placeholder="Enter Patient ID" required>
             </div>
 

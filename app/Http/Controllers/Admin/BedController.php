@@ -127,7 +127,7 @@ class BedController extends Controller
 
         AssignBed::create([
 
-            'unique_patient_id'=>$request->unique_patient_id,
+            'patient_id'=>$request->patient_id,
 
             'bed_type_id'=>$request->bed_type_id,
             'assign_date'=>$request->assign_date,

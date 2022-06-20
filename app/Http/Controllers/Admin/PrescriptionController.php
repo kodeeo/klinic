@@ -38,7 +38,7 @@ class PrescriptionController extends Controller
      */
     public function create()
     {
-        $patient=Patient::where('unique_patient_id',\request()->patient_id)->first();
+        $patient=Patient::where('patient_id',\request()->patient_id)->first();
 //        dd($patient);
         $doctor = Doctor::all();
         $medicines = Medicine::all();
@@ -65,7 +65,7 @@ class PrescriptionController extends Controller
         // ]);
         $prescription=Prescription::create([
             'doctor_id' => auth()->user()->username,
-            'unique_patient_id' => $request->unique_patient_id,
+            'patient_id' => $request->patient_id,
             'weight' => $request->weight,
             'blood_pressure' => $request->blood_pressure,
             'reference' => $request->reference,

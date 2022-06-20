@@ -21,13 +21,14 @@ class UserController extends Controller
     public function u_store( Request $request){
 
    User::create([
-     'name'=>$request->user_name,
+     'username'=>$request->name,
      'role_id'=>$request->role_id,
      'email'=>$request->email,
      'password'=>bcrypt($request->password),
      'image'=>$request->image
    ]);
-return redirect()->route('user.list');
+
+      return redirect()->route('user.list');
     }
     public function u_view($user_id){
    $users= User::find($user_id);

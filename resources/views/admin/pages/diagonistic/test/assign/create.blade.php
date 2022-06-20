@@ -8,8 +8,8 @@
     @csrf
     <div class="row">
         <div class="form-group mt-2 col-4">
-            <label for="unique_patient_id">Patient ID <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" name="unique_patient_id" placeholder="Enter Patient ID" required>
+            <label for="patient_id">Patient ID <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="patient_id" placeholder="Enter Patient ID" required>
         </div>
 
         <div class="container">
