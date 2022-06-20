@@ -1,31 +1,39 @@
 @extends('admin.master')
 @section('content')
+<style>
+    .required {
+        color: red;
+    }
 
+</style>
 
-<h1>{{__('Add New Test')}}</h1>
+<h1>{{ __('Add New Test') }}</h1>
+<hr>
 
-<form action="{{route('tests.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('tests.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
 
     <div class="form-group col-6">
         <label for="name">Test Name</label>
-        <input type="text" class="form-control" name="name" placeholder="Enter Test Name" required>
+        <span class="required">*</span>
+        <input type="text" class="form-control" name="name" placeholder="Enter Test Name" required><br>
     </div>
 
     <div class="form-group col-6">
         <label for="name">Test Price</label>
-        <input type="number" class="form-control" name="price" placeholder="Enter Test Price" required>
+        <span class="required">*</span>
+        <input type="number" class="form-control" name="price" placeholder="Enter Test Price" required><br>
     </div>
 
     <div class="form-group col-6">
         <label for="name">Test Procedure</label>
-        <input type="text" class="form-control" name="procedure" placeholder="Enter Test Procedure">
+        <input type="text" class="form-control" name="procedure" placeholder="Enter Test Procedure"><br>
     </div>
 
     <div class="form-group col-6">
         <label for="name">Test Description</label>
-        <input type="text" class="form-control" name="description" placeholder="Enter Test Description">
+        <input type="text" class="form-control" name="description" placeholder="Enter Test Description"><br>
     </div>
 
     <div class="mb-3">
