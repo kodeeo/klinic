@@ -61,6 +61,10 @@ use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
+use App\Http\Controllers\Admin\InsuranceController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -245,7 +249,12 @@ Route::resource('medicine_category', MedicinecategoryController::class);
 
 //Bill resouce
 Route::resource('bill', BillController::class);
+//Insurance
+Route::resource('insurance', InsuranceController::class);
 }); 
+
+
+
 
 
                                                 #All Exports
