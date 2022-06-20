@@ -176,7 +176,7 @@
             @endif
 
 
-            @if (hasAnyPermissions('patients.list'))
+            @if (hasAnyPermissions('patients.index'))
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks"
                     class="side-nav-link">
