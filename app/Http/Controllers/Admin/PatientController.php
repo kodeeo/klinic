@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Visit;
 use App\Models\Patient;
 use App\Models\Admission;
+use Brian2694\Toastr\Toastr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use Brian2694\Toastr\Facades\Toastr;
 
 class PatientController extends Controller
 {
@@ -20,8 +20,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        // $patients=Patient::withTrashed()->get();
-        $patients=Patient::all();
+        $patients=Patient::orderBy('id','desc')->get();
         return view('admin.pages.patient.index',compact('patients'));
     }
 
@@ -60,13 +59,13 @@ class PatientController extends Controller
                 'address'=>'required',
                 'mobile'=>'required',
                 'blood_group'=>'required',
-                'patient_image'=>'required'
+//                'patient_image'=>'required'
                ]);
 
             //creating new patients
-
-        Patient::create([
-            'patient_id'=>strtoupper(Str::random(10)),
+        $patient=new Patient();
+            $patient->create([
+            'patient_id'=>'P'.date('Ymd').$patient->latest()->first()->id+1,
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
             'email'=>$request->email,
@@ -80,7 +79,7 @@ class PatientController extends Controller
         ]);
         Log::Channel('custom')->info("Patient has been craeted successfully");
 
-        Toastr::success('Patitent Created Successfully', 'success');
+        Toastr::success('Patient Created Successfully', 'success');
         return redirect()->route('patients.index');
         }
     }
