@@ -240,6 +240,86 @@ class PermissionSeeder extends Seeder
         'name' => 'Designation Delete',
         'slug' => 'designation.destroy'
     ]);
+    $scheduleModule = Module::updateOrCreate([
+        'name' => 'Schedule',
+        'description' => 'Schedule'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $scheduleModule->id,
+        'name' => 'Schedule List',
+        'slug' => 'schedule.index'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $scheduleModule->id,
+        'name' => 'Create Schedule',
+        'slug' => 'schedule.create'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $scheduleModule->id,
+        'name' => 'Store Schedule',
+        'slug' => 'schedule.store'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $scheduleModule->id,
+        'name' => 'View Schedule',
+        'slug' => 'schedule.show'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $scheduleModule->id,
+        'name' => 'Edit Schedule',
+        'slug' => 'schedule.edit'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $scheduleModule->id,
+        'name' => 'Update Schedule',
+        'slug' => 'schedule.update'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $scheduleModule->id,
+        'name' => 'Delete Schedule',
+        'slug' => 'schedule.destroy'
+    ]);
+    $prescriptionModule = Module::updateOrCreate([
+        'name' => 'Prescription',
+        'description' => 'Prescription'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $prescriptionModule->id,
+        'name' => 'Prescription List',
+        'slug' => 'prescription.index'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $prescriptionModule->id,
+        'name' => 'Create Prescription',
+        'slug' => 'prescription.create'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $prescriptionModule->id,
+        'name' => 'Store Prescription',
+        'slug' => 'prescription.store'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $prescriptionModule->id,
+        'name' => 'View Prescription',
+        'slug' => 'prescription.show'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $prescriptionModule->id,
+        'name' => 'Edit Prescription',
+        'slug' => 'prescription.edit'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $prescriptionModule->id,
+        'name' => 'Update Prescription',
+        'slug' => 'prescription.update'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $prescriptionModule->id,
+        'name' => 'Delete Prescription',
+        'slug' => 'prescription.destroy'
+    ]);
+
+
     $staffModule = Module::updateOrCreate([
         'name' => 'Staff',
         'description' => 'Staff'
@@ -816,8 +896,8 @@ class PermissionSeeder extends Seeder
         'slug' => 'operational_activities.destroy'
     ]);
     $investigationModule = Module::updateOrCreate([
-        'name' => 'Inverstigation',
-        'description'=> 'Inverstigation'
+        'name' => 'Investigation',
+        'description'=> 'Investigation'
     ]);
     Permission::updateOrCreate([
         'module_id' => $investigationModule->id,
@@ -932,6 +1012,124 @@ class PermissionSeeder extends Seeder
         'name' => 'Delete Medicine Category',
         'slug' => 'medicine_category.destroy'
     ]);
+    $insuranceModule = Module::updateOrCreate([
+        'name' => 'Insurance',
+        'description' => 'Insurance'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $insuranceModule->id,
+        'name' => 'Insurance List',
+        'slug' => 'insurance.index'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $insuranceModule->id,
+        'name' => 'Create Insurance',
+        'slug' => 'insurance.create'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $insuranceModule->id,
+        'name' => 'Store Insurance',
+        'slug' => 'insurance.store'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $insuranceModule->id,
+        'name' => 'View Insurance',
+        'slug' => 'insurance.show'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $insuranceModule->id,
+        'name' => 'Edit Insurance',
+        'slug' => 'insurance.edit'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $insuranceModule->id,
+        'name' => 'Update Insurance',
+        'slug' => 'insurance.update'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $insuranceModule->id,
+        'name' => 'Delete Insurance',
+        'slug' => 'insurance.destroy'
+    ]);
+    $packageModule = Module::updateOrCreate([
+        'name' => 'Packages',
+        'description' => 'Packages'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $packageModule->id,
+        'name' => 'Package List',
+        'slug' => 'package.index'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $packageModule->id,
+        'name' => 'Create Package',
+        'slug' => 'package.create'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $packageModule->id,
+        'name' => 'Store Package',
+        'slug' => 'package.store'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $packageModule->id,
+        'name' => 'View Package',
+        'slug' => 'package.show'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $packageModule->id,
+        'name' => 'Edit Package',
+        'slug' => 'package.edit'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $packageModule->id,
+        'name' => 'Update Package',
+        'slug' => 'package.update'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $packageModule->id,
+        'name' => 'Delete Package',
+        'slug' => 'package.destroy'
+    ]);
+    $billmodule = Module::updateOrCreate([
+        'name' => 'Bill',
+        'description' => 'Bill'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $billmodule->id,
+        'name' => 'Bill List',
+        'slug' => 'bill.index'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $billmodule->id,
+        'name' => 'Create Bill',
+        'slug' => 'bill.create'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $billmodule->id,
+        'name' => 'store Bill',
+        'slug' => 'bill.store'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $billmodule->id,
+        'name' => 'View Bill',
+        'slug' => 'bill.show'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $billmodule->id,
+        'name' => 'Edit Bill',
+        'slug' => 'bill.edit'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $billmodule->id,
+        'name' => 'Update Bill',
+        'slug' => 'bill.update'
+    ]);
+    Permission::updateOrCreate([
+        'module_id' => $billmodule->id,
+        'name' => 'Delete Bill',
+        'slug' => 'bill.destroy'
+    ]);
+
     $clinicSetUpModule = Module::updateOrCreate([
         'name' => 'Clinic SetUp',
         'Description' => 'Clinic SetUp'

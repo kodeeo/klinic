@@ -4,7 +4,7 @@
 <hr>
 <div class="row" style="justify-content: space-between;">
 	<div class="col">
-		<a href="{{route('permission.create')}}" class="btn btn-primary" type="button"> +Create New User</a>
+		<a href="{{route('permission.create')}}" class="btn btn-primary" type="button"> +Create Permission</a>
 	</div>
 </div>
 <br><br>
