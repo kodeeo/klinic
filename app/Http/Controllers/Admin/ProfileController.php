@@ -28,7 +28,7 @@ class ProfileController extends Controller
         {
             $file=$request->file('image');
             $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$filename);
+            $file->storeAs('/uploads/users/',$filename);
         }
 
         $user->update([
@@ -56,7 +56,7 @@ class ProfileController extends Controller
     public function passwordUpdate(Request $request, $id)
     {
         $user=User::find($id);
-        
+
 
         $user->update([
             'password'=>bcrypt($request->password),
