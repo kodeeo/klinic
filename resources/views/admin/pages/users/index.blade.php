@@ -28,7 +28,7 @@
 		 <td>{{$user->username}}</td>
 		 <td>{{optional($user->role)->name}}</td>
 		 <td>{{$user->email}}</td>
-		 <td>#</td>
+		 <td><img src="{{'/uploads/userimage/'.$user->image}}" style="border-radius:4px" width="50px" alt="image"></td>
          <td>
 			 <a href="{{route('user.details', $user->id)}}" class="btn btn-success" type="button">View</a>
 		</td>
