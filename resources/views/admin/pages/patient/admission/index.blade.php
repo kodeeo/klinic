@@ -18,6 +18,7 @@
                 <th scope="col">Discharge Date</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Status</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,19 @@
                 <td>{{$item->discharge_date}}</td>
                 <td>{{$item->doctors->first_name}} {{$item->doctors->last_name}}</td>
                 <td>{{$item->status}}</td>
+                <td>
+                    <div style="display:flex">
+                        <a class="btn btn-success btn-sm m-1" href="{{route('admissions.show',$item->id)}}"><i class="fa fa-eye"></i></a>
+                        <a class="btn btn-warning btn-sm m-1" href="{{route('admissions.edit',$item->id)}}"><i class="fa fa-pen"></i></a>
+                        <form style="margin-left: 3px" action="{{route('admissions.destroy',$item->id)}}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <div>
+                              <button class="btn btn-danger m-1" type="submit"><i class="fas fa-trash"></i></button>
+                          </div>
+                        </form>
+                      </div>
+                </td>
             </tr>
             @endforeach
 

@@ -11,6 +11,11 @@ class Admission extends Model
     protected $guarded=[];
 
 
+    public function patients()
+    {
+        return $this->belongsTo(Patient::class,'id');
+    }
+
     public function doctors()
     {
         return $this->belongsTo(Doctor::class,'doctor_id','id');
