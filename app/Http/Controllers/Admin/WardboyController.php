@@ -18,7 +18,7 @@ class WardboyController extends Controller
     public function index()
     {
         $role=Role::where('name','WardBoy')->first();
-        $wardboys=User::where('role_id',$role->id)->get();
+        $wardboys=User::where('role_id',$role->id)->orderBy('id','desc')->get();
         return view('admin.pages.staff.wardboy.index',compact('wardboys'));
     }
 
