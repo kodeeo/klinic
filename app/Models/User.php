@@ -38,6 +38,15 @@ class User extends Authenticatable
         return $this->role->permissions()->where('slug',$permission)->first() ? true: false;
     }
 
+    public function getUserImageAttribute($value)
+    {
+        if($value)
+        {
+            return url('/uploads/Users/'.$value);
+        }
+        return url('/img/avatar.png');
+    }
+
     
     /**
      * The attributes that should be hidden for serialization.

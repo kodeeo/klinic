@@ -27,8 +27,8 @@
       <input id="text" name="password" class="form-control" placeholder="Password">
     </div>
     <div class="form-group col-6 mt-2">
-      <label for="image">Image </label>
-      <input  type="file" name="image" class="form-control" id="image">
+      <label for="user_image">Image </label>
+      <input  type="file" name="user_image" class="form-control" id="user_image">
     </div>
   </div>
   <div class="form-group col-6 mt-2">

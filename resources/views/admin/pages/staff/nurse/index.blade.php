@@ -42,7 +42,7 @@
       @foreach($nurses as $key=>$nurse)
         
         <th scope="row">{{$key+1}}</th>
-        <td><img src={{url('/uploads/staffs',$nurse->image)}} width="100px" alt="Nurse Image"></td>
+        <td><img src={{url('/uploads/staffs',$nurse->image)}} class="rounded-circle" width="50px" alt="image"></td>
         <td>{{$nurse->first_name. ''.$nurse->last_name}}</td>
         <td>{{$nurse->email}}</td>
         <td>{{$nurse->mobile}}</td>

@@ -4,7 +4,7 @@
         <a class="btn btn-success" href="{{route('medicine_category.create')}}">Add Medicine Category</a>
        <div><br>
 
-       
+
         <div class="row" style="justify-content: space-between;">
   <div class="col">
   <a class="btn btn-success" href="{{route('medicine_category.create')}}">Add Medicine Category</a>
@@ -21,7 +21,7 @@
         PDF
       </a>
       <a class="btn btn-info" href="">
-        Print    
+        Print
       </a>
   </div>
 </div>
@@ -45,13 +45,13 @@
                       <td>{{$item->name}}</td>
                       <td>{{$item->description}}</td>
                       <td>
-                        <div style="display: flex ">
-                        <a style="margin-left: 10px" class="btn btn-success btn-sm" href="{{route('medicine_category.show', $item->id)}}"><i class="fas fa-eye"></i></a> 
-                        <a style="margin-left: 3px" class="btn btn-warning btn-sm m" href="{{route('medicine_category.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
-                        <form style="margin-left: 5px" action="{{route('medicine_category.destroy',$item->id)}}" method="POST">
+                        <div style="display: flex; justify-content: center">
+                        <a  class="btn btn-success btn-sm m-1" href="{{route('medicine_category.show', $item->id)}}"><i class="fas fa-eye"></i></a>
+                        <a  class="btn btn-warning btn-sm m-1" href="{{route('medicine_category.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
+                        <form  action="{{route('medicine_category.destroy',$item->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                                <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
                         </form>
                         </div>
                       </td>

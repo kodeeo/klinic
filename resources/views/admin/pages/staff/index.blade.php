@@ -56,18 +56,14 @@
               </thead>
               <tbody>
                 @foreach($staffs as $key=>$value) 
-               
-
                   <tr>
-                    
-                    
                     <th>{{$key+1}}</th>
                     <th>{{$value->designation->designation}}</th>
                     <th>{{$value->email}}</th>
                     <td>{{$value->name}}</td>
                     <td>{{$value->phone}}</td>
                     <td>{{$value->address}}</td>
-                    <td><img src="{{url('/uploads/staffs/'.$value->image)}}" style="border-radius:4px" width="100px" alt="staff image"></td>
+                    <td><img src="{{url('/uploads/staffs/'.$value->image)}}" class="rounded-circle" width="50px" alt="image"></td>
 
                    
                     <td>
