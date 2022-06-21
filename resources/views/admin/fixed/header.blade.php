@@ -1,8 +1,8 @@
+
 <div class="d-print-none" style="display:flex; justify-content:space-between; align-items:center;">
     <button class="button-menu-mobile open-left">
         <i class="mdi mdi-menu"></i>
     </button>
-
     <ul class="list-unstyled topbar-menu mb-0" style="display: flex; align-items:center; padding-right: 6%;">
 {{--        <li class="dropdown notification-list">--}}
 
@@ -15,13 +15,13 @@
 {{--             </select>--}}
 {{--        </li>--}}
 
-    
+
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none" style="border:none;" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                 aria-expanded="false">
                 <span class="account-user-avatar">
-                    <img src="{{'/uploads/userimage/'.auth()->user()->image}}" class="rounded-circle" alt="image">
+                    <img style="border-radius: 20px;" src="{{url('/uploads/users/'.auth()->user()->image)}}" alt="">
                 </span>
                 <span>
                     <span class="account-user-name">{{auth()->user()->username}}</span>
@@ -30,7 +30,7 @@
             <div class="dropdown-menu dropdown-menu-end dropd2own-menu-animated topbar-dropdown-menu profile-dropdown">
                 <!-- item-->
                 <div class=" dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome !</h6>
+                    <h6 class="text-overflow m-0">Welcome !</h6> <span>{{auth()->user()->username}}</span>
                 </div>
 
 

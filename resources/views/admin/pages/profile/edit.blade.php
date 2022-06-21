@@ -1,15 +1,15 @@
 @extends('admin.master')
 @section('content')
-    
+
 
 <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
- 
+
             <div class="panel-heading no-print">
-                <div class="btn-group"> 
-                    <a class="btn btn-primary" href="{{route('profile',auth()->user()->id)}}"> <i class="fa fa-list"></i>  Profile </a>  
+                <div class="btn-group">
+                    <a class="btn btn-primary" href="{{route('profile',auth()->user()->id)}}"> <i class="fa fa-list"></i>  Profile </a>
                 </div>
-            </div> 
+            </div>
 
 
             <div class="panel-body panel-form">
@@ -19,9 +19,9 @@
                     <form action="{{route('profile.update',$user->id)}}" method="POST" enctype="multipart/form-data">
     @method('put')
     @csrf
-                                            
 
- 
+
+
                             <div class="form-group row">
                                 <label for="firstname" class="col-xs-3 col-form-label">First Name <i class="text-danger">*</i></label>
                                 <div class="col-xs-9">
@@ -80,25 +80,25 @@
                                 </div>
                             </div>
 
-                            
 
 
-                            
+
+
 
                             <!-- if employee picture is already uploaded -->
                                                         <div class="form-group row">
                                 <label for="picturePreview" class="col-xs-3 col-form-label"></label>
                                 <div class="col-xs-9">
-                                <img src="{{url('/uploads/'.$user->image)}}" style="border-radius:4px" width="400"
+                                <img src="{{url('/uploads/users/'.$user->image)}}" style="border-radius:4px" width="400"
                         alt="image">
                                 </div>
                             </div>
-                            
+
                             <div class="form-group row">
                                 <label for="picture" class="col-xs-3 col-form-label">Picture</label>
                                 <div class="col-xs-9">
                                     <input type="file" name="image" id="picture" value="">
-                                    
+
                                 </div>
                             </div>
 
@@ -107,8 +107,8 @@
                                 <div class="col-xs-9">
                                     <textarea name="address" class="form-control" id="address" placeholder="Address" maxlength="140" rows="7">{{$user->address}}</textarea>
                                 </div>
-                            </div> 
- 
+                            </div>
+
                             <div class="form-group row">
                                 <label class="col-sm-3">Status</label>
                                 <div class="col-xs-9">
@@ -138,4 +138,4 @@
     </div>
 
 
-@endsection 
+@endsection
