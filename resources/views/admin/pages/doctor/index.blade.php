@@ -28,6 +28,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
+                <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Mobile No</th>
@@ -36,7 +37,6 @@
                 <th scope="col">Education/Degree</th>
                 <th scope="col">Specialist</th>
                 <th scope="col">Status</th>
-                <th scope="col">Image</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -44,6 +44,7 @@
             @foreach($doctors as $key=>$value)
             <tr>
                 <th>{{$key+1}}</th>
+                <td><img src="{{url($value->doctor_image)}}" style="border-radius:4px" width="50px" alt="doctor image"></td>
                 <td>{{$value->first_name}} {{$value->last_name}}</td>
                 <td>{{$value->email}}</td>
                 <td>{{$value->mobile}}</td>
@@ -58,8 +59,6 @@
                     <button class="btn btn-danger" style="border-radius: 15px;">Inactive</button>
                     @endif
                 </td>
-                <td><img src="{{url('/uploads/doctors/'.$value->image)}}" style="border-radius:4px" width="100px"
-                        alt="doctor image"></td>
                 <td>
                     <div style="display: flex">
                         <a class="btn btn-success btn-sm" href="{{route('doctor.show',$value->id)}}"><i
