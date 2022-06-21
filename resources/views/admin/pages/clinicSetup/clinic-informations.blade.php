@@ -31,7 +31,7 @@
         <td>{{$clinic_info->email}}</td>
         <td>{{$clinic_info->web}}</td>
         <td>
-          <img src="{{url('/uploads/klinicLogo/'.$clinic_info->image)}}" style="border-radius:4px" width="100px" alt="Logo">
+          <img src="{{$klinic->image}}" style="border-radius:4px" width="100px" alt="Logo">
         </td>
         <td>
             <a class="btn btn-warning btn-sm" href="{{route('clinic.setup.edit',$clinic_info->id)}}"><i class="fas fa-edit"></i></a>

@@ -15,15 +15,16 @@
 {{--             </select>--}}
 {{--        </li>--}}
 
+    
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none" style="border:none;" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                 aria-expanded="false">
                 <span class="account-user-avatar">
-                    <img src="" alt="">
+                    <img src="{{'/uploads/userimage/'.auth()->user()->image}}" class="rounded-circle" alt="image">
                 </span>
                 <span>
-                    <span class="account-user-name">{{auth()->user()->name}}</span>
+                    <span class="account-user-name">{{auth()->user()->username}}</span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropd2own-menu-animated topbar-dropdown-menu profile-dropdown">
