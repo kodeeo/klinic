@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('accident',10);
             $table->string('diabetic',10);
             $table->string('infection',10);
-            $table->string('quota',20);
+            $table->string('quota',50);
             $table->text('others')->nullable();
 
             //guardian info
