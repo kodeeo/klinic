@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Visit;
 use App\Models\Patient;
-use App\Models\Admission;
-use Brian2694\Toastr\Toastr;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class PatientController extends Controller
 {
@@ -92,7 +89,8 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $patient=Patient::find($id);
+        return view('admin.pages.patient.show',compact('patient'));
     }
 
     /**
@@ -104,7 +102,8 @@ class PatientController extends Controller
     public function edit($id)
     {
         $patient=Patient::find($id);
-        return view('admin.pages.patient.edit',compact('patient'));
+        $genders=['Male','Female'];
+        return view('admin.pages.patient.edit',compact('patient','genders'));
     }
 
     /**

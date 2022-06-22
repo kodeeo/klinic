@@ -3,17 +3,8 @@
 
 <h1>{{__('Update Patient')}}</h1>
 
-@if($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
 
-<img src="{{url('/uploads/patients/'.$patient->patient_image)}}" style="border-radius:4px" width="100px" alt="patient image">
+<img src="{{$patient->patient_image}}" style="border-radius:4px" width="200px" alt="patient image"> 
 
 <form action="{{route('patients.update',$patient->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -43,11 +34,13 @@
         
         <div class="form-group col-6 mt-2">
             <label for="exampleFormControlSelect1">Gender</label>
-            <select id="gender" name="gender" class="form-control"> 
-                <option  @if($patient==$doctor->blood_group) selected @endif
-                     value="{{$doctor->blood_group}}">{{$doctor->blood_group}}</option>
-                        @foreach ($blood as $item ) 
-                     <option value="{{$item}}">{{$item}}</option> @endforeach </select>
+            <select name="gender" class="form-control" id="exampleFormControlSelect1">
+                @foreach($genders as $data)
+                <option @if($data==$patient->data) selected @endif
+                    value="{{$data}}">{{$data}}
+                </option>
+                @endforeach
+            </select>
         </div>
 
         <div class="form-group col-6 mt-2">
