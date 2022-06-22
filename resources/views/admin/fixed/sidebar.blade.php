@@ -400,6 +400,9 @@
                             <a href="{{route('admissions.index')}}">Patient Admission List</a>
                         </li>
                         <li>
+                            <a href="{{route('advancepayment.index')}}">Advance Payment List</a>
+                        </li>
+                        <li>
                             <a href="{{route('bill.create')}}">Add Bill</a>
                         </li>
                         <li>

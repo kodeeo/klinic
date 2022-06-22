@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Visit;
 use App\Models\Patient;
-use App\Models\Admission;
-use Brian2694\Toastr\Toastr;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class PatientController extends Controller
 {
@@ -79,8 +76,7 @@ class PatientController extends Controller
         ]);
         Log::Channel('custom')->info("Patient has been craeted successfully");
 
-        Toastr::success('Patient Created Successfully', 'success');
-        return redirect()->route('patients.index');
+        return redirect()->route('patients.index')->with(Toastr::success('Patient has been craeted successfully'));
         }
     }
 

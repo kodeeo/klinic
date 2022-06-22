@@ -19,6 +19,7 @@
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
+                <th scope="col">Payment</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +30,7 @@
                 <td>{{$item->patient_id}}</td>
                 <td>{{$item->admission_date}}</td>
                 <td>{{$item->discharge_date}}</td>
-                <td>{{$item->doctors->first_name}} {{$item->doctors->last_name}}</td>
+                <td>{{$item->doctors->first_name.' '.$item->doctors->last_name}}</td>
                 <td>{{$item->status}}</td>
                 <td>
                     <div style="display:flex">
@@ -43,6 +44,12 @@
                           </div>
                         </form>
                       </div>
+                </td>
+                <td>
+                    <div style="display: flex">
+                        <a class="btn btn-info m-1" href="{{route('advancepayment.create',['admission_id'=>$item->admission_id ,'patient_id'=>$item->patient_id])}}"><b>Advance</b></a>
+                        <a class="btn btn-success m-1" href="{{route('bill.create')}}"><b>Full</b></a>
+                    </div>
                 </td>
             </tr>
             @endforeach
