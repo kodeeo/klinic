@@ -88,7 +88,8 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $patient=Patient::find($id);
+        return view('admin.pages.patient.show',compact('patient'));
     }
 
     /**
@@ -100,7 +101,8 @@ class PatientController extends Controller
     public function edit($id)
     {
         $patient=Patient::find($id);
-        return view('admin.pages.patient.edit',compact('patient'));
+        $genders=['Male','Female'];
+        return view('admin.pages.patient.edit',compact('patient','genders'));
     }
 
     /**
