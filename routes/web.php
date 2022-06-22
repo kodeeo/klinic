@@ -167,6 +167,9 @@ Route::controller(TestController::class)->group(function () {
     //Doctor resource controller
 Route::resource('doctor',DoctorController::class);
 
+Route::get('/doctor/pdf/print{id}',[DoctorController::class, 'doctorPdf'])->name('pdf.doctor');
+
+
    //Prescription resource controller
 Route::resource('prescription',PrescriptionController::class);
 

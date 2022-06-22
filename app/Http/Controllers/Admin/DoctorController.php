@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use PDF;
 use App\Models\Doctor;
 use App\Models\Department;
-use PhpParser\Comment\Doc;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
@@ -171,5 +170,12 @@ class DoctorController extends Controller
         Doctor::find($id)->delete();
         Toastr::error('Doctor Deleted Successfully');
         return redirect()->back();        
+    }
+
+    public function doctorPdf($id)
+    {
+        $doctor=Doctor::find($id);
+        $pdf=PDF::loadView('admin.pages.doctor.profile_pdf',compact('doctor'));
+        return $pdf->download('doctor.pdf');
     }
 }
