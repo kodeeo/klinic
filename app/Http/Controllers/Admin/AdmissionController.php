@@ -20,7 +20,7 @@ class AdmissionController extends Controller
      */
     public function index()
     {
-        $admissions=Admission::all();
+        $admissions=Admission::orderBy('id','desc')->get();
         return view('admin.pages.patient.admission.index',compact('admissions'));
     }
 
