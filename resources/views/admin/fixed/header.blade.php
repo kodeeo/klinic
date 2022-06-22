@@ -24,19 +24,15 @@
                     <img style="border-radius: 20px;" src="{{url('/uploads/users/'.auth()->user()->image)}}" alt="">
                 </span>
                 <span>
-                    <span class="account-user-name">{{auth()->user()->username}}</span>
+                    <span class="account-user-name">{{ucfirst(auth()->user()->username)}}</span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropd2own-menu-animated topbar-dropdown-menu profile-dropdown">
                 <!-- item-->
                 <div class=" dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome !</h6> <span>{{auth()->user()->username}}</span>
+                    <h6 class="text-overflow m-0">Welcome !</h6> <span>{{ucfirst(auth()->user()->username)}}</span>
                 </div>
-
-
                 <!-- item-->
-
-
 
                 <a href="{{route('profile',auth()->user()->id)}}" class="dropdown-item notify-item">
                 <i class="fa-solid fa-user"></i>
