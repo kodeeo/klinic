@@ -109,8 +109,8 @@
                 required>
         </div>
         <div class="mt-2">
-            <label for="image" class="form-label">Insert Image</label>
-            <input class="form-control" type="file" id="image" name="doctor_image">
+            <label for="doctor_image" class="form-label">Insert Image</label>
+            <input class="form-control" type="file" id="doctor_image" name="doctor_image">
         </div>
     </div>
     <div class="form-group col-12 mt-2">

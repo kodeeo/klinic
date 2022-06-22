@@ -32,7 +32,6 @@
                 <th scope="col">Patient ID</th>
                 <th scope="col">Test</th>
                 <th scope="col">Price</th>
-                <th scope="col">Note</th>
                 <th scope="col">Assigned By</th>
                 <th scope="col">Image</th>
             </tr>
@@ -45,7 +44,6 @@
                     <td>{{ $test->patient_id }}</td>
                     <td>{{ $test->tests->name }}</td>
                     <td>{{ $test->tests->price }}</td>
-                    <td>{{ $test->note }}</td>
                     <td>{{ $test->assigned_by }}</td>
                     <td><img src="{{ url('/uploads/'.$test->image) }}"
                             style="border-radius:4px" width="40px" alt="test image"></td>

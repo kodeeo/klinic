@@ -49,19 +49,17 @@
                     <td>{{ $bed->status }}</td>
 
                     <td>
-                        <div style="display: flex">
-                            <a class="btn btn-success btn-sm"
-                                href="{{ route('beds.show',$bed->id) }}"><i
-                                    class="fas fa-eye"></i></a>
-                            <a style="margin-left: 2px" class="btn btn-warning btn-sm"
-                                href="{{ route('beds.edit',$bed->id) }}"><i
-                                    class="fas fa-edit"></i></a>
-                            <form style="margin-left: 2px;"
+                        <div style="display: flex; justify-content: center">
+                            <a class="btn btn-success btn-sm m-1"
+                                href="{{ route('beds.show',$bed->id) }}"><i class="fas fa-eye"></i></a>
+                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1"
+                                href="{{ route('beds.edit',$bed->id) }}"><i class="fas fa-edit"></i></a>
+                            <form
                                 action="{{ route('beds.destroy',$bed->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <div>
-                                    <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
                                 </div>
                             </form>
                         </div>

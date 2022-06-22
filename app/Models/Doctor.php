@@ -16,4 +16,12 @@ class Doctor extends Model
     {
         return $this->belongsTo(Department::class,'department_id','id');
     }
+    public function getDoctorImageAttribute($value)
+    {
+        if($value)
+        {
+            return url('/uploads/doctors/'.$value);
+        }
+        return url('/img/avatar.png');
+    }
 }

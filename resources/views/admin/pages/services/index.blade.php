@@ -10,7 +10,6 @@
             <tr>
                 <th scope="col-1">Sl</th>
                 <th scope="col-1">Name</th>
-                <th scope="col-3">Description</th>
                 <th scope="col-2">Rate</th>
                 <th scope="col-3">Status</th>
                 <th scope="col">Action</th>
@@ -21,7 +20,6 @@
             <tr>
                 <th>{{$key+1}}</th>
                 <td>{{$service->name}}</td>
-                <td>{{$service->description}}</td>
                 <td>{{$service->rate}}</td>
                 <td class="col-2">
                     <div class="btn-group">

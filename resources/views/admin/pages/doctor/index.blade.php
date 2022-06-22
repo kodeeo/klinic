@@ -28,15 +28,11 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
+                <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Mobile No</th>
-                <th scope="col">Addess</th>
-                <th scope="col">Department</th>
-                <th scope="col">Education/Degree</th>
-                <th scope="col">Specialist</th>
                 <th scope="col">Status</th>
-                <th scope="col">Image</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -44,13 +40,10 @@
             @foreach($doctors as $key=>$value)
             <tr>
                 <th>{{$key+1}}</th>
-                <td>{{$value->first_name}} {{$value->last_name}}</td>
+                <td><img src="{{url($value->doctor_image)}}" style="border-radius:4px" width="50px" alt="doctor image"></td>
+                <td>{{$value->first_name. ''.$value->last_name}}</td>
                 <td>{{$value->email}}</td>
                 <td>{{$value->mobile}}</td>
-                <td>{{$value->address}}</td>
-                <td>{{$value->department->name ?? ""}}</td>
-                <td>{{$value->degree}}</td>
-                <td>{{$value->specialist}}</td>
                 <td>
                     @if($value->status=='active')
                     <button class="btn btn-info" style="border-radius: 15px;">Active</button>
@@ -58,19 +51,17 @@
                     <button class="btn btn-danger" style="border-radius: 15px;">Inactive</button>
                     @endif
                 </td>
-                <td><img src="{{url('/uploads/doctors/'.$value->image)}}" style="border-radius:4px" width="100px"
-                        alt="doctor image"></td>
                 <td>
                     <div style="display: flex">
-                        <a class="btn btn-success btn-sm" href="{{route('doctor.show',$value->id)}}"><i
+                        <a class="btn btn-success btn-sm m-1" href="{{route('doctor.show',$value->id)}}"><i
                                 class="fas fa-eye"></i></a>
-                        <a style="margin-left: 3px" class="btn btn-warning btn-sm"
+                        <a class="btn btn-warning btn-sm m-1"
                             href="{{route('doctor.edit',$value->id)}}"><i class="fas fa-edit"></i></a>
                         <form style="margin-left: 3px" action="{{route('doctor.destroy',$value->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <div>
-                                <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-danger m-1" type="submit"><i class="fas fa-trash"></i></button>
                             </div>
                         </form>
                     </div>

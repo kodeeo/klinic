@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <a href="index.html" class="logo text-center logo-light">
         <span class="logo-lg">
-            <h4 style="color:white"><img src="{{$klinic->image}}" width="50px" alt="Company Logo">
+            <h4 style="color:white"><img src="{{$klinic->image}}" width="90px" alt="Company Logo">
                 <br>
                 <b> {{$klinic->name}}</b></h4>
         </span>
@@ -398,6 +398,9 @@
                         </li>
                         <li>
                             <a href="{{route('admissions.index')}}">Patient Admission List</a>
+                        </li>
+                        <li>
+                            <a href="{{route('advancepayment.index')}}">Advance Payment List</a>
                         </li>
                         <li>
                             <a href="{{route('bill.create')}}">Add Bill</a>

@@ -32,7 +32,6 @@
                 <th scope="col">SL.NO</th>
                 <th scope="col">Patient ID</th>
                 <th scope="col">Bed Type</th>
-                <th scope="col">Description</th>
                 <th scope="col">Charge</th>
                 <th scope="col">Day</th>
                 <th scope="col">Total</th>
@@ -48,13 +47,11 @@
                     <th>{{ $key+1 }}</th>
                     <td>{{ $item->patient_id }}</td>
                     <td>{{ $item->beds->type }}</td>
-                    <td>{{ $item->description }}</td>
                     <td>{{ $item->beds->charge }}</td>
                     <td>{{ $item->days }}</td>
-
                     <?php
-                                    $total=$item->days*$item->beds->charge;
-                                  ?>
+                    $total=$item->days*$item->beds->charge;
+                    ?>
 
                     <td>{{ $total }}</td>
                     <td>{{ $item->assign_date }}</td>
@@ -62,13 +59,13 @@
                     <td>{{ $item->assigned_by }}</td>
                     <td>
                         <div style="display: flex">
-                            <a style="margin-left: 2px" class="btn btn-warning btn-sm" href="#"><i
+                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="#"><i
                                     class="fas fa-edit"></i></a>
-                            <form style="margin-left: 2px;" action="#" method="POST">
+                            <form action="#" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <div>
-                                    <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
                                 </div>
                             </form>
                         </div>

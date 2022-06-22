@@ -32,8 +32,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Test</th>
                 <th scope="col">Price</th>
-                <th scope="col">Procedure</th>
-                <th scope="col">Description</th>
                 <th scope="col">Image</th>
                 <th class="d-print-none" scope="col">Action</th>
             </tr>
@@ -45,13 +43,11 @@
                     <th scope="row">{{ $key+1 }}</th>
                     <td>{{ $test->name }}</td>
                     <td>{{ $test->price }}</td>
-                    <td>{{ $test->procedure }}</td>
-                    <td>{{ $test->description }}</td>
                     <td><img src="{{ url('/uploads/'.$test->image) }}"
                             style="border-radius:4px" width="40px" alt="test image"></td>
                     <td>
-                        <div style="display: flex">
-                            <a class="btn btn-warning btn-sm"
+                        <div style="display: flex; justify-content:center;">
+                            <a class="btn btn-warning btn-sm "
                                 href="{{ route('tests.edit',$test->id) }}"><i
                                     class="fas fa-edit"></i></a>
                             <form style="margin-left: 3px"
