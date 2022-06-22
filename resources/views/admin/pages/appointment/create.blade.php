@@ -31,9 +31,7 @@
         <i class="text-danger">*</i>
         <select class="form-select" name="doctor_id" aria-label="Default select example">
             <option>Select Doctor</option>
-
             @foreach($doctors as $item)
-
                 <option value="{{ $item->id }}">{{ $item->first_name }} {{ $item->last_name }}</option>
             @endforeach
         </select>
@@ -46,7 +44,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="serial_no" class="col-xs-3 col-form-labelSerial No <i class=" text-danger">*</i></label>
+        <label for="serial_no" class="col-xs-3 col-form-labelSerial No"> <i class="text-danger">*</i></label>
         <div class="col-xs-9">
             <div id="serial_preview">
                 <div type="button" class="btn btn-success disabled btn-sm"> 01</div>

@@ -21,45 +21,47 @@ use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DoctorController;
 
 
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\WardboyController;
-use App\Http\Controllers\Frontend\HomeController;
 
 // use App\Http\Controllers\Admin\DesignationController;
 
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\AdmissionController;
 use App\Http\Controllers\Admin\Bill\BillController;
-use App\Http\Controllers\Admin\DashboardController;
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InsuranceController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\PrescriptionController;
+use App\Http\Controllers\Admin\AdvancePaymentController;
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
+
 use App\Http\Controllers\Admin\Activities\BirthreportController;
+
 use App\Http\Controllers\Admin\Activities\DeathreportController;
+
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
-
 use App\Http\Controllers\Admin\Activities\InvestigationController;
-
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
-
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
+
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
-
-use App\Http\Controllers\Admin\InsuranceController;
 
 
 
@@ -240,6 +242,10 @@ Route::resource('medicine_category', MedicinecategoryController::class);
 
 //Bill resouce
 Route::resource('bill', BillController::class);
+
+//Advance Paymnet
+Route::resource('advancepayment', AdvancePaymentController::class);
+
 //Insurance
 Route::resource('insurance', InsuranceController::class);
 }); 
