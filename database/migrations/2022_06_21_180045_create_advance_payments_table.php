@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('advance_payments', function (Blueprint $table) {
             $table->id();
             $table->string('admission_id',20);
-            $table->string('receipt_no',20)->unique();
+            $table->string('reciept_no',20)->unique();
             $table->string('patient_id',20);
             $table->string('payment_method',20);
             $table->double('amount',8,2)->default(0.0);
