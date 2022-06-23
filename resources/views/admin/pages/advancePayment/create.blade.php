@@ -21,12 +21,12 @@
             </div>
             <div class="form-group col-6 mt-2">
                 <label for="amount">Amount <span style="color: red">*</span></label>
-                <input type="number" value="500" min="500" class="form-control" id="amount" name="amount" placeholder="Enter Amount">
+                <input type="number" value="500" min="500" class="form-control" id="amount" name="amount" placeholder="Enter Amount" required>
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="payment_method">Payment Method</label>
-                <select class="form-control" name="payment_method" id="payment_method">
+                <select class="form-control" name="payment_method" id="payment_method" required>
                     <option value="cash">Cash</option>
                     <option value="card">Card</option>
                     <option value="cheque">Cheque</option>

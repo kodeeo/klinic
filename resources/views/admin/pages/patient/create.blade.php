@@ -19,11 +19,11 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="first_name">First Name <span style="color:red">*</span></label>
-            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name">
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required>
         </div>
         <div class="form-group col-6">
             <label for="last_name">Last Name <span style="color:red">*</span></label>
-            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name">
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" required>
         </div>
         <div class="form-group col-6 mt-2">
             <label for="email">Email <span style="color:red">*</span></label>
@@ -47,11 +47,11 @@
         </div>
         <div class="form-group col-6 mt-2">
             <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Enter address">
+            <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
         </div>
         <div class="form-group col-6 mt-2">
             <label for="mobile">Mobile No</label>
-            <input type="text" class="form-control" id="phoneNumber" name="mobile" placeholder="Enter Phonenumber">
+            <input type="text" class="form-control" id="phoneNumber" name="mobile" placeholder="Enter Phonenumber" required>
         </div>
 
         <div class="form-group col-6 mt-2">

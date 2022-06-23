@@ -54,7 +54,7 @@
         </div>
         <div class="form-group col-6 mt-2">
             <label for="gender">Gender <span class="required">*</span></label>
-            <select class="form-select" name="gender" aria-label="Default select example">
+            <select class="form-select" name="gender" aria-label="Default select example" required> 
                 <option selected>Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -85,7 +85,7 @@
         </div>
         <div class="form-group col-6 mt-2">
             <label for="department">Department <span class="required">*</span></label>
-            <select class="form-select" name="department_id" aria-label="Default select example">
+            <select class="form-select" name="department_id" aria-label="Default select example" required>
                 <option>Select Department</option>
 
                 @foreach ($department as $item)

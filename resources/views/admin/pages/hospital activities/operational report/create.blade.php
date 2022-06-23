@@ -4,18 +4,17 @@
 <form action="{{route('operational_activities.store')}}" method="POST">
     @csrf
     <div class="form-group col-6">
-        <label for="name">Patient ID<i class="text-danger">*</i></label>
+        <label for="name">Patient ID <span style="color:red">*</span></label>
         <input type="text" class="form-control" name="patient_id" placeholder="Patient ID" required>
     </div>
 
     <div class="form-group col-6">
-        <label for="date">Date<i class="text-danger">*</i></label>
-        <input type="date" class="form-control datepicker hasDatePicker" name="date" placeholder="Date"
-            value="2022-06-01" required>
+        <label for="date">Date <span style="color:red">*</span></label>
+        <input type="date" class="form-control datepicker hasDatePicker" name="date" placeholder="Date" required>
     </div>
 
     <div class="form-group col-6">
-        <label for="name">Title<i class="text-danger">*</i></label>
+        <label for="name">Title <span style="color:red">*</span></label>
         <input type="text" class="form-control" name="title" placeholder="Title" required>
     </div>
 
@@ -25,8 +24,8 @@
     </div>
 
     <div class="form-group col-6">
-        <label for="name">Doctor Name</label>
-        <select class="form-select" name="doctor_name" aria-label="Default select example">
+        <label for="name">Doctor Name <span style="color:red">*</span></label>
+        <select class="form-select" name="doctor_name" aria-label="Default select example" required>
             @foreach ($doctor as $item)
             <option value="{{$item->id}}">{{$item->name}}</option>
             @endforeach

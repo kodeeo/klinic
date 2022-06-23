@@ -17,23 +17,23 @@
     <div class="form-group col-6">
         <label for="name">Test Name</label>
         <span class="required">*</span>
-        <input type="text" class="form-control" name="name" placeholder="Enter Test Name" required><br>
+        <input type="text" class="form-control" name="name" placeholder="Enter Test Name" required>
     </div>
 
     <div class="form-group col-6">
         <label for="name">Test Price</label>
         <span class="required">*</span>
-        <input type="number" class="form-control" name="price" placeholder="Enter Test Price" required><br>
+        <input type="number" class="form-control" name="price" placeholder="Enter Test Price" required>
     </div>
 
     <div class="form-group col-6">
         <label for="name">Test Procedure</label>
-        <input type="text" class="form-control" name="procedure" placeholder="Enter Test Procedure"><br>
+        <input type="text" class="form-control" name="procedure" placeholder="Enter Test Procedure" required>
     </div>
 
     <div class="form-group col-6">
         <label for="name">Test Description</label>
-        <input type="text" class="form-control" name="description" placeholder="Enter Test Description"><br>
+        <input type="text" class="form-control" name="description" placeholder="Enter Test Description">
     </div>
 
     <div class="mb-3">
