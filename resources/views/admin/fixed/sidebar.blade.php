@@ -3,7 +3,7 @@
     <a href="{{route('admin.dashboard')}}" class="logo text-center logo-light">
         <span class="logo-lg">
 
-                <img src="{{$klinic->image}}" width="170px" alt="Company Logo">
+            <img src="{{$klinic->image}}" width="170px" alt="Company Logo">
 
         </span>
         <span class="logo-sm">
@@ -27,7 +27,6 @@
         <!--- Sidemenu -->
         <ul class="side-nav">
 
-
             <li class="side-nav-title side-nav-item">Navigation</li>
 
             @if(hasAnyPermissions('admin.dashboard'))
@@ -39,33 +38,39 @@
             </li>
             @endif
 
-            @if (hasAnyPermissions('user.list'))
+            @if (hasAnyPermissions('clinic.index'))
             <li class="side-nav-item">
-                <a href="{{route('user.list')}}" class="side-nav-link">
+                <a href="{{route('clinic.index')}}" class="side-nav-link">
                     <i class="uil-folder-plus"></i>
-                    <span> Users </span>
+                    <span> Clinic Setup </span>
                 </a>
             </li>
             @endif
 
-            @if (hasAnyPermissions('role.list'))
+            @if (hasAnyPermissions('patients.index'))
             <li class="side-nav-item">
-                <a href="{{route('role.list')}}" class="side-nav-link">
-                    <i class="uil-copy-alt"></i>
-                    <span> Role </span>
+                <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks"
+                    class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Patients </span>
+                    <span class="menu-arrow"></span>
                 </a>
+                <div class="collapse" id="patients">
+                    <ul class="side-nav-second-level">
+                        @if (hasAnyPermissions('patients.create'))
+                        <li>
+                            <a href="{{route('patients.create')}}">Add Patients</a>
+                        </li>
+                        @endif
+                        @if (hasAnyPermissions('patients.index'))
+                        <li>
+                            <a href="{{route('patients.index')}}">Patients List</a>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
             </li>
             @endif
-            @if (hasAnyPermissions('permission.list'))
-            <li class="side-nav-item">
-                <a href="{{ route ('permission.index') }}" class="side-nav-link">
-                    <i class="uil-copy-alt"></i>
-                    <span> Permission </span>
-                </a>
-            </li>
-            @endif
-
-
 
             @if (hasAnyPermissions('doctor.index'))
             <li class="side-nav-item">
@@ -175,42 +180,6 @@
             </li>
             @endif
 
-
-            @if (hasAnyPermissions('patients.index'))
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks"
-                    class="side-nav-link">
-                    <i class="uil-clipboard-alt"></i>
-                    <span> Patients </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="patients">
-                    <ul class="side-nav-second-level">
-                        @if (hasAnyPermissions('patients.create'))
-                        <li>
-                            <a href="{{route('patients.create')}}">Add Patients</a>
-                        </li>
-                        @endif
-                        @if (hasAnyPermissions('patients.index'))
-                        <li>
-                            <a href="{{route('patients.index')}}">Patients List</a>
-                        </li>
-                        @endif
-                    </ul>
-                </div>
-            </li>
-            @endif
-
-            @if (hasAnyPermissions('appointment.index'))
-            <li class="side-nav-item">
-                <a href="{{route('appointment.index')}}" class="side-nav-link">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <span> Appointment </span>
-                </a>
-            </li>
-            @endif
-
-
             @if (hasAnyPermissions('tests.index'))
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#diagonistic" aria-expanded="false" aria-controls="sidebarTasks"
@@ -284,31 +253,6 @@
             </li>
             @endif
 
-            @if (hasAnyPermissions('ward.index'))
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="sidebarTasks"
-                    class="side-nav-link">
-                    <i class="uil-clipboard-alt"></i>
-                    <span> Room </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="room">
-                    <ul class="side-nav-second-level">
-                        @if (hasAnyPermissions('ward.index'))
-                        <li>
-                            <a href="{{route('ward.index')}}">Ward</a>
-                        </li>
-                        @endif
-                        @if (hasAnyPermissions('cabin.index'))
-                        <li>
-                            <a href="{{route('cabin.index')}}">Cabin</a>
-                        </li>
-                        @endif
-                    </ul>
-                </div>
-            </li>
-            @endif
-
             @if (hasAnyPermissions('birth_report.index'))
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#hospital_activities" aria-expanded="false"
@@ -354,29 +298,6 @@
             </li>
             @endif
 
-
-            @if (hasAnyPermissions('insurance.index'))
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#insurance" aria-expanded="false" aria-controls="sidebarTasks"
-                    class="side-nav-link">
-                    <i class="uil-clipboard-alt"></i>
-                    <span> Insurance </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="insurance">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="{{route('insurance.create')}}">Create Insurance</a>
-                        </li>
-                        <li>
-                            <a href="{{route('insurance.index')}}">Insurance List</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            @endif
-
-
             @if (hasAnyPermissions('bill.index'))
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#billing" aria-expanded="false" aria-controls="sidebarTasks"
@@ -411,17 +332,89 @@
             </li>
             @endif
 
-            @if (hasAnyPermissions('clinic.index'))
+            @if (hasAnyPermissions('user.list'))
             <li class="side-nav-item">
-                <a href="{{route('clinic.index')}}" class="side-nav-link">
+                <a href="{{route('user.list')}}" class="side-nav-link">
                     <i class="uil-folder-plus"></i>
-                    <span> Clinic Setup </span>
+                    <span> Users </span>
                 </a>
             </li>
             @endif
+
+            @if (hasAnyPermissions('role.list'))
+            <li class="side-nav-item">
+                <a href="{{route('role.list')}}" class="side-nav-link">
+                    <i class="uil-copy-alt"></i>
+                    <span> Role </span>
+                </a>
+            </li>
+            @endif
+
+            @if (hasAnyPermissions('permission.list'))
+            <li class="side-nav-item">
+                <a href="{{ route ('permission.index') }}" class="side-nav-link">
+                    <i class="uil-copy-alt"></i>
+                    <span> Permission </span>
+                </a>
+            </li>
+            @endif
+
+            @if (hasAnyPermissions('appointment.index'))
+            <li class="side-nav-item">
+                <a href="{{route('appointment.index')}}" class="side-nav-link">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span> Appointment </span>
+                </a>
+            </li>
+            @endif
+
+            @if (hasAnyPermissions('insurance.index'))
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#insurance" aria-expanded="false" aria-controls="sidebarTasks"
+                    class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Insurance </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="insurance">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{route('insurance.create')}}">Create Insurance</a>
+                        </li>
+                        <li>
+                            <a href="{{route('insurance.index')}}">Insurance List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            @endif
+
+            @if (hasAnyPermissions('ward.index'))
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="sidebarTasks"
+                    class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Room </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="room">
+                    <ul class="side-nav-second-level">
+                        @if (hasAnyPermissions('ward.index'))
+                        <li>
+                            <a href="{{route('ward.index')}}">Ward</a>
+                        </li>
+                        @endif
+                        @if (hasAnyPermissions('cabin.index'))
+                        <li>
+                            <a href="{{route('cabin.index')}}">Cabin</a>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+            @endif
+
         </ul>
-
-
 
         <!-- End Sidebar -->
         <div class="clearfix"></div>
