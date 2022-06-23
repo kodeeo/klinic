@@ -1,6 +1,6 @@
 <div class="leftside-menu">
     <!-- LOGO -->
-    <a href="index.html" class="logo text-center logo-light">
+    <a href="{{route('admin.dashboard')}}" class="logo text-center logo-light">
         <span class="logo-lg">
 
                 <img src="{{$klinic->image}}" width="170px" alt="Company Logo">
