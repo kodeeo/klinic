@@ -24,8 +24,8 @@
         <div class="row">
             <div class="form-group col-6">
                 <label for="patient_id">Patient ID<span style="color:red">*</span></label>
-                <input type="text" class="form-control" id="patient_id" name="patient_id"
-                    placeholder="Enter Patient ID" required value="{{request()->patient_id??old('patient_id')}}">
+                <input type="text" class="form-control" id="patient_id" name="patient_id" placeholder="Enter Patient ID"
+                    value="{{request()->patient_id??old('patient_id')}}" required>
             </div>
 
             <div class="form-group col-6">
@@ -148,25 +148,25 @@
             <div class="form-group col-6 mt-2">
                 <label for="guardian_name">Guardian Name</label></label>
                 <input type="text" class="form-control" id="guardian_name" name="guardian_name"
-                    placeholder="Enter Guardian Name">
+                    placeholder="Enter Guardian Name" required>
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="guardian_relation">Relation</label></label>
                 <input type="text" class="form-control" id="guardian_relation" name="guardian_relation"
-                    placeholder="Relation With Patient">
+                    placeholder="Relation With Patient" required>
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="guardian_contact">Guardian Contact No</label></label>
                 <input type="text" class="form-control" id="guardian_contact" name="guardian_contact"
-                    placeholder="Enter Mobile Number">
+                    placeholder="Enter Mobile Number" required>
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="guardian_address">Guardian Address</label></label>
                 <textarea type="text" class="form-control" id="guardian_address" name="guardian_address"
-                    placeholder="Enter Address"></textarea>
+                    placeholder="Enter Address" required></textarea>
             </div>
 
 

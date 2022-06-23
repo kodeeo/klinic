@@ -18,24 +18,24 @@ use App\Http\Controllers\Admin\NurseController;
 
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\ClinicController;
+
+
 use App\Http\Controllers\Admin\DoctorController;
-
-
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\WardboyController;
 
 // use App\Http\Controllers\Admin\DesignationController;
 
+use App\Http\Controllers\Admin\WardboyController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\AdmissionController;
-use App\Http\Controllers\Admin\Bill\BillController;
 
+use App\Http\Controllers\Admin\Bill\BillController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InsuranceController;
 use App\Http\Controllers\Admin\DepartmentController;
@@ -49,17 +49,17 @@ use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
+
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
 
 use App\Http\Controllers\Admin\Activities\BirthreportController;
 
 use App\Http\Controllers\Admin\Activities\DeathreportController;
-
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
 use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
-use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 
+use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
@@ -199,12 +199,7 @@ Route::put('/permission/update/{role_id}', [PermissionController::class, 'permis
 
 
     //Clinic Setup
-Route::get('/clinic/informations',[ClinicController::class,'info'])->name('clinic.informations');
-Route::get('/clinic/setup',[ClinicController::class,'setup'])->name('clinic.setup');
-Route::post('/clinic/setup/store',[ClinicController::class,'store'])->name('clinic.setup.store');
-Route::get('/clinic/setup/edit/{id}',[ClinicController::class,'edit'])->name('clinic.setup.edit');
-Route::put('/clinic/setup/update/{id}',[ClinicController::class,'update'])->name('clinic.setup.update');
-Route::get('clinic/setup/delete/{id}',[ClinicController::class,'delete'])->name('clinic.setup.delete');
+Route::resource('clinic',ClinicController::class);
 
   //Cabin resource controller
 Route::resource('cabin',CabinController::class);

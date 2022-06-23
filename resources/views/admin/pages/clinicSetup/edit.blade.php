@@ -14,39 +14,39 @@
      </div>
 @endif
 
-<form action="{{route('clinic.setup.update',$clinic_info->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('clinic.update',$clinic->id)}}" method="POST" enctype="multipart/form-data">
   @method('put')
     @csrf
 
 
         <div class="form-group col-6">
             <label for="name">Company Name</label>
-            <input type="text" class="form-control" value="{{$clinic_info->name}}" name="name" placeholder="Enter Clinic Name" required>
+            <input type="text" class="form-control" value="{{$clinic->name}}" name="name" placeholder="Enter Clinic Name" required>
           </div>
 
           <div class="form-group col-6">
             <label for="name">Slogan</label>
-            <input type="text" class="form-control" value="{{$clinic_info->slogan}}"  name="slogan" placeholder="Enter Clinic Slogan" >
+            <input type="text" class="form-control" value="{{$clinic->slogan}}"  name="slogan" placeholder="Enter Clinic Slogan" >
           </div>
 
           <div class="form-group col-6">
             <label for="name">Address</label>
-            <input type="text" class="form-control" value="{{$clinic_info->address}}" name="address" placeholder="Enter address" required>
+            <input type="text" class="form-control" value="{{$clinic->address}}" name="address" placeholder="Enter address" required>
           </div>
 
           <div class="form-group col-6">
             <label for="name">Phone</label>
-            <input type="number" class="form-control" value="{{$clinic_info->phone}}" name="phone" placeholder="Enter a phone number" required>
+            <input type="number" class="form-control" value="{{$clinic->phone}}" name="phone" placeholder="Enter a phone number" required>
           </div>
 
           <div class="form-group col-6">
             <label for="name">Email</label>
-            <input type="email" class="form-control" value="{{$clinic_info->email}}"  name="email" placeholder="Enter email address" required>
+            <input type="email" class="form-control" value="{{$clinic->email}}"  name="email" placeholder="Enter email address" required>
           </div>
 
           <div class="form-group col-6">
             <label for="name">Website</label>
-            <input type="text" class="form-control" value="{{$clinic_info->web}}"  name="web" placeholder="Enter Website Link" required>
+            <input type="text" class="form-control" value="{{$clinic->web}}"  name="web" placeholder="Enter Website Link" required>
           </div>
 
           <div class="mb-3">
