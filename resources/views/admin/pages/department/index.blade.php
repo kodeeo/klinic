@@ -15,7 +15,7 @@
     <div class="row">
           <div class="form-group col-6">
             <label for="name">Name <span class="required">*</span></label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Department Name">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Department Name" required>
           </div>
           <div class="form-group col-6">
               <label for="description">Description</label>

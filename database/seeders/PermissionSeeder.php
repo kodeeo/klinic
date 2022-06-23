@@ -1102,32 +1102,18 @@ class PermissionSeeder extends Seeder
     Permission::updateOrCreate([
         'module_id' => $clinicSetUpModule->id,
         'name' => 'Clinic Information',
-        'slug' => 'clinic.informations'
+        'slug' => 'clinic.index'
     ]);
-    Permission::updateOrCreate([
-        'module_id' => $clinicSetUpModule->id,
-        'name' => 'Clinic Setup',
-        'slug' => 'clinic.setup'
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $clinicSetUpModule->id,
-        'name' => 'Store Clinic Setup',
-        'slug' => 'clinic.setup.store'
-    ]);
+
     Permission::updateOrCreate([
         'module_id' => $clinicSetUpModule->id,
         'name' => 'Edit Clinic Setup',
-        'slug' => 'clinic.setup.edit'
+        'slug' => 'clinic.edit'
     ]);
     Permission::updateOrCreate([
         'module_id' => $clinicSetUpModule->id,
         'name' => 'Update Clinic Setup',
-        'slug' => 'clinic.setup.update'
-    ]);
-    Permission::updateOrCreate([
-        'module_id' => $clinicSetUpModule->id,
-        'name' => 'Delete Clinic Setup',
-        'slug' => 'clinic.setup.delete'
+        'slug' => 'clinic.update'
     ]);
 
     }

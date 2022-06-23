@@ -5,13 +5,13 @@
     <form action="{{route('medicine.store')}}" method="POST">
         @csrf
     <div class="form-group col-6">
-    <label for="name">Name<i class="text-danger">*</i></label>
+    <label for="name">Name<span style="color:red">*</span></label>
     <input type="text" class="form-control"  name="name" placeholder="Medicine Name" required>
     </div>
 
     <div class="form-group col-6">
-    <label for="category">Category Name</label>
-    <select class="form-select" name="category_id" aria-label="Default select example">
+    <label for="category">Category Name <span style="color:red">*</span></label>
+    <select class="form-select" name="category_id" aria-label="Default select example" required>
         @foreach ($medicine_category as $item)
             <option value="{{$item->id}}">{{$item->name}}</option>
         @endforeach
@@ -19,12 +19,12 @@
     </div><br>
 
      <div class="form-group col-6">
-    <label for="Price">Price<i class="text-danger">*</i></label>
+    <label for="Price">Price<span style="color:red">*</span></label>
     <input type="number" class="form-control"  name="price" placeholder="Price" required>
     </div>
 
      <div class="form-group col-6">
-    <label for="manufactured_by">Manufactured By<i class="text-danger">*</i></label>
+    <label for="manufactured_by">Manufactured By<span style="color:red">*</span></label>
     <input type="text" class="form-control"  name="manufactured_by" placeholder="Manufacture Name" required>
     </div>
 

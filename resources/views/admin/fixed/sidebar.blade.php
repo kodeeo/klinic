@@ -1,6 +1,6 @@
 <div class="leftside-menu">
     <!-- LOGO -->
-    <a href="index.html" class="logo text-center logo-light">
+    <a href="{{route('admin.dashboard')}}" class="logo text-center logo-light">
         <span class="logo-lg">
 
                 <img src="{{$klinic->image}}" width="170px" alt="Company Logo">
@@ -411,9 +411,9 @@
             </li>
             @endif
 
-            @if (hasAnyPermissions('clinic.informations'))
+            @if (hasAnyPermissions('clinic.index'))
             <li class="side-nav-item">
-                <a href="{{route('clinic.informations')}}" class="side-nav-link">
+                <a href="{{route('clinic.index')}}" class="side-nav-link">
                     <i class="uil-folder-plus"></i>
                     <span> Clinic Setup </span>
                 </a>

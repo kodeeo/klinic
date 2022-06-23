@@ -5,7 +5,7 @@
     <form action="{{route('medicine_category.store')}}" method="POST">
         @csrf
 <div class="form-group col-6">
-    <label for="name">Name<i class="text-danger">*</i></label>
+    <label for="name">Name <span style="color:red">*</span></label>
     <input type="text" class="form-control"  name="name" placeholder="Category Name" required>
     </div>
 

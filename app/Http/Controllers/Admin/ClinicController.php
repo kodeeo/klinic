@@ -2,64 +2,85 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\ClinicSetup;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ClinicController extends Controller
 {
-    public function info(){
-        $clinic_infos=ClinicSetup::all();
-        return view('admin.pages.clinicSetup.clinic-informations',compact('clinic_infos'));
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $clinic=ClinicSetup::all();
+        return view('admin.pages.clinicSetup.show',compact('clinic'));
     }
 
-    public function setup(){
-        return view('admin.pages.clinicSetup.clinic-setup');
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
-    public function store(Request $request){
-
-        $filename='';
-        if($request->hasFile('image'))
-        {
-            $file=$request->file('image');
-            $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads/klinicLogo',$filename);
-        }
-
-        $request->validate([
-            'email'=>'unique:clinic_setups'
-        ]);
-
-        ClinicSetup::create([
-
-            'name'=>$request->name,
-            'slogan'=>$request->slogan,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
-            'email'=>$request->email,
-            'web'=>$request->web,
-            'image'=>$filename
-        ]);
-
-        Toastr::success('Clinic Informations Setup Successfully');
-        return redirect()->route('clinic.informations');
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
-    public function edit($id){
-        $clinic_info=ClinicSetup::find($id);
-        return view('admin.pages.clinicSetup.clinic-info-edit',compact('clinic_info'));
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $clinic=ClinicSetup::find($id);
+        return view('admin.pages.clinicSetup.show',compact('clinic'));
     }
 
-    public function update(Request $request, $id){
-        $clinic_info=ClinicSetup::find($id);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $clinic=ClinicSetup::find($id);
+        return view('admin.pages.clinicSetup.edit',compact('clinic'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $clinic=ClinicSetup::find($id);
 
         $request->validate([
             'email' => "unique:clinic_setups,email,$id"
         ]);
 
-        $filename=$clinic_info->image;
+        $filename=$clinic->image;
         //Check image or not
         if($request->hasFile('image'))
         {
@@ -68,7 +89,7 @@ class ClinicController extends Controller
             $file->storeAs('/uploads/klinicLogo',$filename);
         }
 
-        $clinic_info->update([
+        $clinic->update([
             'name'=>$request->name,
             'slogan'=>$request->slogan,
             'address'=>$request->address,
@@ -79,13 +100,17 @@ class ClinicController extends Controller
             ]);
 
             Toastr::success('Clinic Informations updated Successfully');
-            return redirect()->route('clinic.informations');
+            return redirect()->route('clinic.index');
     }
 
-    public function delete($id){
-        ClinicSetup::find($id)->delete();
-
-        Toastr::success('Clinic Informations deleted Successfully');
-        return redirect()->back();
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
