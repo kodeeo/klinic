@@ -48,7 +48,7 @@
                 <td>
                     <div style="display: flex">
                         <a class="btn btn-info m-1" href="{{route('advancepayment.create',['admission_id'=>$item->admission_id ,'patient_id'=>$item->patient_id])}}"><b>Advance</b></a>
-                        <a class="btn btn-success m-1" href="{{route('bill.create')}}"><b>Full</b></a>
+                        <a class="btn btn-success m-1" href="{{route('bill.create',['admission_id'=>$item->admission_id])}}"><b>Discharge</b></a>
                     </div>
                 </td>
             </tr>

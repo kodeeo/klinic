@@ -10,130 +10,132 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="admission_id" value="" name="admission_id" placeholder="AID" required="">
+                                    <input type="text" class="form-control" id="admission_id" value="{{$admission->admission_id}}" name="admission_id" placeholder="AID" readonly>
                                     <span class="input-group-btn"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="patient_id" value="" placeholder="Patient ID" disabled="">
+                                    <input type="text" class="form-control" id="patient_id" value="{{$admission->patient_id}}"  placeholder="Patient ID" disabled="">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6">
                         <div class="form-group">
-                            <input name="bill_date" type="text" class="form-control datepicker hasDatepicker" id="bill_date" placeholder="Bill Date" required="">
+                            <input  value="{{date('Y-m-d')}}" name="bill_date" type="date" class="form-control datepicker hasDatepicker" id="bill_date" placeholder="Bill Date">
                         </div><br>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="patient_name" placeholder="Patient  Name" disabled="">
+                            <input type="text" class="form-control" id="patient_name" placeholder="Patient Name" disabled value="{{$admission->patients->full_name}}">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="date_of_birth" placeholder="Date of Birth" disabled="">
+                            <input type="text" value="{{$admission->patients->mobile}}" class="form-control" id="mobile" placeholder="Mobile Number" disabled>
                         </div><br>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Address" id="address" disabled=""></textarea>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group row">
-                            <label for="sex" class="col-sm-4 col-md-2 col-form-label">Sex</label>
-                            <div id="sex" class="col-sm-8 col-md-10 mt-1">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="male" disabled="">
-                                    <label for="male">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="female" disabled="">
-                                    <label for="female">Female</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+    {{--                    <div class="col-xs-12 col-sm-12 col-md-6">--}}
+    {{--                        <div class="form-group">--}}
+    {{--                            <textarea class="form-control" rows="3" placeholder="Address" id="address" disabled=""></textarea>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-xs-12 col-sm-12 col-md-6">--}}
+    {{--                        <div class="form-group row">--}}
+    {{--                            <label for="sex" class="col-sm-4 col-md-2 col-form-label">Sex</label>--}}
+    {{--                            <div id="sex" class="col-sm-8 col-md-10 mt-1">--}}
+    {{--                                <div class="form-check form-check-inline">--}}
+    {{--                                    <input class="form-check-input" type="radio" id="male" disabled="">--}}
+    {{--                                    <label for="male">Male</label>--}}
+    {{--                                </div>--}}
+    {{--                                <div class="form-check form-check-inline">--}}
+    {{--                                    <input class="form-check-input" type="radio" id="female" disabled="">--}}
+    {{--                                    <label for="female">Female</label>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+
                     <div class="col-xs-12 col-sm-12 col-md-6 mt-2">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="doctor_name" placeholder="Doctor Name" disabled="">
+                            <input value="{{$admission->doctors->full_name. ' - '.$admission->doctors->gov_reg_no}}" type="text" class="form-control" id="doctor_name" placeholder="Doctor Name" disabled="">
                         </div><br>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="avatar-img center-block">
-                    <img id="picture" src="" class="img-responsive img-hw-200" alt="">
-                </div> 
+                    <img id="picture" src="{{$admission->patients->patient_image}}" class="img-responsive w-50 img-hw-200" alt="patient">
+                </div>
             </div>
         </div>
 
         <!--<hr>-->
         <div class="form-horizontal">
-            <div class="row"> 
+            <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="form-group row">
                         <label for="admission_date" class="col-sm-4 col-form-label">Admission Date</label>
                         <div class="col-sm-8">
-                            <input class="form-control" type="text" value="" placeholder="Admission Date" id="admission_date" disabled="">
-                        </div>
-                    </div>
-                </div> 
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="form-group row">
-                        <label for="package_name" class="col-sm-4 col-form-label">Package Name</label>
-                        <div class="col-sm-8">
-                            <input class="form-control" id="package_name" type="text" value="" placeholder="Package Name" disabled="">
-                            <input name="package_id" type="hidden" id="package_id">
+                            <input class="form-control" type="date" value="{{$admission->admission_date}}" placeholder="Admission Date" id="admission_date" disabled="">
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="form-group row">
-                        <label for="total_days" class="col-sm-4 col-form-label">Total Days<br>&nbsp;</label>
-                        <div class="col-sm-8">
-                            <input class="form-control" type="text" placeholder="Total Days" id="total_days" disabled="">
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="col-xs-12 col-sm-6 col-md-4">--}}
+{{--                    <div class="form-group row">--}}
+{{--                        <label for="package_name" class="col-sm-4 col-form-label">Package Name</label>--}}
+{{--                        <div class="col-sm-8">--}}
+{{--                            <input class="form-control" id="package_name" type="text" value="" placeholder="Package Name" disabled="">--}}
+{{--                            <input name="package_id" type="hidden" id="package_id">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xs-12 col-sm-6 col-md-4">--}}
+{{--                    <div class="form-group row">--}}
+{{--                        <label for="total_days" class="col-sm-4 col-form-label">Total Days<br>&nbsp;</label>--}}
+{{--                        <div class="col-sm-8">--}}
+{{--                            <input class="form-control" type="text" placeholder="Total Days" id="total_days" disabled="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="form-group row">
                         <label for="discharge_date" class="col-sm-4 col-form-label">Discharge Date</label>
                         <div class="col-sm-8">
-                            <input class="form-control" type="text" value="" placeholder="Discharge Date" id="discharge_date" disabled="">
+                            <input class="form-control" type="text" value="{{$admission->discharge_date}}" placeholder="Discharge Date" id="discharge_date" disabled="">
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="form-group row">
-                        <label for="insurance_name" class="col-sm-4 col-form-label">Insurance Name</label>
-                        <div class="col-sm-8">
-                            <input class="form-control" type="text" value="" placeholder="Insurance Name" id="insurance_name" disabled="">
-                        </div>
-                    </div>
-                </div> 
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="form-group row">
-                        <label for="policy_no" class="col-sm-4 col-form-label">Policy No.</label>
-                        <div class="col-sm-8">
-                            <input class="form-control" type="text" value="" placeholder="Policy No." id="policy_no" disabled="">
-                        </div>
-                    </div>
-                </div>  
-            </div>
-        </div><br>
+{{--                <div class="col-xs-12 col-sm-6 col-md-4">--}}
+{{--                    <div class="form-group row">--}}
+{{--                        <label for="insurance_name" class="col-sm-4 col-form-label">Insurance Name</label>--}}
+{{--                        <div class="col-sm-8">--}}
+{{--                            <input class="form-control" type="text" value="" placeholder="Insurance Name" id="insurance_name" disabled="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xs-12 col-sm-6 col-md-4">--}}
+{{--                    <div class="form-group row">--}}
+{{--                        <label for="policy_no" class="col-sm-4 col-form-label">Policy No.</label>--}}
+{{--                        <div class="col-sm-8">--}}
+{{--                            <input class="form-control" type="text" value="" placeholder="Policy No." id="policy_no" disabled="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+<br>
 
 
-        <div id="table" class="table-responsive" style="overflow: auto;">
-            
+        <div id="table" class="table-responsive mt-2" style="overflow: auto;">
+
         <table id="fixTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th width="100" style="background-color: rgb(235, 237, 242); position: relative; top: 0px;"><i class="fa fa-cogs" style="font-family: FontAwesome, Bangla530, sans-serif;"></i></th>
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Service Name</th>
-                        <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Test Name</th>
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Quantity</th>
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Rate</th>
                         <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Sub Total</th>
@@ -148,12 +150,13 @@
                         </div>
                     </td>
                     <td>
-                        <input name="service_name[]" class="form-control service_name service_data" type="text" placeholder="Service" required="">
-                        <input name="service_id[]" type="hidden" class="service_id" required="">
+                        <select class="js-example-basic-single form-control" name="state">
+                           @foreach($services as $data)
+                            <option value="{{$data->id}}">{{$data->name}}</option>
+                            @endforeach
+                        </select>
                     </td>
-                    <td>
-                        <input name="test_name[]" class="form-control test" type="text" placeholder="Test Name" required="">
-                    </td>
+
                     <td>
                         <input name="quantity[]" class="form-control quantity item-calc" type="text" placeholder="Quantity" value="1" required="">
                     </td>
@@ -182,7 +185,7 @@
                                 <th>Amount</th>
                             </tr>
                         </thead>
-                        <tbody id="advance_data"> 
+                        <tbody id="advance_data">
                         </tbody>
                     </table>
                 </div>
@@ -216,7 +219,7 @@
                     <div class="col-sm-8 col-md-8">
                         <input name="receipt_no" class="form-control" type="text" value="" id="receipt_no" placeholder="Receipt No">
                     </div>
-                </div> 
+                </div>
             </div>
 
 
@@ -255,7 +258,7 @@
                             </tr>
                             <tr>
                                 <td>Pay Advance</td>
-                                <td><input type="number" class="form-control grand-calc" id="pay_advance" value="0.00"></td> 
+                                <td><input type="number" class="form-control grand-calc" id="pay_advance" value="0.00"></td>
                             </tr>
                             <tr>
                                 <td>Payable</td>
@@ -270,7 +273,7 @@
 
         <div class="form-group">
             <textarea name="note" class="form-control" rows="5" placeholder="Notes"></textarea>
-        </div> 
+        </div>
 
 
         <div class="form-group">
@@ -278,14 +281,14 @@
                 <label class="radio-inline"><input type="radio" name="status" value="0" checked="">Unpaid</label>
                 <label class="radio-inline"><input type="radio" name="status" value="1">Paid</label>
             </div>
-        </div> 
+        </div>
 
 
-        <div class=""> 
+        <div class="">
             <button type="submit" class="btn btn-success w-md">Submit</button>
         </div>
 
-    </form>  
+    </form>
 </div>
 <script>
 function create_tr(table_id) {
@@ -300,7 +303,7 @@ function create_tr(table_id) {
 
 function clean_first_tr(firstTr) {
     let children = firstTr.children;
-    
+
     children = Array.isArray(children) ? children : Object.values(children);
     children.forEach(x=>{
         if(x !== firstTr.lastElementChild)
@@ -309,7 +312,6 @@ function clean_first_tr(firstTr) {
         }
     });
 }
-
 
 
 function remove_tr(This) {
@@ -322,3 +324,11 @@ function remove_tr(This) {
 }
  </script>
 @endsection
+@push('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+
+@endpush

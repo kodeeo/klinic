@@ -9,6 +9,7 @@
         "barryvdh/laravel-dompdf": "^1.0",
         "brian2694/laravel-toastr": "^5.57",
         "guzzlehttp/guzzle": "^7.2",
+        "harvesthq/chosen": "^1.8",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",

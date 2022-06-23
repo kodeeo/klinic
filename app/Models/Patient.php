@@ -20,4 +20,9 @@ class Patient extends Model
         return url('/img/avatar.png');
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->first_name. ' '. $this->last_name;
+    }
+
 }
