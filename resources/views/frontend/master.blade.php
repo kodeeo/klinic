@@ -1561,13 +1561,13 @@
     <div class="bg-teal-1000">
         <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p class="text-white text-sm text-center sm:text-left">
-                © 2020 Dev —
+                © 2020, Kodeeo Limited -
                 <a
                     href="https://twitter.com/knyttneve"
                     rel="noopener noreferrer"
                     class="text-gray-400 ml-1"
                     target="_blank"
-                >@Developer</a
+                > www.kodeeo.com</a
                 >
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
