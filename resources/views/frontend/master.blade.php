@@ -1457,24 +1457,15 @@
             <a
                 class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="bg-teal-1000 h-10 p-2 rounded-full text-white w-10"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                    ></path>
-                </svg>
-                <span class="ml-3 text-xl text-white">DEV</span>
+                <img
+                    class="h-20 w-36"
+                    src="{{$klinic->image}}"
+                    alt=""
+                />
+
             </a>
             <p class="mt-2 text-sm text-white">
-                Air plant banjo lyft occupy retro adaptogen indego
+                A full clinic and diagnostic management system.
             </p>
         </div>
         <div
@@ -1561,7 +1552,7 @@
     <div class="bg-teal-1000">
         <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p class="text-white text-sm text-center sm:text-left">
-                © 2020, Kodeeo Limited -
+                © 2020 Kodeeo Limited -
                 <a
                     href="https://twitter.com/knyttneve"
                     rel="noopener noreferrer"
