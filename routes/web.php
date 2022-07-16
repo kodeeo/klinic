@@ -79,9 +79,9 @@ use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
 
 */
+Route::get('/',[HomeController::class,'home'])->name('home');
 
 
-Route::get('/login',[LoginController::class,'login'])->name('master.login');
 
     // Forget &Reset passowrd
 Route::get('/forget-passowrd', [PasswordController::class, 'forgetPassword'])->name('forget.password');
@@ -89,12 +89,13 @@ Route::post('/forget-password', [PasswordController::class, 'forgetPasswordEmail
 Route::get('/reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('reset.password');
 Route::post('/reset_password', [PasswordController::class, 'resetPasswordPost'])->name('reset.password.post');
 
-Route::get('/',[HomeController::class,'home'])->name('home');
-Route::get('/login',[LoginController::class,'login'])->name('master.login');
 
-Route::post('/dologin',[LoginController::class,'dologin'])->name('master.dologin');
+Route::group(['prefix'=>'admin'],function(){
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+Route::get('/',[LoginController::class,'login'])->name('master.login');
+Route::post('/login',[LoginController::class,'dologin'])->name('master.dologin');
+
+Route::group(['middleware'=>'auth'],function(){
 
 Route::get('/logout',[LoginController::class,'logout'])->name('admin.logout');
 
@@ -150,6 +151,7 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('/edit/department/{id}','edit')->name('edit.department');
     Route::put('/update/department/{id}','update')->name('update.department');
     Route::get('/delete/department/{id}','delete')->name('delete.department');
+});
 });
 
 // Diagonistic
