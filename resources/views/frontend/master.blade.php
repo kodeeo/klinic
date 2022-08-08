@@ -1554,7 +1554,7 @@
             <p class="text-white text-sm text-center sm:text-left">
                 © 2020 Kodeeo Limited -
                 <a
-                    href="https://twitter.com/knyttneve"
+                    href="https://www.kodeeo.com"
                     rel="noopener noreferrer"
                     class="text-gray-400 ml-1"
                     target="_blank"
