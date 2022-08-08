@@ -45,7 +45,6 @@ class PatientController extends Controller
             $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
              $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
         }
-        {
             $request->validate([
                 'first_name'=>'required',
                 'last_name'=>'required',
@@ -77,7 +76,7 @@ class PatientController extends Controller
         Log::Channel('custom')->info("Patient has been craeted successfully");
 
         return redirect()->route('patients.index')->with(Toastr::success('Patient has been craeted successfully'));
-        }
+        
     }
 
     /**
@@ -113,9 +112,38 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
+        {
+            //dd($request->all());
+           
+
+               $image_name=null;
+               if ($request->hasFile('patient_image'))
+               {
+                   $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
+                    $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
+               }
+
+        $patient=Patient::find($id);
+            $patient->update([
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
+            'date_of_birth'=>$request->date_of_birth,
+            'gender'=>$request->gender,
+            'address'=>$request->address,
+            'mobile'=>$request->mobile,
+            'blood_group'=>$request->blood_group,
+            'patient_image'=>$image_name
+        ]);
+
+      
+        //Log::Channel('custom')->info("Patient has been updated successfully");
+
+        return redirect()->route('patients.index')->with(Toastr::success('Patient has been updated successfully'));
+        }
+    
+    
 
     /**
      * Remove the specified resource from storage.
@@ -128,5 +156,6 @@ class PatientController extends Controller
         Patient::find($id)->delete();
         return redirect()->back()->with(Toastr::error('Patient Deleted Successully'));
     }
-
 }
+
+
