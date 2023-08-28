@@ -29,7 +29,7 @@
 <label for="name">Doctor Name</label>
 <select class="form-select" name="doctor_name" aria-label="Default select example">
 @foreach ($doctor as $item)
-   <option value={{$item->id}} {{$item->id == $birthReport->doctor_id ? 'selected' : '' }}>{{$item->name}}</option>
+   <option value={{$item->id}} {{$item->id == $birthReport->doctor_id ? 'selected' : '' }}>{{$item->fullname}}</option>
    @endforeach
   </select>
  </div><br>
