@@ -46,11 +46,13 @@ class AppointmentController extends Controller
     {
         // dd($request->all());
         $validate=Validator::make($request->all(),[
-            
-            'date'=>'required|date|after:tomorrow'
+
+            'date'=>'required|date|after:tomorrow',
+            'problem'=>'required'
         ]);
 
-        if ($validate->fails()){
+        if ($validate->fails())
+        {
 
             Toastr::error('Validation failed.');
             return redirect()->back();
