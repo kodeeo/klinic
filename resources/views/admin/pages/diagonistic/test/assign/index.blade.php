@@ -33,7 +33,7 @@
                 <th scope="col">Test</th>
                 <th scope="col">Price</th>
                 <th scope="col">Assigned By</th>
-                <th scope="col">Image</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -45,9 +45,8 @@
                     <td>{{ $test->tests->name }}</td>
                     <td>{{ $test->tests->price }}</td>
                     <td>{{ $test->assigned_by }}</td>
-                    <td><img src="{{ url('/uploads/'.$test->image) }}"
-                            style="border-radius:4px" width="40px" alt="test image"></td>
-                    </td>
+                    
+                    
             </tr>
             @endforeach
 

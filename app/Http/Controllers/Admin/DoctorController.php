@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Brian2694\Toastr\Facades\Toastr;
 
 class DoctorController extends Controller
@@ -52,6 +53,28 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
 
+      $validate=Validator::make($request->all(),[
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'username'=>'required',
+            'email'=>'required',
+            'mobile'=>'required',
+            'address'=>'required',
+            'date_of_birth'=>'required|before:18 years',   
+            'gender'=>'required',
+            'department_id'=>'required',
+            'specialist'=>'required',
+            'degree'=>'required',
+            'password'=>'required'
+        
+        ]);
+
+        if($validate->fails()){
+
+            Toastr::error('Validation failed.');
+            return redirect()->back();
+        }
+
         $image_name=null;
         if($request->hasFile('doctor_image'))
         {
@@ -59,21 +82,7 @@ class DoctorController extends Controller
             $request->file('doctor_image')->storeAs('/uploads/doctors',$image_name);
         }
 
-        $request->validate([
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'username'=>'required',
-            'email'=>'required',
-            'mobile'=>'required',
-            'address'=>'required',
-            'date_of_birth'=>'required',
-            'gender'=>'required',
-            'department_id'=>'required',
-            'specialist'=>'required',
-            'degree'=>'required',
-            'password'=>'required',
 
-        ]);
         Doctor::create([
             'first_name'=>$request->first_name,   
             'last_name'=>$request->last_name,   
@@ -175,7 +184,7 @@ class DoctorController extends Controller
     public function doctorPdf($id)
     {
         $doctor=Doctor::find($id);
-        $pdf=PDF::loadView('admin.pages.doctor.profile_pdf',compact('doctor'));
-        return $pdf->download('doctor.pdf');
+        $pdf=PDF::loadView('admin.pages.doctor.profile_pdf',compact('doctor')); 
+        return $pdf->download('doctor.pdf'); 
     }
 }
