@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Appointment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -44,7 +45,18 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $validate=Validator::make($request->all(),[
 
+            'date'=>'required|date|after:tomorrow',
+            'problem'=>'required'
+        ]);
+
+        if ($validate->fails())
+        {
+
+            Toastr::error('Validation failed.');
+            return redirect()->back();
+        }
 
         Appointment::create([
             'appointment_id'=>strtoupper(Str::random(10)),
