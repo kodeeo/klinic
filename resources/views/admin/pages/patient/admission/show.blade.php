@@ -8,7 +8,7 @@
     <p><b>Patient's Name: {{$admission->patients->first_name.' '.$admission->patients->last_name}}</b></p>
     <p><b>Doctor Name: {{$admission->doctors->first_name.' '.$admission->doctors->last_name}}</b></p>
     <p><b>Admission Date: {{$admission->admission_date}}</b></p>
-    <p><b>Discharge Date: {{$admission->discharge_date}}</b></p>
+  
     <p><b>Package: {{$admission->package}}</b></p>
     <p><b>Insurance: {{$admission->insurance}}</b></p>
     <p><b>Height: {{$admission->height}}</b></p>

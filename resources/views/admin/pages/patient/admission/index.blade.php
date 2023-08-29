@@ -15,11 +15,11 @@
                 <th scope="col">AID</th>
                 <th scope="col">Patient ID</th>
                 <th scope="col">Admission Date</th>
-                <th scope="col">Discharge Date</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
                 <th scope="col">Payment</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
                 <td>{{$item->admission_id}}</td>
                 <td>{{$item->patient_id}}</td>
                 <td>{{$item->admission_date}}</td>
-                <td>{{$item->discharge_date}}</td>
+                
                 <td>{{$item->doctors->first_name.' '.$item->doctors->last_name}}</td>
                 <td>{{$item->status}}</td>
                 <td>

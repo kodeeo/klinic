@@ -17,9 +17,8 @@ class WardFactory extends Factory
     public function definition()
     {
         return [
-            'ward_type'=>$this->faker->randomElements(['male', 'female'])[0],
-            'ward_number'=>$this->faker->randomElements(['1', '2','3','4','5'])[0],
-            'bed_number'=>$this->faker->randomElements(['1', '2','3','4','5'])[0],
+            'name'=>$this->faker->name(),
+            
         ];
     }
 }

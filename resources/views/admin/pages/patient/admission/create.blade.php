@@ -43,10 +43,7 @@
                 <input type="date" class="form-control" id="admission_date" name="admission_date" required>
             </div>
 
-            <div class="form-group col-3 mt-2">
-                <label for="discharge_date">Discharge Date</label>
-                <input type="date" class="form-control" id="discharge_date" name="discharge_date">
-            </div>
+           
 
             <div class="form-group col-3 mt-2">
                 <label for="package">Package Name</label></label>
