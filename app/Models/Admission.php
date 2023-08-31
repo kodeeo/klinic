@@ -13,11 +13,14 @@ class Admission extends Model
 
     public function patients()
     {
-        return $this->belongsTo(Patient::class,'patient_id','patient_id');
+        return $this->belongsTo(Patient::class,'patient_id','id');
     }
 
     public function doctors()
     {
         return $this->belongsTo(Doctor::class,'doctor_id','id');
     }
+
+
+ 
 }

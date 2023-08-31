@@ -19,7 +19,7 @@ class AdmissionFactory extends Factory
     {
         return [
             'admission_id'=>strtoupper(Str::random(10)),
-            'patient_id'=>strtoupper(Str::random(10)),
+            'patient_id'=>$this->faker->numberBetween(1,5),
             'doctor_id'=>$this->faker->numberBetween(1,5),
             'admission_date'=>$this->faker->date(),
             'discharge_date'=>$this->faker->date(),

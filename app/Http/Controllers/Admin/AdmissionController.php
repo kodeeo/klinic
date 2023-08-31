@@ -90,6 +90,7 @@ class AdmissionController extends Controller
      */
     public function show($id)
     {
+        
         $admission=Admission::find($id);
         return view('admin.pages.patient.admission.show',compact('admission'));
     }
