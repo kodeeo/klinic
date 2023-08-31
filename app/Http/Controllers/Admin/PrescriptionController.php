@@ -36,9 +36,9 @@ class PrescriptionController extends Controller
      *
      * @return view
      */
-    public function create()
+    public function create(Request $request)
     {
-        $patient=Patient::where('patient_id',\request()->patient_id)->first();
+        $patient=Patient::all();
 //        dd($patient);
         $doctor = Doctor::all();
         $medicines = Medicine::all();

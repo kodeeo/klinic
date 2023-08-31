@@ -172,7 +172,7 @@ Route::resource('doctor',DoctorController::class);
 Route::get('/doctor/pdf/print{id}',[DoctorController::class, 'doctorPdf'])->name('pdf.doctor');
 
 
-   //Prescription resource controller
+   //Prescription 
 Route::resource('prescription',PrescriptionController::class);
 
     //Staff resource controller
