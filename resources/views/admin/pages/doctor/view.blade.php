@@ -57,7 +57,7 @@
     <hr>
     <div class="main">
         <div class="leftPart">
-            <img src="{{url($doctor->doctor_image)}}" style="border-radius:4px; display:flex; align-items:center;"
+            <img src="{{url('/uploads/doctors/'.$doctor->image)}}" style="border-radius:4px; display:flex; align-items:center;"
                 width="200px" height="200px" alt="doctor image">
         </div>
 

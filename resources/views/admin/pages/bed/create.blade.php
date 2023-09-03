@@ -11,9 +11,22 @@ btn-primary">Create Category</button> </a> --}}
         @csrf
         <div class="row">
             <div class="form-group col-6">
-                <label for="type">Bed Type</label>
-                <span class="text-danger">*</span>
-                <input type="text" class="form-control" id="type" name="type" placeholder="Enter Bed Type">
+            <label for="">Bed type</label>
+                    <select name="type" id="" class='form-control'>
+                        
+                    <option value="bed">Bed</option>
+                       <option value="cabin">Cabin</option>
+                       
+                    </select>
+            </div>
+
+            <div class="form-group col-6">
+                <label for="ward">Ward</label>
+                <select name="ward_id" id="" class='form-control'>
+                        @foreach($wards as $data)
+                        <option value="{{$data->id}}">{{$data->name}}</option>
+                        @endforeach
+                    </select>
             </div>
             <div class="form-group col-6">
                 <label for="description">Description</label>
@@ -25,6 +38,18 @@ btn-primary">Create Category</button> </a> --}}
                 <span class="text-danger">*</span>
                 <input type="number" class="form-control" id="capacity" name="capacity" placeholder="Enter Capacity">
             </div>
+
+            <div class="form-group col-6 mt-2">
+                <label for="cabin_type">Cabin Type</label>
+                <select name="cabin_type" id="" class='form-control'>
+                        
+                    <option value="AC">AC</option>
+                    <option value="Non AC">Non AC</option>
+                        
+                    </select>
+               
+            </div>
+
             <div class="form-group col-6 mt-2">
                 <label for="charge">Charge</label>
                 <span class="text-danger">*</span>

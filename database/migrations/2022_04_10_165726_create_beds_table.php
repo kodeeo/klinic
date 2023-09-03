@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('type',20);
             $table->text('description');
+            $table->foreignId('ward_id');
             $table->double('capacity',50);
+            $table->text('cabin_type')->default('Non AC');
             $table->double('charge',50);
             $table->string('status',15)->default('Available');
             $table->timestamps();

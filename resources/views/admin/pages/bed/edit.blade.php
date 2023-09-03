@@ -23,6 +23,18 @@ btn-primary">Create Category</button> </a> --}}
                 <input type="text" class="form-control" id="description" value="{{ $beds->description }}"
                     name="description" placeholder="Enter Description">
             </div>
+
+            <div class="form-group col-6">
+                <label for="ward">Ward</label>
+                <input type="text" class="form-control" id="ward" value="{{ $beds->ward->name }}"
+                    name="ward_id" placeholder="Enter Description">
+            </div>
+
+            <div class="form-group col-6">
+                <label for="cabin_type">Cabin type</label>
+                <input type="text" class="form-control" id="cabin_type" value="{{ $beds->cabin_type }}"
+                    name="cabin_type" placeholder="Enter Description">
+            </div>
             <div class="form-group col-6 mt-2">
                 <label for="capacity">Bed capacity</label>
                 <span class="text-danger">*</span>

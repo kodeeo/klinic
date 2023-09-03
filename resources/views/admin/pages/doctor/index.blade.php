@@ -41,7 +41,7 @@
             <tr>
                 <th>{{$key+1}}</th>
                 <td><img src="{{url($value->doctor_image)}}" style="border-radius:4px" width="50px" alt="doctor image"></td>
-                <td>{{$value->first_name. ''.$value->last_name}}</td>
+                <td>{{$value->first_name.' '.$value->last_name}}</td>
                 <td>{{$value->email}}</td>
                 <td>{{$value->mobile}}</td>
                 <td>

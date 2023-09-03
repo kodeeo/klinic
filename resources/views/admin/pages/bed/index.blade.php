@@ -31,7 +31,10 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Bed Type</th>
+                <th scope="col">Ward</th>
+
                 <th scope="col">Capacity</th>
+                <th scope="col">Cabin type</th>
                 <th scope="col">Charge</th>
                 <th scope="col">Status</th>
                 <th class="d-print-none" scope="col">Action</th>
@@ -44,7 +47,9 @@
 
                     <th>{{ $key+1 }}</th>
                     <td>{{ $bed->type }}</td>
+                    <td>{{ $bed->ward->name }}</td>
                     <td>{{ $bed->capacity }}</td>
+                    <td>{{ $bed->cabin_type }}</td>
                     <td>{{ $bed->charge }}</td>
                     <td>{{ $bed->status }}</td>
 

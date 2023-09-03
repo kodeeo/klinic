@@ -60,7 +60,7 @@ class DoctorController extends Controller
             'email'=>'required',
             'mobile'=>'required',
             'address'=>'required',
-            'date_of_birth'=>'required|before:18 years',   
+            'date_of_birth'=>'required|date|before:25 years',   
             'gender'=>'required',
             'department_id'=>'required',
             'specialist'=>'required',
@@ -97,6 +97,7 @@ class DoctorController extends Controller
             'department_id'=>$request->department_id,
             'degree'=>$request->degree,
             'bio'=>$request->bio,
+            'specialist'=>$request->specialist,
             'password'=>bcrypt($request->password),
             'image'=>$image_name,
 

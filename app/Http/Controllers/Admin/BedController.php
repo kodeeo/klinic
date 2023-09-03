@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DateTime;
 use App\Models\Bed;
+use App\Models\Ward;
 use App\Models\AssignBed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,8 @@ class BedController extends Controller
      */
     public function index()
     {
-        $beds=Bed::all();
+        $beds=Bed::with('ward')->paginate(10);
+       
         return view('admin.pages.bed.index',compact('beds'));
 
     }
@@ -30,7 +32,8 @@ class BedController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.bed.create');
+        $wards=Ward::all();
+        return view('admin.pages.bed.create',compact('wards'));
     }
 
     /**
@@ -43,8 +46,10 @@ class BedController extends Controller
     {
         Bed::create([
             'type'=>$request->type,
+            'ward_id'=>$request->ward_id,
             'description'=>$request->description,
             'capacity'=>$request->capacity,
+            'cabin_type'=>$request->cabin_type,
             'charge'=>$request->charge,
             'status'=>$request->status,
         ]);
