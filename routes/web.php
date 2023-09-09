@@ -208,7 +208,9 @@ Route::resource('cabin',CabinController::class);
 
 
     //Bed Manager
-Route::get('beds/assign/create', [BedController::class, 'assign_bed_create'])->name('assign.bed.create');
+// Route::get('select/ward', [BedController::class, 'select_ward'])->name('assign.bed.create');
+Route::get('select/ward',[BedController::class,'select_ward'])->name('assign.bed.create');
+Route::get('assign/bed/{ward_id}',[BedController::class,'assign_bed'])->name('assign.bed');
 Route::get('beds/assign/index', [BedController::class, 'assigned_bed_index'])->name('assign.bed.index');
 Route::post('beds/assign/store', [BedController::class, 'assign_bed_store'])->name('assign.bed.store');
 Route::resource('beds', BedController::class);
@@ -222,6 +224,7 @@ Route::put('services/list/{id}',[ServiceController::class,'statusUpdate'])->name
     //packages
 Route::resource('packages',PackageController::class);
 Route::put('packages/list/{id}',[PackageController::class,'statusUpdate'])->name('package.status.update');
+// Route::get('package/show/{id}',[PackageController::class,'view'])->name('package.show');
 
 //localization
 

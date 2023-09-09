@@ -52,7 +52,7 @@
                 </td>
                 <td>
                     <div style="display:flex">
-                        <a class="btn btn-success btn-sm" href="{{ route('packages.show',$package->id) }}"><i
+                        <a class="btn btn-success btn-sm" href="{{ route('package.show',$package->id) }}"><i
                                 class="fas fa-eye"></i></a>
                         <a style="margin-left: 4px" class="btn btn-warning btn-sm" href="{{ route('packages.edit',$package->id) }}"><i
                                 class="fas fa-edit"></i></a>

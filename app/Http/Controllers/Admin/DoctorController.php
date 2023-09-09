@@ -60,7 +60,7 @@ class DoctorController extends Controller
             'email'=>'required',
             'mobile'=>'required',
             'address'=>'required',
-            'date_of_birth'=>'required|date|before:25 years',   
+            'date_of_birth'=>'required|date|before:01/01/1995',   
             'gender'=>'required',
             'department_id'=>'required',
             'specialist'=>'required',

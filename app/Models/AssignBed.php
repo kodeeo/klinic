@@ -13,6 +13,6 @@ class AssignBed extends Model
 
     public function beds()
     {
-        return $this->belongsTo(Bed::class,'bed_type_id','id'); 
+        return $this->belongsTo(Bed::class,'bed_type_id'); 
     }
 }

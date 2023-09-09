@@ -118,10 +118,20 @@ class BedController extends Controller
         return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
-    public function assign_bed_create()
+    public function select_ward()
     {
-        $bed_types=Bed::all();
-        return view('admin.pages.bed.assign.create',compact('bed_types'));
+        $ward=Ward::all();
+       
+        // 
+        return view('admin.pages.bed.assign.ward',compact('ward'));
+    }
+
+    public function assign_bed($id){
+        $ward=Ward::find($id);
+          $beds=Bed::where('type','=','bed')->get();
+        $cabins=Bed::where('type','=','cabin')->get();
+
+        return view('admin.pages.bed.assign.create',compact('beds','cabins','ward'));
     }
 
     public function assign_bed_store(Request $request)
