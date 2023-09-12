@@ -211,8 +211,9 @@ Route::resource('cabin',CabinController::class);
 // Route::get('select/ward', [BedController::class, 'select_ward'])->name('assign.bed.create');
 Route::get('select/ward',[BedController::class,'select_ward'])->name('assign.bed.create');
 Route::get('assign/bed/{ward_id}',[BedController::class,'assign_bed'])->name('assign.bed');
-Route::get('beds/assign/index', [BedController::class, 'assigned_bed_index'])->name('assign.bed.index');
-Route::post('beds/assign/store', [BedController::class, 'assign_bed_store'])->name('assign.bed.store');
+Route::get('beds/assign/index',[BedController::class,'assigned_bed_index'])->name('assign.bed.index');
+Route::post('beds/assign/store',[BedController::class,'assign_bed_store'])->name('assign.bed.store');
+Route::get('assign/bed/edit/{id}',[BedController::class,'assign_bed_edit'])->name('assign.bed.edit');
 Route::resource('beds', BedController::class);
 
 

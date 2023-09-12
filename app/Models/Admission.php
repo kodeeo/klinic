@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Patient;
+use App\Models\Doctor;
+use App\Models\Package;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +23,11 @@ class Admission extends Model
     public function doctors()
     {
         return $this->belongsTo(Doctor::class,'doctor_id','id');
+    }
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class,'package_id','id');
     }
 
 

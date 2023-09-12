@@ -35,8 +35,12 @@ btn-primary">Create Category</button> </a> --}}
             </div>
             <div class="form-group col-6 mt-2">
                 <label for="capacity">Bed capacity</label>
-                <span class="text-danger">*</span>
-                <input type="number" class="form-control" id="capacity" name="capacity" placeholder="Enter Capacity">
+                <select name="capacity" id="" class='form-control'>
+                     
+                        <option value="single">Single</option>
+                        <option value="double">Double</option>
+                        
+                    </select>
             </div>
 
             <div class="form-group col-6 mt-2">

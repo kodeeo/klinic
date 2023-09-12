@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Insurance;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class InsuranceController extends Controller
 {
@@ -36,7 +38,25 @@ class InsuranceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+            Insurance::create([
+                'name'=>$request->name,
+                'service_tax'=>$request->service_tax,
+                'discount'=>$request->discount,
+                'remark'=>$request->remark,
+                'insurance_no'=>$request->insurance_no,
+                'insurance_code'=>$request->insurance_code,
+                'disease_name'=>$request->disease_name,
+                'disease_charge'=>$request->disease_charge,
+                'hospital_rate'=>$request->hospital_rate,
+                'total'=>$request->total,
+                'status'=>$request->status,
+            ]);
+            
+        
+
+        return redirect()->route('insurance.index')->with(Toastr::success('Insurance Added Successfully'));
     }
 
     /**

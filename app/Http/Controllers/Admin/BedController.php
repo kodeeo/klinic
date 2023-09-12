@@ -114,7 +114,7 @@ class BedController extends Controller
 
     public function assigned_bed_index()
     {
-        $assign_beds=AssignBed::with('beds')->get();
+        $assign_beds=AssignBed::with('bed','ward')->get();
         return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
@@ -128,37 +128,41 @@ class BedController extends Controller
 
     public function assign_bed($id){
         $ward=Ward::find($id);
-          $beds=Bed::where('type','=','bed')->get();
-        $cabins=Bed::where('type','=','cabin')->get();
+        $wards=Ward::all();
+          $beds=Bed::where('type','=','bed')->where('ward_id','=',$id)->get();
+       
+        $cabins=Bed::where('type','=','cabin')->where('ward_id','=',$id)->get();
 
-        return view('admin.pages.bed.assign.create',compact('beds','cabins','ward'));
+        return view('admin.pages.bed.assign.create',compact('beds','cabins','ward','wards'));
     }
 
     public function assign_bed_store(Request $request)
     {
-        $from=new DateTime($request->assign_date);
-        $to=new DateTime($request->discharge_date);
-        $days= (($from->diff($to))->format('%a'))+1;
-
         AssignBed::create([
 
             'patient_id'=>$request->patient_id,
-
-            'bed_type_id'=>$request->bed_type_id,
+            'ward_id'=>$request->ward_id,
+            'bed_id'=>$request->bed_id,
             'assign_date'=>$request->assign_date,
-            'discharge_date'=>$request->discharge_date,
-            'days'=>$days,
             'description'=>$request->description,
-            'assigned_by'=>auth()->user()->role->name,
         ]);
-
-        $beds=Bed::where('id',$request->bed_type_id)->first();
-
-        $beds->update([
-            'capacity'=>$beds->capacity-1
-        ]);
-
-        return redirect()->route('assign.bed.index');
+           
+         return redirect()->route('assign.bed.index');
     }
 
+
+    public function assign_bed_edit($id){
+        $find=AssignBed::find($id);
+        return view('admin.pages.bed.assign.edit',compact('find'));
+    }
+    
 }
+           
+           
+
+
+    
+      
+      
+
+

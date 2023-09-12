@@ -33,12 +33,12 @@ btn-primary">Create Category</button> </a> --}}
             <div class="form-group col-6">
                 <label for="cabin_type">Cabin type</label>
                 <input type="text" class="form-control" id="cabin_type" value="{{ $beds->cabin_type }}"
-                    name="cabin_type" placeholder="Enter Description">
+                    name="cabin_type" placeholder="">
             </div>
             <div class="form-group col-6 mt-2">
                 <label for="capacity">Bed capacity</label>
-                <span class="text-danger">*</span>
-                <input type="number" class="form-control" id="capacity" value="{{ $beds->capacity }}" name="capacity"
+              
+                <input type="string" class="form-control" id="capacity" value="{{ $beds->capacity }}" name="capacity"
                     placeholder="Enter Capacity">
             </div>
             <div class="form-group col-6 mt-2">

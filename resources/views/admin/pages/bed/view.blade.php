@@ -7,7 +7,7 @@
 <p><b>Bed Type: {{ $bed->type }}</b></p>
 <p><b>Description: {{ $bed->description }}</b></p>
 <p><b>Ward: {{ $bed->ward->name }}</b></p>
-<p><b>Cbin type: {{ $bed->cabin_type }}</b></p>
+<p><b>Cabin type: {{ $bed->cabin_type }}</b></p>
 <p><b>Capacity: {{ $bed->capacity }}</b></p>
 <p><b>Charge: {{ $bed->charge }}</b></p>
 <button class="btn btn-success">

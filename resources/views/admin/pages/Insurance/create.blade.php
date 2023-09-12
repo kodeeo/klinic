@@ -5,7 +5,7 @@
 
     <div class="panel-heading no-print">
         <div class="btn-group">
-            <a class="btn btn-primary" href="""><i class="fa fa-list" style="font-family: FontAwesome, Bangla871, sans-serif;"></i> Insurance List </a>
+            <a class="btn btn-primary" href="{{route('insurance.store')}}"><i class="fa fa-list" style="font-family: FontAwesome, Bangla871, sans-serif;"></i> Insurance List </a>
         </div>
     </div>
     <form>
@@ -13,7 +13,7 @@
             <div class="form-group col-6">
                 <label for="insurance_name" class="col-xs-3 col-form-label">Insurance Name <i class="text-danger">
                         *</i></label>
-                <input name="insurance_name" type="text" class="form-control" id="insurance_name"
+                <input name="name" type="text" class="form-control" id="insurance_name"
                     placeholder="Insurance Name" value="">
             </div>
 
@@ -125,7 +125,7 @@
 
             <div class="form-group row mt-2">
                 <div class="col-sm-offset-3 col-sm-6">
-                    <button class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
