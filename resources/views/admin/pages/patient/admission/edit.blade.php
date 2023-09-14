@@ -50,7 +50,7 @@
 
             <div class="form-group col-3 mt-2">
                 <label for="package">Package Name</label>
-                <input type="text" class="form-control" id="package" name="package" value="{{$admission->package}}"
+                <input type="text" class="form-control" id="package" name="package" value="{{$admission->package->name}}"
                     placeholder="Enter Package Name">
             </div>
 

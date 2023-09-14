@@ -10,6 +10,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Insurance;
 use App\Models\Package;
 
 class AdmissionController extends Controller
@@ -21,7 +22,7 @@ class AdmissionController extends Controller
      */
     public function index()
     {
-        $admissions=Admission::with('package')->orderBy('id','desc')->get();
+        $admissions=Admission::orderBy('id','desc')->get();
         return view('admin.pages.patient.admission.index',compact('admissions'));
     }
 
@@ -35,7 +36,8 @@ class AdmissionController extends Controller
         $patients=Patient::all();
         $doctors=Doctor::all();
         $package=Package::all();
-        return view('admin.pages.patient.admission.create',compact('patients','doctors','package'));
+        $insurance=Insurance::all();
+        return view('admin.pages.patient.admission.create',compact('patients','doctors','package','insurance'));
     }
 
     /**
@@ -55,8 +57,8 @@ class AdmissionController extends Controller
              'doctor_id' => $request->doctor_id,
              'admission_date' => $request->admission_date,
              
-             'package' => $request->package,
-             'insurance' => $request->insurance,
+             'package_id' => $request->package_id,
+             'insurance_id' => $request->insurance_id,
 
              //medical info
              'height' => $request->height,

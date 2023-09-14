@@ -16,7 +16,8 @@ class InsuranceController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.Insurance.index');
+        $insurance=Insurance::all();
+        return view('admin.pages.Insurance.index',compact('insurance'));
     }
 
     /**
@@ -50,6 +51,7 @@ class InsuranceController extends Controller
                 'disease_name'=>$request->disease_name,
                 'disease_charge'=>$request->disease_charge,
                 'hospital_rate'=>$request->hospital_rate,
+                'insurance_rate'=>$request->insurance_rate,
                 'total'=>$request->total,
                 'status'=>$request->status,
             ]);

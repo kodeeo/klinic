@@ -56,9 +56,13 @@
             </div>
 
             <div class="form-group col-3 mt-2">
-                <label for="insurance">Insurance Name</label></label>
-                <input type="text" class="form-control" id="insurance" name="insurance"
-                    placeholder="Enter Insurance Name">
+            <label for="insurance_id">Insurance<span style="color:red">*</span></label>
+                <select class="form-select" name="insurance_id" aria-label="Default select example" required>
+                    <option>Select Insurance</option>
+                    @foreach ($insurance as $data)
+                    <option value="{{$data->id}}">{{$data->name}} </option>
+                    @endforeach
+                </select>
             </div>
 
             <hr class="mt-1">

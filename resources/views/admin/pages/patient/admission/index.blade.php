@@ -17,6 +17,7 @@
                 <th scope="col">Admission Date</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Package</th>
+                <th scope="col">Insurance</th>
                 <th scope="col">Status</th>
                 <th scope="col">Case study</th>
                 <th scope="col">Payment</th>
@@ -34,7 +35,12 @@
                 <td>{{$item->admission_date}}</td>
                 
                 <td>{{$item->doctors->first_name.' '.$item->doctors->last_name}}</td>
+                
                 <td>{{$item->package->name}}</td>
+               
+                <td>{{$item->insurance_id}}</td>
+                
+                
                 <td>{{$item->status}}</td>
                 <td>
                 <a class="btn btn-success btn-sm m-1" href="{{route('admissions.show',$item->id)}}"><i class="fa fa-eye"></i></a>

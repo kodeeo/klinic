@@ -22,10 +22,8 @@ class AdmissionFactory extends Factory
             'patient_id'=>$this->faker->numberBetween(1,5),
             'doctor_id'=>$this->faker->numberBetween(1,5),
             'admission_date'=>$this->faker->date(),
-           
-            'package'=>$this->faker->numberBetween(1,5),
-            'insurance'=>$this->faker->name(),
-
+            'package_id'=>$this->faker->numberBetween(1,5),
+            'insurance_id'=>$this->faker->numberBetween(1,5),
             'height'=>$this->faker->numberBetween(4,6),
             'weight'=>$this->faker->numberBetween(40,90),
             'allergies'=>$this->faker->randomElement(['Yes','No']),
@@ -37,12 +35,14 @@ class AdmissionFactory extends Factory
             'infection'=>$this->faker->randomElement(['Yes','No']),
             'quota'=>$this->faker->randomElement(['Freedom Fighter','Tribes','Farmer']),
             'others'=>$this->faker->text(),
-
             'guardian_name'=>$this->faker->name(),
             'guardian_relation'=>$this->faker->randomElement(['Father','Mother','Brother','Sister','Spouse']),
             'guardian_contact'=>$this->faker->phoneNumber(),
             'guardian_address'=>$this->faker->address(),
             'status'=>$this->faker->randomElement(['Admitted','Released']),
+           
+
+
         ];
     }
 }
