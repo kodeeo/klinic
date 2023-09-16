@@ -18,13 +18,13 @@ class PrescriptionFactory extends Factory
     public function definition()
     {
         return [
-            'patient_id' => strtoupper(Str::random(10)),
+            'patient_id' => $this->faker->numberBetween(1000,9999),
             'doctor_id' => $this->faker->numberBetween(1, 5),
             'weight' => $this->faker->numberBetween(40, 90),
             'blood_pressure' => $this->faker->numberBetween(100, 200),
             'reference' => $this->faker->name(),
             'complain' => $this->faker->text(),
-            'insurance' => $this->faker->randomElement(['Health', 'IFIC', 'BUPA']),
+            'insurance_id' => $this->faker->numberBetween(1, 5),
             'fees' => 500,
             'patient_note' => $this->faker->text(),
 

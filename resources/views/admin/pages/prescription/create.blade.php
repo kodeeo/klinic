@@ -16,12 +16,12 @@
                     <div class="form-group col-6">
                         <label for="patient_id">Patient ID</label>
                         <input type="text" class="form-control" id="patient_id" name="patient_id"
-                            placeholder="Enter Patient ID" readonly value="{{$patient->patient_id}}">
+                            placeholder="Enter Patient ID" readonly value="">
                     </div>
                     <div class="form-group col-6">
                         <label for="patient_name">Patient Name</label>
                         <input type="text" class="form-control" id="patient_name" name="patient_name"
-                            placeholder="Enter Patient Name" value="{{$patient->first_name.' ' .$patient->last_name}}">
+                            placeholder="Enter Patient Name" value="">
                     </div>
 
                     <div class="form-group col-6">
@@ -42,11 +42,12 @@
 
                     <div class="form-group col-6 mt-2">
                       <label for="insurance">Select Insurance</label>
-                      <select class="form-select" name="insurance" aria-label="Default select example">
-                          <option selected>Select insurance</option>
-                          <option value="BUPA">BUPA</option>
-                          <option value="IFIC">IFIC</option>
 
+                      <select class="form-select" name="insurance_id" id="insurance" aria-label="Default select example">
+                        @foreach($insurance as $data)
+                          <option selected value="{{$data->id}}">{{$data->name}}</option>
+                        
+                        @endforeach
                       </select>
                   </div>
 
