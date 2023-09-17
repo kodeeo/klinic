@@ -14,6 +14,6 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        Department::factory()->count(10)->create();
+        Department::factory()->count(5)->create();
     }
 }

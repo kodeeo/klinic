@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('gender',20);
             $table->string('blood_group',20)->nullable();
             $table->string('specialist',50)->nullable();;
-            $table->text('image')->nullable();
+            $table->string('image');
             $table->string('status',15)->default('active');
             $table->timestamps();
         });
