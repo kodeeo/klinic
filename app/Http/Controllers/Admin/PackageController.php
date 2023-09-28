@@ -70,7 +70,8 @@ class PackageController extends Controller
      */
     public function show($id)
     {
-        //
+        $service=Package::find($id);
+        return view('admin.pages.packages.show',compact('service'));
     }
 
     /**
@@ -81,7 +82,9 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $package=Package::find($id);
+       
+        return view('admin.pages.packages.edit',compact('package'));
     }
 
     /**
@@ -91,10 +94,7 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+  
 
     /**
      * Remove the specified resource from storage.
@@ -104,14 +104,21 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Package::find($id)->delete();
+        Toastr::error('Package Deleted Successfully');
+        return redirect()->back(); 
+        
     }
 
     public function statusUpdate(Request $request,$id){
         $packages=Package::find($id);
         if($packages){
             $packages->update([
+                'name'=>$request->name,
                 'status'=>$request->status,
+                'description'=>$request->description,
+               
+                'discount'=>$request->discount,
             ]);
         }
         return redirect()->back();

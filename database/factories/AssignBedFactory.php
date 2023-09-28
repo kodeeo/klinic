@@ -19,12 +19,13 @@ class AssignBedFactory extends Factory
     {
         return [
             'patient_id'=>strtoupper(Str::random(10)),
-            'bed_type_id'=>$this->faker->numberBetween(1,5),
+            'bed_id'=>$this->faker->numberBetween(1,5),
+            'ward_id'=>$this->faker->numberBetween(1,5),
             'assign_date'=>$this->faker->date(),
-            'discharge_date'=>$this->faker->date(),
-            'days'=>$this->faker->numberBetween(1,30),
             'description'=>$this->faker->text(),
-            'assigned_by'=>$this->faker->randomElement(['Admin','Nurse','Manager']),
         ];
     }
 }
+        
+            
+            

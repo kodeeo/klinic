@@ -46,14 +46,11 @@
                 <input type="date" class="form-control" id="admission_date" name="admission_date" value="{{$admission->admission_date}}" required>
             </div>
 
-            <div class="form-group col-3 mt-2">
-                <label for="discharge_date">Discharge Date</label>
-                <input type="date" class="form-control" id="discharge_date" name="discharge_date" value="{{$admission->discharge_date}}">
-            </div>
+            
 
             <div class="form-group col-3 mt-2">
                 <label for="package">Package Name</label>
-                <input type="text" class="form-control" id="package" name="package" value="{{$admission->package}}"
+                <input type="text" class="form-control" id="package" name="package" value="{{$admission->package->name}}"
                     placeholder="Enter Package Name">
             </div>
 

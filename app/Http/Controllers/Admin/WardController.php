@@ -25,10 +25,10 @@ class WardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+      
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -37,17 +37,22 @@ class WardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $quantity=$request->quantity;
-        $from=$request->from;
-        for ($x = 0; $x < $quantity; $x++) {
-            $ward=Ward::insert([
-                'ward_type'=>$request->ward_type,
-                'ward_number'=>$request->ward_number,
-                'bed_number'=>$from+$x,
-            ]);
-        }
-        return redirect()->route('ward.index')->with(Toastr::info('Ward Bed Created Successfully'));
+    {  
+
+        Ward::create([
+            'name'=>$request->name,
+            'status'=>$request->status
+        ]);
+
+        // $quantity=$request->quantity;
+        // $from=$request->from;
+        // for ($x = 0; $x < $quantity; $x++) {
+        //     $ward=Ward::insert([
+        //         'name'=>$request->name,
+        //         'status'=>$request->status,
+        //     ]);
+        
+        return redirect()->route('ward.index')->with(Toastr::info('Ward Created Successfully'));
     }
 
     /**
@@ -93,6 +98,6 @@ class WardController extends Controller
     public function destroy($id)
     {
         Ward::find($id)->delete();
-        return redirect()->route('ward.index')->with(Toastr::error('Ward Bed Deleted'));
+        return redirect()->route('ward.index')->with(Toastr::error('Ward Deleted'));
     }
 }

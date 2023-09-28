@@ -32,7 +32,7 @@ class DoctorFactory extends Factory
             'gender'=>$this->faker->randomElement(['male','female']),
             'blood_group'=>$this->faker->bloodGroup(),
             'department_id'=>$this->faker->numberBetween(1,10),
-            'specialist'=>$this->faker->randomElement(['Burn','Bone','Fracture']),
+            'specialist'=>$this->faker->name(),
             'image'=>$this->faker->image('public/uploads/doctors',640,480, null, false),
         ];
     }

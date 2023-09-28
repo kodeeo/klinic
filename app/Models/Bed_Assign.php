@@ -14,4 +14,9 @@ class Bed_Assign extends Model
     {
         return $this->belongsTo(Bed::class,'bed_type_id','id'); 
     }
+
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class,'bed_type_id','id'); 
+    }
 }

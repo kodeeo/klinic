@@ -32,8 +32,8 @@
                 <th scope="col">ID</th>
                 <th scope="col">Test</th>
                 <th scope="col">Price</th>
-                <th scope="col">Image</th>
                 <th class="d-print-none" scope="col">Action</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -43,8 +43,7 @@
                     <th scope="row">{{ $key+1 }}</th>
                     <td>{{ $test->name }}</td>
                     <td>{{ $test->price }}</td>
-                    <td><img src="{{ url('/uploads/'.$test->image) }}"
-                            style="border-radius:4px" width="40px" alt="test image"></td>
+                    
                     <td>
                         <div style="display: flex; justify-content:center;">
                             <a class="btn btn-warning btn-sm "

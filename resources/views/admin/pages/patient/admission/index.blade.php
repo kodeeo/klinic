@@ -15,11 +15,15 @@
                 <th scope="col">AID</th>
                 <th scope="col">Patient ID</th>
                 <th scope="col">Admission Date</th>
-                <th scope="col">Discharge Date</th>
                 <th scope="col">Doctor Name</th>
+                <th scope="col">Package</th>
+                <th scope="col">Insurance</th>
                 <th scope="col">Status</th>
-                <th scope="col">Action</th>
+                <th scope="col">Case study</th>
                 <th scope="col">Payment</th>
+                <th scope="col">Action</th>
+               
+                
             </tr>
         </thead>
         <tbody>
@@ -29,12 +33,29 @@
                 <td>{{$item->admission_id}}</td>
                 <td>{{$item->patient_id}}</td>
                 <td>{{$item->admission_date}}</td>
-                <td>{{$item->discharge_date}}</td>
+                
                 <td>{{$item->doctors->first_name.' '.$item->doctors->last_name}}</td>
+                
+                <td>{{$item->package->name}}</td>
+               
+                <td>{{$item->insurance_id}}</td>
+                
+                
                 <td>{{$item->status}}</td>
                 <td>
+                <a class="btn btn-success btn-sm m-1" href="{{route('admissions.show',$item->id)}}"><i class="fa fa-eye"></i></a>
+                </td>
+               
+                <td>
+                    <div style="display: flex">
+                        <a class="btn btn-info m-1" href="{{route('advancepayment.create',['admission_id'=>$item->admission_id ,'patient_id'=>$item->patient_id])}}"><b>Advance</b></a>
+                        <a class="btn btn-success m-1" href="{{route('bill.create',['admission_id'=>$item->admission_id])}}"><b>Discharge</b></a>
+                    </div>
+                </td>
+
+                <td>
                     <div style="display:flex">
-                        <a class="btn btn-success btn-sm m-1" href="{{route('admissions.show',$item->id)}}"><i class="fa fa-eye"></i></a>
+                        
                         <a class="btn btn-warning btn-sm m-1" href="{{route('admissions.edit',$item->id)}}"><i class="fa fa-pen"></i></a>
                         <form style="margin-left: 3px" action="{{route('admissions.destroy',$item->id)}}" method="POST">
                           @csrf
@@ -44,12 +65,6 @@
                           </div>
                         </form>
                       </div>
-                </td>
-                <td>
-                    <div style="display: flex">
-                        <a class="btn btn-info m-1" href="{{route('advancepayment.create',['admission_id'=>$item->admission_id ,'patient_id'=>$item->patient_id])}}"><b>Advance</b></a>
-                        <a class="btn btn-success m-1" href="{{route('bill.create',['admission_id'=>$item->admission_id])}}"><b>Discharge</b></a>
-                    </div>
                 </td>
             </tr>
             @endforeach

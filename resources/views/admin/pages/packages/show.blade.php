@@ -1,7 +1,20 @@
 @extends('admin.master')
 @section('content')
+
+
+uygugiu
         <h2>{{__('Package Details')}}</h2>
-        <p>{{ $service->name }}</p>
-        <p>{{ $service->description }}</p>
-        <p>{{ $service->rate }}</p>
-@endsection
+        <p>Name: {{ $service->name }}</p>
+        <p>Description: {{ $service->description }}</p>
+        <p>Service rate: {{ $service->service_rate }}</p>
+        <p>Status: {{ $service->status }}</p>
+        <p>Quantity: {{ $service->service_quantity }}</p>
+        <p>Discount: {{ $service->discount }}</p>
+        
+      
+      
+      
+      
+      
+      
+        @endsection

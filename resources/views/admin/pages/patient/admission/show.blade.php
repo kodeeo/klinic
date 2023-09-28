@@ -3,14 +3,15 @@
 <div class="container">
     <h1>{{__('Admission Details')}}</h1>
     <hr>
-    <p><b>Patient ID: {{$admission->admission_id}}</b></p>
-    <p><b>Admission ID: {{$admission->patient_id}}</b></p>
+    <p><b>Patient ID: {{$admission->patient_id}}</b></p>
+    <p><b>Admission ID: {{$admission->admission_id}}</b></p>
+    
     <p><b>Patient's Name: {{$admission->patients->first_name.' '.$admission->patients->last_name}}</b></p>
     <p><b>Doctor Name: {{$admission->doctors->first_name.' '.$admission->doctors->last_name}}</b></p>
     <p><b>Admission Date: {{$admission->admission_date}}</b></p>
-    <p><b>Discharge Date: {{$admission->discharge_date}}</b></p>
-    <p><b>Package: {{$admission->package}}</b></p>
-    <p><b>Insurance: {{$admission->insurance}}</b></p>
+  
+    <p><b>Package: {{$admission->package->name}}</b></p>
+    <p><b>Insurance: {{$admission->insurance_id}}</b></p>
     <p><b>Height: {{$admission->height}}</b></p>
     <p><b>Weight: {{$admission->weight}}</b></p>
     <p><b>Allergies: {{$admission->allergies}}</b></p>

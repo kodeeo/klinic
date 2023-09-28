@@ -54,7 +54,7 @@
                     <td>{{$value->weight}}</td>
                     <td>{{$value->blood_pressure}}</td>
                     <td>{{$value->reference}}</td>
-                    <td>{{$value->insurance}}</td>
+                    <td>{{$value->insurance->name}}</td>
                     <td>{{$value->medicine_id}}</td>
                     <td>{{$value->medicine_type}}</td>
                     <td>{{$value->medicine_instruction}}</td>
