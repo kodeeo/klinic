@@ -4,9 +4,9 @@
 <h1>{{__('Advance Payment List')}}</h1>
 <hr>
 <div class="row" style="justify-content: space-between;">
-    <div class="col">
+    <!-- <div class="col">
         <a class="btn btn-success" href="{{route('advancepayment.create')}}">Pay Advance</a>
-    </div>
+    </div> -->
 
     <div class="col-4 dt-buttons btn-group">
         <a class="btn btn-info" href="#">
