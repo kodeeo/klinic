@@ -20,7 +20,7 @@ class BedController extends Controller
     public function index()
     {
         $beds=Bed::with('ward')->paginate(10);
-       
+        
         return view('admin.pages.bed.index',compact('beds'));
 
     }
@@ -53,7 +53,8 @@ class BedController extends Controller
             'charge'=>$request->charge,
             'status'=>$request->status,
         ]);
-        return redirect()->route('beds.index')->with(Toastr::success('Bed Type Added'));;
+        Toastr::success('Bed Type Added');
+        return redirect()->route('beds.index');
     }
 
     /**
@@ -97,7 +98,8 @@ class BedController extends Controller
             'charge'=>$request->charge,
             'status'=>$request->status,
         ]);
-        return redirect()->route('beds.index')->with(Toastr::success('Bed Updated Successfully'));
+        Toastr::success('Bed Updated Successfully');
+        return redirect()->route('beds.index');
     }
 
     /**
@@ -109,12 +111,14 @@ class BedController extends Controller
     public function destroy($id)
     {
         $beds=Bed::find($id)->delete();
-        return redirect()->back()->with(Toastr::error('Bed Deleted Successfully'));
+        Toastr::error('Bed Deleted Successfully');
+        return redirect()->back();
     }
 
     public function assigned_bed_index()
     {
-        $assign_beds=AssignBed::with('bed','ward')->get();
+        $assign_beds=AssignBed::with(['bed','ward'])->get();
+       
         return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
@@ -146,7 +150,8 @@ class BedController extends Controller
             'assign_date'=>$request->assign_date,
             'description'=>$request->description,
         ]);
-           
+         
+      
          return redirect()->route('assign.bed.index');
     }
 
