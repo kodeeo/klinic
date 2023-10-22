@@ -118,15 +118,14 @@ class BedController extends Controller
     public function assigned_bed_index()
     {
         $assign_beds=AssignBed::with(['bed','ward'])->get();
-       
+        // dd($assign_beds[0]);
         return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
     public function select_ward()
     {
         $ward=Ward::all();
-       
-        // 
+
         return view('admin.pages.bed.assign.ward',compact('ward'));
     }
 
@@ -154,8 +153,6 @@ class BedController extends Controller
       
          return redirect()->route('assign.bed.index');
     }
-
-
     public function assign_bed_edit($id){
         $find=AssignBed::find($id);
         return view('admin.pages.bed.assign.edit',compact('find'));

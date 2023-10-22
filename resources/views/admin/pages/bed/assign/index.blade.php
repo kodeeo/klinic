@@ -47,8 +47,8 @@
                   <th>{{ $key+1 }}</th>
                   <td>{{ $item->patient_id }}</td>
                   <td>{{ $item->ward->name }}</td>
-                    <td>{{$item->type}}</td>
-                  <td>{{ $item->cabin_type}}</td>
+                  <td>{{ $item->bed->type }}</td>
+                  <td>{{ $item->bed->cabin_type }}</td>
                 
                   <td>{{ $item->assign_date }}</td>
                   
