@@ -24,7 +24,7 @@
         <div class="row">
             <div class="form-group col-6">
                 <label for="patient_id">Patient ID<span style="color:red">*</span></label>
-                <input type="integer" class="form-control" id="patient_id" name="patient_id" placeholder="Enter Patient ID"
+                <input type="text" class="form-control" id="patient_id" name="patient_id" placeholder="Enter Patient ID"
                     value="{{request()->patient_id??old('patient_id')}}" required>
             </div>
 
