@@ -20,7 +20,7 @@ class BedController extends Controller
     public function index()
     {
         $beds=Bed::with('ward')->paginate(10);
-       
+        
         return view('admin.pages.bed.index',compact('beds'));
 
     }
@@ -53,7 +53,8 @@ class BedController extends Controller
             'charge'=>$request->charge,
             'status'=>$request->status,
         ]);
-        return redirect()->route('beds.index')->with(Toastr::success('Bed Type Added'));;
+        Toastr::success('Bed Type Added');
+        return redirect()->route('beds.index');
     }
 
     /**
@@ -97,7 +98,8 @@ class BedController extends Controller
             'charge'=>$request->charge,
             'status'=>$request->status,
         ]);
-        return redirect()->route('beds.index')->with(Toastr::success('Bed Updated Successfully'));
+        Toastr::success('Bed Updated Successfully');
+        return redirect()->route('beds.index');
     }
 
     /**
@@ -109,20 +111,21 @@ class BedController extends Controller
     public function destroy($id)
     {
         $beds=Bed::find($id)->delete();
-        return redirect()->back()->with(Toastr::error('Bed Deleted Successfully'));
+        Toastr::error('Bed Deleted Successfully');
+        return redirect()->back();
     }
 
     public function assigned_bed_index()
     {
-        $assign_beds=AssignBed::with('bed','ward')->get();
+        $assign_beds=AssignBed::with(['bed','ward'])->get();
+        // dd($assign_beds[0]);
         return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
     public function select_ward()
     {
         $ward=Ward::all();
-       
-        // 
+
         return view('admin.pages.bed.assign.ward',compact('ward'));
     }
 
@@ -146,11 +149,10 @@ class BedController extends Controller
             'assign_date'=>$request->assign_date,
             'description'=>$request->description,
         ]);
-           
+         
+      
          return redirect()->route('assign.bed.index');
     }
-
-
     public function assign_bed_edit($id){
         $find=AssignBed::find($id);
         return view('admin.pages.bed.assign.edit',compact('find'));
