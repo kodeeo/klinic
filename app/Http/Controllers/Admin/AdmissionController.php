@@ -15,39 +15,29 @@ use App\Models\Package;
 
 class AdmissionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $admissions=Admission::orderBy('id','desc')->get();
         return view('admin.pages.patient.admission.index',compact('admissions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         $patients=Patient::all();
         $doctors=Doctor::all();
         $package=Package::all();
         $insurance=Insurance::all();
-        return view('admin.pages.patient.admission.create',compact('patients','doctors','package','insurance'));
+        
+        
+        return view('admin.pages.patient.admission.create',compact('doctors','package','insurance','patients'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
+
      $checkPatient=Patient::where('patient_id',$request->patient_id)->exists();
      if($checkPatient) {
          $admission=new Admission();
@@ -86,25 +76,15 @@ class AdmissionController extends Controller
         return redirect()->back()->withInput();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         
-        $admission=Admission::find($id);
+        $admission=Admission::with(['doctor','package'])->find($id);
         return view('admin.pages.patient.admission.show',compact('admission'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $admission=Admission::find($id);
@@ -113,13 +93,7 @@ class AdmissionController extends Controller
         return view('admin.pages.patient.admission.edit',compact('admission','doctors','answers'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $admission=Admission::find($id);
@@ -153,12 +127,7 @@ class AdmissionController extends Controller
         return redirect()->route('admissions.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         Admission::find($id)->delete();
