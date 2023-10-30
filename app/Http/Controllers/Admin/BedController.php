@@ -19,7 +19,7 @@ class BedController extends Controller
      */
     public function index()
     {
-        $beds=Bed::with('ward')->paginate(10);
+        $beds=Bed::with('ward')->get();
        
         return view('admin.pages.bed.index',compact('beds'));
 
@@ -127,17 +127,22 @@ class BedController extends Controller
     }
 
     public function assign_bed($id){
+      
         $ward=Ward::find($id);
         $wards=Ward::all();
-          $beds=Bed::where('type','=','bed')->where('ward_id','=',$id)->get();
+      
+          $beds=Bed::where('type','=','bed')->where('ward_id','=',$id)->where('status','=','available')->get();
        
-        $cabins=Bed::where('type','=','cabin')->where('ward_id','=',$id)->get();
+        $cabins=Bed::where('type','=','cabin')->where('ward_id','=',$id)->where('status','=','available')->get();
+        $bedstatus=Bed::find($id);
 
-        return view('admin.pages.bed.assign.create',compact('beds','cabins','ward','wards'));
+        return view('admin.pages.bed.assign.create',compact('beds','cabins','ward','wards','bedstatus'));
     }
 
-    public function assign_bed_store(Request $request)
+    public function assign_bed_store(Request $request,$id)
     {
+
+       
         AssignBed::create([
 
             'patient_id'=>$request->patient_id,
@@ -146,6 +151,12 @@ class BedController extends Controller
             'assign_date'=>$request->assign_date,
             'description'=>$request->description,
         ]);
+
+        $bedstatus=Bed::find($id);
+        $bedstatus->status='booked';
+        $bedstatus->save();
+
+      
            
          return redirect()->route('assign.bed.index');
     }
