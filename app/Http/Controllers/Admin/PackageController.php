@@ -10,37 +10,25 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class PackageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {   
-        $packages=Package::all();
-        $services=Service::all();
-        return view('admin.pages.packages.index',compact('packages','services'));
+        $packages=Package::with('service')->get();
+        // $services=Service::all();
+        return view('admin.pages.packages.index',compact('packages'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         $services=Service::all();
         return view('admin.pages.packages.create',compact('services'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
+       
         $services=$request->service_id;
         $quantity=$request->quantity;
         $rate=$request->rate;
@@ -51,8 +39,8 @@ class PackageController extends Controller
                 'name'=>$request->name,
                 'description'=>$request->description,
                 'service_id'=>$request->service_id[$key],
-                'service_quantity'=>$request->service_quantity[$key],
-                'service_rate'=>$request->service_rate[$key],
+                'service_quantity'=>($request->service_quantity[$key]),
+                'service_rate'=>($request->service_rate[$key]),
                 'discount'=>$request->discount,
                 'status'=>$request->status,
             ]);

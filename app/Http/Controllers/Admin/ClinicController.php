@@ -3,81 +3,39 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\ClinicSetup;
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Maatwebsite\Excel\Excel;
 
-class ClinicController extends Controller
+class ClinicController extends Controller 
+// Controller name is Resource Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $clinic=ClinicSetup::all();
         return view('admin.pages.clinicSetup.show',compact('clinic'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $clinic=ClinicSetup::find($id);
-        return view('admin.pages.clinicSetup.show',compact('clinic'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $clinic=ClinicSetup::find($id);
         return view('admin.pages.clinicSetup.edit',compact('clinic'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
+        try{
         $clinic=ClinicSetup::find($id);
 
         $request->validate([
-            'email' => "unique:clinic_setups,email,$id"
+            'name'=>'required|min:3|max:100',
+            'slogan'=>'required|max:200',
+            'address'=>'required|max:100',
+            'phone'=>'required|max:15',
+            'email' => "unique:clinic_setups,email,$id",
+            'web'=>'required|max:200',
+            'image'=>'required|image|mimes:jpeg,png,svg|max:2048'
         ]);
 
         $filename=$clinic->image;
@@ -98,19 +56,10 @@ class ClinicController extends Controller
             'web'=>$request->web,
             'image'=>$filename
             ]);
-
-            Toastr::success('Clinic Informations updated Successfully');
+        }catch(Exception $e){
+            return($e->getMessage());
+        }
+            Toastr::success('successfully updated', 'Clinic');
             return redirect()->route('clinic.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

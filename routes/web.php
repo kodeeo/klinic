@@ -121,14 +121,6 @@ Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
 
-
-//users
-Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
-Route::get('/user/add',[UserController::class, 'u_add'])->name('user.add');
-Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store');
-Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
-Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
-
 //Patient
 
 Route::resource('patients', PatientController::class);

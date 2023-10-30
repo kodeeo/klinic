@@ -41,6 +41,7 @@
         </thead>
         <tbody>
             
+       
           @foreach($assign_beds as $key=>$item)
               <tr>
                   <th>{{ $key+1 }}</th>
@@ -48,6 +49,7 @@
                   <td>{{ $item->ward->name }}</td>
                     <td>{{ $item->bed->type }}-{{ $item->bed->id }}</td>
                   <td>{{ $item->bed->cabin_type}}</td>
+
                 
                   <td>{{ $item->assign_date }}</td>
                   

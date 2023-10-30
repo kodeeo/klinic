@@ -34,7 +34,7 @@ class BillController extends Controller
         if(request()->has('admission_id'))
         {
             $services=Service::where('status','active')->get();
-            $admission=Admission::with(['patients','doctors'])->where('admission_id',\request()->admission_id)->first();
+            $admission=Admission::with(['patients','doctors'])->where('admission_id',request()->admission_id)->first();
             return view('admin.pages.Bill.create_bill',compact('admission','services'));
         }
         toastr()->warning('No Admission ID Found.');

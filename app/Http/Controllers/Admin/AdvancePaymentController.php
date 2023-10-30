@@ -29,9 +29,10 @@ class AdvancePaymentController extends Controller
      */
     public function create()
     {
-        $admission_id=Admission::where('admission_id',\request()->admission_id)->first();
-        $patient_id=Admission::where('patient_id',\request()->patient_id)->first();
-        return view('admin.pages.advancePayment.create',compact('admission_id','patient_id'));
+        $admission=Admission::where('admission_id',\request()->admission_id)
+        ->where('patient_id',\request()->patient_id)->first();
+
+        return view('admin.pages.advancePayment.create',compact('admission'));
     }
 
     /**
@@ -42,16 +43,25 @@ class AdvancePaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $advancePayment=new AdvancePayment();
-        $advancePayment->create([
-            'reciept_no' => 'ADVP'.date('Ymd'),
-            'admission_id' => $request->admission_id,
-            'patient_id' => $request->patient_id,
-            'amount' => $request->amount,
-            'payment_method' => $request->payment_method,
-        ]);
+        $patient=Admission::where('admission_id',$request->admission_id)->first();
+        if($patient)
+        {
+            $advancePayment=new AdvancePayment();
 
-        return redirect()->route('advancepayment.index')->with(Toastr::success('Advance Payment Paid Successfully'));
+            $advancePayment->create([
+                'reciept_no' => 'ADVP'.date('Ymdhis'),
+                'admission_id' => $request->admission_id,
+                'patient_id' => $patient->patient_id,
+                'amount' => $request->amount,
+                'payment_method' => $request->payment_method,
+            ]);
+    
+            return redirect()->route('advancepayment.index')->with(Toastr::success('Advance Payment Paid Successfully'));
+        }else{
+            Toastr::error('No patient found.');
+            return redirect()->back();
+        }
+       
     }
 
     /**
