@@ -62,7 +62,7 @@ class DepartmentController extends Controller
 
 
           $department=Department::find($id);
-         dd($department);
+        
 
           $image_name=$department->image;
           //              step 1: check image exist in this request.
@@ -73,7 +73,7 @@ class DepartmentController extends Controller
           
                       //step 3 : store into project directory
           
-                      $request->file('department_image')->storeAs('/departments',$image_name);
+                      $request->file('department_image')->storeAs('/uploads/departments',$image_name);
           
                   }
           $department->update([
@@ -89,7 +89,7 @@ class DepartmentController extends Controller
          return redirect()->route('show.department');
 
       }
-      public function delete($id)
+      public function destroy($id)
       {
         Department::find($id)->delete();
 

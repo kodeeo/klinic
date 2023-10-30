@@ -19,7 +19,7 @@
         display: inline-block;
         border: 1px solid grey;
         cursor: pointer;
-        background-color: yellow;
+        background-color: #66FF99;
       }
 
       
@@ -29,8 +29,8 @@
       }
 
       input[type="radio"]:checked + label {
-        background: green;
-        color: #fff;
+        background: orange;
+        
       }
     </style>
   </head>
@@ -38,7 +38,7 @@
     <body>
       <div class="container mt-5 shadow-sm p-3">
         <h2>Assign Bed</h2>
-        <form action="{{route('assign.bed.store')}}" method="post">
+        <form action="{{route('assign.bed.store',$bedstatus->id)}}" method="post">
           @csrf
           <div class="d-flex justify-content-between">
             <div class="form-group mb-3">
@@ -60,11 +60,12 @@
           <h4>Bed</h4>
           <div class="mb-3">
           @foreach($beds as $data)
-         
-            <input type="radio" id="bed1" name="bed_id" value="{{$data->id}}" />
+         <input type="radio" id="bed1" name="bed_id" value="{{$data->id}}" />
             <label class="bedinform" for="bed1">
                 {{$data->type}}-{{$data->id}}
                 {{$data->capacity}}
+
+            
             </label>
             @endforeach
           </div>
@@ -74,11 +75,15 @@
             <h4>Cabin</h4>
           <div class="mb-3">
           @foreach($cabins as $data)
-            <input type="radio" id="cabin" name="bed_id" value="" />
+         <input type="radio" id="cabin" name="bed_id" value="{{$data->id}}" />
             <label class="bedinform" for="cabin">
             {{$data->type}}-{{$data->id}}
                 {{$data->capacity}}
+
+                
             </label>
+
+           
             @endforeach
           </div>
           

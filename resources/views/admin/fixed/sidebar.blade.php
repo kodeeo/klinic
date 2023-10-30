@@ -115,8 +115,7 @@
                         <li>
                             <a href="{{route('prescription.create')}}">Add Prescription</a>
                         </li>
-                        @endif
-                        @if (hasAnyPermissions('presecription.index'))
+                       
                         <li>
                             <a href="{{route('prescription.index')}}">Prescription List</a>
                         </li>

@@ -151,16 +151,17 @@ class DoctorController extends Controller
                 }
         
         $doctor->update([
-            'name'=>$request->name,   
+            'first_name'=>$request->first_name,   
+            'last_name'=>$request->last_name,   
             'email'=>$request->email,
             'phone'=>$request->phone,
             'address'=>$request->address,
             'date_of_birth'=>$request->date_of_birth,
             'gender'=>$request->gender,
             'department_id'=>$request->department_id,
-            'designation'=>$request->designation,
+            
             'degree'=>$request->degree,
-            'details'=>$request->details,
+            
             'password'=>bcrypt($request->password),
             'image'=>$image_name,
         ]);

@@ -16,7 +16,7 @@
                     <div class="form-group col-6">
                         <label for="patient_id">Patient ID</label>
                         <input type="text" class="form-control" id="patient_id" name="patient_id"
-                            placeholder="Enter Patient ID" readonly value="">
+                            placeholder="Enter Patient ID" value="">
                     </div>
                     <div class="form-group col-6">
                         <label for="patient_name">Patient Name</label>
