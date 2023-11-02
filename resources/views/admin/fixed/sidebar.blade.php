@@ -47,6 +47,9 @@
             </li>
             @endif
 
+
+
+
             @if (hasAnyPermissions('patients.index'))
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks"
@@ -292,10 +295,22 @@
                             <a href="{{route('medicine_category.index')}}">Medicine Category</a>
                         </li>
                         @endif
+
+                        <li>
+                            <a href="{{route('medicine_purchase.index')}}">Medicine Purchase list</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('medicine_purchase.create')}}">Medicine Purchase </a>
+                        </li>
+
+
                     </ul>
                 </div>
             </li>
             @endif
+
+
 
             @if (hasAnyPermissions('bill.index'))
             <li class="side-nav-item">
