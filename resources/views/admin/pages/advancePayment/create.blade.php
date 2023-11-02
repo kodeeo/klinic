@@ -12,12 +12,12 @@
             <div class="form-group col-6">
                 <label for="admission_id">Admission ID</label>
                 <input type="text" class="form-control" id="admission_id" name="admission_id"
-                    placeholder="Enter Admission ID" readonly value="{{$admission_id->admission_id}}">
+                    placeholder="Enter Admission ID" readonly value="{{$admission->admission_id}}">
             </div>
             <div class="form-group col-6">
                 <label for="patient_id">Patient ID</label>
                 <input type="text" class="form-control" id="patient_id" name="patient_id" placeholder="Enter Patient ID"
-                    readonly value="{{$patient_id->patient_id}}">
+                    readonly value="{{$admission->patient_id}}">
             </div>
             <div class="form-group col-6 mt-2">
                 <label for="amount">Amount <span style="color: red">*</span></label>

@@ -34,7 +34,7 @@
                 <td>{{$item->patient_id}}</td>
                 <td>{{$item->admission_date}}</td>
                 
-                <td>{{$item->doctors->first_name.' '.$item->doctors->last_name}}</td>
+                <td>{{$item->doctor->full_name}}</td>
                 
                 <td>{{$item->package->name}}</td>
                

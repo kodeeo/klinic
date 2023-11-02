@@ -6,17 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {
         Schema::create('admissions', function (Blueprint $table) {
             $table->id();
             $table->string('admission_id',20)->unique();
-            $table->foreignId('patient_id')->constrained('patients');
+            $table->string('patient_id');
             $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
             $table->string('admission_date',15);
             $table->foreignId('package_id',50)->nullable();

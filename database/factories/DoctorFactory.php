@@ -31,9 +31,10 @@ class DoctorFactory extends Factory
             'date_of_birth'=>$this->faker->date(),
             'gender'=>$this->faker->randomElement(['male','female']),
             'blood_group'=>$this->faker->bloodGroup(),
-            'department_id'=>$this->faker->numberBetween(1,10),
+            'department_id'=>$this->faker->numberBetween(1,5),
             'specialist'=>$this->faker->name(),
             'image'=>$this->faker->image('public/uploads/doctors',640,480, null, false),
         ];
     }
 }
+
