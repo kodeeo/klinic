@@ -11,12 +11,19 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id');
-            $table->foreignId('admission_id');
-            $table->int('amount');
-            $table->int('discount');
-            $table->int('total_payable');
-            $table->foreignId('package_id');
+
+            $table->foreignId('pastient_id');
+            $table->foreignId('admission_id')->nullable();
+            $table->string('bill_id')->unique();
+            $table->double('pay_advance')->nullable();
+
+            $table->date('bill_date');
+            $table->double('amount');
+            $table->string('payment_method');
+            $table->string('card_cheque_number')->nullable();
+            $table->string('receipt_number')->nullable();
+            $table->integer('discount')->nullable();
+            $table->double('total_payable');
             $table->foreignId('service_id');
             $table->foreignId('package_id')->nullable();
             $table->text('remarks');
