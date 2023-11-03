@@ -10,4 +10,9 @@ class MedicinePurchase extends Model
     use HasFactory;
 
     protected $guarded=[];
+
+    public function medicine()
+    {
+        return $this->belongsTo(Medicine::class,'medicine_id','id');
+    }
 }

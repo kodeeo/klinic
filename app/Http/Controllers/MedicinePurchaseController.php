@@ -15,7 +15,7 @@ class MedicinePurchaseController extends Controller
      */
     public function index()
     {   
-        $buymedicine=MedicinePurchase::paginate(2);
+        $buymedicine=MedicinePurchase::with('medicine')->paginate(2);
         return view('admin.pages.medicine_purchase.index',compact('buymedicine'));
     }
 

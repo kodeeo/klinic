@@ -34,19 +34,22 @@
                 <th scope="col">ID</th>
                 <th scope="col">Patient_id</th>
                 <th scope="col">Medicine Name</th>
+                <th scope="col">Medicine Category</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Total</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-      
+      @foreach($buymedicine as $key=>$data)
                   <tr>
-                      <th scope="row"></th>
+                      <th scope="row">{{$key+1}}</th>
+                      <td>{{$data->patient_id}}</td>
+                      <td>{{$data->medicine->name}}</td>
+                      <td>{{$data->medicine->category_id}}</td>
+                      <td>{{$data->quantity}}</td>
                       <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                     
                       <td>
                         <div style="display: flex; justify-content: center">
                         <a  class="btn btn-success btn-sm m-1" href=""><i class="fas fa-eye"></i></a>
@@ -57,7 +60,7 @@
                         </div>
                       </td>
                   </tr>
-            
+            @endforeach
             </tbody>
           </table>
        </div>
