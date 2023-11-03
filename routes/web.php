@@ -126,6 +126,8 @@ Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.
 
 Route::resource('patients', PatientController::class);
 
+
+
 //Patient_Admission
 Route::resource('admissions', AdmissionController::class);
 
@@ -240,6 +242,8 @@ Route::resource('medicine_purchase', MedicinePurchaseController::class);
 
 //Bill resouce
 Route::resource('bill', BillController::class);
+Route::get('/bill-invoice/{id}',[BillController::class,'bill'])->name('bill.invoice');
+
 
 //Advance Paymnet
 Route::resource('advancepayment', AdvancePaymentController::class);
