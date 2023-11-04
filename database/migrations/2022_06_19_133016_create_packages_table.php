@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
+            $table->integer('package_no');
             $table->string('name',50);
             $table->text('description')->nullable();
             $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();

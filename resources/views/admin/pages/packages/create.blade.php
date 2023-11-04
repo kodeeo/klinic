@@ -5,8 +5,6 @@
 <hr>
 <br>
 
-{{-- <a href="{{route('create.category')}}" button type="submit" class="btn btn-primary">Create Category</button> </a>
---}}
 <div>
     <form action="{{route('packages.store')}}" method="POST" enctype="multipart/form-data">
         @csrf

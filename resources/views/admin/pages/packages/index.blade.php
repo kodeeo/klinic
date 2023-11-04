@@ -10,23 +10,19 @@
             <tr>
                 <th scope="col-1">Sl</th>
                 <th scope="col-1">Name</th>
-                <th scope="col-1">Services</th>
                 <th scope="col-3">Description</th>
                 <th scope="col-2">Discount</th>
                 <th scope="col-3">Status</th>
                 <th scope="col">Action</th>
             </tr>
+               
         </thead>
         <tbody>
             @foreach($packages as $key=>$package)
             <tr>
                 <th>{{$key+1}}</th>
                 <td>{{$package->name}}</td>
-                <td>
-                  
-                        <button class="btn btn-info badge">{{$package->service->name}}</button>
-                   
-                </td>
+              
                 <td>{{$package->description}}</td>
                 <td>{{$package->discount}}</td>
                 <td class="col-2">

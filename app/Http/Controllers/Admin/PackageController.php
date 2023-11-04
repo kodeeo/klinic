@@ -32,10 +32,11 @@ class PackageController extends Controller
         $services=$request->service_id;
         $quantity=$request->quantity;
         $rate=$request->rate;
-
+        $package_no=0;
         foreach($services as $key=>$service){
 
             Package::create([
+                'package_no'=>$package_no+1,
                 'name'=>$request->name,
                 'description'=>$request->description,
                 'service_id'=>$request->service_id[$key],
@@ -58,8 +59,10 @@ class PackageController extends Controller
      */
     public function show($id)
     {
-        $service=Package::find($id);
-        return view('admin.pages.packages.show',compact('service'));
+        $package=Package::find($id);
+        $service=Package::where('id','=',$id)->get();
+        
+        return view('admin.pages.packages.show',compact('package','service'));
     }
 
     /**

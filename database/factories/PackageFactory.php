@@ -18,6 +18,7 @@ class PackageFactory extends Factory
     {
         return [
             'name'=>$this->faker->name(),
+            'package_no'=>$this->faker->numberBetween(1,5),
             'description'=>$this->faker->text(),
             'service_id'=>$this->faker->numberBetween(1,5),
             'service_quantity'=>$this->faker->numberBetween(1,5),
