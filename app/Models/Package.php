@@ -9,4 +9,11 @@ class Package extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    protected $casts = [
+        'service_name'=> 'array',
+        'service_quantity'=> 'array',
+        'service_rate'=> 'array',
+    ]   ;
+
 }
