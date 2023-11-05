@@ -18,13 +18,13 @@ class PackageFactory extends Factory
     {
         return [
             'name'=>$this->faker->name(),
-            'package_no'=>$this->faker->numberBetween(1,5),
             'description'=>$this->faker->text(),
-            'service_id'=>$this->faker->numberBetween(1,5),
+            'service_name'=>$this->faker->numberBetween(1,5),
             'service_quantity'=>$this->faker->numberBetween(1,5),
             'service_rate'=>$this->faker->numberBetween(500,2000),
             'discount'=>$this->faker->numberBetween(500,2000),
             'status'=>$this->faker->randomElement(['Active','Inactive']),
+          
         ];
     }
 }

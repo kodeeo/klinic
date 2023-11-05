@@ -31,7 +31,7 @@
       @foreach($service as $key=>$data)
                   <tr class="table-primary">
                       <th scope="row">{{$key+1}}</th>
-                      <td>{{$data->service->name}}</td>
+                      <td>{{$data->service_name}}</td>
                       <td>{{$data->service_quantity}}</td>
                       <td>{{$data->service_rate}}</td>
                       

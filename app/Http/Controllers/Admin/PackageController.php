@@ -29,26 +29,19 @@ class PackageController extends Controller
     public function store(Request $request)
     {
        
-        $services=$request->service_id;
-        $quantity=$request->quantity;
-        $rate=$request->rate;
-        $package_no=0;
-        foreach($services as $key=>$service){
+     $package=$request->all();
 
-            Package::create([
-                'package_no'=>$package_no+1,
-                'name'=>$request->name,
-                'description'=>$request->description,
-                'service_id'=>$request->service_id[$key],
-                'service_quantity'=>($request->service_quantity[$key]),
-                'service_rate'=>($request->service_rate[$key]),
-                'discount'=>$request->discount,
-                'status'=>$request->status,
-            ]);
-            
-        }
+    
+     $service_name=$package['service_name'];
+     $service_quantity=$package['service_quantity'];
+     $service_rate=$package['service_rate'];
 
-        return redirect()->route('packages.index')->with(Toastr::success('Package Added Successfully'));
+     $package['service_name']=implode(',',$service_name);
+     $package['service_quantity']=implode(',', $service_quantity);
+     $package['service_rate']=implode(',',$service_rate);
+       
+       Package::create($package);
+       return redirect()->route('packages.index')->with(Toastr::success('Package Added Successfully'));
     }
 
     /**
