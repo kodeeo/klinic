@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('gender',20);
             $table->string('blood_group')->nullable();
             $table->string('patient_image',50);
-            $table->text('address',100)->nullable();
+            $table->text('address')->nullable();
             $table->string('status',15)->default('registered');
             $table->timestamps();
             $table->softDeletes();

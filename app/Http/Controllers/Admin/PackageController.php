@@ -15,6 +15,7 @@ class PackageController extends Controller
     {   
         $packages=Package::with('service')->get();
         // $services=Service::all();
+        
         return view('admin.pages.packages.index',compact('packages'));
     }
 
