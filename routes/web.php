@@ -145,7 +145,8 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('/view/department/{id}','view')->name('view.department');
     Route::get('/edit/department/{id}','edit')->name('edit.department');
     Route::put('/update/department/{id}','update')->name('update.department');
-    Route::get('/delete/department/{id}','delete')->name('delete.department');
+    Route::get('/delete/department/{id}','destroy')->name('destroy.department');
+    Route::put('status/department/{id}','statusUpdate')->name('department.status.update');
 });
 });
 
@@ -165,6 +166,8 @@ Route::controller(TestController::class)->group(function () {
 Route::resource('doctor',DoctorController::class);
 
 Route::get('/doctor/pdf/print{id}',[DoctorController::class, 'doctorPdf'])->name('pdf.doctor');
+
+Route::put('status/doctor/{id}',[DoctorController::class,'statusUpdate'])->name('doctor.status.update');
 
 
    //Prescription resource controller
@@ -294,6 +297,7 @@ Route::controller(DoctorExportController::class)->group(function () {
 Route::controller(DoctorDeptExportController::class)->group(function () {
     Route::get('department/data/csv','csv')->name('department.data.csv');
     Route::get('department/data/excel','excel')->name('department.data.excel');
+    Route::get('department/data/pdf','pdf')->name('department.data.pdf');
 });
 
     //Patient Export

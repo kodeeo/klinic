@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name',50);
             $table->text('description')->nullable();
-            $table->string('service_name');
+            $table->json('service_name');
             $table->string('service_quantity',20);
             $table->string('service_rate',20);    
             $table->string('discount',20);    

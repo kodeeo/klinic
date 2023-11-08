@@ -28,10 +28,24 @@
               </tr>
             </thead>
             <tbody>
+              
       @foreach($service as $key=>$data)
+
+      
+
                   <tr class="table-primary">
                       <th scope="row">{{$key+1}}</th>
-                      <td>{{$data->service_name}}</td>
+                     
+                      <td >{{$data->service_name}}</td>
+                      
+                      <td >
+                         @foreach($service->service_name as $name )
+
+                         <p>$name</p>
+                         @endforeach
+                        </td>
+
+                      
                       <td>{{$data->service_quantity}}</td>
                       <td>{{$data->service_rate}}</td>
                       
