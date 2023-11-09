@@ -30,17 +30,18 @@
           <input type="text" class="form-control" value="{{$nurse->mobile}}" id="mobile" name="mobile" placeholder="Enter Mobile Number">
       </div>
 
-      <div class="form-group col-6 mt-2">
-          <label for="gender">Gender <span style="color: red">*</span></label>
-          <select class="form-select" name="gender" aria-label="Default select example">
-            @foreach($genders as $gender) 
-                <option 
-                @if($gender==$nurse->gender) selected @endif 
-                value="{{$gender}}">{{$gender}}
-                </option>
-            @endforeach
-          </select>
-      </div>
+                <div class="form-group col-6 mt-2">
+                    
+                <label for="gender">Gender <span style="color: red">*</span></label>
+                    <select class="form-select" name="gender" aria-label="Default select example">
+                    @foreach($genders as $gender) 
+                        <option 
+                        @if($gender==$nurse->gender) selected @endif 
+                        value="{{$gender}}">{{$gender}}
+                        </option>
+                    @endforeach
+                    </select>
+                </div>
 
       <div class="form-group col-6 mt-2">
           <label for="age">Date of Birth <span style="color: red">*</span></label>

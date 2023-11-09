@@ -44,9 +44,8 @@ class StaffController extends Controller
     public function store(Request $request)
     {
 
-        
-          $validate=Validator::make($request->all(),[
-
+        $validate=Validator::make($request->all(),[
+            
             'role_id'=>'required',
             'first_name'=>'required',
             'last_name'=>'required',
@@ -59,17 +58,13 @@ class StaffController extends Controller
 
           ]);
 
+
         if($validate->fails()){
 
             Toastr::error('Validation failed');
             return redirect()->back();
         }
 
-
-
-
-        
-        
         $image_name=null;
         if($request->hasFile('image'))
         {
@@ -104,6 +99,11 @@ class StaffController extends Controller
         
     }
     
+
+
+        
+        
+
 
     /**
      * Display the specified resource.

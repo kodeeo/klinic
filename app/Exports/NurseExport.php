@@ -13,12 +13,15 @@ class NurseExport implements FromCollection,WithHeadings
     */
     public function collection()
     {
+
         return User::select('first_name','last_name','mobile','gender','email','address','date_of_birth')->where('role_id',3)->get();
+    
     }
 
     public function headings(): array
     {
         return [
+            
             "First Name",
             "Last Name",
             "Contact",

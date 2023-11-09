@@ -39,6 +39,8 @@
     </thead>
     <tbody>
       <tr>
+      
+      
       @foreach($nurses as $key=>$nurse)
         
         <th scope="row">{{$key+1}}</th>
@@ -47,24 +49,24 @@
         <td>{{$nurse->email}}</td>
         <td>{{$nurse->mobile}}</td>
         <td class="col-2">
-                    <div class="btn-group">
-                        <form action="{{ route('nurse.status.update',$nurse->id) }}" method="POST">
-                            @method('put')
-                            @csrf
-                            <div style="display: flex; align-items: center;">
-                                <div style="padding-right: 10px;">
-                                    <select name="status" class="form-select" aria-label="Default select example">
-                                        <option @if($nurse->status == 'Active') selected @endif value="Active">Active
-                                        </option>
-                                        <option @if($nurse->status == 'Inactive') selected @endif
-                                            value="Inactive">Inactive</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <button type="submit"><i class="fa-solid fa-circle-check"></i></button>
-                                </div>
-                            </div>
+        <div class="btn-group">
+            <form action="{{ route('nurse.status.update',$nurse->id) }}" method="POST">
+                @method('put')
+                @csrf
+                <div style="display: flex; align-items: center;">
+                    <div style="padding-right: 10px;">
+                        <select name="status" class="form-select" aria-label="Default select example">
+                            <option @if($nurse->status == 'Active') selected @endif value="Active">Active
+                            </option>
+                            <option @if($nurse->status == 'Inactive') selected @endif
+                                value="Inactive">Inactive</option>
+                        </select>
                     </div>
+                    <div>
+                        <button type="submit"><i class="fa-solid fa-circle-check"></i></button>
+                    </div>
+                </div>
+        </div>
                     </form>
                 </td>
         <td>
@@ -73,7 +75,7 @@
           <a class="btn btn-sm btn-warning m-1" href="{{route('nurses.edit',$nurse->id)}}"><i class="fas fa-edit"></i></a>
             <form style="margin-left: 3px" action="{{route('nurses.destroy',$nurse->id)}}" method="POST">
               @csrf
-              @method('DELETE')
+            @method('DELETE')
               <div>
                   <button class="btn btn-sm btn-danger m-1" type="submit"><i class="fas fa-trash"></i></button>
               </div> 
