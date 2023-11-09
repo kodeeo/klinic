@@ -9,6 +9,7 @@ use App\Models\Designation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Validator;
 
 class StaffController extends Controller
 {
@@ -42,23 +43,39 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        $image_name=null;
-        if($request->hasFile('image'))
-        {
-            $image_name=date('Ymdhis').'.'.$request->file('image')->getClientOriginalExtension();
-            $request->file('image')->storeAs('/uploads/staffs',$image_name);
-        }
 
-        $request->validate([
+        
+          $validate=Validator::make($request->all(),[
+
             'role_id'=>'required',
             'first_name'=>'required',
             'last_name'=>'required',
             'email'=>'required',
             'mobile'=>'required',
             'address'=>'required',
-            'date_of_birth'=>'required',
+            'date_of_birth'=>'required|date|before:01/01/2000',
             'gender'=>'required',
-        ]);
+      
+
+          ]);
+
+        if($validate->fails()){
+
+            Toastr::error('Validation failed');
+            return redirect()->back();
+        }
+
+
+
+
+        
+        
+        $image_name=null;
+        if($request->hasFile('image'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads/staffs',$image_name);
+        }
         
         User::create([
             'role_id'=>$request->role_id,   

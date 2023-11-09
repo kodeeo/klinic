@@ -178,6 +178,7 @@ Route::resource('staffs',StaffController::class);
 
     //Nurse
 Route::resource('nurses',NurseController::class);
+Route::put('/nurse/statusupdate/{id}',[NurseController::class,'statusUpdate'])->name('nurse.status.update');
 
     //WardBoy
 Route::resource('wardboys', WardboyController::class);
