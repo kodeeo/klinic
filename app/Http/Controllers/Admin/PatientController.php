@@ -75,7 +75,7 @@ class PatientController extends Controller
             Toastr::error('Something went wrong ! Please try again.');
             return redirect()->back();
         }
-        Log::Channel('custom')->info("Patient has been craeted successfully");
+       
         Toastr::success('Patient has been craeted successfully');
         return redirect()->route('patients.index');
         

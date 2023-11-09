@@ -35,8 +35,9 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h4>Patient Picture:</h4>
-            <img src="{{$patient->patient_image}}" style="border-radius:4px" width="200px" alt="patient image">
+            <img class="mb-3" src="{{$patient->patient_image}}" style="border-radius:4px" width="200px" alt="patient image">
+            <p><b><span>Full Name: </span>{{$patient->full_name}}</b></p>
+            
 
         </div>
     </div>

@@ -24,6 +24,14 @@ class Patient extends Model
     {
         return $this->first_name. ' '. $this->last_name;
     }
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['first_name'] = ucfirst($value);
+    }
+    public function setLastNameAttribute($value)
+    {
+        $this->attributes['last_name'] = ucfirst($value);
+    }
     public function setEmailAttAttribute($value)
     {
         $this->attributes['email'] = $value;
