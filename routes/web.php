@@ -182,6 +182,7 @@ Route::put('/nurse/statusupdate/{id}',[NurseController::class,'statusUpdate'])->
 
     //WardBoy
 Route::resource('wardboys', WardboyController::class);
+Route::put('/wardboy/statusupdate/{id}',[WardboyController::class,'statusUpdate'])->name('wardboy.status.update');
 
     //Designation resource controller
 Route::resource('designation',DesignationController::class);

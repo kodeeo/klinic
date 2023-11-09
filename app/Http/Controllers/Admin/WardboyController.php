@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Validator;
 
 class WardboyController extends Controller
 {
@@ -18,7 +19,7 @@ class WardboyController extends Controller
     public function index()
     {
         $role=Role::where('name','WardBoy')->first();
-        $wardboys=User::where('role_id',$role->id)->orderBy('id','desc')->get();
+        $wardboys=User::where('role_id',$role->id)->paginate(2);
         return view('admin.pages.staff.wardboy.index',compact('wardboys'));
     }
 
@@ -78,6 +79,23 @@ class WardboyController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validate=Validator::make($request->all(),[
+
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email'=>'required',
+            'mobile'=>'required',
+            'address'=>'required',
+            'date_of_birth'=>'required|date|before:01/01/2000',
+            'gender'=>'required',
+        ]);
+      
+        if($validate->fails()){
+
+            Toastr::error('Validation failed');
+            return redirect()->back();
+        }
         $wardboy=User::find($id);
         $image_name=$wardboy->image;
                 if($request->hasFile('image'))
@@ -109,5 +127,20 @@ class WardboyController extends Controller
     {
         $wardboy=User::find($id)->delete();
         return redirect()->back()->with(Toastr::error('Wardboy Deleted Successully'));
+    }
+
+    public function statusUpdate(Request $request,$id){
+
+        $wardboy=User::find($id);
+        if($wardboy){
+
+            $wardboy->update([
+
+                
+                'status'=>$request->status
+            ]);
+        }
+
+        return redirect()->route('wardboys.index');
     }
 }
