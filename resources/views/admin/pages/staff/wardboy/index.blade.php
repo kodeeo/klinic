@@ -45,8 +45,8 @@
         <td>
           <img src={{url('/uploads/staffs',$wardboy->image)}}  width="50px">
         </td>
-        <td>{{$wardboy->first_name. ''.$wardboy->last_name}}</td>
-        {{-- <td> {{$wardboy->last_name}}</td> --}}
+        <td>{{$wardboy->first_name. " ".$wardboy->last_name}}</td>
+        
         <td>{{$wardboy->email}}</td>
         <td>{{$wardboy->mobile}}</td>
         <td class="col-2">

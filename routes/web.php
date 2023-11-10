@@ -51,6 +51,8 @@ use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
 
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
+use App\Http\Controllers\Admin\Export\ServiceExportController;
+
 
 use App\Http\Controllers\Admin\Activities\BirthreportController;
 
@@ -287,6 +289,12 @@ Route::controller(NurseExportController::class)->group(function () {
 Route::controller(WardBoyExportController::class)->group(function () {
     Route::get('wardboy/data/csv','csv')->name('wardboy.data.csv');
     Route::get('wardboy/data/excel','excel')->name('wardboy.data.excel');
+});
+
+//service Export
+Route::controller(ServiceExportController::class)->group(function(){
+    Route::get('service/data/csv','csv')->name('service.data.csv');
+    Route::get('service/data/excel','excel')->name('service.data.excel');
 });
 
     //Doctor Export

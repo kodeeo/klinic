@@ -70,14 +70,14 @@
                     </form>
                 </td>
         <td>
-          <div style="display: flex">
-          <a class="btn btn-sm btn-success m-1" href="{{route('nurses.show',$nurse->id)}}"><i class="fas fa-eye"></i></a> 
-          <a class="btn btn-sm btn-warning m-1" href="{{route('nurses.edit',$nurse->id)}}"><i class="fas fa-edit"></i></a>
-            <form style="margin-left: 3px" action="{{route('nurses.destroy',$nurse->id)}}" method="POST">
+          <div style="display:flex">
+          <a class="btn btn-success btn-sm m-1" href="{{route('nurses.show',$nurse->id)}}"><i class="fas fa-eye"></i></a> 
+          <a class="btn btn-warning btn-sm m-1" href="{{route('nurses.edit',$nurse->id)}}"><i class="fas fa-edit"></i></a>
+            <form action="{{route('nurses.destroy',$nurse->id)}}" method="POST">
               @csrf
             @method('DELETE')
               <div>
-                  <button class="btn btn-sm btn-danger m-1" type="submit"><i class="fas fa-trash"></i></button>
+                  <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
               </div> 
             </form> 
           </div>      
