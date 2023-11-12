@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->constrained('departments')->restrictOnDelete();
+            $table->foreignId('department_id');
             $table->string('first_name',50);
             $table->string('last_name',50);
             $table->string('username',50);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Bill;
 use App\Http\Controllers\Controller;
 use App\Models\Admission;
 use App\Models\Bill;
+use App\Models\Patient;
 use App\Models\Service;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -22,6 +23,12 @@ class BillController extends Controller
     {
         $bills=Bill::orderBy('id','desc')->get();
         return view('admin.pages.Bill.bill_list',compact('bills'));
+    }
+
+    public function bill($id){
+
+        $find=Patient::find($id);
+    return view('admin.pages.bills.bill',compact('find'));
     }
 
 

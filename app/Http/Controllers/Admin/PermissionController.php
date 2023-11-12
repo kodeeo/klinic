@@ -75,7 +75,7 @@ class PermissionController extends Controller
 
     public function assign(Request $request, $role_id){
         $role=Role::find($role_id);
-        $role->permissions()->sync($request->permission_ids);
+        $role->permissions()->sync($request->permission_id);
         return redirect()->back();
     }
 
