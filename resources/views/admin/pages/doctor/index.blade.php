@@ -45,7 +45,7 @@
                 <td>{{$value->email}}</td>
                 <td>{{$value->mobile}}</td>
                 <td>
-                    @if($value->status=='active')
+                    @if($value->status=='active')   
                     <button class="btn btn-info" style="border-radius: 15px;">Active</button>
                     @else
                     <button class="btn btn-danger" style="border-radius: 15px;">Inactive</button>
