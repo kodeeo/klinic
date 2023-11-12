@@ -39,7 +39,7 @@ class InsuranceController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // dd($request->all());
 
             Insurance::create([
                 'name'=>$request->name,
@@ -53,10 +53,10 @@ class InsuranceController extends Controller
                 'hospital_rate'=>$request->hospital_rate,
                 'insurance_rate'=>$request->insurance_rate,
                 'total'=>$request->total,
-                'status'=>$request->status,
+                'status'=>'active',
             ]);
-            
-        
+
+
 
         return redirect()->route('insurance.index')->with(Toastr::success('Insurance Added Successfully'));
     }
