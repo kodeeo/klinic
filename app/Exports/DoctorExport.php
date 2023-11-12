@@ -13,20 +13,21 @@ class DoctorExport implements FromCollection,WithHeadings
     */
     public function collection()
     {
-        return Doctor::select('name','email','phone','address','date_of_birth','gender','degree','designation')->get();
+        return Doctor::select('first_name','last_name','email','phone','address','date_of_birth','gender','degree')->get();
     }
 
     public function headings(): array
     {
         return [
-            "Name",
+            "First Name",
+            "Last Name",
             "Email",
             "Phone",
             "Address",
             "Date Of Birth",
             "Gender",
             "Degreee",
-            "Designation",
+            
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Wardboy;
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
@@ -13,7 +13,8 @@ class WardboyExport implements FromCollection,WithHeadings
     */
     public function collection()
     {
-        return Wardboy::select('name','email','contact','address','joinDate','hrs')->get();
+
+        return User::select('first_name','last_name','mobile','gender','email','address','date_of_birth')->where('role_id',4)->get();
     }
 
     public function headings(): array
