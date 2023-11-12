@@ -60,6 +60,7 @@ use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
+use App\Http\Controllers\MedicinePurchaseController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 use App\Http\Controllers\DemoController;
@@ -119,17 +120,11 @@ Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user
 Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
 
 
-
-//users
-Route::get('/user/list',[UserController::class, 'u_list'])->name('user.list');
-Route::get('/user/add',[UserController::class, 'u_add'])->name('user.add');
-Route::post('/user/store',[UserController::class, 'u_store'])->name('user.store');
-Route::get('/user/view/{user_id}', [UserController::class,'u_view'])->name('user.details');
-Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.edit');
-
 //Patient
 
 Route::resource('patients', PatientController::class);
+
+
 
 //Patient_Admission
 Route::resource('admissions', AdmissionController::class);
@@ -170,7 +165,7 @@ Route::resource('doctor',DoctorController::class);
 Route::get('/doctor/pdf/print{id}',[DoctorController::class, 'doctorPdf'])->name('pdf.doctor');
 
 
-   //Prescription resource controller
+   //Prescription 
 Route::resource('prescription',PrescriptionController::class);
 
     //Staff resource controller
@@ -210,7 +205,7 @@ Route::resource('clinic',ClinicController::class);
 Route::get('select/ward',[BedController::class,'select_ward'])->name('assign.bed.create');
 Route::get('assign/bed/{ward_id}',[BedController::class,'assign_bed'])->name('assign.bed');
 Route::get('beds/assign/index',[BedController::class,'assigned_bed_index'])->name('assign.bed.index');
-Route::post('beds/assign/store',[BedController::class,'assign_bed_store'])->name('assign.bed.store');
+Route::post('beds/assign/store/{bed_id}',[BedController::class,'assign_bed_store'])->name('assign.bed.store');
 Route::get('assign/bed/edit/{id}',[BedController::class,'assign_bed_edit'])->name('assign.bed.edit');
 Route::resource('beds', BedController::class);
 
@@ -240,10 +235,13 @@ Route::resource('operational_activities', OperationalReportController::class);
 Route::resource('investigations', InvestigationController::class);
 Route::resource('medicine', MedicineController::class);
 Route::resource('medicine_category', MedicinecategoryController::class);
+Route::resource('medicine_purchase', MedicinePurchaseController::class);
 
 
 //Bill resouce
 Route::resource('bill', BillController::class);
+Route::get('/bill-invoice/{id}',[BillController::class,'bill'])->name('bill.invoice');
+
 
 //Advance Paymnet
 Route::resource('advancepayment', AdvancePaymentController::class);

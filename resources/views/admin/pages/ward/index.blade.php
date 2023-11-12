@@ -43,7 +43,7 @@
 </div>
 <hr>
 
-<div>
+<div style="overflow-x:auto">
     <table class="table" id="dataTable" style="text-align: center;">
         <thead class="thead-dark">
             <tr>
@@ -64,19 +64,19 @@
                 <!-- <td>Bed - {{$value->bed_number}}</td> -->
                 <td>{{$value->status}}</td>
 
-                <td style="display: flex">
-                    <!-- <a class="btn btn-success btn-sm" href="{{route('ward.show',$value->id)}}"><i
-                            class="fas fa-eye"></i></a> -->
-                    <!-- <a style="margin-left: 4px" class="btn btn-warning btn-sm"
-                        href="{{route('ward.edit',$value->id)}}"><i class="fas fa-edit"></i></a> -->
-                    <form style="margin-left: 4px" action="{{route('ward.destroy',$value->id)}}" method="POST">
+                <td >
+                <div style="display: flex">
+                    <a class="btn btn-success btn-sm m-1" href="{{route('ward.show',$value->id)}}"><i class="fas fa-eye"></i></a> 
+                     <a class="btn btn-warning btn-sm m-1"href="{{route('ward.edit',$value->id)}}"><i class="fas fa-edit"></i></a>
+                    <form style="margin-left: 3px" action="{{route('ward.destroy',$value->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <div>
-                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-danger m-1" type="submit"><i class="fas fa-trash"></i></button>
                         </div>
 
                     </form>
+                    <div>
                 </td>
             </tr>
 

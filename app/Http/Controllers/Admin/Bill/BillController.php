@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Bill;
 use App\Http\Controllers\Controller;
 use App\Models\Admission;
 use App\Models\Bill;
+use App\Models\Patient;
 use App\Models\Service;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -24,6 +25,12 @@ class BillController extends Controller
         return view('admin.pages.Bill.bill_list',compact('bills'));
     }
 
+    public function bill($id){
+
+        $find=Patient::find($id);
+    return view('admin.pages.bills.bill',compact('find'));
+    }
+
 
     /**
      * @return Application|Factory|View|RedirectResponse
@@ -34,7 +41,7 @@ class BillController extends Controller
         if(request()->has('admission_id'))
         {
             $services=Service::where('status','active')->get();
-            $admission=Admission::with(['patients','doctors'])->where('admission_id',\request()->admission_id)->first();
+            $admission=Admission::with(['patients','doctors'])->where('admission_id',request()->admission_id)->first();
             return view('admin.pages.Bill.create_bill',compact('admission','services'));
         }
         toastr()->warning('No Admission ID Found.');

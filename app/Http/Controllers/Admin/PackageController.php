@@ -10,36 +10,24 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class PackageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $packages = Package::all();
         // $services = Service::all();
         // dd($services->toArray());
         return view('admin.pages.packages.index', compact('packages'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         $services = Service::all();
         return view('admin.pages.packages.create', compact('services'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         // dd($request->all());
@@ -70,6 +58,7 @@ class PackageController extends Controller
         //         'status' => $request->status,
         //     ]);
         // }
+
 
         return redirect()->route('packages.index')->with(Toastr::success('Package Added Successfully'));
     }

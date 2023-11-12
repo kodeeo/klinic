@@ -11,22 +11,19 @@
     @method('PUT')
     @csrf
     <div class="row">
-          <div class="form-group col-6">
-            <label for="doctor_name">Doctor's Name</label>
+    <div class="form-group col-6 mt-2">
+            <label for="Doctor">Doctor</label>
             <select class="form-select" name="doctor_id" aria-label="Default select example">
-                <option>Select Doctor's Name</option>
+               
 
                 @foreach ($doctor as $item)
-
-
-                <option
-                @if($item->id==$schedule->doctor_id)
-                      selected
-                      @endif
-                  value="{{$item->id}}">{{$item->name}}</option>
+          <option
+         
+          value="{{$item->id}}">{{$item->fullname}}</option>            
                       @endforeach
               </select>
-          </div>
+        </div>
+       
           {{-- <div class="form-group col-6">
               <label for="email">Availabe Days</label>
               <input type="text" class="form-control" id="days" name="days" placeholder="Enter Availabe Days"><br>

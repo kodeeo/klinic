@@ -57,9 +57,9 @@
 
 
 
-
-              <table class="table"  >
-                <thead class="">
+<div style="overflow-x:auto">
+              <table class="table" id="dataTable" style="text-align: center;">
+                <thead class="thead-dark">
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
@@ -77,7 +77,7 @@
                           
                             <th>{{$key+1}}</th>
                             <td>{{$value->name}}</td>
-                            <td><img src="{{url('/uploads/departments/'.$value->image)}}" style="border-radius:4px" width="50px" alt="department image" />
+                            <td><img src="{{$value->image}}" style="border-radius:4px" width="50px" alt="department image" />
                 </td>
                             <td>{{$value->description}}</td>
                           
@@ -90,16 +90,26 @@
                             </td>
 
                             <td >
-                              <a  class="btn btn-success " href="{{route('view.department',$value->id)}}"><i class="fas fa-eye"></i></a>  
-                              <a  class="btn btn-warning " href="{{route('edit.department',$value->id)}}"><i class="fas fa-edit"></i></a>
-                              <a  class="btn btn-danger " href="{{route('delete.department',$value->id)}}"><i class="fas fa-trash"></i></a>
+                              <div style="display: flex">
+                              <a  class="btn btn-success btn-sm m-1" href="{{route('view.department',$value->id)}}"><i class="fas fa-eye"></i></a>  
+                              <a  class="btn btn-warning btn-sm m-1" href="{{route('edit.department',$value->id)}}"><i class="fas fa-edit"></i></a>
+                              
+                              <form style="margin-left: 3px" action="{{route('destroy.department',$value->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
 
+                            <div>
+                            <button class="btn btn-danger m-1" type="submit"><i class="fas fa-trash"></i></button>
+                        </div>
+                              </form>
+                              <div>
                             </td>  
                           </tr>
                     
                   @endforeach
                 </tbody>
               </table>
+</div>
               
 
 

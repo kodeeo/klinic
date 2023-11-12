@@ -37,3 +37,4 @@ class DoctorFactory extends Factory
         ];
     }
 }
+

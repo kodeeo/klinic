@@ -47,6 +47,9 @@
                 </li>
             @endif
 
+
+
+
             @if (hasAnyPermissions('patients.index'))
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#patients" aria-expanded="false" aria-controls="sidebarTasks"
@@ -123,6 +126,7 @@
                         </ul>
                     </div>
                 </li>
+
             @endif
 
 
@@ -295,7 +299,10 @@
                         </ul>
                     </div>
                 </li>
+
             @endif
+
+
 
             @if (hasAnyPermissions('bill.index'))
                 <li class="side-nav-item">
@@ -329,6 +336,7 @@
                         </ul>
                     </div>
                 </li>
+
             @endif
 
             @if (hasAnyPermissions('user.list'))

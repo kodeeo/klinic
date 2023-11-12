@@ -33,8 +33,11 @@ return view('admin.pages.roles.index_role', compact('roles'));
       $role = Role::create([
          'name' => $request->name,
          'slug' => Str::slug($request->name),
+         'description'=>$request->name
       ]);
       $role->permissions()->sync($request->permission_ids);
+
+      return redirect()->route('role.list');
    }
    
 

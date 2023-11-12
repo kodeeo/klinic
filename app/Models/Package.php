@@ -16,4 +16,8 @@ class Package extends Model
         'service_rate'=> 'array',
     ]   ;
 
+    public function service()
+    {
+        return $this->belongsTo(Service::class, "service_id","id");
+    }
 }
