@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 
 // use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\WardController;
-use App\Http\Controllers\Admin\CabinController;
+// use App\Http\Controllers\Admin\CabinController;
 use App\Http\Controllers\Admin\LoginController;
 
 use App\Http\Controllers\Admin\NurseController;
@@ -51,6 +51,8 @@ use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
 
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
+use App\Http\Controllers\Admin\Export\ServiceExportController;
+
 
 use App\Http\Controllers\Admin\Activities\BirthreportController;
 
@@ -60,11 +62,10 @@ use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 
 use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
+use App\Http\Controllers\MedicinePurchaseController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
-
-
-
+use App\Http\Controllers\DemoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +126,8 @@ Route::get('/user/edit/{user_id}',[UserController::class,'u_edit'])->name('user.
 
 Route::resource('patients', PatientController::class);
 
+
+
 //Patient_Admission
 Route::resource('admissions', AdmissionController::class);
 
@@ -142,7 +145,8 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('/view/department/{id}','view')->name('view.department');
     Route::get('/edit/department/{id}','edit')->name('edit.department');
     Route::put('/update/department/{id}','update')->name('update.department');
-    Route::get('/delete/department/{id}','delete')->name('delete.department');
+    Route::get('/delete/department/{id}','destroy')->name('destroy.department');
+    Route::put('status/department/{id}','statusUpdate')->name('department.status.update');
 });
 });
 
@@ -163,8 +167,10 @@ Route::resource('doctor',DoctorController::class);
 
 Route::get('/doctor/pdf/print{id}',[DoctorController::class, 'doctorPdf'])->name('pdf.doctor');
 
+Route::put('status/doctor/{id}',[DoctorController::class,'statusUpdate'])->name('doctor.status.update');
 
-   //Prescription resource controller
+
+   //Prescription 
 Route::resource('prescription',PrescriptionController::class);
 
     //Staff resource controller
@@ -172,9 +178,11 @@ Route::resource('staffs',StaffController::class);
 
     //Nurse
 Route::resource('nurses',NurseController::class);
+Route::put('/nurse/statusupdate/{id}',[NurseController::class,'statusUpdate'])->name('nurse.status.update');
 
     //WardBoy
 Route::resource('wardboys', WardboyController::class);
+Route::put('/wardboy/statusupdate/{id}',[WardboyController::class,'statusUpdate'])->name('wardboy.status.update');
 
     //Designation resource controller
 Route::resource('designation',DesignationController::class);
@@ -196,7 +204,7 @@ Route::put('/permission/update/{role_id}', [PermissionController::class, 'permis
 Route::resource('clinic',ClinicController::class);
 
   //Cabin resource controller
-Route::resource('cabin',CabinController::class);
+// Route::resource('cabin',CabinController::class);
 
 
     //Bed Manager
@@ -234,17 +242,20 @@ Route::resource('operational_activities', OperationalReportController::class);
 Route::resource('investigations', InvestigationController::class);
 Route::resource('medicine', MedicineController::class);
 Route::resource('medicine_category', MedicinecategoryController::class);
+Route::resource('medicine_purchase', MedicinePurchaseController::class);
 
 
 //Bill resouce
 Route::resource('bill', BillController::class);
+Route::get('/bill-invoice/{id}',[BillController::class,'bill'])->name('bill.invoice');
+
 
 //Advance Paymnet
 Route::resource('advancepayment', AdvancePaymentController::class);
 
 //Insurance
 Route::resource('insurance', InsuranceController::class);
-}); 
+});
 
 
 
@@ -278,6 +289,12 @@ Route::controller(WardBoyExportController::class)->group(function () {
     Route::get('wardboy/data/excel','excel')->name('wardboy.data.excel');
 });
 
+//service Export
+Route::controller(ServiceExportController::class)->group(function(){
+    Route::get('service/data/csv','csv')->name('service.data.csv');
+    Route::get('service/data/excel','excel')->name('service.data.excel');
+});
+
     //Doctor Export
 Route::controller(DoctorExportController::class)->group(function () {
     Route::get('doctor/data/csv','csv')->name('doctor.data.csv');
@@ -288,6 +305,7 @@ Route::controller(DoctorExportController::class)->group(function () {
 Route::controller(DoctorDeptExportController::class)->group(function () {
     Route::get('department/data/csv','csv')->name('department.data.csv');
     Route::get('department/data/excel','excel')->name('department.data.excel');
+    Route::get('department/data/pdf','pdf')->name('department.data.pdf');
 });
 
     //Patient Export
@@ -316,7 +334,7 @@ Route::controller(HospitalActivitiesExportController::class)->group(function () 
 
     Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
     Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
-    
+
 });
 
 
@@ -328,3 +346,9 @@ Route::controller(ProfileController::class)->group(function () {
     Route::get('password/edit/{id}','passwordEdit')->name('password.edit');
     Route::put('password/update/{id}','passwordUpdate')->name('password.update');
 });
+
+
+Route::resource('data', DemoController::class);#update
+Route::resource('data', DemoController::class);#show
+Route::resource('data', DemoController::class);#create
+Route::resource('data', DemoController::class);#index

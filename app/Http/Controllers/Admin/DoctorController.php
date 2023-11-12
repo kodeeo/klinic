@@ -26,7 +26,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors=Doctor::paginate(10);
+        $doctors=Doctor::paginate(5);
 
          return view('admin.pages.doctor.index',compact('doctors'));
     }
@@ -189,4 +189,18 @@ class DoctorController extends Controller
         $pdf=PDF::loadView('admin.pages.doctor.profile_pdf',compact('doctor')); 
         return $pdf->download('doctor.pdf'); 
     }
+
+    public function statusUpdate(Request $request,$id){
+        $doctor=Doctor::find($id);
+        if( $doctor){
+            $doctor->update([
+                
+                'status'=>$request->status,
+              
+               
+              
+            ]);
+        }
+        return redirect()->back();
+}
 }

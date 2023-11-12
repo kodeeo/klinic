@@ -15,6 +15,7 @@ class ClinicController extends Controller
     public function index()
     {
         $clinic=ClinicSetup::all();
+       
         return view('admin.pages.clinicSetup.show',compact('clinic'));
     }
     public function edit($id)

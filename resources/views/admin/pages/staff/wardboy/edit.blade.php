@@ -44,7 +44,7 @@
 
       <div class="form-group col-6 mt-2">
           <label for="age">Date of Birth <span style="color: red">*</span></label>
-          <input type="text" class="form-control" value="{{$wardboy->date_of_birth}}" id="age" name="date_of_birth" placeholder="Enter Age">
+          <input type="date" class="form-control" value="{{$wardboy->date_of_birth}}" id="age" name="date_of_birth" placeholder="Enter Age">
       </div>
 
       <div class="form-group col-6 mt-2">

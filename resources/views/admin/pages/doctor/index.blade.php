@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 
-<h1>{{__('Doctors')}}</h1>
+<h1>Doctors</h1>
 <hr>
 <div class="row" style="justify-content: space-between;">
     <div class="col">
@@ -40,16 +40,30 @@
             @foreach($doctors as $key=>$value)
             <tr>
                 <th>{{$key+1}}</th>
-                <td><img src="{{$value->image}}" style="border-radius:4px" width="50px" alt="doctor image"></td>
+                <td><img src="{{url('/uploads/doctors',$value->image)}}" style="border-radius:4px" width="50px" alt="doctor image"></td>
                 <td>{{$value->first_name.' '.$value->last_name}}</td>
                 <td>{{$value->email}}</td>
                 <td>{{$value->mobile}}</td>
-                <td>
-                    @if($value->status=='active')   
-                    <button class="btn btn-info" style="border-radius: 15px;">Active</button>
-                    @else
-                    <button class="btn btn-danger" style="border-radius: 15px;">Inactive</button>
-                    @endif
+                <td class="col-2">
+                    <div class="btn-group">
+                        <form action="{{ route('doctor.status.update',$value->id) }}" method="POST">
+                            @method('put')
+                            @csrf
+                            <div style="display: flex; align-items: center;">
+                                <div style="padding-right: 10px;">
+                                    <select name="status" class="form-select" aria-label="Default select example">
+                                        <option @if($value->status == 'Active') selected @endif value="Active">Active
+                                        </option>
+                                        <option @if($value->status == 'Inactive') selected @endif
+                                            value="Inactive">Inactive</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <button type="submit"><i class="fa-solid fa-circle-check"></i></button>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
                 </td>
                 <td>
                     <div style="display: flex">
@@ -69,6 +83,15 @@
             </tr>
             @endforeach
         </tbody>
+
+        
     </table>
+   
 </div>
+
+
+{{$doctors->links()}}
 @endsection
+
+
+
