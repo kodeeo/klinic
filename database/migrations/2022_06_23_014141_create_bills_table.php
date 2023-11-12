@@ -11,6 +11,7 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('patient_id')->constrained('patients');
             $table->foreignId('admission_id')->nullable()->constrained('admissions');
 

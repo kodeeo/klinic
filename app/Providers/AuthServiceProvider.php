@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Gate::define('do-everything', function ($user) {
+        //     return $user->hasPermission('do-everything');
+        // });
+
+        // Gate::define('do-one-thing', function ($user) {
+        //     return $user->hasPermission('do-one-thing');
+        // });
     }
 }

@@ -1,8 +1,31 @@
 @extends('admin.master')
 @section('content')
 <h1>{{__('Service List')}}</h1>
-<hr>
-<a href="{{route('services.create')}}"><button class="btn btn-primary">Add Service</button></a>
+
+<br>
+
+<div class="row" style="justify-content: space-between;">
+  <div class="d-print-none col">
+    <a href="{{route('services.create')}}"  class="btn btn-primary">Add Service</a>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="d-print-none col-4 dt-buttons btn-group">
+      <a class="btn btn-info" href="{{route('service.data.csv')}}">
+        CSV
+      </a>
+      <a class="btn btn-info" href="{{route('service.data.excel')}}">
+        Excel
+      </a>
+      <a class="btn btn-info" href="#">
+        PDF
+      </a>
+      <button class="btn btn-info" onclick="{window.print()}">Print</button>
+
+  </div>
+</div>
 <br><br>
 <div>
     <table class="table" id="dataTable" style="text-align: center;">
@@ -16,9 +39,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($services as $key=>$service)
+           
             <tr>
-                <th>{{$key+1}}</th>
+            @foreach($services as $key=>$service)
+                <th scope="row">{{$key+1}}</th>
                 <td>{{$service->name}}</td>
                 <td>{{$service->rate}}</td>
                 <td class="col-2">
@@ -44,18 +68,19 @@
                 </td>
                 <td>
                     <div style="display:flex">
-                        <a class="btn btn-success btn-sm" href="{{ route('services.show',$service->id) }}"><i
-                                class="fas fa-eye"></i></a>
-                        <a style="margin-left: 4px" class="btn btn-warning btn-sm" href="{{ route('services.edit',$service->id) }}"><i
-                                class="fas fa-edit"></i></a>
-                                <form style="margin-left: 4px" action="{{route('services.destroy',$service->id)}}" method="POST">
+
+                        <a class="btn btn-success btn-sm m-1" href="{{ route('services.show',$service->id) }}"><i class="fas fa-eye"></i></a>
+                        
+                        <a class="btn btn-sm btn-warning m-1" href="{{ route('services.edit',$service->id) }}"><i class="fas fa-edit"></i></a>
+                        
+                        <form action="{{route('services.destroy',$service->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <div>
-                                        <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
-                                    </div>
+                            <div>
+                                <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
+                            </div>
             
-                                </form>
+                        </form>
                     </div>
                 </td>
             </tr>
@@ -63,5 +88,5 @@
         </tbody>
     </table>
 </div>
-
+{{$services->links()}}
 @endsection

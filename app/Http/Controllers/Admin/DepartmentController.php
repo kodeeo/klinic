@@ -89,11 +89,25 @@ class DepartmentController extends Controller
          return redirect()->route('show.department');
 
       }
+
+      public function statusUpdate(Request $request,$id){
+        $department=Department::find($id);
+        if( $department){
+            $department->update([
+                
+                'status'=>$request->status,
+              
+               
+              
+            ]);
+        }
+        return redirect()->back();
+}
       public function destroy($id)
       {
         Department::find($id)->delete();
 
         Toastr::error('Department Deleted Successfully');
-          return redirect()->back();
+          return redirect()->route('show.department');
       }
 }
