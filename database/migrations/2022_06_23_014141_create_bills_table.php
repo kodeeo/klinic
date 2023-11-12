@@ -11,22 +11,31 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pastient_id');
-            $table->foreignId('admission_id')->nullable();
-            $table->string('bill_id')->unique();
-            $table->double('pay_advance')->nullable();
-            $table->date('bill_date');
-            $table->double('amount');
-            $table->string('payment_method');
-            $table->string('card_cheque_number')->nullable();
-            $table->string('receipt_number')->nullable();
-            $table->integer('discount')->nullable();
-            $table->double('total_payable');
-            $table->foreignId('service_id');
-            $table->foreignId('package_id')->nullable();
-            $table->text('remarks');
-            $table->string('note')->nullable();
-            $table->string('status')->default('0');
+
+            $table->foreignId('patient_id')->constrained('patients');
+            $table->foreignId('admission_id')->nullable()->constrained('admissions');
+
+            $table->date('bill_date')->default(now());
+
+            $table->double('total_amount')->default(0.0);
+            $table->double('payable_amount')->default(0.0);
+            $table->double('received_amount')->default(0.0);
+            $table->double('due_amount')->default(0.0);
+            $table->string('discount')->nullable()->comment('5% or 100 tk');
+            $table->string('discount_type',30)->default('amount')->comment('percentage or amount');
+            $table->double('discount_amount')->default(0.0)->comment('actual amount');
+            $table->double('extra_discount')->default(0.0)->comment('amount only');
+
+            $table->string('payment_method')->default('cash');
+            $table->string('sender_id')->nullable()->comment('card number, MB number, cheque');
+            $table->string('transaction_id')->nullable();
+            
+            $table->text('remarks')->nullable();
+            $table->string('status',20)->default('paid');
+
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            
             $table->timestamps();
 
 
