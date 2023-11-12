@@ -30,6 +30,7 @@ class PackageController extends Controller
    
     public function store(Request $request)
     {
+
         // dd($request->all());
 
         Package::create([
@@ -71,6 +72,7 @@ class PackageController extends Controller
      */
     public function show($id)
     {
+
         $service = Package::find($id);
         // dd($service);
         return view('admin.pages.packages.show', compact('service'));

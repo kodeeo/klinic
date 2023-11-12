@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+
     <h1>{{ __('Medicine Categories') }}</h1>
 
     <div class="row" style="justify-content: space-between;">

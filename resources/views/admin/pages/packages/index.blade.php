@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+
     <h1>{{ __('Package List') }}</h1>
     <hr>
     <a href="{{ route('packages.create') }}"><button class="btn btn-primary">Add Packages</button></a>

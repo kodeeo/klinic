@@ -101,11 +101,13 @@
     </div>
     <div class="form-group col-12 mt-2">
         <label for="status">Status:</label><br>
+
+        
        
-        <input type="radio"  name="status" value="active" {{$doctor->status=='active' ? 'checked':''}} >
+        <input type="radio"  name="status" value="active" {{$doctor->status=='active' ? checked}} >
         
           <label for="status">Active</label><br>
-          <input type="radio"  name="status" value="inactive" {{$doctor->status=='inactive' ? 'checked':''}}>
+          <input type="radio"  name="status" value="inactive" {{$doctor->status=='inactive' ? checked}}>
         
           <label for="status">Inactive</label><br>
         </div> 

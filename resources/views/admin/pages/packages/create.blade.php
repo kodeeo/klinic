@@ -4,6 +4,7 @@
     <hr>
     <br>
 
+
     {{-- <a href="{{route('create.category')}}" button type="submit" class="btn btn-primary">Create Category</button> </a>
 --}}
     <div>
@@ -89,6 +90,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script type="text/javascript">

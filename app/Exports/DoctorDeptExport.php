@@ -13,14 +13,17 @@ class DoctorDeptExport implements FromCollection,WithHeadings
     */
     public function collection()
     {
-        return Department::select('name','details')->get();
+        return Department::select('id','name','description','status')->get();
     }
 
     public function headings(): array
     {
         return [
+            "ID",
             "Name",
-            "Details",
+            "Description",
+            "Status",
+           
         ];
     }
 }

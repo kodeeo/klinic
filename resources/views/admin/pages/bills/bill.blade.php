@@ -61,8 +61,9 @@
                 <th scope="col">Unit Price</th>
                 <th scope="col">Qty</th>
                 <th scope="col">Discount</th>
-                <th scope="col">Purchase Date</th>
                 <th scope="col">Amount</th>
+                <th scope="col">Purchase Date</th>
+              
                
               
               </tr>

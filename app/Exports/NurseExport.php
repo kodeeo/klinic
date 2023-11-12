@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Nurse;
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
@@ -13,17 +13,23 @@ class NurseExport implements FromCollection,WithHeadings
     */
     public function collection()
     {
-        return Nurse::select('name','contact_no','email','address','duty_hrs')->get();
+
+        return User::select('first_name','last_name','mobile','gender','email','address','date_of_birth')->where('role_id',3)->get();
+    
     }
 
     public function headings(): array
     {
         return [
-            "Name",
+            
+            "First Name",
+            "Last Name",
             "Contact",
+            "Gender",
             "Email",
             "Address",
-            "Duty Hours",
+            "Date of birth",
+            
         ];
     }
 }

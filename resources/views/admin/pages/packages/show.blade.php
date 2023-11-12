@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+
     <h2>
         {{ __('Package Details') }}</h2>
     <p>Name: @foreach ($service->service_name as $name)
@@ -18,3 +19,4 @@
     <p>Discount: {{ $service->discount }}</p>
     <p>Status: {{ $service->status }}</p>
 @endsection
+
