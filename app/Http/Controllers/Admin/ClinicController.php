@@ -58,9 +58,10 @@ class ClinicController extends Controller
             'image'=>$filename
             ]);
         }catch(Exception $e){
-            return($e->getMessage());
+            Toastr::error($e->getMessage());
+           return redirect()->back();
         }
-            Toastr::success('successfully updated', 'Clinic');
+            Toastr::success('successfully updated', 'Clinic Setup');
             return redirect()->route('clinic.index');
     }
 }

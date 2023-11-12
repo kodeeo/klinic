@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone',20);
             $table->string('email',64)->unique();
             $table->string('web',50);
-            $table->string('image',50)->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

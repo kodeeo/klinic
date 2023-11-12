@@ -17,7 +17,8 @@ class AdmissionController extends Controller
 {
     
     public function index()
-    {
+    {   
+        
         $admissions=Admission::orderBy('id','desc')->get();
         return view('admin.pages.patient.admission.index',compact('admissions'));
     }
@@ -29,6 +30,7 @@ class AdmissionController extends Controller
         $doctors=Doctor::all();
         $package=Package::all();
         $insurance=Insurance::all();
+        
         
         
         return view('admin.pages.patient.admission.create',compact('doctors','package','insurance','patients'));
@@ -79,7 +81,7 @@ class AdmissionController extends Controller
     
     public function show($id)
     {
-        
+       
         $admission=Admission::with(['doctor','package'])->find($id);
         return view('admin.pages.patient.admission.show',compact('admission'));
     }
