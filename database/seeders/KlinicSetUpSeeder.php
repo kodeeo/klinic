@@ -23,7 +23,7 @@ class KlinicSetUpSeeder extends Seeder
             'phone'=>'01700000000',
             'email'=>'kodeeo@gmail.com',
             'web'=>'www.kodeeo.com',
-            'image'=>'klinic.png'
+            'image'=>'C:\laragon\www\LaravelProjects\Clinik\public\img\klinicLogo.png'
         ]);
         
     }

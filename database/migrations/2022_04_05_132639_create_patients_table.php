@@ -24,10 +24,12 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('gender',20);
             $table->string('blood_group')->nullable();
+
             $table->string('patient_image')->nullable();
             $table->text('address')->nullable();
             $table->string('status',15)->default('active');
             $table->string('ref_by')->nullable()->comment('refered doctor name with speciality');
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -17,7 +17,6 @@ class PackageController extends Controller
         // $services = Service::all();
         // dd($services->toArray());
         return view('admin.pages.packages.index', compact('packages'));
-
     }
 
    
