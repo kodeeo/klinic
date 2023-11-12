@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 
 // use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\WardController;
-use App\Http\Controllers\Admin\CabinController;
+// use App\Http\Controllers\Admin\CabinController;
 use App\Http\Controllers\Admin\LoginController;
 
 use App\Http\Controllers\Admin\NurseController;
@@ -65,9 +65,7 @@ use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\MedicinePurchaseController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
-
-
-
+use App\Http\Controllers\DemoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -172,7 +170,7 @@ Route::get('/doctor/pdf/print{id}',[DoctorController::class, 'doctorPdf'])->name
 Route::put('status/doctor/{id}',[DoctorController::class,'statusUpdate'])->name('doctor.status.update');
 
 
-   //Prescription resource controller
+   //Prescription 
 Route::resource('prescription',PrescriptionController::class);
 
     //Staff resource controller
@@ -206,7 +204,7 @@ Route::put('/permission/update/{role_id}', [PermissionController::class, 'permis
 Route::resource('clinic',ClinicController::class);
 
   //Cabin resource controller
-Route::resource('cabin',CabinController::class);
+// Route::resource('cabin',CabinController::class);
 
 
     //Bed Manager
@@ -257,7 +255,7 @@ Route::resource('advancepayment', AdvancePaymentController::class);
 
 //Insurance
 Route::resource('insurance', InsuranceController::class);
-}); 
+});
 
 
 
@@ -336,7 +334,7 @@ Route::controller(HospitalActivitiesExportController::class)->group(function () 
 
     Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
     Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
-    
+
 });
 
 
@@ -348,3 +346,9 @@ Route::controller(ProfileController::class)->group(function () {
     Route::get('password/edit/{id}','passwordEdit')->name('password.edit');
     Route::put('password/update/{id}','passwordUpdate')->name('password.update');
 });
+
+
+Route::resource('data', DemoController::class);#update
+Route::resource('data', DemoController::class);#show
+Route::resource('data', DemoController::class);#create
+Route::resource('data', DemoController::class);#index

@@ -12,36 +12,56 @@ class PackageController extends Controller
 {
    
     public function index()
-    {   
-        $packages=Package::with('service')->get();
-        // $services=Service::all();
-        return view('admin.pages.packages.index',compact('packages'));
+    {
+        $packages = Package::all();
+        // $services = Service::all();
+        // dd($services->toArray());
+        return view('admin.pages.packages.index', compact('packages'));
+
     }
 
    
     public function create()
     {
-        $services=Service::all();
-        return view('admin.pages.packages.create',compact('services'));
+        $services = Service::all();
+        return view('admin.pages.packages.create', compact('services'));
     }
 
    
     public function store(Request $request)
     {
-       
-     $package=$request->all();
 
-    
-     $service_name=$package['service_name'];
-     $service_quantity=$package['service_quantity'];
-     $service_rate=$package['service_rate'];
+        // dd($request->all());
 
-     $package['service_name']=implode(',',$service_name);
-     $package['service_quantity']=implode(',', $service_quantity);
-     $package['service_rate']=implode(',',$service_rate);
-       
-       Package::create($package);
-       return redirect()->route('packages.index')->with(Toastr::success('Package Added Successfully'));
+        Package::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'service_name' => $request->service_name,
+            'service_quantity' => $request->service_quantity,
+            'service_rate' => $request->service_rate,
+            'discount' => $request->discount,
+            'status' => $request->status,
+        ]);
+
+        // $services = $request->service_id;
+        // $quantity = $request->quantity;
+        // $rate = $request->rate;
+
+        // foreach ($services as $key => $service) {
+
+        //     Package::create([
+        //         'name' => $request->name,
+        //         'description' => $request->description,
+        //         'service_name' => $request->service_name,
+        //         'service_quantity' => $request->service_quantity[$key],
+        //         'service_rate' => $request->service_rate[$key],
+        //         'discount' => $request->discount,
+        //         'status' => $request->status,
+        //     ]);
+        // }
+
+
+        return redirect()->route('packages.index')->with(Toastr::success('Package Added Successfully'));
     }
 
     /**
@@ -52,10 +72,10 @@ class PackageController extends Controller
      */
     public function show($id)
     {
-        $package=Package::find($id);
-        $service=Package::where('id','=',$id)->get();
-        
-        return view('admin.pages.packages.show',compact('package','service'));
+
+        $service = Package::find($id);
+        // dd($service);
+        return view('admin.pages.packages.show', compact('service'));
     }
 
     /**
@@ -66,9 +86,9 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        $package=Package::find($id);
-       
-        return view('admin.pages.packages.edit',compact('package'));
+        $package = Package::find($id);
+
+        return view('admin.pages.packages.edit', compact('package'));
     }
 
     /**
@@ -78,7 +98,7 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-  
+
 
     /**
      * Remove the specified resource from storage.
@@ -90,21 +110,21 @@ class PackageController extends Controller
     {
         Package::find($id)->delete();
         Toastr::error('Package Deleted Successfully');
-        return redirect()->back(); 
-        
+        return redirect()->back();
     }
 
-    public function statusUpdate(Request $request,$id){
-        $packages=Package::find($id);
-        if($packages){
+    public function statusUpdate(Request $request, $id)
+    {
+        $packages = Package::find($id);
+        if ($packages) {
             $packages->update([
-                'name'=>$request->name,
-                'status'=>$request->status,
-                'description'=>$request->description,
-               
-                'discount'=>$request->discount,
+                'name' => $request->name,
+                'status' => $request->status,
+                'description' => $request->description,
+
+                'discount' => $request->discount,
             ]);
         }
         return redirect()->back();
-}
+    }
 }

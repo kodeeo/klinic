@@ -8,21 +8,23 @@
 {{-- <a href="{{route('create.category')}}" button type="submit" class="btn btn-primary">Create Category</button> </a>
 --}}
 <div style="text-align:center;">
-    <form action="{{route('prescription.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('prescription.create')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-8">
                 <div class="row">
-                    <div class="form-group col-6">
-                        <label for="patient_id">Patient ID</label>
-                        <input type="text" class="form-control" id="patient_id" name="patient_id"
-                            placeholder="Enter Patient ID" value="">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="patient_name">Patient Name</label>
-                        <input type="text" class="form-control" id="patient_name" name="patient_name"
-                            placeholder="Enter Patient Name" value="">
-                    </div>
+                <div class="form-group col-6">
+                <label for="weight">Patient Name</label>
+                <select class="form-select" aria-label="Default select example">
+  <option selected> select name</option>
+  @foreach($patient as $data)
+  <option >{{$data->full_name}}</option>
+  @endforeach
+  
+</select>
+</div>
+                 
+
 
                     <div class="form-group col-6">
                         <label for="weight">Weight</label>

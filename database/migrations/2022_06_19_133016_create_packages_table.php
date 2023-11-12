@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
+            $table->string('name', 50);
             $table->text('description')->nullable();
             $table->json('service_name');
             $table->string('service_quantity',20);
