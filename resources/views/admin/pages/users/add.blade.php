@@ -32,7 +32,7 @@
     </div>
   </div>
   <div class="form-group col-6 mt-2">
-      <button class="btn btn-success">Submit</button>
+      <button  type="submit" class="btn btn-success">Submit</button>
   </div>
   <br>
   </form>

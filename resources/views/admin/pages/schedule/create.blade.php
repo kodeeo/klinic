@@ -13,12 +13,12 @@
           <div class="form-group col-6">
             <label for="doctor_name">Doctor's Name</label>
             <select class="form-select" name="doctor_id" aria-label="Default select example">
-                <option>Select Doctor</option>
-                  @foreach ($doctor as $item)
-                <option value="{{$item->id}}">{{$item->name}}</option>
-                @endforeach
-            </select>
-          </div>
+              @foreach ($doctor as $item)
+            <option value="{{$item->id}}">{{$item->fullname}}</option>
+            @endforeach
+          </select>
+        </div>
+                
 
           <div class="form-group col-6">
             <label for="email">Per Patient Time (in minutes)</label>

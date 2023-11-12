@@ -23,9 +23,9 @@
                 <th>{{$key+1}}</th>
                 <td>{{$package->name}}</td>
                 <td>
-                    @foreach($services as $item)
-                        <button class="btn btn-info badge">{{$item->name}}</button>
-                    @endforeach
+                  
+                        <button class="btn btn-info badge">{{$package->service->name}}</button>
+                   
                 </td>
                 <td>{{$package->description}}</td>
                 <td>{{$package->discount}}</td>

@@ -18,7 +18,12 @@ class Prescription extends Model
 
     public function patient()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(Patient::class,'patient_id','id');
+    }
+
+    public function insurance()
+    {
+        return $this->belongsTo(Insurance::class,'insurance_id','id');
     }
 
 }

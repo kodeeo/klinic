@@ -3,31 +3,64 @@
 <div class="container">
     <h1>{{__('Admission Details')}}</h1>
     <hr>
-    <p><b>Patient ID: {{$admission->admission_id}}</b></p>
-    <p><b>Admission ID: {{$admission->patient_id}}</b></p>
-    <p><b>Patient's Name: {{$admission->patients->first_name.' '.$admission->patients->last_name}}</b></p>
-    <p><b>Doctor Name: {{$admission->doctors->first_name.' '.$admission->doctors->last_name}}</b></p>
-    <p><b>Admission Date: {{$admission->admission_date}}</b></p>
-    <p><b>Discharge Date: {{$admission->discharge_date}}</b></p>
-    <p><b>Package: {{$admission->package}}</b></p>
-    <p><b>Insurance: {{$admission->insurance}}</b></p>
-    <p><b>Height: {{$admission->height}}</b></p>
-    <p><b>Weight: {{$admission->weight}}</b></p>
-    <p><b>Allergies: {{$admission->allergies}}</b></p>
-    <p><b>Tendacny: {{$admission->tendancy}}</b></p>
-    <p><b>Heart Diseases: {{$admission->heart_diseases}}</b></p>
-    <p><b>High Blood Pressure: {{$admission->high_BP}}</b></p>
-    <p><b>Accident: {{$admission->accident}}</b></p>
-    <p><b>Diabetic: {{$admission->diabetic}}</b></p>
-    <p><b>Infection: {{$admission->infection}}</b></p>
-    <p><b>Quota: {{$admission->quota}}</b></p>
-    <p><b>Others: {{$admission->others}}</b></p>
-    <p><b>Status: {{$admission->status}}</b></p>
-
-    <h3>Guardian Info</h3>
-    <p><b>Guardian's Name: {{$admission->guardian_name}}</b></p>
-    <p><b>Relation: {{$admission->guardian_relation}}</b></p>
-    <p><b>Contact: {{$admission->guardian_contact}}</b></p>
-    <p><b>Address: {{$admission->guardian_address}}</b></p>
+    <div class="row">
+        <div class="col-md-2">
+            <p><b>Patient ID</b></p>
+            <p><b>Admission ID</b></p>
+            <p><b>Doctor Name</b></p>
+            <p><b>Admission Date</b></p>
+            <p><b>Package</b></p>
+            <p><b>Insurance</b></p>
+            <p><b>Height</b></p>
+            <p><b>Weight</b></p>
+            <p><b>Allergies</b></p>
+            <p><b>Tendacny</b></p>
+            <p><b>Heart Diseases</b></p>
+            <p><b>High Blood Pressure</b></p>
+            <p><b>Accident</b></p>
+            <p><b>Diabetic</b></p>
+            <p><b>Infection</b></p>
+            <p><b>Quota</b></p>
+            <p><b>Others</b></p>
+            <p><b>Status</b></p>
+            
+        </div>
+     
+        <div class="col-md-10">
+        <p><b><span>: </span>{{$admission->admission_id}}</b></p>
+        <p><b><span>: </span>{{$admission->patient_id}}</b></p>
+        <p><b><span>: </span>{{$admission->doctor->full_name}}</b></p>
+        <p><b><span>: </span>{{$admission->admission_date}}</b></p>
+        <p><b><span>: </span>{{$admission->package->name}}</b></p>
+        <p><b><span>: </span>{{$admission->insurance_id}}</b></p>
+        <p><b><span>: </span>{{$admission->height}}</b></p>
+        <p><b><span>: </span>{{$admission->weight}}</b></p>
+        <p><b><span>: </span>{{$admission->allergies}}</b></p>
+        <p><b><span>: </span>{{$admission->tendancy}}</b></p>
+        <p><b><span>: </span>{{$admission->heart_diseases}}</b></p>
+        <p><b><span>: </span>{{$admission->high_BP}}</b></p>
+        <p><b><span>: </span>{{$admission->accident}}</b></p>
+        <p><b><span>: </span>{{$admission->diabetic}}</b></p>
+        <p><b><span>: </span>{{$admission->infection}}</b></p>
+        <p><b><span>: </span>{{$admission->quota}}</b></p>
+        <p><b><span>: </span>{{$admission->others}}</b></p>
+        <p><b><span>: </span>{{$admission->status}}</b></p>
+     
+        </div>
+        <h3>Guardian Info</h3>
+            <div class="col-md-2">
+                <p><b>Guardian's Name</b></p>
+                <p><b>Relation</b></p>
+                <p><b>Contact</b></p>
+                <p><b>Address</b></p>
+            </div>
+            <div class="col-md-10">
+                <p><b><span>: </span>{{$admission->guardian_name}}</b></p>
+                <p><b><span>: </span>{{$admission->guardian_relation}}</b></p>
+                <p><b><span>: </span>{{$admission->guardian_contact}}</b></p>
+                <p><b><span>: </span>{{$admission->guardian_address}}</b></p>
+            </div>
+            
+    </div>
 </div>
 @endsection

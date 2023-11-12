@@ -38,7 +38,7 @@
         </div>
         <div class="form-group col-6 mt-2">
             <label for="phone">Phone No</label>
-            <input type="text" class="form-control" id="password" name="phone" placeholder="Enter Phone No">
+            <input type="text" class="form-control" id="password" name="phone" placeholder="Enter Phone No" required>
         </div>
         <div class="form-group col-6">
             <label for="mobile">Mobile No <span class="required">*</span> </label>

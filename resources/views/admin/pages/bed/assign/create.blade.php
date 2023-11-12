@@ -1,45 +1,106 @@
 @extends('admin.master')
 @section('content')
 
-<h1>{{ __('Assign Bed') }}</h1>
-<hr>
 
-{{-- <a href="{{route('create.category') }}" button type="submit" class="btn
-btn-primary">Create Category</button> </a> --}}
-<div style="padding-left: 250px; padding-right: 250px; text-align:center;">
-    <form action="{{ route('assign.bed.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="patient_id">Patient ID <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="patient_id" name="patient_id"
-                    placeholder="Enter Patient ID">
+    <style>
+      .container {
+        max-width: 600px;
+        border-radius: 10px;
+      }
+      .date-width {
+        width: 274px;
+      }
+      input[type="radio"] {
+        display: none;
+      }
+
+      .bedinform {
+        padding: 0.3em;
+        display: inline-block;
+        border: 1px solid grey;
+        cursor: pointer;
+        background-color: #66FF99;
+      }
+
+      
+
+      .blank-label {
+        display: none;
+      }
+
+      input[type="radio"]:checked + label {
+        background: orange;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <body>
+      <div class="container mt-5 shadow-sm p-3">
+        <h2>Assign Bed</h2>
+        <form action="{{route('assign.bed.store',$bedstatus->id)}}" method="post">
+          @csrf
+          <div class="d-flex justify-content-between">
+            <div class="form-group mb-3">
+              <label for="patient_id">Patient id</label>
+              <input type="string" class="form-control" id="exampleInputfirstname" name="patient_id"/>
             </div>
-            <div class="form-group col-6">
-                <label for="bed_type">Bed Type <span class="text-danger">*</span></label>
-                <select class="form-select" name="bed_type_id" aria-label="Select Bed Type">
-                    @foreach($bed_types as $item)
-                        <option value="{{ $item->id }}">{{ $item->type }}</option>
-                    @endforeach
-                </select>
+            <div class="form-group">
+              <label for="Ward">Ward </label>
+              <input type="integer" class="form-control" id="exampleInputlastname"  value="{{$ward->id}}" name="ward_id"/>
             </div>
-            <div class="form-group col-6 mt-2">
-                <label for="assign_date">Assign Date <span class="text-danger">*</span></label>
-                <input type="date" class="form-control" id="assign_date" name="assign_date"
-                    placeholder="Enter Assign Date">
-            </div>
-            <div class="form-group col-6 mt-2">
-                <label for="discharge_date">Discharge Date <span class="text-danger">*</span></label>
-                <input type="date" class="form-control" id="discharge_date" name="discharge_date"
-                    placeholder="Enter Discharge Date">
-            </div>
-            <div class="form-group col-12 mt-2">
-                <label for="description">Description <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="description" name="description" rows="5"
-                    placeholder="Enter Description"></textarea>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Submit</button>
-    </form>
-</div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="phoneno">Assign Date</label>
+            <input type="date" class="form-control date-width" id="exampleInputphoneno" name="assign_date"/>
+          </div>
+          <!-- bed list -->
+
+          
+          <h4>Bed</h4>
+          <div class="mb-3">
+          @foreach($beds as $data)
+         <input type="radio" id="bed1" name="bed_id" value="{{$data->id}}" />
+            <label class="bedinform" for="bed1">
+                {{$data->type}}-{{$data->id}}
+                {{$data->capacity}}
+
+            
+            </label>
+            @endforeach
+          </div>
+      
+       
+          <!-- bed list -->
+            <h4>Cabin</h4>
+          <div class="mb-3">
+          @foreach($cabins as $data)
+         <input type="radio" id="cabin" name="bed_id" value="{{$data->id}}" />
+            <label class="bedinform" for="cabin">
+            {{$data->type}}-{{$data->id}}
+                {{$data->capacity}}
+
+                
+            </label>
+
+           
+            @endforeach
+          </div>
+          
+          
+          
+          <div class="form-group mb-3">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" name="create">Submit</button>
+        </form>
+      </div>
+    </body>
+ 
+  </body>
+</html>
 @endsection
+
+

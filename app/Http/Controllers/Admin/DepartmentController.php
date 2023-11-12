@@ -11,7 +11,7 @@ class DepartmentController extends Controller
 {
     public function show()
     {
-        $department=Department::paginate(10);
+        $department=Department::paginate(5);
 
         return view('admin.pages.department.index',compact('department'));
     }
@@ -23,9 +23,17 @@ class DepartmentController extends Controller
             'description'=>'required',
 
         ]);
+
+        $image_name=null;
+        if($request->hasFile('department_image'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('department_image')->getClientOriginalExtension();
+            $request->file('department_image')->storeAs('/uploads/departments',$image_name);
+        }
         Department::create([
             'name'=>$request->name,
             'description'=>$request->description,
+            'image'=>$image_name,
             
 
         ]);
@@ -54,7 +62,7 @@ class DepartmentController extends Controller
 
 
           $department=Department::find($id);
-         
+        
 
           $image_name=$department->image;
           //              step 1: check image exist in this request.
@@ -65,7 +73,7 @@ class DepartmentController extends Controller
           
                       //step 3 : store into project directory
           
-                      $request->file('department_image')->storeAs('/departments',$image_name);
+                      $request->file('department_image')->storeAs('/uploads/departments',$image_name);
           
                   }
           $department->update([
@@ -81,7 +89,7 @@ class DepartmentController extends Controller
          return redirect()->route('show.department');
 
       }
-      public function delete($id)
+      public function destroy($id)
       {
         Department::find($id)->delete();
 

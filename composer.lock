@@ -3973,6 +3973,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/console/zipball/aa5d64ad3f63f2e48964fc81ee45cb318a723898",
                 "reference": "aa5d64ad3f63f2e48964fc81ee45cb318a723898",
+
                 "shasum": ""
             },
             "require": {
@@ -4034,6 +4035,7 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/console/tree/v6.3.2"
+
             },
             "funding": [
                 {
@@ -4049,7 +4051,9 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2023-07-19T20:17:28+00:00"
+
         },
         {
             "name": "symfony/css-selector",
@@ -4489,6 +4493,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/http-foundation/zipball/43ed99d30f5f466ffa00bdac3f5f7aa9cd7617c3",
                 "reference": "43ed99d30f5f466ffa00bdac3f5f7aa9cd7617c3",
+
                 "shasum": ""
             },
             "require": {
@@ -4537,6 +4542,7 @@
             "homepage": "https://symfony.com",
             "support": {
                 "source": "https://github.com/symfony/http-foundation/tree/v6.3.2"
+
             },
             "funding": [
                 {
@@ -4575,6 +4581,7 @@
                 "symfony/error-handler": "^6.3",
                 "symfony/event-dispatcher": "^5.4|^6.0",
                 "symfony/http-foundation": "^6.2.7",
+
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
@@ -4650,6 +4657,7 @@
             "homepage": "https://symfony.com",
             "support": {
                 "source": "https://github.com/symfony/http-kernel/tree/v6.3.3"
+
             },
             "funding": [
                 {
@@ -5578,6 +5586,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/process/zipball/c5ce962db0d9b6e80247ca5eb9af6472bd4d7b5d",
                 "reference": "c5ce962db0d9b6e80247ca5eb9af6472bd4d7b5d",
+
                 "shasum": ""
             },
             "require": {
@@ -5610,6 +5619,7 @@
             "homepage": "https://symfony.com",
             "support": {
                 "source": "https://github.com/symfony/process/tree/v6.3.2"
+
             },
             "funding": [
                 {
@@ -5626,6 +5636,7 @@
                 }
             ],
             "time": "2023-07-12T16:00:22+00:00"
+
         },
         {
             "name": "symfony/routing",
@@ -6137,6 +6148,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/var-dumper/zipball/77fb4f2927f6991a9843633925d111147449ee7a",
                 "reference": "77fb4f2927f6991a9843633925d111147449ee7a",
+
                 "shasum": ""
             },
             "require": {
@@ -6192,6 +6204,7 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/var-dumper/tree/v6.3.3"
+
             },
             "funding": [
                 {
@@ -6208,6 +6221,7 @@
                 }
             ],
             "time": "2023-07-31T07:08:24+00:00"
+
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

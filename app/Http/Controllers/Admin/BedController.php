@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DateTime;
 use App\Models\Bed;
+use App\Models\Ward;
 use App\Models\AssignBed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,8 @@ class BedController extends Controller
      */
     public function index()
     {
-        $beds=Bed::all();
+
+        $beds=Bed::with('ward')->paginate(10);
         return view('admin.pages.bed.index',compact('beds'));
 
     }
@@ -30,7 +32,8 @@ class BedController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.bed.create');
+        $wards=Ward::all();
+        return view('admin.pages.bed.create',compact('wards'));
     }
 
     /**
@@ -43,12 +46,15 @@ class BedController extends Controller
     {
         Bed::create([
             'type'=>$request->type,
+            'ward_id'=>$request->ward_id,
             'description'=>$request->description,
             'capacity'=>$request->capacity,
+            'cabin_type'=>$request->cabin_type,
             'charge'=>$request->charge,
             'status'=>$request->status,
         ]);
-        return redirect()->route('beds.index')->with(Toastr::success('Bed Type Added'));;
+        Toastr::success('Bed Type Added');
+        return redirect()->route('beds.index');
     }
 
     /**
@@ -92,7 +98,8 @@ class BedController extends Controller
             'charge'=>$request->charge,
             'status'=>$request->status,
         ]);
-        return redirect()->route('beds.index')->with(Toastr::success('Bed Updated Successfully'));
+        Toastr::success('Bed Updated Successfully');
+        return redirect()->route('beds.index');
     }
 
     /**
@@ -104,46 +111,67 @@ class BedController extends Controller
     public function destroy($id)
     {
         $beds=Bed::find($id)->delete();
-        return redirect()->back()->with(Toastr::error('Bed Deleted Successfully'));
+        Toastr::error('Bed Deleted Successfully');
+        return redirect()->back();
     }
 
     public function assigned_bed_index()
     {
-        $assign_beds=AssignBed::with('beds')->get();
+        $assign_beds=AssignBed::with(['bed','ward'])->get();
+        // dd($assign_beds[0]);
         return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
-    public function assign_bed_create()
+    public function select_ward()
     {
-        $bed_types=Bed::all();
-        return view('admin.pages.bed.assign.create',compact('bed_types'));
+        $ward=Ward::all();
+
+        return view('admin.pages.bed.assign.ward',compact('ward'));
     }
 
-    public function assign_bed_store(Request $request)
-    {
-        $from=new DateTime($request->assign_date);
-        $to=new DateTime($request->discharge_date);
-        $days= (($from->diff($to))->format('%a'))+1;
+    public function assign_bed($id){
+      
+        $ward=Ward::find($id);
+        $wards=Ward::all();
+      
+          $beds=Bed::where('type','=','bed')->where('ward_id','=',$id)->where('status','=','available')->get();
+       
+        $cabins=Bed::where('type','=','cabin')->where('ward_id','=',$id)->where('status','=','available')->get();
+        $bedstatus=Bed::find($id);
 
+        return view('admin.pages.bed.assign.create',compact('beds','cabins','ward','wards','bedstatus'));
+    }
+
+    public function assign_bed_store(Request $request,$id)
+    {
+
+       
         AssignBed::create([
 
             'patient_id'=>$request->patient_id,
-
-            'bed_type_id'=>$request->bed_type_id,
+            'ward_id'=>$request->ward_id,
+            'bed_id'=>$request->bed_id,
             'assign_date'=>$request->assign_date,
-            'discharge_date'=>$request->discharge_date,
-            'days'=>$days,
             'description'=>$request->description,
-            'assigned_by'=>auth()->user()->role->name,
         ]);
 
-        $beds=Bed::where('id',$request->bed_type_id)->first();
-
-        $beds->update([
-            'capacity'=>$beds->capacity-1
-        ]);
-
-        return redirect()->route('assign.bed.index');
+        $bedstatus=Bed::find($id);
+        $bedstatus->status='booked';
+        $bedstatus->save();
+         return redirect()->route('assign.bed.index');
     }
-
+    public function assign_bed_edit($id){
+        $find=AssignBed::find($id);
+        return view('admin.pages.bed.assign.edit',compact('find'));
+    }
+    
 }
+           
+           
+
+
+    
+      
+      
+
+

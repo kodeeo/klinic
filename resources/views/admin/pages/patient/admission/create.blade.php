@@ -25,7 +25,9 @@
             <div class="form-group col-6">
                 <label for="patient_id">Patient ID<span style="color:red">*</span></label>
                 <input type="text" class="form-control" id="patient_id" name="patient_id" placeholder="Enter Patient ID"
-                    value="{{request()->patient_id??old('patient_id')}}" required>
+                    value="{{request()->patient_id??old('patient_id')}}" required> 
+             
+                    
             </div>
 
             <div class="form-group col-6">
@@ -43,20 +45,26 @@
                 <input type="date" class="form-control" id="admission_date" name="admission_date" required>
             </div>
 
+           
+
             <div class="form-group col-3 mt-2">
-                <label for="discharge_date">Discharge Date</label>
-                <input type="date" class="form-control" id="discharge_date" name="discharge_date">
+            <label for="package_id">Package <span style="color:red">*</span></label>
+                <select class="form-select" name="package_id" aria-label="Default select example" required>
+                    <option>Select Package</option>
+                    @foreach ($package as $data)
+                    <option value="{{$data->id}}">{{$data->name}} </option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group col-3 mt-2">
-                <label for="package">Package Name</label></label>
-                <input type="text" class="form-control" id="package" name="package" placeholder="Enter Package Name">
-            </div>
-
-            <div class="form-group col-3 mt-2">
-                <label for="insurance">Insurance Name</label></label>
-                <input type="text" class="form-control" id="insurance" name="insurance"
-                    placeholder="Enter Insurance Name">
+            <label for="insurance_id">Insurance<span style="color:red">*</span></label>
+                <select class="form-select" name="insurance_id" aria-label="Default select example" required>
+                    <option>Select Insurance</option>
+                    @foreach ($insurance as $data)
+                    <option value="{{$data->id}}">{{$data->name}} </option>
+                    @endforeach
+                </select>
             </div>
 
             <hr class="mt-1">

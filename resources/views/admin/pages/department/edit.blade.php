@@ -19,6 +19,11 @@
               <label for="email">Description</label>
               <input type="text" class="form-control" id="description" name="description" value="{{ $department->description}}"placeholder="Enter Department Description">
           </div> 
+
+          <div class="mt-2">
+            <label for="image" class="form-label">Insert Image</label>
+            <input class="form-control" type="file" id="image" name="image">
+        </div>
           <div class="form-group col-12 mt-2">
             <label for="status">Status:</label><br>
            

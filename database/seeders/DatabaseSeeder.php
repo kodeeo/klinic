@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WardSeeder::class);
         $this->call(TestSeeder::class);
         $this->call(AssignTestSeeder::class);
-        $this->call(BedTableSeeder::class);
+        // $this->call(BedTableSeeder::class);
         $this->call(AssignBedSeeder::class);
         $this->call(AppointmentTableSeeder::class);
         $this->call(AdmissionTableSeeder::class);

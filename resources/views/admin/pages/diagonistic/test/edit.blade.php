@@ -43,10 +43,7 @@
             placeholder="Enter Test Description"><br>
     </div>
 
-    <div class="mb-3">
-        <label for="" class="form-label">Testing image</label>
-        <input name="image" placeholder="Enter picture" type="file" class="form-control" id="">
-    </div>
+    
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

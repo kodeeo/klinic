@@ -15,6 +15,7 @@ use App\Models\Prescription;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Insurance;
 use Brian2694\Toastr\Facades\Toastr;
 
 class PrescriptionController extends Controller
@@ -26,8 +27,8 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        $prescriptions = Prescription::with('patient')->get();
-//        dd($prescriptions);
+        $prescriptions = Prescription::with('patient','insurance')->get();
+
         return view('admin.pages.prescription.index', compact('prescriptions'));
     }
 
@@ -43,7 +44,8 @@ class PrescriptionController extends Controller
         $doctor = Doctor::all();
         $medicines = Medicine::all();
         $tests = Test::all();
-        return view('admin.pages.prescription.create', compact('doctor', 'medicines', 'tests','patient'));
+        $insurance=Insurance::all();
+        return view('admin.pages.prescription.create', compact('doctor', 'medicines', 'tests','patient','insurance'));
 
     }
 
@@ -72,7 +74,7 @@ class PrescriptionController extends Controller
             'fees' => $request->fees,
             'patient_note' => $request->patient_note,
             'complain' => $request->complain,
-            'insurance' => $request->insurance,
+            'insurance_id' => $request->insurance_id,
         ]);
         foreach ($request->medicine['id'] as $key => $data) {
             //create prescription medicine

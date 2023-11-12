@@ -146,15 +146,16 @@ class ScheduleController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->all());
+      
+
+        
         $days=$request->days;
         $fromtime=$request->fromtime;
         $totime=$request->totime;
-
-        Schedule::where('doctor_id',$request->doctor_id)->delete();
-
-        foreach($days as $key=>$day){
-        Schedule::insert([
-            'days'=>$day,
+        foreach($days as $key=>$days){
+        $schedule=Schedule::find($id);
+        $schedule->update([
+            'days'=>$days,
             'doctor_id'=>$request->doctor_id,   
             'patient_time'=>$request->patient_time,
             'serial'=>$request->serial,
@@ -162,11 +163,11 @@ class ScheduleController extends Controller
             'fromtime'=>$fromtime[$key],
             'totime'=>$totime[$key],
         ]);
-    }
+        }
 
     Toastr::success('Schedule Updated Successfully');
         return redirect()->route('schedule.index');
-}
+    }
 
     /**
      * Remove the specified resource from storage.

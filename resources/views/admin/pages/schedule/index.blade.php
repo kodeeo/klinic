@@ -45,7 +45,7 @@
                           <tr>
                           
                             <th>{{$key+1}}</th>
-                            <td>{{$value->doctor->name}}</td>
+                            <td>{{$value->doctor->fullname}}</td>
                             <td>{{$value->days}}</td>
                             <td>{{$value->fromtime}}</td>
                             <td>{{$value->totime}}</td>

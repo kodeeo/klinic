@@ -31,35 +31,31 @@
             <tr>
                 <th scope="col">SL.NO</th>
                 <th scope="col">Patient ID</th>
-                <th scope="col">Bed Type</th>
-                <th scope="col">Charge</th>
-                <th scope="col">Day</th>
-                <th scope="col">Total</th>
+                <th scope="col">Ward</th>
+                <th scope="col">Type</th>
+                <th scope="col">Cabin Type</th>
+                
                 <th scope="col">Assign Date</th>
-                <th scope="col">Discharge Date</th>
-                <th scope="col">Assigned By</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($assign_beds as $key=>$item)
-                <tr>
-                    <th>{{ $key+1 }}</th>
-                    <td>{{ $item->patient_id }}</td>
-                    <td>{{ $item->beds->type }}</td>
-                    <td>{{ $item->beds->charge }}</td>
-                    <td>{{ $item->days }}</td>
-                    <?php
-                    $total=$item->days*$item->beds->charge;
-                    ?>
+            
+       
+          @foreach($assign_beds as $key=>$item)
+              <tr>
+                  <th>{{ $key+1 }}</th>
+                  <td>{{ $item->patient_id }}</td>
+                  <td>{{ $item->ward->name }}</td>
+                    <td>{{ $item->bed->type }}-{{ $item->bed->id }}</td>
+                  <td>{{ $item->bed->cabin_type}}</td>
 
-                    <td>{{ $total }}</td>
-                    <td>{{ $item->assign_date }}</td>
-                    <td>{{ $item->discharge_date }}</td>
-                    <td>{{ $item->assigned_by }}</td>
+                
+                  <td>{{ $item->assign_date }}</td>
+                  
                     <td>
                         <div style="display: flex">
-                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="#"><i
+                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{route('assign.bed.edit',$item->id)}}"><i
                                     class="fas fa-edit"></i></a>
                             <form action="#" method="POST">
                                 @csrf
@@ -71,10 +67,18 @@
                         </div>
                     </td>
                 </tr>
-
+      
             @endforeach
         </tbody>
-    </table>
-
-</div>
-@endsection
+      </table>
+      
+      </div>
+      @endsection
+                  
+                
+    
+              
+                 
+              
+              
+               

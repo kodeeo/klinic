@@ -61,7 +61,7 @@
     <div class="form-group row">
         <label for="problem" class="col-xs-3 col-form-label">Problem</label>
         <div class="col-xs-9">
-            <textarea name="problem" class="form-control" placeholder="Problem" maxlength="140" rows="7"></textarea>
+            <textarea name="problem" class="form-control" placeholder="Problem" maxlength="140" rows="7" required></textarea>
         </div>
     </div>
 
@@ -70,7 +70,7 @@
         <div class="col-xs-9">
             <div class="form-check">
                 <label class="radio-inline">
-                    <input type="radio" name="status" value="Active" checked="&quot;checked&quot;">Active </label>
+                    <input type="radio" name="status" value="Active" checked="&quot;checked&quot;" >Active </label>
                 <label class="radio-inline">
                     <input type="radio" name="status" value="Inactive">Inactive </label>
             </div>

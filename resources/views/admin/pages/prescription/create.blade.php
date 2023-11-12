@@ -25,6 +25,7 @@
 </div>
                  
 
+
                     <div class="form-group col-6">
                         <label for="weight">Weight</label>
                         <input type="text" class="form-control" id="weight" name="weight"
@@ -43,11 +44,12 @@
 
                     <div class="form-group col-6 mt-2">
                       <label for="insurance">Select Insurance</label>
-                      <select class="form-select" name="insurance" aria-label="Default select example">
-                          <option selected>Select insurance</option>
-                          <option value="BUPA">BUPA</option>
-                          <option value="IFIC">IFIC</option>
 
+                      <select class="form-select" name="insurance_id" id="insurance" aria-label="Default select example">
+                        @foreach($insurance as $data)
+                          <option selected value="{{$data->id}}">{{$data->name}}</option>
+                        
+                        @endforeach
                       </select>
                   </div>
 

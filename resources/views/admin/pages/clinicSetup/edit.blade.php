@@ -26,7 +26,7 @@
 
           <div class="form-group col-6">
             <label for="name">Slogan</label>
-            <input type="text" class="form-control" value="{{$clinic->slogan}}"  name="slogan" placeholder="Enter Clinic Slogan" >
+            <input type="text" class="form-control" value="{{$clinic->slogan}}"  name="slogan" placeholder="Enter Clinic Slogan" required>
           </div>
 
           <div class="form-group col-6">
@@ -50,8 +50,8 @@
           </div>
 
           <div class="mb-3">
-            <label for="" class="form-label">Logo</label>
-            <input name="image" placeholder="Enter picture" type="file" class="form-control" id="">
+            <label class="form-label">Logo</label>
+            <input name="image" placeholder="Enter picture" type="file" class="form-control">
         </div>
       
     <br>
