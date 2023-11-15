@@ -49,7 +49,7 @@
             <input type="text" class="form-control" value="{{$clinic->web}}"  name="web" placeholder="Enter Website Link" required>
           </div>
 
-          <div class="mb-3">
+          <div class="from-group col-6 ">
             <label class="form-label">Logo</label>
             <input name="image" placeholder="Enter picture" type="file" class="form-control">
         </div>

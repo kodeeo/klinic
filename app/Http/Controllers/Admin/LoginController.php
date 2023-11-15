@@ -17,7 +17,7 @@ class LoginController extends Controller
     {
         // dd($request->all());
         $userlogin=$request->except('_token');
-        // dd(Auth::attempt($userlogin));
+        // dd($userlogin);
         if(Auth::attempt($userlogin)){
         // dd(auth()->user());
 

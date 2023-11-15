@@ -7,13 +7,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Cache;
 
 class PatientController extends Controller
 {
 
     public function index()
     {
-        $patients=Patient::orderBy('id','desc')->get();
+        if(Cache::has("patients"))
+        {
+            $patients = Patient::orderBy("id","desc")->paginate(10);
+            Cache::get("patients", $patients);
+        }else{
+            $patients=Patient::orderBy('id','desc')->get();
+            Cache::put('patients',$patients);
+        }
         return view('admin.pages.patient.index',compact('patients'));
     }
 
@@ -26,44 +34,48 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-        $image_name=null;
-        if ($request->hasFile('patient_image'))
-        {
-            $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
-             $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
+        try{
+
+            $image_name=null;
+            if ($request->hasFile('patient_image'))
+            {
+                $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
+                 $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
+            }
+                $request->validate([
+                    'first_name'=>'required |string',
+                    'last_name'=>'required',
+                    'email'=>'required|email',
+                    'password'=>'required |string |min:6 |max:16',
+                    'gender'=>'required |string',
+                    'date_of_birth'=>'required |date',
+                    'address'=>'required',
+                    'mobile'=>'required|numeric|min:10 |regex:/^([0-9\s\-\+\(\)]*)$/',
+                    'blood_group'=>'required',
+                   'patient_image'=>'required'
+                   ]);
+    
+                //creating new patients
+            $patient=new Patient();
+                $patient->create([
+                'patient_id'=>'P'.date('Ymd').$patient->latest()->first()->id+1,
+                'first_name'=>$request->first_name,
+                'last_name'=>$request->last_name,
+                'email'=>$request->email,
+                'password'=>bcrypt($request->password),
+                'date_of_birth'=>$request->date_of_birth,
+                'gender'=>$request->gender,
+                'address'=>$request->address,
+                'mobile'=>$request->mobile,
+                'blood_group'=>$request->blood_group,
+                'patient_image'=>$image_name
+            ]);
+        }catch(\Exception $e){
+            Log::channel('custom')->error('Patient'.$e->getMessage());
+            Toastr::error('Something went wrong ! Please try again.');
+//             return redirect()->back();
+           return redirect()->route('patients.index');
         }
-            $request->validate([
-                'first_name'=>'required',
-                'last_name'=>'required',
-                'email'=>'required',
-                'password'=>'required',
-                'gender'=>'required',
-                'date_of_birth'=>'required',
-                'address'=>'required',
-                'mobile'=>'required',
-                'blood_group'=>'required',
-//                'patient_image'=>'required'
-               ]);
-
-            //creating new patients
-        $patient=new Patient();
-            $patient->create([
-            'patient_id'=>'P'.date('Ymd').$patient->latest()?->first()?->id+1,
-            'first_name'=>$request->first_name,
-            'last_name'=>$request->last_name,
-            'email'=>$request->email,
-            'password'=>bcrypt($request->password),
-            'date_of_birth'=>$request->date_of_birth,
-            'gender'=>$request->gender,
-            'address'=>$request->address,
-            'mobile'=>$request->mobile,
-            'blood_group'=>$request->blood_group,
-            'patient_image'=>$image_name
-        ]);
-        Log::Channel('custom')->info("Patient has been craeted successfully");
-
-        return redirect()->route('patients.index')->with(Toastr::success('Patient has been craeted successfully'));
-
     }
 
 
@@ -81,17 +93,10 @@ class PatientController extends Controller
         return view('admin.pages.patient.edit',compact('patient','genders'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
         {
             //dd($request->all());
-
+           try{
 
                $image_name=null;
                if ($request->hasFile('patient_image'))
@@ -99,7 +104,7 @@ class PatientController extends Controller
                    $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
                     $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
                }
-
+    
         $patient=Patient::find($id);
             $patient->update([
             'first_name'=>$request->first_name,
@@ -114,24 +119,21 @@ class PatientController extends Controller
             'patient_image'=>$image_name
         ]);
 
-
-        //Log::Channel('custom')->info("Patient has been updated successfully");
-
         return redirect()->route('patients.index')->with(Toastr::success('Patient has been updated successfully'));
         }
+           catch(\Exception $e)
+           {
+            Log::channel('custom')->error('Patient'.$e->getMessage());
+            Toastr::error('Something went wrong ! Please try again.');
+            return redirect()->back();
+           }
+        }
 
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Patient::find($id)->delete();
-        return redirect()->back()->with(Toastr::error('Patient Deleted Successully'));
+        Toastr::error('Patient Deleted Successully');
+        return redirect()->back();
     }
 }
 
