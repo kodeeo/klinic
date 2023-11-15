@@ -65,6 +65,7 @@ class PrescriptionController extends Controller
         //     'blood_pressure'=>'required',
         //     'reference'=>'required',
         // ]);
+        
         $prescription=Prescription::create([
             'doctor_id' => auth()->user()->id,
             'patient_id' => $request->patient_id,
