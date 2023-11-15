@@ -98,7 +98,7 @@ class ScheduleController extends Controller
     public function edit($id)
     {
 
-        
+
         $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         $serial = ['sequential', 'timestamp'];
         $schedule = Schedule::find($id);
@@ -151,6 +151,17 @@ class ScheduleController extends Controller
     {
         Schedule::find($id)->delete();
         Toastr::error('Schedule Deleted Successfully');
+        return redirect()->back();
+    }
+    public function statusUpdate(Request $request, $id)
+    {
+        $schedule = Schedule::find($id);
+        if ($schedule) {
+            $schedule->update([
+                'status' => $request->status,
+            ]);
+        }
+        Toastr::success('Schedule Status Update ');
         return redirect()->back();
     }
 }

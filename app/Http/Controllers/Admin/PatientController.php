@@ -10,20 +10,20 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class PatientController extends Controller
 {
-    
+
     public function index()
     {
         $patients=Patient::orderBy('id','desc')->get();
         return view('admin.pages.patient.index',compact('patients'));
     }
 
-   
+
     public function create()
     {
         return view('admin.pages.patient.create');
     }
 
-   
+
     public function store(Request $request)
     {
         $image_name=null;
@@ -48,7 +48,7 @@ class PatientController extends Controller
             //creating new patients
         $patient=new Patient();
             $patient->create([
-            'patient_id'=>'P'.date('Ymd').$patient->latest()->first()->id+1,
+            'patient_id'=>'P'.date('Ymd').$patient->latest()?->first()?->id+1,
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
             'email'=>$request->email,
@@ -63,17 +63,17 @@ class PatientController extends Controller
         Log::Channel('custom')->info("Patient has been craeted successfully");
 
         return redirect()->route('patients.index')->with(Toastr::success('Patient has been craeted successfully'));
-        
+
     }
 
-  
+
     public function show($id)
     {
         $patient=Patient::find($id);
         return view('admin.pages.patient.show',compact('patient'));
     }
 
-   
+
     public function edit($id)
     {
         $patient=Patient::find($id);
@@ -91,7 +91,7 @@ class PatientController extends Controller
     public function update(Request $request, $id)
         {
             //dd($request->all());
-           
+
 
                $image_name=null;
                if ($request->hasFile('patient_image'))
@@ -114,13 +114,13 @@ class PatientController extends Controller
             'patient_image'=>$image_name
         ]);
 
-      
+
         //Log::Channel('custom')->info("Patient has been updated successfully");
 
         return redirect()->route('patients.index')->with(Toastr::success('Patient has been updated successfully'));
         }
-    
-    
+
+
 
     /**
      * Remove the specified resource from storage.

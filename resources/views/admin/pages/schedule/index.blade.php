@@ -6,13 +6,13 @@
 
     <div class="row" style="justify-content: space-between;">
         <div class="col">
-            <a href="{{route('schedule.create')}}" class="btn btn-primary">Add Schedule</a>
+            <a href="{{ route('schedule.create') }}" class="btn btn-primary">Add Schedule</a>
         </div>
         <div class="col-4 dt-buttons btn-group">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="{{ route('schedule.csv.export') }}">
                 CSV
             </a>
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="{{ route('schedule.excel.export') }}">
                 Excel
             </a>
             <a class="btn btn-info" href="#">
@@ -35,6 +35,7 @@
                     <th scope="col">To Time</th>
                     <th scope="col">Patient Time</th>
                     <th scope="col">Serial Visibility</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -63,6 +64,28 @@
                         <td>{{ $value->patient_time }}</td>
                         <td>{{ $value->serial }}</td>
                         <td>{{ $value->status }}</td>
+                        <td class="col-2">
+                            <div class="btn-group">
+                                <form action="{{ route('schedule.status.update',$value->id) }}" method="POST">
+                                    @method('put')
+                                    @csrf
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="padding-right: 10px;">
+                                            <select name="status" class="form-select" aria-label="Default select example">
+                                                <option @if ($value->status == 'active') selected @endif value="active">
+                                                    Active
+                                                </option>
+                                                <option @if ($value->status == 'inactive') selected @endif value="inactive">
+                                                    Inactive</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <button type="submit"><i class="fa-solid fa-circle-check"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </td>
 
 
                         <td style="display: flex;">

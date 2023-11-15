@@ -45,7 +45,7 @@
                     <label for="insurance_code" class="col-xs-3 col-form-label">Insurance Code</label>
                     <input name="insurance_code" type="number" class="form-control" id="insurance_code"
                         placeholder="Insurance Code" value="">
-                </div>number
+                </div>
 
                 {{-- <div class="form-group row">
                 <div data-role="dynamic-fields"> --}}
