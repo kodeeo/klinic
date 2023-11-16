@@ -74,7 +74,7 @@
                                 <h5>Medicine Name</h5>
                             </th>
                             <th class="col-2">
-                                <h5>Type</h5>
+                                <h5>Dose</h5>
                             </th>
                             <th class="col-4">
                                 <h5>Instructions</h5>
@@ -117,7 +117,7 @@
                     var medicinewrapper = $('.medicine_field_wrapper'); //Input field wrapper
                     var x = 1; //Initial field counter is 1
                     var fieldHTML =
-                        '<div class="medicine row d-flex"><div class="col-3"><select id="medicine_id" name="medicine[id][]" class="form-control"> @foreach ($medicines as $medicine)<option value="{{ $medicine->id }}">{{ $medicine->name }}</option> @endforeach</select></div><div class="col-2"><input type="text" name="medicine[medicine_type][]" class="form-control" placeholder="Medicine Type" value=""/></div><div class="col-4"><textarea type="text" name="medicine[medicine_instruction][]" class="form-control" placeholder"Enter Instruction" value=""/></textarea></div><div class="col-1"><input type="text" name="medicine[days][]" class="form-control" placeholder="Days" value=""/></div><div class="col-2"><a href="javascript:void(0);" class="remove_medicine_button btn btn-danger">Remove</a></div><hr class="row" style="height:1px; margin-left:0.5rem; margin-top: 1rem;"></div>'; //New input field html
+                        '<div class="medicine row d-flex"><div class="col-3"><select id="medicine_id" name="medicine[id][]" class="form-control"> @foreach ($medicines as $medicine)<option value="{{ $medicine->id }}">{{ $medicine->name }}</option> @endforeach</select></div><div class="col-2"><input type="text" name="medicine[medicine_type][]" class="form-control" placeholder="Medicine Dose" value=""/></div><div class="col-4"><textarea type="text" name="medicine[medicine_instruction][]" class="form-control" placeholder"Enter Instruction" value=""/></textarea></div><div class="col-1"><input type="text" name="medicine[days][]" class="form-control" placeholder="Days" value=""/></div><div class="col-2"><a href="javascript:void(0);" class="remove_medicine_button btn btn-danger">Remove</a></div><hr class="row" style="height:1px; margin-left:0.5rem; margin-top: 1rem;"></div>'; //New input field html
 
                     //Once add button is clicked
                     $(addMedicineButton).click(function() {

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Activities;
 
-use App\Http\Controllers\Controller;
-use App\Models\BirthReport;
 use App\Models\Doctor;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Patient;
+use App\Models\BirthReport;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class BirthreportController extends Controller
 {
@@ -17,7 +18,7 @@ class BirthreportController extends Controller
      */
     public function index()
     {
-        $birthReport=BirthReport::all();
+        $birthReport = BirthReport::all();
         return view('admin.pages.hospital activities.birth report.index', compact('birthReport'));
     }
 
@@ -28,7 +29,7 @@ class BirthreportController extends Controller
      */
     public function create()
     {
-        $doctor=Doctor::all();
+        $doctor = Doctor::all();
         return view('admin.pages.hospital activities.birth report.create', compact('doctor'));
     }
 
@@ -40,14 +41,28 @@ class BirthreportController extends Controller
      */
     public function store(Request $request)
     {
-        BirthReport::create([
-            'patient_id'=>$request->patient_id,
-            'date' => $request->date,
-            'title' => $request->title,
-            'description' => $request->description,
-            'doctor_id'=>$request->doctor_name,
+        // dd($request->all());
+        $request->validate([
+            'patient_id' => 'required',
+            'date' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'doctor_id' => 'required',
         ]);
-        return redirect()->route('birth_report.index')->with(Toastr::success('Birth report created successfully'));
+
+        $patient = Patient::where('patient_id', $request->patient_id)->first();
+        if ($patient) {
+            BirthReport::create([
+                'patient_id' => $request->patient_id,
+                'date' => $request->date,
+                'title' => $request->title,
+                'description' => $request->description,
+                'doctor_id' => $request->doctor_id,
+            ]);
+            return redirect()->route('birth_report.index')->with(Toastr::success('Birth report created successfully'));
+        } else {
+            return redirect()->back()->with(Toastr::error('No Patient Found'));
+        }
     }
 
     /**
@@ -58,7 +73,7 @@ class BirthreportController extends Controller
      */
     public function show($id)
     {
-        $birthReport=BirthReport::find($id);
+        $birthReport = BirthReport::find($id);
         return view('admin.pages.hospital activities.birth report.view', compact('birthReport'));
     }
 
@@ -70,9 +85,9 @@ class BirthreportController extends Controller
      */
     public function edit($id)
     {
-        $birthReport=BirthReport::find($id);
+        $birthReport = BirthReport::find($id);
         $doctor = Doctor::all();
-        return view('admin.pages.hospital activities.birth report.edit', compact('birthReport','doctor'));
+        return view('admin.pages.hospital activities.birth report.edit', compact('birthReport', 'doctor'));
     }
 
     /**
@@ -84,15 +99,29 @@ class BirthreportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $birthReport=BirthReport::find($id);
-        $birthReport->update([
-            'patient_id'=>$request->patient_id,
-            'date' => $request->date,
-            'title' => $request->title,
-            'description' => $request->description,
-            'doctor_id'=>$request->doctor_name,
+        // dd($request->all());
+        $request->validate([
+            'patient_id' => 'required',
+            'date' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'doctor_id' => 'required',
         ]);
-        return redirect()->route('birth_report.index')->with(Toastr::info('Birth report updated successfully'));
+
+        $patient = Patient::where('patient_id', $request->patient_id)->first();
+        if ($patient) {
+            $birthReport = BirthReport::find($id);
+            $birthReport->update([
+                'patient_id' => $request->patient_id,
+                'date' => $request->date,
+                'title' => $request->title,
+                'description' => $request->description,
+                'doctor_id' => $request->doctor_id,
+            ]);
+            return redirect()->route('birth_report.index')->with(Toastr::info('Birth report updated successfully'));
+        } else {
+            return redirect()->back()->with(Toastr::error('No Patient Found'));
+        }
     }
 
     /**
