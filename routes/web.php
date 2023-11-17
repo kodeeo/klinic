@@ -49,6 +49,7 @@ use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
+use App\Http\Controllers\Admin\Export\BedExportController;
 
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
 use App\Http\Controllers\Admin\Export\ServiceExportController;
@@ -314,6 +315,14 @@ Route::controller(PatientExportController::class)->group(function () {
     Route::get('patient/data/excel','excel')->name('patient.data.excel');
     Route::get('patient/data/pdf','pdf')->name('patient.data.pdf');
     Route::get('patient/data/print','print')->name('patient.data.print');
+});
+
+
+//bed export
+
+Route::controller(BedExportController::class)->group(function (){
+    Route::get('bed/data/excel','excel')->name('bed.excel');
+    Route::get('bed/data/csv','csv')->name('bed.csv');
 });
 
 

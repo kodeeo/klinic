@@ -20,7 +20,7 @@ class BedController extends Controller
     public function index()
     {
 
-        $beds=Bed::with('ward')->paginate(10);
+        $beds=Bed::with('ward')->paginate(3);
         return view('admin.pages.bed.index',compact('beds'));
 
     }
@@ -77,8 +77,12 @@ class BedController extends Controller
      */
     public function edit($id)
     {
+        $wards=Ward::all();
         $beds=Bed::find($id);
-        return view('admin.pages.bed.edit',compact('beds'));
+        $capacity=['single','double'];
+        $cabintype=['ac','non ac'];
+        $bedtype=['bed','cabin'];
+        return view('admin.pages.bed.edit',compact('beds','wards','capacity','cabintype','bedtype'));
     }
 
     /**
@@ -96,6 +100,8 @@ class BedController extends Controller
             'description'=>$request->description,
             'capacity'=>$request->capacity,
             'charge'=>$request->charge,
+            'ward_id'=>$request->ward_id,
+            'cabin_type'=>$request->cabin_type,
             'status'=>$request->status,
         ]);
         Toastr::success('Bed Updated Successfully');
@@ -163,6 +169,10 @@ class BedController extends Controller
     public function assign_bed_edit($id){
         $find=AssignBed::find($id);
         return view('admin.pages.bed.assign.edit',compact('find'));
+    }
+
+    public function excel(){
+        
     }
     
 }

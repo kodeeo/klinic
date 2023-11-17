@@ -11,10 +11,10 @@
     </div>
 
     <div class="col-4 dt-buttons btn-group">
-        <a class="btn btn-info d-print-none" href="#">
+        <a class="btn btn-info d-print-none" href="{{route('bed.csv')}}">
             CSV
         </a>
-        <a class="btn btn-info d-print-none" href="#">
+        <a class="btn btn-info d-print-none" href="{{route('bed.excel')}}">
             Excel
         </a>
         <a class="btn btn-info d-print-none" href="#">
@@ -49,7 +49,7 @@
                     <td>{{ $bed->type }}</td>
                     <td>{{ $bed->ward->name }}</td>
                     <td>{{ $bed->capacity }}</td>
-                    <td>{{ $bed->type }}</td>
+                    <td>{{ $bed->cabin_type }}</td>
                     <td>{{ $bed->charge }}</td>
                     <td>{{ $bed->status }}</td>
 
@@ -74,7 +74,7 @@
             @endforeach
         </tbody>
     </table>
-
+    {{$beds->links()}}
 </div>
 
 

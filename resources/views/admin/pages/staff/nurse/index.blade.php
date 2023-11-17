@@ -56,10 +56,10 @@
                 <div style="display: flex; align-items: center;">
                     <div style="padding-right: 10px;">
                         <select name="status" class="form-select" aria-label="Default select example">
-                            <option @if($nurse->status == 'Active') selected @endif value="Active">Active
+                            <option @if($nurse->status == 'active') selected @endif value="active">Active
                             </option>
-                            <option @if($nurse->status == 'Inactive') selected @endif
-                                value="Inactive">Inactive</option>
+                            <option @if($nurse->status == 'inactive') selected @endif
+                                value="inactive">Inactive</option>
                         </select>
                     </div>
                     <div>
