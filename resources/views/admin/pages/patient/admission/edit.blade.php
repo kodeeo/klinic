@@ -50,13 +50,13 @@
 
             <div class="form-group col-3 mt-2">
                 <label for="package">Package Name</label>
-                <input type="text" class="form-control" id="package" name="package" value="{{$admission->package->name}}"
+                <input type="text" class="form-control" id="package" name="package" value="{{$admission->package->name ?? 'N/A'}} "
                     placeholder="Enter Package Name">
             </div>
 
             <div class="form-group col-3 mt-2">
                 <label for="insurance">Insurance Name</label>
-                <input type="text" class="form-control" id="insurance" value="{{$admission->insurance}}"
+                <input type="text" class="form-control" id="insurance" value="{{$admission->insurance ?? 'N/A'}} "
                     name="insurance" placeholder="Enter Insurance Name">
             </div>
 
@@ -155,7 +155,7 @@
             </div>
             <div class="form-group col-4 mt-2">
                 <label for="others">Others</label>
-                <textarea type="text" class="form-control" id="others" name="others" rows="3">{{$admission->others}}</textarea>
+                <textarea type="text" class="form-control" id="others" name="others" rows="3">{{$admission->others ?? 'N/A'}}</textarea>
             </div>
 
             <hr class="mt-1">

@@ -49,6 +49,7 @@ use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
+use App\Http\Controllers\Admin\Export\AdmissionExportController;
 
 use App\Http\Controllers\Admin\Export\WardBoyExportController;
 use App\Http\Controllers\Admin\Export\ServiceExportController;
@@ -315,6 +316,15 @@ Route::controller(PatientExportController::class)->group(function () {
     Route::get('patient/data/pdf','pdf')->name('patient.data.pdf');
     Route::get('patient/data/print','print')->name('patient.data.print');
 });
+
+//Admission Export
+Route::controller(AdmissionExportController::class)->group(function(){
+    Route::get('admission/data/csv','csv')->name('admission.data.csv');
+    Route::get('admission/data/excel','excel')->name('admission.data.excel');
+    Route::get('admission/data/pdf','pdf')->name('admission.data.pdf');
+    Route::get('admission/data/print','print')->name('admission.data.print');
+});
+
 
 
 //Hospital Activities Export

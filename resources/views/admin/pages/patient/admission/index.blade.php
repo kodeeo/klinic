@@ -2,10 +2,28 @@
 @section('content')
 
 <h1>{{__('Admitted Patients List')}}</h1>
+<hr>
+<div class="row" style="justify-content: space-between;">
+    <div class="col">
+        <a class="btn btn-success mt-2" href="{{route('admissions.create')}}">Admit Patient</a>
+        
+    </div>
+    <div class="col-4 dt-buttons btn-group">
+        <a class="btn btn-info" href="{{ route('admission.data.csv') }}">
+            CSV
+        </a>
+        <a class="btn btn-info" href="{{ route('admission.data.excel') }}">
+            Excel
+        </a>
+        <a class="btn btn-info" href="{{ route('admission.data.pdf') }}">
+            PDF
+        </a>
+        <button class="btn btn-info" onclick="{window.print()}">Print</button>
 
-<a class="btn btn-success mt-2" href="{{route('admissions.create')}}">Admit Patient</a>
-
+    </div>
+</div>
 <br><br>
+<div>
 
 <div style="overflow-x: auto">
     <table class="table" id="dataTable" style="text-align: center;">
@@ -36,9 +54,9 @@
                 
                 <td>{{$item->doctor->full_name}}</td>
                 
-                <td>{{$item->package->name}}</td>
+                <td>{{$item->package->name ?? 'N/A'}}</td>
                
-                <td>{{$item->insurance_id}}</td>
+                <td>{{$item->insurance_id ?? 'N/A'}}</td>
                 
                 
                 <td>{{$item->status}}</td>

@@ -1,9 +1,10 @@
+
 <div class="leftside-menu">
     <!-- LOGO -->
     <a href="{{ route('admin.dashboard') }}" class="logo text-center logo-light">
         <span class="logo-lg">
 
-            <img src="{{ $klinic->image }}" width="170px" alt="Company Logo">
+            <img src="{{ $klinic->image }}" height="80" width="160" alt="Company Logo">
 
         </span>
         <span class="logo-sm">

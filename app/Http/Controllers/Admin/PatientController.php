@@ -50,9 +50,9 @@ class PatientController extends Controller
                     'gender'=>'required |string',
                     'date_of_birth'=>'required |date',
                     'address'=>'required',
-                    'mobile'=>'required|numeric|min:10 |regex:/^([0-9\s\-\+\(\)]*)$/',
+                    'mobile'=>'required|min:10',
                     'blood_group'=>'required',
-                   'patient_image'=>'required'
+                //    'patient_image'=>'required'
                    ]);
     
                 //creating new patients
