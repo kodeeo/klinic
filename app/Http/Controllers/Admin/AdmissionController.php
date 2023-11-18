@@ -40,72 +40,78 @@ class AdmissionController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+       try{
+
+           $validate=Validator::make($request->all(),[
+               'patient_id'        => 'required',
+               'doctor_id'         => 'required',
+               'admission_date'    => 'required |date',
+               'height'            => 'required',
+               'weight'            => 'required',
+               'allergies'         => 'required',
+               'tendancy'          => 'required',
+               'heart_diseases'    => 'required',
+               'high_BP'           => 'required',
+               'accident'          => 'required',
+               'diabetic'          => 'required',
+               'infection'         => 'required',
+               'quota'             => 'required',
+               'guardian_name'     => 'required |string',
+               'guardian_relation' => 'required |string',
+               'guardian_contact'  => 'required |numeric',
+               'guardian_address'  => 'required |string',
+           ]);
+           if( $validate->fails() ){
+               toastr()->error($validate->getMessageBag()->first());
+           }
+   
+           $checkPatient=Patient::where('patient_id',$request->patient_id)->exists();
+           
+           $checkAdmitted= Admission::where('patient_id', $request->patient_id)->exists();
+           
+           if($checkPatient) {
+               if( !$checkAdmitted ) {
+                   $admission=new Admission();
+                   $admission->create([
+                       'admission_id'      => 'A'.date('Ymd').$admission->latest()->first()->id+1,
+                       'patient_id'        => $request->patient_id,
+                       'doctor_id'         => $request->doctor_id,
+                       'admission_date'    => $request->admission_date,
+                       'package_id'        => $request->package_id,
+                       'insurance_id'      => $request->insurance_id,
+                       'height'            => $request->height,
+                       'weight'            => $request->weight,
+                       'allergies'         => $request->allergies,
+                       'tendancy'          => $request->tendancy,
+                       'heart_diseases'    => $request->heart_diseases,
+                       'high_BP'           => $request->high_BP,
+                       'accident'          => $request->accident,
+                       'diabetic'          => $request->diabetic,
+                       'infection'         => $request->infection,
+                       'quota'             => $request->quota,
+                       'others'            => $request->others,
+                       'guardian_name'     => $request->guardian_name,
+                       'guardian_relation' => $request->guardian_relation,
+                       'guardian_contact'  => $request->guardian_contact,
+                       'guardian_address'  => $request->guardian_address,
+                   ]);
+   
+                   toastr()->success('Admission has been successfully created.');
+                   return redirect()->route('admissions.index');
+   
+               }
+               toastr()->info('Patient Already Admitted.');
+               return redirect()->back();
+           }
+           toastr()->error('Invalid Patient ID');
+            return redirect()->back();
+   
        
-            $validate=Validator::make($request->all(),[
-                'patient_id'        => 'required',
-                'doctor_id'         => 'required',
-                'admission_date'    => 'required |date',
-                'height'            => 'required',
-                'weight'            => 'required',
-                'allergies'         => 'required',
-                'tendancy'          => 'required',
-                'heart_diseases'    => 'required',
-                'high_BP'           => 'required',
-                'accident'          => 'required',
-                'diabetic'          => 'required',
-                'infection'         => 'required',
-                'quota'             => 'required',
-                'guardian_name'     => 'required |string',
-                'guardian_relation' => 'required |string',
-                'guardian_contact'  => 'required |numeric',
-                'guardian_address'  => 'required |string',
-            ]);
-            if( $validate->fails() ){
-                toastr()->error($validate->getMessageBag()->first());
-            }
-
-            $checkPatient=Patient::where('patient_id',$request->patient_id)->exists();
-            
-            $checkAdmitted= Admission::where('patient_id', $request->patient_id)->exists();
-            
-            if($checkPatient) {
-                if( !$checkAdmitted ) {
-                    $admission=new Admission();
-                    $admission->create([
-                        'admission_id'      => 'A'.date('Ymd').$admission->latest()->first()->id+1,
-                        'patient_id'        => $request->patient_id,
-                        'doctor_id'         => $request->doctor_id,
-                        'admission_date'    => $request->admission_date,
-                        'package_id'        => $request->package_id,
-                        'insurance_id'      => $request->insurance_id,
-                        'height'            => $request->height,
-                        'weight'            => $request->weight,
-                        'allergies'         => $request->allergies,
-                        'tendancy'          => $request->tendancy,
-                        'heart_diseases'    => $request->heart_diseases,
-                        'high_BP'           => $request->high_BP,
-                        'accident'          => $request->accident,
-                        'diabetic'          => $request->diabetic,
-                        'infection'         => $request->infection,
-                        'quota'             => $request->quota,
-                        'others'            => $request->others,
-                        'guardian_name'     => $request->guardian_name,
-                        'guardian_relation' => $request->guardian_relation,
-                        'guardian_contact'  => $request->guardian_contact,
-                        'guardian_address'  => $request->guardian_address,
-                    ]);
-    
-                    toastr()->success('Admission has been successfully created.');
-                    return redirect()->route('admissions.index');
-
-                }
-                toastr()->info('Patient Already Admitted.');
-                return redirect()->back();
-            }
-            toastr()->error('Invalid Patient ID');
-             return redirect()->back();
-
-        
+       }catch(Exception $e){
+        Log::channel('custom')->error('Admission'.$e->getMessage());
+        toastr()->error('something went wrong! please try again');
+        return redirect()->back();
+       }
     }
     public function show($id)
     {
