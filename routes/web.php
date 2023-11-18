@@ -62,7 +62,6 @@ use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
 use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 
-use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
 use App\Http\Controllers\MedicinePurchaseController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
@@ -242,7 +241,6 @@ Route::resource('death_report', DeathreportController::class);
 Route::resource('operational_activities', OperationalReportController::class);
 Route::resource('investigations', InvestigationController::class);
 Route::resource('medicine', MedicineController::class);
-Route::resource('medicine_category', MedicinecategoryController::class);
 Route::resource('medicine_purchase', MedicinePurchaseController::class);
 
 

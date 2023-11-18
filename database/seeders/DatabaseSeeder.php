@@ -68,7 +68,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DeathSeeder::class);
         $this->call(OperationSeeder::class);
         $this->call(InvestigationSeeder::class);
-        $this->call(MedicineCategorySeeder::class);
         $this->call(MedicineSeeder::class);
         $this->call(PrescriptionTableSeeder::class);
         $this->call(PackageTableSeeder::class);
