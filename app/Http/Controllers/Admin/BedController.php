@@ -123,8 +123,8 @@ class BedController extends Controller
 
     public function assigned_bed_index()
     {
-        $assign_beds=AssignBed::with(['bed','ward'])->get();
-        // dd($assign_beds[0]);
+        $assign_beds=AssignBed::with(['ward','bed'])->get();
+// ($assign_beds[0]);
         return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
@@ -171,7 +171,11 @@ class BedController extends Controller
         return view('admin.pages.bed.assign.edit',compact('find'));
     }
 
-    public function excel(){
+    public function assign_bed_delete($id){
+
+        AssignBed::find($id)->delete();
+
+        return redirect()->route('assign.bed.index');
         
     }
     

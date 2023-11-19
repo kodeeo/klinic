@@ -47,7 +47,7 @@
 
                     <th>{{ $key+1 }}</th>
                     <td>{{ $bed->type }}</td>
-                    <td>{{ $bed->ward->name }}</td>
+                    <td>{{ $bed->ward->name ??'null' }}</td>
                     <td>{{ $bed->capacity }}</td>
                     <td>{{ $bed->cabin_type }}</td>
                     <td>{{ $bed->charge }}</td>

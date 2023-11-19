@@ -223,6 +223,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('beds/assign/index', [BedController::class, 'assigned_bed_index'])->name('assign.bed.index');
     Route::post('beds/assign/store/{bed_id}', [BedController::class, 'assign_bed_store'])->name('assign.bed.store');
     Route::get('assign/bed/edit/{id}', [BedController::class, 'assign_bed_edit'])->name('assign.bed.edit');
+    Route::get('assign/bed/delete/{id}', [BedController::class, 'assign_bed_delete'])->name('assign.bed.delete');
     Route::resource('beds', BedController::class);
 
 

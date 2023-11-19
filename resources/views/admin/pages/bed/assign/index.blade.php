@@ -46,9 +46,11 @@
               <tr>
                   <th>{{ $key+1 }}</th>
                   <td>{{ $item->patient_id }}</td>
-                  <td>{{ $item->ward->name }}</td>
-                    <td>{{ $item->bed->type }}-{{ $item->bed->id }}</td>
-                  <td>{{ $item->bed->cabin_type}}</td>
+                  <td>{{ $item->ward->name ??'null' }}</td>
+               
+                    <td>{{ $item->bed->type ??'null' }}</td>
+                    
+                  <td>{{ $item->bed->cabin_type ??'null' }}</td>
 
                 
                   <td>{{ $item->assign_date }}</td>
@@ -57,13 +59,9 @@
                         <div style="display: flex">
                             <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{route('assign.bed.edit',$item->id)}}"><i
                                     class="fas fa-edit"></i></a>
-                            <form action="#" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <div>
-                                    <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </form>
+                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{route('assign.bed.delete',$item->id)}}"><i
+                                    class="fas fa-destroy"></i></a>
+                       
                         </div>
                     </td>
                 </tr>
