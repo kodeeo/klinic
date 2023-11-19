@@ -43,7 +43,6 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\PrescriptionController;
-use App\Http\Controllers\Admin\AdvancePaymentController;
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
@@ -64,6 +63,8 @@ use App\Http\Controllers\Admin\Export\TestCategoryExportController;
 
 use App\Http\Controllers\MedicinePurchaseController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
+use App\Http\Controllers\Admin\AdvancePaymentController;
+use App\Http\Controllers\Admin\Export\AdvancePaymentExportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 use App\Http\Controllers\DemoController;
 
@@ -252,6 +253,7 @@ Route::get('/bill-invoice/{id}',[BillController::class,'bill'])->name('bill.invo
 //Advance Paymnet
 Route::resource('advancepayment', AdvancePaymentController::class);
 
+
 //Insurance
 Route::resource('insurance', InsuranceController::class);
 });
@@ -337,13 +339,19 @@ Route::controller(HospitalActivitiesExportController::class)->group(function () 
     Route::get('operational/report/csv','operational_csv')->name('operational.report.csv');
     Route::get('operational/report/excel','operational_excel')->name('operational.report.excel');
 
-    Route::get('medicine_category/report/csv','medicine_category_csv')->name('medicine_category.report.csv');
-    Route::get('medicine_category/report/excel','medicine_category_excel')->name('medicine_category.report.excel');
-
     Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
     Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
 
 });
+
+//AdvancePaymentExportControlller
+Route::controller(AdvancePaymentExportController::class)->group(function(){
+    Route::get('advancepayment/data/csv','csv')->name('advancepayment.data.csv');
+    Route::get('advancepayment/data/excel','excel')->name('advancepayment.data.excel');
+    Route::get('advancepayment/data/pdf','pdf')->name('advancepayment.data.pdf');
+    Route::get('advancepayment/data/print','print')->name('advancepayment.data.print');
+});
+
 
 
 //Profile
