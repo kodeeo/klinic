@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use PDF;
 use App\Models\Doctor;
+use Barryvdh\DomPDF\PDF;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
 {
@@ -60,13 +60,13 @@ class DoctorController extends Controller
             'email'=>'required',
             'mobile'=>'required',
             'address'=>'required',
-            'date_of_birth'=>'required|date|before:01/01/1995',   
+            'date_of_birth'=>'required|date|before:01/01/1995',
             'gender'=>'required',
             'department_id'=>'required',
             'specialist'=>'required',
             'degree'=>'required',
             'password'=>'required'
-        
+
         ]);
 
         if($validate->fails()){
@@ -84,9 +84,9 @@ class DoctorController extends Controller
 
 
         Doctor::create([
-            'first_name'=>$request->first_name,   
-            'last_name'=>$request->last_name,   
-            'username'=>$request->username,   
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'username'=>$request->username,
             'email'=>$request->email,
             'phone'=>$request->phone,
             'mobile'=>$request->mobile,
@@ -126,7 +126,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {    
+    {
         $blood=['A+','A-','B+','B-','O+','O-','AB+','AB-'];
         $doctor=Doctor::find($id);
         $department=Department::all();
@@ -149,19 +149,19 @@ class DoctorController extends Controller
                     $image_name=date('Ymdhis') .'.'. $request->file('doctor_image')->getClientOriginalExtension();
                     $request->file('doctor_image')->storeAs('/uploads/doctors',$image_name);
                 }
-        
+
         $doctor->update([
-            'first_name'=>$request->first_name,   
-            'last_name'=>$request->last_name,   
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
             'email'=>$request->email,
             'phone'=>$request->phone,
             'address'=>$request->address,
             'date_of_birth'=>$request->date_of_birth,
             'gender'=>$request->gender,
             'department_id'=>$request->department_id,
-            
+
             'degree'=>$request->degree,
-            
+
             'password'=>bcrypt($request->password),
             'image'=>$image_name,
         ]);
@@ -180,25 +180,25 @@ class DoctorController extends Controller
     {
         Doctor::find($id)->delete();
         Toastr::error('Doctor Deleted Successfully');
-        return redirect()->back();        
+        return redirect()->back();
     }
 
     public function doctorPdf($id)
     {
         $doctor=Doctor::find($id);
-        $pdf=PDF::loadView('admin.pages.doctor.profile_pdf',compact('doctor')); 
-        return $pdf->download('doctor.pdf'); 
+        $pdf=PDF::loadView('admin.pages.doctor.profile_pdf',compact('doctor'));
+        return $pdf->download('doctor.pdf');
     }
 
     public function statusUpdate(Request $request,$id){
         $doctor=Doctor::find($id);
         if( $doctor){
             $doctor->update([
-                
+
                 'status'=>$request->status,
-              
-               
-              
+
+
+
             ]);
         }
         return redirect()->back();
