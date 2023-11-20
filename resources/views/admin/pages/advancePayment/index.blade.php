@@ -4,15 +4,15 @@
 <h1>{{__('Advance Payment List')}}</h1>
 <hr>
 <div class="row" style="justify-content: space-between;">
-    <!-- <div class="col">
+    <div class="col">
         <a class="btn btn-success" href="{{route('advancepayment.create')}}">Pay Advance</a>
-    </div> -->
+    </div>
 
     <div class="col-4 dt-buttons btn-group">
-        <a class="btn btn-info" href="#">
+        <a class="btn btn-info" href="{{ route('advancepayment.data.csv') }}">
             CSV
         </a>
-        <a class="btn btn-info" href="#">
+        <a class="btn btn-info" href="{{ route('advancepayment.data.excel') }}">
             Excel
         </a>
         <a class="btn btn-info" href="#">
@@ -51,10 +51,11 @@
                 <td>{{$item->status}}</td>
 
                 <td>
-                    <div style="display: flex">
-                        <a style="margin-left: 3px" class="btn btn-warning btn-sm" href="#"><i
+                    <div style="display: flex"><a class="btn btn-success btn-sm m-1" href="{{route('advancepayment.show',$item->id)}}"><i
+                                class="fa fa-eye"></i></a>
+                        <a style="margin-left: 3px" class="btn btn-warning btn-sm" href="{{ route('advancepayment.edit',$item->id) }}"><i
                                 class="fas fa-edit"></i></a>
-                        <form style="margin-left: 3px" action="#" method="POST">
+                        <form style="margin-left: 3px" action="{{ route('advancepayment.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <div>

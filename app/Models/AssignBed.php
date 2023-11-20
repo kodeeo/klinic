@@ -12,7 +12,8 @@ class AssignBed extends Model
     use HasFactory;
     protected $guarded=[];
 
- public function bed(){
+ public function bed()
+ {
     return $this->belongsTo(Bed::class, 'bed_id', 'id');
  }
 

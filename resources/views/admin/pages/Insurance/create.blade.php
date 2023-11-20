@@ -19,7 +19,9 @@
                 <input name="name" type="string" class="form-control" id="insurance_name"
                     placeholder="Insurance Name" value="Life Insurance">
             </div>
+
         </div>
+    </div>
         <form action="{{ route('insurance.store') }}" method="post">
             @csrf
             <div class="row">
@@ -55,6 +57,7 @@
             </div>
 
             <div class="form-group col-6">
+
                 <label for="insurance_code" class="col-xs-3 col-form-label">Insurance Code</label>
                 <input name="insurance_code" type="integer" class="form-control" id="insurance_code"
                     placeholder="Insurance Code" value="1010">
@@ -120,6 +123,7 @@
             </div>
 
             <div class="form-group col-6">
+
                 <label for="total" class="col-xs-3 col-form-label">Total</label>
                 <input name="total" type="integer" class="form-control" id="total" placeholder="Total" value="1200">
             </div>

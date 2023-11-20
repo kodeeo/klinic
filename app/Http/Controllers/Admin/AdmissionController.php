@@ -106,6 +106,7 @@ class AdmissionController extends Controller
              return redirect()->back();
 
         
+
     }
     public function show($id)
     {

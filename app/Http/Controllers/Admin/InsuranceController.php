@@ -26,6 +26,7 @@ class InsuranceController extends Controller
     }
 
 
+
     public function store(Request $request)
     {   
         try{

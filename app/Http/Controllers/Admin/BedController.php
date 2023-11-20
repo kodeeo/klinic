@@ -9,6 +9,7 @@ use App\Models\AssignBed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Validator;
 
 class BedController extends Controller
 {
@@ -20,7 +21,7 @@ class BedController extends Controller
     public function index()
     {
 
-        $beds=Bed::with('ward')->paginate(10);
+        $beds=Bed::with('ward')->paginate(3);
         return view('admin.pages.bed.index',compact('beds'));
 
     }
@@ -44,6 +45,25 @@ class BedController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validate=Validator::make($request->all(),[
+
+            'type'=>'required',
+            'ward_id'=>'required',
+            'description'=>'required',
+            'capacity'=>'required',
+            'cabin_type'=>'required',
+            'charge'=>'required',
+            'status'=>'required'
+
+            ]);
+
+        
+        if($validate->fails()){
+
+            Toastr::error('Validation failed.');
+            return redirect()->back();
+        }
         Bed::create([
             'type'=>$request->type,
             'ward_id'=>$request->ward_id,
@@ -53,6 +73,8 @@ class BedController extends Controller
             'charge'=>$request->charge,
             'status'=>$request->status,
         ]);
+
+   
         Toastr::success('Bed Type Added');
         return redirect()->route('beds.index');
     }
@@ -77,8 +99,12 @@ class BedController extends Controller
      */
     public function edit($id)
     {
+        $wards=Ward::all();
         $beds=Bed::find($id);
-        return view('admin.pages.bed.edit',compact('beds'));
+        $capacity=['single','double'];
+        $cabintype=['ac','non ac'];
+        $bedtype=['bed','cabin'];
+        return view('admin.pages.bed.edit',compact('beds','wards','capacity','cabintype','bedtype'));
     }
 
     /**
@@ -90,13 +116,35 @@ class BedController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        
+        $validate=Validator::make($request->all(),[
+
+            'type'=>'required',
+            'ward_id'=>'required',
+            'description'=>'required',
+            'capacity'=>'required',
+            'cabin_type'=>'required',
+            'charge'=>'required',
+            
+
+            ]);
+
+        
+        if($validate->fails()){
+
+            Toastr::error('Validation failed.');
+            return redirect()->back();
+        }
         $beds=Bed::find($id);
         $beds->update([
             'type'=>$request->type,
             'description'=>$request->description,
             'capacity'=>$request->capacity,
             'charge'=>$request->charge,
-            'status'=>$request->status,
+            'ward_id'=>$request->ward_id,
+            'cabin_type'=>$request->cabin_type,
+            
         ]);
         Toastr::success('Bed Updated Successfully');
         return redirect()->route('beds.index');
@@ -115,19 +163,28 @@ class BedController extends Controller
         return redirect()->back();
     }
 
+
+
+
     public function assigned_bed_index()
     {
-        $assign_beds=AssignBed::with(['bed','ward'])->get();
-        // dd($assign_beds[0]);
+        $assign_beds=AssignBed::with(['ward','bed'])->paginate(3);
+// ($assign_beds[0]);
         return view('admin.pages.bed.assign.index',compact('assign_beds'));
     }
     
+
+
+
     public function select_ward()
     {
         $ward=Ward::all();
 
         return view('admin.pages.bed.assign.ward',compact('ward'));
     }
+
+
+
 
     public function assign_bed($id){
       
@@ -142,10 +199,28 @@ class BedController extends Controller
         return view('admin.pages.bed.assign.create',compact('beds','cabins','ward','wards','bedstatus'));
     }
 
+
+
+
+
     public function assign_bed_store(Request $request,$id)
     {
 
-       
+        $validate=Validator::make($request->all(),[
+
+            'patient_id'=>'required',
+            'ward_id'=>'required',
+            'bed_id'=>'required',
+            'assign_date'=>'required|date|after_or_equal:today',
+            'description'=>'required',
+          ]);
+
+        if($validate->fails()){
+
+            Toastr::error('Validation failed.');
+            return redirect()->back();
+        }
+
         AssignBed::create([
 
             'patient_id'=>$request->patient_id,
@@ -158,11 +233,73 @@ class BedController extends Controller
         $bedstatus=Bed::find($id);
         $bedstatus->status='booked';
         $bedstatus->save();
+        Toastr::success('Bed Stored Successfully');
          return redirect()->route('assign.bed.index');
     }
+
+
+
     public function assign_bed_edit($id){
+        
         $find=AssignBed::find($id);
-        return view('admin.pages.bed.assign.edit',compact('find'));
+        $wards=Ward::all();
+        $capacity=['single','double'];
+        $cabintype=['ac','non ac'];
+        $bedtype=['bed','cabin'];
+        $beds=Bed::where('type','=','bed')->where('ward_id','=',$id)->where('status','=','available')->get();
+        $cabins=Bed::where('type','=','cabin')->where('ward_id','=',$id)->where('status','=','available')->get();
+        $bedstatus=Bed::find($id);
+        return view('admin.pages.bed.assign.edit',compact('find','wards','capacity','cabintype','bedtype','beds','cabins','bedstatus'));
+    }
+
+
+
+
+
+    public function assign_bed_update(Request $request, $id){
+
+        $assign_bed=AssignBed::find($id);
+        $assign_bed->update([
+
+            'patient_id'=>$request->patient_id,
+            'ward_id'=>$request->ward_id,
+            'bed_id'=>$request->bed_id,
+            'assign_date'=>$request->assign_date,
+            'description'=>$request->description,
+        ]);
+
+        $bedstatus=Bed::find($id);
+        $bedstatus->status='booked';
+        $bedstatus->save();
+        Toastr::success('Assign bed updated Successfully');
+         return redirect()->route('assign.bed.index');   
+    }
+
+
+
+
+    public function assign_bed_show($id){
+        $assignbed=AssignBed::find($id);
+
+        return view('admin.pages.bed.assign.show',compact('assignbed'));
+    }
+
+
+
+
+
+    public function assign_bed_delete($id){
+
+        
+        AssignBed::find($id)->delete();
+        // $bedstatus=Bed::find($id);
+        // $bedstatus->status='available';
+        // $bedstatus->save();
+
+       
+        Toastr::error('Assign bed deleted Successfully');
+        return redirect()->route('assign.bed.index');
+        
     }
     
 }

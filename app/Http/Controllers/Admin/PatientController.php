@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Exception;
 use Illuminate\Support\Facades\Cache;
 
 class PatientController extends Controller
@@ -70,8 +71,14 @@ class PatientController extends Controller
                 'blood_group'=>$request->blood_group,
                 'patient_image'=>$image_name
             ]);
-        }catch(\Exception $e){
+            Toastr::success('Patient has been craeted successfully');
+            return redirect()->route('patients.index');
+
+        }catch(Exception $e){
             Log::channel('custom')->error('Patient'.$e->getMessage());
+            Toastr::error('Something went wrong! Please try again.');
+            return redirect()->back();
+        }
             Toastr::error('Something went wrong ! Please try again.');
 //             return redirect()->back();
            return redirect()->route('patients.index');
