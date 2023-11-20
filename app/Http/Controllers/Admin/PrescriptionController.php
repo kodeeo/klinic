@@ -27,7 +27,7 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        $prescriptions = Prescription::with('patient','insurance')->get();
+        $prescriptions = Prescription::with('patient', 'insurance')->get();
 
         return view('admin.pages.prescription.index', compact('prescriptions'));
     }
@@ -37,16 +37,14 @@ class PrescriptionController extends Controller
      *
      * @return view
      */
-    public function create(Request $request)
+    public function create()
     {
-        $patient=Patient::all();
-//        dd($patient);
+
         $doctor = Doctor::all();
         $medicines = Medicine::all();
         $tests = Test::all();
-        $insurance=Insurance::all();
-        return view('admin.pages.prescription.create', compact('doctor', 'medicines', 'tests','patient','insurance'));
-
+        $insurance = Insurance::all();
+        return view('admin.pages.prescription.create', compact('doctor', 'medicines', 'tests', 'insurance'));
     }
 
     /**
@@ -57,7 +55,7 @@ class PrescriptionController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->medicine);
+        // dd($request->all()); 
         // $request->validate([
         //     'unique_patient_id'=>'required',
         //     'patient_name'=>'required',
@@ -65,36 +63,42 @@ class PrescriptionController extends Controller
         //     'blood_pressure'=>'required',
         //     'reference'=>'required',
         // ]);
-        $prescription=Prescription::create([
-            'doctor_id' => auth()->user()->id,
-            'patient_id' => $request->patient_id,
-            'weight' => $request->weight,
-            'blood_pressure' => $request->blood_pressure,
-            'reference' => $request->reference,
-            'fees' => $request->fees,
-            'patient_note' => $request->patient_note,
-            'complain' => $request->complain,
-            'insurance_id' => $request->insurance_id,
-        ]);
-        foreach ($request->medicine['id'] as $key => $data) {
-            //create prescription medicine
-            PrescriptionMedicine::create([
-               'prescription_id'=>$prescription->id,
-               'medicine_id'=>$data,
-               'does'=>$request->medicine['medicine_instruction'][$key],
-               'days'=>$request->medicine['days'][$key],
+        $patient = Patient::where('patient_id', $request->patient_id)->first();
+        if ($patient) {
+            $prescription = Prescription::create([
+                'doctor_id' => auth()->user()->id,
+                'patient_id' => $request->patient_id,
+                'weight' => $request->weight,
+                'blood_pressure' => $request->blood_pressure,
+                'reference' => $request->reference,
+                'fees' => $request->fees,
+                'patient_note' => $request->patient_note,
+                'complain' => $request->complain,
+                'insurance_id' => $request->insurance_id,
             ]);
-        }
-        //create prescription test
-        foreach ($request->test['id'] as $key => $data) {
-            PrescriptionTest::create([
-                'prescription_id'=>$prescription->id,
-                'test_id'=>$data,
-            ]);
-        }
+            foreach ($request->medicine['id'] as $key => $data) {
+                //create prescription medicine
+                PrescriptionMedicine::create([
+                    'prescription_id' => $prescription->id,
+                    'medicine_id' => $data,
+                    'does' => $request->medicine['medicine_instruction'][$key],
+                    'days' => $request->medicine['days'][$key],
+                ]);
+            }
+            //create prescription test
+            foreach ($request->test['id'] as $key => $data) {
+                PrescriptionTest::create([
+                    'prescription_id' => $prescription->id,
+                    'test_id' => $data,
+                ]);
+            }
 
-        Toastr::success('Prescription Created Successfully.');
-        return redirect()->route('prescription.index');
+            Toastr::success('Prescription Created Successfully.');
+            return redirect()->route('prescription.index');
+        } else {
+            Toastr::error('No Patient Found');
+            return redirect()->back();
+        }
     }
 
     /**
