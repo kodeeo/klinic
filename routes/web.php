@@ -41,17 +41,18 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InsuranceController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\MedicinePurchaseController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\PrescriptionController;
-use App\Http\Controllers\Admin\AdvancePaymentController;
 use App\Http\Controllers\Admin\Export\TestExportController;
 use App\Http\Controllers\Admin\Export\NurseExportController;
 use App\Http\Controllers\Admin\Activities\MedicineController;
 
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
+use App\Http\Controllers\Admin\Export\AdmissionExportController;
+
+
 use App\Http\Controllers\Admin\Export\BedExportController;
 
 
@@ -65,8 +66,11 @@ use App\Http\Controllers\Admin\Activities\DeathreportController;
 use App\Http\Controllers\Admin\Export\DoctorDeptExportController;
 use App\Http\Controllers\Admin\Activities\InvestigationController;
 use App\Http\Controllers\Admin\Export\TestCategoryExportController;
-use App\Http\Controllers\Admin\Activities\MedicinecategoryController;
+
+use App\Http\Controllers\MedicinePurchaseController;
 use App\Http\Controllers\Admin\Activities\OperationalReportController;
+use App\Http\Controllers\Admin\AdvancePaymentController;
+use App\Http\Controllers\Admin\Export\AdvancePaymentExportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
 
 /*
@@ -247,14 +251,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('ward', WardController::class);
 
 
-    //Hospital Activities
-    Route::resource('birth_report', BirthreportController::class);
-    Route::resource('death_report', DeathreportController::class);
-    Route::resource('operational_activities', OperationalReportController::class);
-    Route::resource('investigations', InvestigationController::class);
-    Route::resource('medicine', MedicineController::class);
-    Route::resource('medicine_category', MedicinecategoryController::class);
-    Route::resource('medicine_purchase', MedicinePurchaseController::class);
+//Hospital Activities
+Route::resource('birth_report', BirthreportController::class);
+Route::resource('death_report', DeathreportController::class);
+Route::resource('operational_activities', OperationalReportController::class);
+Route::resource('investigations', InvestigationController::class);
+Route::resource('medicine', MedicineController::class);
+Route::resource('medicine_purchase', MedicinePurchaseController::class);
 
 
     //Bill resouce
@@ -265,8 +268,9 @@ Route::group(['prefix' => 'admin'], function () {
     //Advance Paymnet
     Route::resource('advancepayment', AdvancePaymentController::class);
 
-    //Insurance
-    Route::resource('insurance', InsuranceController::class);
+//Insurance
+Route::resource('insurance', InsuranceController::class);
+
 });
 
 
@@ -328,6 +332,15 @@ Route::controller(PatientExportController::class)->group(function () {
     Route::get('patient/data/print', 'print')->name('patient.data.print');
 });
 
+//Admission Export
+Route::controller(AdmissionExportController::class)->group(function(){
+    Route::get('admission/data/csv','csv')->name('admission.data.csv');
+    Route::get('admission/data/excel','excel')->name('admission.data.excel');
+    Route::get('admission/data/pdf','pdf')->name('admission.data.pdf');
+    Route::get('admission/data/print','print')->name('admission.data.print');
+});
+
+
 
 //bed export
 
@@ -348,15 +361,22 @@ Route::controller(HospitalActivitiesExportController::class)->group(function () 
     Route::get('death/report/excel', 'death_excel')->name('death.report.excel');
 
 
-    Route::get('operational/report/csv', 'operational_csv')->name('operational.report.csv');
-    Route::get('operational/report/excel', 'operational_excel')->name('operational.report.excel');
 
-    Route::get('medicine_category/report/csv', 'medicine_category_csv')->name('medicine_category.report.csv');
-    Route::get('medicine_category/report/excel', 'medicine_category_excel')->name('medicine_category.report.excel');
+    Route::get('medicine/report/csv','medicine_csv')->name('medicine.report.csv');
+    Route::get('medicine/report/excel','medicine_excel')->name('medicine.report.excel');
 
     Route::get('medicine/report/csv', 'medicine_csv')->name('medicine.report.csv');
     Route::get('medicine/report/excel', 'medicine_excel')->name('medicine.report.excel');
 });
+
+//AdvancePaymentExportControlller
+Route::controller(AdvancePaymentExportController::class)->group(function(){
+    Route::get('advancepayment/data/csv','csv')->name('advancepayment.data.csv');
+    Route::get('advancepayment/data/excel','excel')->name('advancepayment.data.excel');
+    Route::get('advancepayment/data/pdf','pdf')->name('advancepayment.data.pdf');
+    Route::get('advancepayment/data/print','print')->name('advancepayment.data.print');
+});
+
 
 
 //Profile

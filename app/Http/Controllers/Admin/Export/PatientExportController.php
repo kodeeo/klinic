@@ -15,6 +15,7 @@ class PatientExportController extends Controller
     }
 
     public function excel()
+
     {
         return Excel::download(new PatientExport(),date('Y-m-d').'.xlsx');
     }
