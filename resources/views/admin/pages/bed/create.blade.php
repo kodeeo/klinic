@@ -47,8 +47,8 @@ btn-primary">Create Category</button> </a> --}}
                 <label for="cabin_type">Cabin Type</label>
                 <select name="cabin_type" id="" class='form-control'>
                         
-                    <option value="AC">AC</option>
-                    <option value="Non AC">Non AC</option>
+                    <option value="ac">AC</option>
+                    <option value="non ac">Non AC</option>
                         
                     </select>
                

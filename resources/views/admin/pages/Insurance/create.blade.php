@@ -20,6 +20,7 @@
                         placeholder="Insurance Name" value="">
                 </div>
 
+
             <div class="form-group col-6">
                 <label for="service_tax" class="col-xs-3 col-form-label">Service Tax(%)</label>
                 <input name="service_tax" type="integer" class="form-control" id="service_tax" placeholder="Service Tax"
@@ -76,25 +77,21 @@
                 {{-- </div>
             </div> --}}
 
-                <label for="disease_charge" class="col-xs-3 col-form-label">Disease Charge</label>
-                <div class="form-group">
-                    <div data-role="dynamic-fields">
-                        <div class="form-inline">
-                            <div class="row">
-                                <div class="col-4">
-                                    <input name="disease_name" type="string" class="form-control"
-                                        placeholder="Disease Name" value="">
-                                </div>
-                                <div class="col-4">
-                                    <input name="disease_charge" type="number" class="form-control"
-                                        placeholder="Disease Charge" value="">
-                                </div>
-                                <div class="col-4">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn  btn-info add-disease" data-role="add">+</button>
-                                        <button type="button" class="btn  btn-danger remove-disease"
-                                            data-role="remove">-</button>
-                                    </div>
+            <label for="disease_charge" class="col-xs-3 col-form-label">Disease Charge</label>
+            <div class="form-group">
+                <div data-role="dynamic-fields">
+                    <div class="form-inline">
+                        <div class="row">
+                            <div class="col-4">
+                                <input name="disease_name" type="string" class="form-control" placeholder="Disease Name" value="health">
+                            </div>
+                            <div class="col-4">
+                                <input name="disease_charge" type="integer" class="form-control" placeholder="Disease Charge" value="200">
+                            </div>
+                            <div class="col-4">
+                                <div class="btn-group">
+                                    <button type="button" class="btn  btn-info add-disease" data-role="add">+</button>
+                                    <button type="button" class="btn  btn-danger remove-disease" data-role="remove">-</button>
                                 </div>
                             </div>
                         </div>

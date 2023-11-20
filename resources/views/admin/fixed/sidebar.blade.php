@@ -292,11 +292,7 @@
                                     <a href="{{ route('medicine.index') }}">Medicine</a>
                                 </li>
                             @endif
-                            @if (hasAnyPermissions('medicine_category.index'))
-                                <li>
-                                    <a href="{{ route('medicine_category.index') }}">Medicine Category</a>
-                                </li>
-                            @endif
+                           
                         </ul>
                     </div>
                 </li>

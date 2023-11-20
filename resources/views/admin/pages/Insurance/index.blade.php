@@ -26,15 +26,6 @@
     </div>
     <br><br>
 
-    <div style="overflow-x:auto">
-        <table class="table" id="dataTable" style="text-align: center">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Service tax</th>
-                    <th scope="col">Discount</th>
-                    <th scope="col">Remark</th>
 
 
 <div style="overflow-x:auto">
