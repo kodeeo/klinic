@@ -343,7 +343,6 @@ Route::controller(AdmissionExportController::class)->group(function(){
 
 
 
-
 //bed export
 
 Route::controller(BedExportController::class)->group(function (){

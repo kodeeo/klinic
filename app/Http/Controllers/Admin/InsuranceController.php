@@ -25,10 +25,11 @@ class InsuranceController extends Controller
         return view('admin.pages.Insurance.create');
     }
 
+
+
     public function store(Request $request)
     {   
         try{
-
 
             $validate = Validator::make($request->all(), [
                 'name'=> 'required',

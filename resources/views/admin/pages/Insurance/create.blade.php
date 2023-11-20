@@ -10,6 +10,18 @@
             <a class="btn btn-primary" href="{{route('insurance.store')}}"><i class="fa fa-list" style="font-family: FontAwesome, Bangla871, sans-serif;"></i> Insurance List </a>
         </div>
     </div>
+    <form action="{{route('insurance.store')}}" method="post">
+        @csrf
+        <div class="row">
+            <div class="form-group col-6">
+                <label for="insurance_name" class="col-xs-3 col-form-label">Insurance Name <i class="text-danger">
+                        *</i></label>
+                <input name="name" type="string" class="form-control" id="insurance_name"
+                    placeholder="Insurance Name" value="Life Insurance">
+            </div>
+
+        </div>
+    </div>
         <form action="{{ route('insurance.store') }}" method="post">
             @csrf
             <div class="row">
@@ -19,7 +31,6 @@
                     <input name="name" type="string" class="form-control" id="insurance_name"
                         placeholder="Insurance Name" value="">
                 </div>
-
 
             <div class="form-group col-6">
                 <label for="service_tax" class="col-xs-3 col-form-label">Service Tax(%)</label>
@@ -46,6 +57,7 @@
             </div>
 
             <div class="form-group col-6">
+
                 <label for="insurance_code" class="col-xs-3 col-form-label">Insurance Code</label>
                 <input name="insurance_code" type="integer" class="form-control" id="insurance_code"
                     placeholder="Insurance Code" value="1010">
@@ -98,7 +110,6 @@
                     </div>
                 </div>
 
-
             <div class="form-group col-6">
                 <label for="hospital_rate" class="col-xs-3 col-form-label">Hospital Rate</label>
                 <input name="hospital_rate" type="integer" class="form-control" id="hospital_rate"
@@ -112,6 +123,7 @@
             </div>
 
             <div class="form-group col-6">
+
                 <label for="total" class="col-xs-3 col-form-label">Total</label>
                 <input name="total" type="integer" class="form-control" id="total" placeholder="Total" value="1200">
             </div>
