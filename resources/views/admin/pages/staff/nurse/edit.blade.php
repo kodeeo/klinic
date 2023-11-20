@@ -57,6 +57,14 @@
             <label for="image">Image <span style="color: red">*</span></label>
             <input name="image" type="file" class="form-control">
       </div>
+
+      <div class="form-group col-12 mt-2">
+        <label for="status">Status:</label><br>
+         <input type="radio"  name="status" value="active" {{$nurse->status=='active' ? 'checked':''}}>
+        <label for="status">Active</label><br>
+        <input type="radio"  name="status" value="inactive" {{$nurse->status=='inactive' ? 'checked':''}}>
+        <label for="status">Inactive</label><br>
+        </div> 
   </div>
   
   <br>

@@ -49,6 +49,7 @@ class InsuranceController extends Controller
                 return redirect()->back();
             }
 
+
                 Insurance::create([
                     'name'=>$request->name,
                     'service_tax'=>$request->service_tax,

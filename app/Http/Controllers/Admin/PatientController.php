@@ -76,6 +76,9 @@ class PatientController extends Controller
 
         }catch(Exception $e){
             Log::channel('custom')->error('Patient'.$e->getMessage());
+            Toastr::error('Something went wrong! Please try again.');
+            return redirect()->back();
+        }
             Toastr::error('Something went wrong ! Please try again.');
 //             return redirect()->back();
            return redirect()->route('patients.index');

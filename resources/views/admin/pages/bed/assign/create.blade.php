@@ -38,7 +38,7 @@
     <body>
       <div class="container mt-5 shadow-sm p-3">
         <h2>Assign Bed</h2>
-        <form action="{{route('assign.bed.store',$bedstatus->id)}}" method="post">
+        <form action="{{route('assign.bed.store',$bedstatus->id ??'null' )}}" method="post">
           @csrf
           <div class="d-flex justify-content-between">
             <div class="form-group mb-3">

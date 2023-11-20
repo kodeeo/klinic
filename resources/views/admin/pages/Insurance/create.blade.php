@@ -20,6 +20,7 @@
                     placeholder="Insurance Name" value="Life Insurance">
             </div>
         </div>
+
                 <div class="form-group col-6">
                     <label for="service_tax" class="col-xs-3 col-form-label">Service Tax(%)</label>
                     <input name="service_tax" type="number" class="form-control" id="service_tax" placeholder="Service Tax"
@@ -75,25 +76,21 @@
                 {{-- </div>
             </div> --}}
 
-                <label for="disease_charge" class="col-xs-3 col-form-label">Disease Charge</label>
-                <div class="form-group">
-                    <div data-role="dynamic-fields">
-                        <div class="form-inline">
-                            <div class="row">
-                                <div class="col-4">
-                                    <input name="disease_name" type="string" class="form-control"
-                                        placeholder="Disease Name" value="">
-                                </div>
-                                <div class="col-4">
-                                    <input name="disease_charge" type="number" class="form-control"
-                                        placeholder="Disease Charge" value="">
-                                </div>
-                                <div class="col-4">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn  btn-info add-disease" data-role="add">+</button>
-                                        <button type="button" class="btn  btn-danger remove-disease"
-                                            data-role="remove">-</button>
-                                    </div>
+            <label for="disease_charge" class="col-xs-3 col-form-label">Disease Charge</label>
+            <div class="form-group">
+                <div data-role="dynamic-fields">
+                    <div class="form-inline">
+                        <div class="row">
+                            <div class="col-4">
+                                <input name="disease_name" type="string" class="form-control" placeholder="Disease Name" value="health">
+                            </div>
+                            <div class="col-4">
+                                <input name="disease_charge" type="integer" class="form-control" placeholder="Disease Charge" value="200">
+                            </div>
+                            <div class="col-4">
+                                <div class="btn-group">
+                                    <button type="button" class="btn  btn-info add-disease" data-role="add">+</button>
+                                    <button type="button" class="btn  btn-danger remove-disease" data-role="remove">-</button>
                                 </div>
                             </div>
                         </div>
@@ -113,10 +110,20 @@
                         placeholder="Insurance Rate" value="">
                 </div>
 
-                <div class="form-group col-6">
-                    <label for="total" class="col-xs-3 col-form-label">Total</label>
-                    <input name="total" type="number" class="form-control" id="total" placeholder="Total"
-                        value="">
+
+            <div class="form-group col-6">
+                <label for="total" class="col-xs-3 col-form-label">Total</label>
+                <input name="total" type="integer" class="form-control" id="total" placeholder="Total" value="1200">
+            </div>
+            <div class="form-group col-6 mt-4">
+                <div class="form-group row mt-2">
+                    <label class="col-sm-1">Status</label>
+                    <div class="col-sm-6">
+                        <div class="form-check">
+                            <label class="radio-inline"><input type="radio" name="status" checked>Active</label>
+                            <label class="radio-inline"><input type="radio" name="status">Inactive</label>
+                        </div>
+                    </div>
                 </div>
 
 

@@ -12,12 +12,18 @@ btn-primary">Create Category</button> </a> --}}
         @csrf
         @method('PUT')
         <div class="row">
-            <div class="form-group col-6">
-                <label for="type">Bed Type</label>
-                <span class="text-danger">*</span>
-                <input type="text" class="form-control" id="type" value="{{ $beds->type }}" name="type"
-                    placeholder="Enter Bed Type">
+        <div class="form-group col-6">
+            <label for="">Bed type</label>
+            <select class="form-select" name="type" aria-label="Default select example">
+                        @foreach($bedtype as $data) 
+                            <option 
+                            @if($data==$beds->type) selected @endif 
+                            value="{{$data}}">{{$data}}
+                            </option>
+                        @endforeach
+                        </select>
             </div>
+
             <div class="form-group col-6">
                 <label for="description">Description</label>
                 <input type="text" class="form-control" id="description" value="{{ $beds->description }}"
@@ -26,32 +32,48 @@ btn-primary">Create Category</button> </a> --}}
 
             <div class="form-group col-6">
                 <label for="ward">Ward</label>
-                <input type="text" class="form-control" id="ward" value="{{ $beds->ward->name }}"
-                    name="ward_id" placeholder="Enter Description">
-            </div>
+                <select class="form-select" name="ward_id" aria-label="Default select example">
+                <option>Select Ward</option>
 
+                @foreach ($wards as $item)
+          <option
+                @if($item->id==$beds->ward_id)
+                      selected
+                      @endif
+                  value="{{$item->id}}">{{$item->name}}</option>            
+                      @endforeach
+              </select>
+            </div>
             <div class="form-group col-6">
                 <label for="cabin_type">Cabin type</label>
-                <input type="text" class="form-control" id="cabin_type" value="{{ $beds->cabin_type }}"
-                    name="cabin_type" placeholder="">
+                <select class="form-select" name="cabin_type" aria-label="Default select example">
+                        @foreach($cabintype as $data) 
+                            <option 
+                            @if($data==$beds->cabin_type) selected @endif 
+                            value="{{$data}}">{{$data}}
+                            </option>
+                        @endforeach
+                        </select>
             </div>
             <div class="form-group col-6 mt-2">
-                <label for="capacity">Bed capacity</label>
-              
-                <input type="string" class="form-control" id="capacity" value="{{ $beds->capacity }}" name="capacity"
-                    placeholder="Enter Capacity">
-            </div>
+                    
+                    <label for="gender">Bed Capacity <span style="color: red">*</span></label>
+                        <select class="form-select" name="capacity" aria-label="Default select example">
+                        @foreach($capacity as $data) 
+                            <option 
+                            @if($data==$beds->capacity) selected @endif 
+                            value="{{$data}}">{{$data}}
+                            </option>
+                        @endforeach
+                        </select>
+                    </div>
             <div class="form-group col-6 mt-2">
                 <label for="charge">Charge</label>
                 <span class="text-danger">*</span>
                 <input type="number" class="form-control" id="charge" value="{{ $beds->charge }}" name="charge"
                     placeholder="Enter Charge">
             </div>
-            <div class="form-group col-12 mt-2">
-                <label for="status">Status</label>
-                <input type="text" class="form-control" value="{{ $beds->status }}" name="status"
-                    placeholder="Enter Status">
-            </div>
+           
         </div>
         <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Submit</button>
     </form>
