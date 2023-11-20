@@ -61,6 +61,7 @@
             <label for="insurance_id">Insurance</label>
                 <select class="form-select" name="insurance_id" aria-label="Default select example">
                     <option value="">Select Insurance</option>
+
                     @foreach ($insurance as $data)
                     <option value="{{$data->id}}">{{$data->name}} </option>
                     @endforeach

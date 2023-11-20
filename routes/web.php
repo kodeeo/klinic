@@ -52,6 +52,8 @@ use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
 use App\Http\Controllers\Admin\Export\AdmissionExportController;
+use App\Http\Controllers\Admin\Export\BedExportController;
+
 
 
 use App\Http\Controllers\Admin\Export\ServiceExportController;
@@ -225,6 +227,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('beds/assign/index', [BedController::class, 'assigned_bed_index'])->name('assign.bed.index');
     Route::post('beds/assign/store/{bed_id}', [BedController::class, 'assign_bed_store'])->name('assign.bed.store');
     Route::get('assign/bed/edit/{id}', [BedController::class, 'assign_bed_edit'])->name('assign.bed.edit');
+    Route::put('assign/bed/update/{id}', [BedController::class, 'assign_bed_update'])->name('assign.bed.update');
+    Route::get('assign/bed/show/{id}', [BedController::class, 'assign_bed_show'])->name('assign.bed.show');
+    Route::get('assign/bed/delete/{id}', [BedController::class, 'assign_bed_delete'])->name('assign.bed.delete');
     Route::resource('beds', BedController::class);
 
 
@@ -335,6 +340,14 @@ Route::controller(AdmissionExportController::class)->group(function(){
     Route::get('admission/data/print','print')->name('admission.data.print');
 });
 
+
+
+//bed export
+
+Route::controller(BedExportController::class)->group(function (){
+    Route::get('bed/data/excel','excel')->name('bed.excel');
+    Route::get('bed/data/csv','csv')->name('bed.csv');
+});
 
 
 //Hospital Activities Export
