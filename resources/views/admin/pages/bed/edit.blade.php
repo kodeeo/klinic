@@ -73,11 +73,7 @@ btn-primary">Create Category</button> </a> --}}
                 <input type="number" class="form-control" id="charge" value="{{ $beds->charge }}" name="charge"
                     placeholder="Enter Charge">
             </div>
-            <div class="form-group col-12 mt-2">
-                <label for="status">Status</label>
-                <input type="text" class="form-control" value="{{ $beds->status }}" name="status"
-                    placeholder="Enter Status">
-            </div>
+           
         </div>
         <button type="submit" class="btn btn-success btn-sm mt-2" style="text-align:right;">Submit</button>
     </form>

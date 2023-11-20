@@ -57,10 +57,9 @@
                   
                     <td>
                         <div style="display: flex">
-                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{route('assign.bed.edit',$item->id)}}"><i
-                                    class="fas fa-edit"></i></a>
-                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{route('assign.bed.delete',$item->id)}}"><i
-                                    class="fas fa-destroy"></i></a>
+                            <a style="margin-left: 2px" class="btn btn-info btn-sm m-1" href="{{route('assign.bed.show',$item->id)}}"><i class="fas fa-eye"></i></a>
+                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{ route('assign.bed.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
+                            <a style="margin-left: 2px" class="btn btn-danger btn-sm m-1" href="{{route('assign.bed.delete',$item->id)}}"><i class="fas fa-trash"></i></a>
                        
                         </div>
                     </td>
@@ -69,7 +68,7 @@
             @endforeach
         </tbody>
       </table>
-      
+      {{$assign_beds->links()}}
       </div>
       @endsection
                   
