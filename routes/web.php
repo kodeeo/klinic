@@ -334,6 +334,8 @@ Route::controller(PatientExportController::class)->group(function () {
 Route::controller(BedExportController::class)->group(function (){
     Route::get('bed/data/excel','excel')->name('bed.excel');
     Route::get('bed/data/csv','csv')->name('bed.csv');
+    Route::get('assignbed/data/csv','assignbedcsv')->name('assignbed.csv');
+    Route::get('assignbed/data/excel','assignbedexcel')->name('assignbed.excel');
 });
 
 

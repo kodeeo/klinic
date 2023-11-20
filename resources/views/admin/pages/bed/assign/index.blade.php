@@ -11,10 +11,10 @@
     </div>
 
     <div class="col-4 dt-buttons btn-group">
-        <a class="btn btn-info d-print-none" href="#">
+        <a class="btn btn-info d-print-none" href="{{route('assignbed.csv')}}">
             CSV
         </a>
-        <a class="btn btn-info d-print-none" href="#">
+        <a class="btn btn-info d-print-none" href="{{route('assignbed.excel')}}">
             Excel
         </a>
         <a class="btn btn-info d-print-none" href="#">
