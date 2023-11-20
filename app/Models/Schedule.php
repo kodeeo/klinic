@@ -9,18 +9,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Schedule extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded = [];
 
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class,'doctor_id','id');
-        
+        return $this->belongsTo(Doctor::class, 'doctor_id', 'id');
     }
 
     public function getFullNameAttribute()
     {
-        return $this->first_name. ' '. $this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
-    
+    protected $casts = [
+        'totime' => 'array',
+        'fromtime' => 'array',
+        'days' => 'array',
+    ];
 }

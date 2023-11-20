@@ -14,16 +14,16 @@
     <div class="form-group col-6 mt-2">
             <label for="Doctor">Doctor</label>
             <select class="form-select" name="doctor_id" aria-label="Default select example">
-               
+
 
                 @foreach ($doctor as $item)
           <option
-         
-          value="{{$item->id}}">{{$item->fullname}}</option>            
+
+          value="{{$item->id}}">{{$item->fullname}}</option>
                       @endforeach
               </select>
         </div>
-       
+
           {{-- <div class="form-group col-6">
               <label for="email">Availabe Days</label>
               <input type="text" class="form-control" id="days" name="days" placeholder="Enter Availabe Days"><br>
@@ -59,7 +59,7 @@
             <div class="col-3">
                 <select id="days" name="days[]" class="form-control">
                     <option  @if($item->days==$schedule->days) selected @endif
-                         value="{{$item->days}}">{{$item->days}}</option>
+                         value=""</option>
                        @foreach ($days as $day )
                          <option value="{{$day}}">{{$day}}</option> @endforeach </select>
             </div>

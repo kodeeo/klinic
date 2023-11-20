@@ -17,8 +17,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedule=Schedule::all();
-        return view('admin.pages.schedule.index',compact('schedule'));
+        $schedule = Schedule::all();
+        // dd($schedule);
+        return view('admin.pages.schedule.index', compact('schedule'));
     }
 
     /**
@@ -28,9 +29,9 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        $days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-        $doctor=Doctor::all();
-        return view('admin.pages.schedule.create',compact('doctor','days'));
+        $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        $doctor = Doctor::all();
+        return view('admin.pages.schedule.create', compact('doctor', 'days'));
     }
 
     /**
@@ -41,66 +42,38 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        // dd  ($request->all());
         $request->validate([
 
-                'days'=>'required',
-                'doctor_id'=>'required' , 
-                'patient_time'=>'required',
-                'serial'=>'required',
-                'status'=>'required',
-                'fromtime'=>'required',
-                'totime'=>'required'
+            'days' => 'required',
+            'doctor_id' => 'required',
+            'patient_time' => 'required',
+            'serial' => 'required',
+            'status' => 'required',
+            'fromtime' => 'required',
+            'totime' => 'required'
         ]);
-        //dd('\$request->all());
-        $days=$request->days;
-        $fromtime=$request->fromtime;
-        $totime=$request->totime;
-        // $time=[$fromtime,$totime];
+        // dd($request->all());
 
-        // $from=array_combine($days,$fromtime);
-        // $to=array_combine($days,$totime);
-        //  dd($item);
+        Schedule::create([
+            'days' => $request->days,
+            'doctor_id' => $request->doctor_id,
+            'patient_time' => $request->patient_time,
+            'serial' => $request->serial,
+            'status' => $request->status,
+            'fromtime' => $request->fromtime,
+            'totime' => $request->totime,
+        ]);
 
-       
-       
-                // $assign_time=[$fromtime,$totime];
-                // dd($fromtime,$totime,$assign_day);
 
-          foreach($days as $key=>$day){
-            Schedule::create([
-                'days'=>$day,
-                'doctor_id'=>$request->doctor_id,   
-                'patient_time'=>$request->patient_time,
-                'serial'=>$request->serial,
-                'status'=>$request->status,
-                'fromtime'=>$fromtime[$key],
-                'totime'=>$totime[$key],
-            ]);
-            
 
-          }  
-       
-    //     $assign=Schedule::where('doctor_id',$request->doctor_id)->first()
-    //     ->where('days',$request->days)->get();
-    //     // dd($assign);
-        
-        
-    //     foreach($assign as $data){
-    //         foreach($fromtime as $ftime){
-    //             foreach($totime as $ttime){
-    //                 $data->update([
-                        
-    //                     'fromtime'=>$ftime,
-    //                     'totime'=>$ttime,
+        Toastr::success('Schedule added Successfully', 'success');
 
-    //                 ]);
-    //             }
-                
-    // }}
-    Toastr::success('Schedule added Successfully', 'success');
+        return redirect()->back();
+    }
 
-    return redirect()->back();
-}
+
+
 
     /**
      * Display the specified resource.
@@ -110,10 +83,10 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        
-        $schedule=Schedule::find($id);
-        
-        return view('admin.pages.schedule.view',compact('schedule'));
+
+        $schedule = Schedule::find($id);
+        // dd($schedule);
+        return view('admin.pages.schedule.view', compact('schedule'));
     }
 
     /**
@@ -124,16 +97,15 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        
-        
-        $days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-        $serial=['sequential','timestamp'];
-        $schedule=Schedule::find($id);
-        $match=Schedule::where('doctor_id',$schedule->doctor_id)->get();
+
+
+        $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        $serial = ['sequential', 'timestamp'];
+        $schedule = Schedule::find($id);
+        $match = Schedule::where('doctor_id', $schedule->doctor_id)->get();
         // dd($match);
-        $doctor=Doctor::all();
-        return view('admin.pages.schedule.edit',compact('schedule','doctor','days','serial','match'));
-        
+        $doctor = Doctor::all();
+        return view('admin.pages.schedule.edit', compact('schedule', 'doctor', 'days', 'serial', 'match'));
     }
 
     /**
@@ -146,26 +118,26 @@ class ScheduleController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->all());
-      
 
-        
-        $days=$request->days;
-        $fromtime=$request->fromtime;
-        $totime=$request->totime;
-        foreach($days as $key=>$days){
-        $schedule=Schedule::find($id);
-        $schedule->update([
-            'days'=>$days,
-            'doctor_id'=>$request->doctor_id,   
-            'patient_time'=>$request->patient_time,
-            'serial'=>$request->serial,
-            'status'=>$request->status,
-            'fromtime'=>$fromtime[$key],
-            'totime'=>$totime[$key],
-        ]);
+
+
+        $days = $request->days;
+        $fromtime = $request->fromtime;
+        $totime = $request->totime;
+        foreach ($days as $key => $days) {
+            $schedule = Schedule::find($id);
+            $schedule->update([
+                'days' => $days,
+                'doctor_id' => $request->doctor_id,
+                'patient_time' => $request->patient_time,
+                'serial' => $request->serial,
+                'status' => $request->status,
+                'fromtime' => $fromtime[$key],
+                'totime' => $totime[$key],
+            ]);
         }
 
-    Toastr::success('Schedule Updated Successfully');
+        Toastr::success('Schedule Updated Successfully');
         return redirect()->route('schedule.index');
     }
 
@@ -179,6 +151,17 @@ class ScheduleController extends Controller
     {
         Schedule::find($id)->delete();
         Toastr::error('Schedule Deleted Successfully');
-        return redirect()->back();  
+        return redirect()->back();
+    }
+    public function statusUpdate(Request $request, $id)
+    {
+        $schedule = Schedule::find($id);
+        if ($schedule) {
+            $schedule->update([
+                'status' => $request->status,
+            ]);
+        }
+        Toastr::success('Schedule Status Update ');
+        return redirect()->back();
     }
 }

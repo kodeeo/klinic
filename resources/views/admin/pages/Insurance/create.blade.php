@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+    <div class="panel panel-default thumbnail">
 
 <div class="panel panel-default thumbnail">
 <h1>Insurance Create Form</h1>
@@ -18,40 +19,40 @@
                 <input name="name" type="string" class="form-control" id="insurance_name"
                     placeholder="Insurance Name" value="Life Insurance">
             </div>
+        </div>
 
-            <div class="form-group col-6">
-                <label for="service_tax" class="col-xs-3 col-form-label">Service Tax(%)</label>
-                <input name="service_tax" type="integer" class="form-control" id="service_tax" placeholder="Service Tax"
-                    value="9">
-            </div>
+                <div class="form-group col-6">
+                    <label for="service_tax" class="col-xs-3 col-form-label">Service Tax(%)</label>
+                    <input name="service_tax" type="number" class="form-control" id="service_tax" placeholder="Service Tax"
+                        value="">
+                </div>
 
-            <div class="form-group col-6">
-                <label for="discount" class="col-xs-3 col-form-label">Discount(%)</label>
-                <input name="discount" type="integer" class="form-control" id="discount" placeholder="Discount" value="5">
-            </div>
+                <div class="form-group col-6">
+                    <label for="discount" class="col-xs-3 col-form-label">Discount(%)</label>
+                    <input name="discount" type="number" class="form-control" id="discount" placeholder="Discount"
+                        value="">
+                </div>
 
-            <div class="form-group col-6">
-                <label for="remark" class="col-xs-3 col-form-label">Remark</label>
-                <textarea name="remark" type="string" class="form-control" placeholder="Remark" rows="7">
-                    {{ value('You should remember your terms & conditons') }}
-                </textarea>
-            </div>
+                <div class="form-group col-6">
+                    <label for="remark" class="col-xs-3 col-form-label">Remark</label>
+                    <textarea name="remark" type="string" class="form-control" placeholder="Remark" rows="7"></textarea>
+                </div>
 
-            <div class="form-group col-6">
-                <label for="insurance_no" class="col-xs-3 col-form-label">Insurance No.</label>
-                <input name="insurance_no" type="integer" class="form-control" id="insurance_no"
-                    placeholder="Insurance No." value="2023001">
-            </div>
+                <div class="form-group col-6">
+                    <label for="insurance_no" class="col-xs-3 col-form-label">Insurance No.</label>
+                    <input name="insurance_no" type="number" class="form-control" id="insurance_no"
+                        placeholder="Insurance No." value="">
+                </div>
 
-            <div class="form-group col-6">
-                <label for="insurance_code" class="col-xs-3 col-form-label">Insurance Code</label>
-                <input name="insurance_code" type="integer" class="form-control" id="insurance_code"
-                    placeholder="Insurance Code" value="1010">
-            </div>
+                <div class="form-group col-6">
+                    <label for="insurance_code" class="col-xs-3 col-form-label">Insurance Code</label>
+                    <input name="insurance_code" type="number" class="form-control" id="insurance_code"
+                        placeholder="Insurance Code" value="">
+                </div>
 
-            {{-- <div class="form-group row">
+                {{-- <div class="form-group row">
                 <div data-role="dynamic-fields"> --}}
-                    {{-- <div class="form-inline">
+                {{-- <div class="form-inline">
             <label for="disease_charge" class="col-xs-3 col-form-label">Disease Charge</label>
             <div class="col-xs-9" id="disease_charge">
                 <div class="row">
@@ -95,8 +96,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
 
 
             <div class="form-group col-6">
@@ -125,41 +124,40 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group row mt-2">
-                <div class="col-sm-offset-3 col-sm-6">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                <div class="form-group row mt-2">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-<script>
-    $(function() {
- // Remove button click
- $(document).on(
-     'click',
-     '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
-     function(e) {
-         e.preventDefault();
-         $(this).closest('.form-inline').remove();
-     }
- );
- // Add button click
- $(document).on(
-     'click',
-     '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
-     function(e) {
-         e.preventDefault();
-         var container = $(this).closest('[data-role="dynamic-fields"]');
-         new_field_group = container.children().filter('.form-inline:first-child').clone();
-         new_field_group.find('input').each(function(){
-             $(this).val('');
-         });
-         container.append(new_field_group);
-     }
- );
-});
-
-</script>
+        </form>
+        <script>
+            $(function() {
+                // Remove button click
+                $(document).on(
+                    'click',
+                    '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
+                    function(e) {
+                        e.preventDefault();
+                        $(this).closest('.form-inline').remove();
+                    }
+                );
+                // Add button click
+                $(document).on(
+                    'click',
+                    '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+                    function(e) {
+                        e.preventDefault();
+                        var container = $(this).closest('[data-role="dynamic-fields"]');
+                        new_field_group = container.children().filter('.form-inline:first-child').clone();
+                        new_field_group.find('input').each(function() {
+                            $(this).val('');
+                        });
+                        container.append(new_field_group);
+                    }
+                );
+            });
+        </script>
     @endsection
