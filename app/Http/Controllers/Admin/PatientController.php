@@ -36,7 +36,6 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         try{
-
             $image_name=null;
             if ($request->hasFile('patient_image'))
             {
@@ -78,10 +77,6 @@ class PatientController extends Controller
             Log::channel('custom')->error('Patient'.$e->getMessage());
             Toastr::error('Something went wrong! Please try again.');
             return redirect()->back();
-        }
-            Toastr::error('Something went wrong ! Please try again.');
-//             return redirect()->back();
-           return redirect()->route('patients.index');
         }
     }
 

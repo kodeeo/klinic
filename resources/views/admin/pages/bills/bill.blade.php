@@ -94,20 +94,77 @@
 
           </table>
         </div>
-        <div class="row">
-          <div class="col-xl-8">
-            <p class="ms-3">Add additional notes and payment information</p>
+        
 
-          </div>
-          <div class="col-xl-3">
-            <ul class="list-unstyled">
-              <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>$1110</li>
-              <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Tax(15%)</span>$111</li>
-            </ul>
-            <p class="text-black float-start"><span class="text-black me-3"> Total Amount</span><span
-                style="font-size: 25px;">$1221</span></p>
-          </div>
-        </div>
+
+        <form action="">
+        <div class="col-sm-4">
+                            <div class="table-responsive m-b-20">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Total</th>
+                                        <th>Receipt</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td><input name="total_amount" type="number" class="form-control grand-calc" id="total"
+                                                   value="0.00"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">Discount %</div>
+                                                <input type="number" id="discountPercent" required="" autocomplete="off"
+                                                       class="form-control tax-discount-calc" value="0">
+                                            </div>
+                                        </td>
+                                        <td><input name="discount" type="number" class="form-control grand-calc"
+                                                   id="discount" value="0.00"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">Tax %</div>
+                                                <input type="number" id="taxPercent" required="" autocomplete="off"
+                                                       class="form-control tax-discount-calc" value="0">
+                                            </div>
+                                        </td>
+                                        <td><input name="tax" type="number" class="form-control grand-calc" id="tax"
+                                                   value="0.00"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pay Advance</td>
+                                        <td><input type="number" class="form-control grand-calc" id="pay_advance"
+                                                   value="0.00"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Payable</td>
+                                        <td><input type="number" class="form-control grand-calc" id="payable"
+                                                   value="0.00"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="remarks" class="form-control" rows="5" placeholder="Notes"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="radio-inline"><input type="radio" name="status" value="0"
+                                                               checked="">Unpaid</label>
+                            <label class="radio-inline"><input type="radio" name="status" value="1">Paid</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-success w-md">Submit</button>
+                    </div>
+
+        </form>
         <hr>
         <div class="row">
           <div class="col-xl-10">
