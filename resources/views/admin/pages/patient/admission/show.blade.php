@@ -31,8 +31,8 @@
         <p><b><span>: </span>{{$admission->patient_id}}</b></p>
         <p><b><span>: </span>{{$admission->doctor->full_name}}</b></p>
         <p><b><span>: </span>{{$admission->admission_date}}</b></p>
-        <p><b><span>: </span>{{$admission->package->name}}</b></p>
-        <p><b><span>: </span>{{$admission->insurance_id}}</b></p>
+        <p><b><span>: </span>{{$admission->package->name ?? 'N/A'}}</b></p>
+        <p><b><span>: </span>{{$admission->insurances->name ?? 'N/A'}}</b></p>
         <p><b><span>: </span>{{$admission->height}}</b></p>
         <p><b><span>: </span>{{$admission->weight}}</b></p>
         <p><b><span>: </span>{{$admission->allergies}}</b></p>
@@ -43,7 +43,7 @@
         <p><b><span>: </span>{{$admission->diabetic}}</b></p>
         <p><b><span>: </span>{{$admission->infection}}</b></p>
         <p><b><span>: </span>{{$admission->quota}}</b></p>
-        <p><b><span>: </span>{{$admission->others}}</b></p>
+        <p><b><span>: </span>{{$admission->others ?? 'N/A'}}</b></p>
         <p><b><span>: </span>{{$admission->status}}</b></p>
      
         </div>

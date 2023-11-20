@@ -8,25 +8,18 @@ use Illuminate\Http\Request;
 use App\Models\AdvancePayment;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Exception;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class AdvancePaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
-    {
+    {   
+        
         $advancePayment=AdvancePayment::orderby('id','desc')->get();
         return view('admin.pages.advancePayment.index',compact('advancePayment'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $admission=Admission::where('admission_id',\request()->admission_id)
@@ -34,78 +27,115 @@ class AdvancePaymentController extends Controller
 
         return view('admin.pages.advancePayment.create',compact('admission'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
-    {
-        $patient=Admission::where('admission_id',$request->admission_id)->first();
-        if($patient)
-        {
-            $advancePayment=new AdvancePayment();
+    {   
+        try{
 
-            $advancePayment->create([
-                'reciept_no' => 'ADVP'.date('Ymdhis'),
-                'admission_id' => $request->admission_id,
-                'patient_id' => $patient->patient_id,
-                'amount' => $request->amount,
-                'payment_method' => $request->payment_method,
-            ]);
+            $validate=Validator::make($request->all(),[
+                'admission_id'   =>'required',
+                'patient_id'     =>'required',
+                'amount'         =>'required',
+                'payment_method' =>'required',
     
-            return redirect()->route('advancepayment.index')->with(Toastr::success('Advance Payment Paid Successfully'));
-        }else{
-            Toastr::error('No patient found.');
+            ]);
+            if($validate->fails())
+            {
+                toastr()->error($validate->getMessageBag()->first());
+            }
+    
+            $patient=Admission::where('admission_id',$request->admission_id)
+                                ->where('patient_id',$request->patient_id)   
+                                ->first();
+            
+            if($patient)
+            {
+                $advancePayment=new AdvancePayment();
+    
+                $advancePayment->create([
+                    'reciept_no'     => 'ADVP'.date('Ymdhis'),
+                    'admission_id'   => $request->admission_id,
+                    'patient_id'     => $patient->patient_id,
+                    'amount'         => $request->amount,
+                    'payment_method' => $request->payment_method,
+                ]);
+        
+                Toastr::success('Advance Payment Paid Successfully');
+                return redirect()->route('advancepayment.index');
+            }else{
+                Toastr::error('No patient found.');
+                return redirect()->back();
+            }
+        }catch(Exception $e)
+        {
+            Log::channel('custom')->error('AdvancePayment'.$e->getMessage());
+            toastr()->warning('somthing went wrong! please try again');
             return redirect()->back();
         }
        
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $advancepayment=AdvancePayment::find($id);
+        return view('admin.pages.advancePayment.show',compact('advancepayment'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        
+        $advancepayment=AdvancePayment::find($id);
+        $paymentmethods=['cash','card','cheque','other'];
+        return view('admin.pages.advancePayment.edit',compact('advancepayment','paymentmethods'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
-    }
+        try{
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+            $validate=Validator::make($request->all(),[
+                'admission_id'   =>'required',
+                'patient_id'     =>'required',
+                'amount'         =>'required',
+                'payment_method' =>'required',
+    
+            ]);
+            if($validate->fails())
+            {
+                toastr()->error($validate->getMessageBag()->first());
+            }
+    
+            $patient=Admission::where('admission_id',$request->admission_id)
+                                ->where('patient_id',$request->patient_id)   
+                                ->first();
+            
+            if($patient)
+            {
+                $advancePayment=new AdvancePayment();
+    
+                $advancePayment->update([
+                    'reciept_no'     => $advancePayment->reciept_no,
+                    'admission_id'   => $request->admission_id,
+                    'patient_id'     => $patient->patient_id,
+                    'amount'         => $request->amount,
+                    'payment_method' => $request->payment_method,
+                ]);
+        
+                Toastr::success('Advance Payment update Successfully');
+                return redirect()->route('advancepayment.index');
+            }else{
+                Toastr::error('No patient found.');
+                return redirect()->back();
+            }
+        }catch(Exception $e)
+        {
+            Log::channel('custom')->error('AdvancePayment'.$e->getMessage());
+            toastr()->warning('somthing went wrong! please try again');
+            return redirect()->back();
+        }
+    }
     public function destroy($id)
     {
-        //
+        $advancepayment=AdvancePayment::find($id);
+        $advancepayment->delete();
+        toastr()->error('advancepayment successfully deleted.');
+        return redirect()->back();
     }
 }

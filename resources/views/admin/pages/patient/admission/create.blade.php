@@ -48,9 +48,9 @@
            
 
             <div class="form-group col-3 mt-2">
-            <label for="package_id">Package <span style="color:red">*</span></label>
-                <select class="form-select" name="package_id" aria-label="Default select example" required>
-                    <option>Select Package</option>
+            <label for="package_id">Package </label>
+                <select class="form-select" name="package_id" aria-label="Default select example">
+                    <option value="">Select Package</option>
                     @foreach ($package as $data)
                     <option value="{{$data->id}}">{{$data->name}} </option>
                     @endforeach
@@ -58,9 +58,10 @@
             </div>
 
             <div class="form-group col-3 mt-2">
-            <label for="insurance_id">Insurance<span style="color:red">*</span></label>
-                <select class="form-select" name="insurance_id" aria-label="Default select example" required>
-                    <!-- <option>Select Insurance</option> -->
+            <label for="insurance_id">Insurance</label>
+                <select class="form-select" name="insurance_id" aria-label="Default select example">
+                    <option value="">Select Insurance</option>
+
                     @foreach ($insurance as $data)
                     <option value="{{$data->id}}">{{$data->name}} </option>
                     @endforeach
@@ -75,25 +76,25 @@
             <div class="form-group col-6 mt-2">
                 <label for="height">Enter Patient's Height</label>
                 <input type="text" class="form-control" id=" height" name=" height"
-                    placeholder="Enter Patient's Height">
+                    placeholder="Enter Patient's Height" value="5.2">
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="weight">Enter Patient's Weight</label>
                 <input type="text" class="form-control" id=" weight" name=" weight"
-                    placeholder="Enter Patient's Weight">
+                    placeholder="Enter Patient's Weight" value="70.5">
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="allergies">Does patient has allergies to any medicine or food?</label>
                 <input type="text" class="form-control" id=" allergies" name=" allergies"
-                    placeholder="Does patient has allergies to any medicine or food?">
+                    placeholder="Does patient has allergies to any medicine or food?" value="no">
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="tendancy">Does patient has a tendancy to bleed or buise easily?</label>
                 <input type="text" class="form-control" id="tendancy" name="tendancy"
-                    placeholder="Does patient has  a tendancy to bleed or buise easily?">
+                    placeholder="Does patient has  a tendancy to bleed or buise easily?" value="no">
             </div>
 
             <hr class="mt-1">
@@ -147,7 +148,7 @@
             </div>
             <div class="form-group col-4 mt-2">
                 <label for="others">Others</label>
-                <textarea type="text" class="form-control" id="others" name="others"></textarea>
+                <textarea type="text" class="form-control" id="others" name="others" placeholder="Other Informations"></textarea>
             </div>
 
             <hr class="mt-1">
@@ -156,25 +157,25 @@
             <div class="form-group col-6 mt-2">
                 <label for="guardian_name">Guardian Name</label></label>
                 <input type="text" class="form-control" id="guardian_name" name="guardian_name"
-                    placeholder="Enter Guardian Name" required>
+                    placeholder="Enter Guardian Name" value="Mr.Clark" required>
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="guardian_relation">Relation</label></label>
                 <input type="text" class="form-control" id="guardian_relation" name="guardian_relation"
-                    placeholder="Relation With Patient" required>
+                    placeholder="Relation With Patient" value="Relative" required>
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="guardian_contact">Guardian Contact No</label></label>
                 <input type="text" class="form-control" id="guardian_contact" name="guardian_contact"
-                    placeholder="Enter Mobile Number" required>
+                    placeholder="Enter Mobile Number" value="01718306272" required>
             </div>
 
             <div class="form-group col-6 mt-2">
                 <label for="guardian_address">Guardian Address</label></label>
                 <textarea type="text" class="form-control" id="guardian_address" name="guardian_address"
-                    placeholder="Enter Address" required></textarea>
+                    placeholder="Enter Address" required> {{ value('Uttara, Dhaka-1230, Bangladesh')}}</textarea>
             </div>
 
 

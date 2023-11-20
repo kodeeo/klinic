@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('medicine_categories')->restrictOnDelete();
             $table->string('name',50);
             $table->double('price');
             $table->string('manufactured_by');

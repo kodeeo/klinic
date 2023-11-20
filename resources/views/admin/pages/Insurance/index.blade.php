@@ -36,6 +36,10 @@
                     <th scope="col">Discount</th>
                     <th scope="col">Remark</th>
 
+<div style="overflow-x:auto">
+    <table class="table" id="dataTable" style="text-align: center">
+        <thead class="thead-dark">
+            <tr>
                     <th scope="col">Insurance No</th>
                     <th scope="col">Insurance Code</th>
                     <th scope="col">Disease name</th>
