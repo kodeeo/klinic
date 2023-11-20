@@ -10,45 +10,46 @@
             <a class="btn btn-primary" href="{{route('insurance.store')}}"><i class="fa fa-list" style="font-family: FontAwesome, Bangla871, sans-serif;"></i> Insurance List </a>
         </div>
     </div>
-    <form action="{{route('insurance.store')}}" method="post">
-        @csrf
-        <div class="row">
+        <form action="{{ route('insurance.store') }}" method="post">
+            @csrf
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="insurance_name" class="col-xs-3 col-form-label">Insurance Name <i class="text-danger">
+                            *</i></label>
+                    <input name="name" type="string" class="form-control" id="insurance_name"
+                        placeholder="Insurance Name" value="">
+                </div>
+
+
             <div class="form-group col-6">
-                <label for="insurance_name" class="col-xs-3 col-form-label">Insurance Name <i class="text-danger">
-                        *</i></label>
-                <input name="name" type="string" class="form-control" id="insurance_name"
-                    placeholder="Insurance Name" value="Life Insurance">
+                <label for="service_tax" class="col-xs-3 col-form-label">Service Tax(%)</label>
+                <input name="service_tax" type="integer" class="form-control" id="service_tax" placeholder="Service Tax"
+                    value="9">
             </div>
-        </div>
 
-                <div class="form-group col-6">
-                    <label for="service_tax" class="col-xs-3 col-form-label">Service Tax(%)</label>
-                    <input name="service_tax" type="number" class="form-control" id="service_tax" placeholder="Service Tax"
-                        value="">
-                </div>
+            <div class="form-group col-6">
+                <label for="discount" class="col-xs-3 col-form-label">Discount(%)</label>
+                <input name="discount" type="integer" class="form-control" id="discount" placeholder="Discount" value="5">
+            </div>
 
-                <div class="form-group col-6">
-                    <label for="discount" class="col-xs-3 col-form-label">Discount(%)</label>
-                    <input name="discount" type="number" class="form-control" id="discount" placeholder="Discount"
-                        value="">
-                </div>
+            <div class="form-group col-6">
+                <label for="remark" class="col-xs-3 col-form-label">Remark</label>
+                <textarea name="remark" type="string" class="form-control" placeholder="Remark" rows="7">
+                    {{ value('You should remember your terms & conditons') }}
+                </textarea>
+            </div>
 
-                <div class="form-group col-6">
-                    <label for="remark" class="col-xs-3 col-form-label">Remark</label>
-                    <textarea name="remark" type="string" class="form-control" placeholder="Remark" rows="7"></textarea>
-                </div>
+            <div class="form-group col-6">
+                <label for="insurance_no" class="col-xs-3 col-form-label">Insurance No.</label>
+                <input name="insurance_no" type="integer" class="form-control" id="insurance_no"
+                    placeholder="Insurance No." value="2023001">
+            </div>
 
-                <div class="form-group col-6">
-                    <label for="insurance_no" class="col-xs-3 col-form-label">Insurance No.</label>
-                    <input name="insurance_no" type="number" class="form-control" id="insurance_no"
-                        placeholder="Insurance No." value="">
-                </div>
-
-                <div class="form-group col-6">
-                    <label for="insurance_code" class="col-xs-3 col-form-label">Insurance Code</label>
-                    <input name="insurance_code" type="number" class="form-control" id="insurance_code"
-                        placeholder="Insurance Code" value="">
-                </div>
+            <div class="form-group col-6">
+                <label for="insurance_code" class="col-xs-3 col-form-label">Insurance Code</label>
+                <input name="insurance_code" type="integer" class="form-control" id="insurance_code"
+                    placeholder="Insurance Code" value="1010">
+            </div>
 
                 {{-- <div class="form-group row">
                 <div data-role="dynamic-fields"> --}}
@@ -98,18 +99,17 @@
                 </div>
 
 
-                <div class="form-group col-6">
-                    <label for="hospital_rate" class="col-xs-3 col-form-label">Hospital Rate</label>
-                    <input name="hospital_rate" type="number" class="form-control" id="hospital_rate"
-                        placeholder="Hospital Rate" value="">
-                </div>
+            <div class="form-group col-6">
+                <label for="hospital_rate" class="col-xs-3 col-form-label">Hospital Rate</label>
+                <input name="hospital_rate" type="integer" class="form-control" id="hospital_rate"
+                    placeholder="Hospital Rate" value="1000">
+            </div>
 
-                <div class="form-group col-6">
-                    <label for="insurance_rate" class="col-xs-3 col-form-label">Insurance Rate</label>
-                    <input name="insurance_rate" type="number" class="form-control" id="insurance_rate"
-                        placeholder="Insurance Rate" value="">
-                </div>
-
+            <div class="form-group col-6">
+                <label for="insurance_rate" class="col-xs-3 col-form-label">Insurance Rate</label>
+                <input name="insurance_rate" type="integer" class="form-control" id="insurance_rate"
+                    placeholder="Insurance Rate" value="200">
+            </div>
 
             <div class="form-group col-6">
                 <label for="total" class="col-xs-3 col-form-label">Total</label>

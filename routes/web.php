@@ -53,8 +53,8 @@ use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
 use App\Http\Controllers\Admin\Export\AdmissionExportController;
 
-use App\Http\Controllers\Admin\Export\BedExportController;
 
+use App\Http\Controllers\Admin\Export\BedExportController;
 
 
 use App\Http\Controllers\Admin\Export\ServiceExportController;
@@ -340,6 +340,7 @@ Route::controller(AdmissionExportController::class)->group(function(){
     Route::get('admission/data/pdf','pdf')->name('admission.data.pdf');
     Route::get('admission/data/print','print')->name('admission.data.print');
 });
+
 
 
 
