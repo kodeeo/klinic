@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Cache;
 
 class PatientController extends Controller
 {
-    
+
     public function index()
     {
         if(Cache::has("patients"))
@@ -25,13 +25,13 @@ class PatientController extends Controller
         return view('admin.pages.patient.index',compact('patients'));
     }
 
-   
+
     public function create()
     {
         return view('admin.pages.patient.create');
     }
 
-   
+
     public function store(Request $request)
     {
         try{
@@ -73,22 +73,19 @@ class PatientController extends Controller
         }catch(\Exception $e){
             Log::channel('custom')->error('Patient'.$e->getMessage());
             Toastr::error('Something went wrong ! Please try again.');
-            return redirect()->back();
+//             return redirect()->back();
+           return redirect()->route('patients.index');
         }
-       
-        Toastr::success('Patient has been craeted successfully');
-        return redirect()->route('patients.index');
-        
     }
 
-  
+
     public function show($id)
     {
         $patient=Patient::find($id);
         return view('admin.pages.patient.show',compact('patient'));
     }
 
-   
+
     public function edit($id)
     {
         $patient=Patient::find($id);
@@ -121,17 +118,17 @@ class PatientController extends Controller
             'blood_group'=>$request->blood_group,
             'patient_image'=>$image_name
         ]);
-           }catch(\Exception $e)
+
+        return redirect()->route('patients.index')->with(Toastr::success('Patient has been updated successfully'));
+        }
+           catch(\Exception $e)
            {
             Log::channel('custom')->error('Patient'.$e->getMessage());
             Toastr::error('Something went wrong ! Please try again.');
             return redirect()->back();
            }
-        Log::Channel('custom')->info("Patient has been updated successfully");
-        Toastr::success('Patient has been updated successfully');
-        return redirect()->route('patients.index');
         }
-    
+
     public function destroy($id)
     {
         Patient::find($id)->delete();

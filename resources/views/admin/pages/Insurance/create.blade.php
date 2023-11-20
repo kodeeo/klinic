@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+    <div class="panel panel-default thumbnail">
 
 <div class="panel panel-default thumbnail">
 <h1>Insurance Create Form</h1>
@@ -18,6 +19,16 @@
                 <input name="name" type="string" class="form-control" id="insurance_name"
                     placeholder="Insurance Name" value="Life Insurance">
             </div>
+        </div>
+        <form action="{{ route('insurance.store') }}" method="post">
+            @csrf
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="insurance_name" class="col-xs-3 col-form-label">Insurance Name <i class="text-danger">
+                            *</i></label>
+                    <input name="name" type="string" class="form-control" id="insurance_name"
+                        placeholder="Insurance Name" value="">
+                </div>
 
             <div class="form-group col-6">
                 <label for="service_tax" class="col-xs-3 col-form-label">Service Tax(%)</label>
@@ -49,9 +60,9 @@
                     placeholder="Insurance Code" value="1010">
             </div>
 
-            {{-- <div class="form-group row">
+                {{-- <div class="form-group row">
                 <div data-role="dynamic-fields"> --}}
-                    {{-- <div class="form-inline">
+                {{-- <div class="form-inline">
             <label for="disease_charge" class="col-xs-3 col-form-label">Disease Charge</label>
             <div class="col-xs-9" id="disease_charge">
                 <div class="row">
@@ -95,9 +106,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
 
             <div class="form-group col-6">
                 <label for="hospital_rate" class="col-xs-3 col-form-label">Hospital Rate</label>
@@ -125,41 +133,40 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group row mt-2">
-                <div class="col-sm-offset-3 col-sm-6">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                <div class="form-group row mt-2">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-<script>
-    $(function() {
- // Remove button click
- $(document).on(
-     'click',
-     '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
-     function(e) {
-         e.preventDefault();
-         $(this).closest('.form-inline').remove();
-     }
- );
- // Add button click
- $(document).on(
-     'click',
-     '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
-     function(e) {
-         e.preventDefault();
-         var container = $(this).closest('[data-role="dynamic-fields"]');
-         new_field_group = container.children().filter('.form-inline:first-child').clone();
-         new_field_group.find('input').each(function(){
-             $(this).val('');
-         });
-         container.append(new_field_group);
-     }
- );
-});
-
-</script>
+        </form>
+        <script>
+            $(function() {
+                // Remove button click
+                $(document).on(
+                    'click',
+                    '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
+                    function(e) {
+                        e.preventDefault();
+                        $(this).closest('.form-inline').remove();
+                    }
+                );
+                // Add button click
+                $(document).on(
+                    'click',
+                    '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+                    function(e) {
+                        e.preventDefault();
+                        var container = $(this).closest('[data-role="dynamic-fields"]');
+                        new_field_group = container.children().filter('.form-inline:first-child').clone();
+                        new_field_group.find('input').each(function() {
+                            $(this).val('');
+                        });
+                        container.append(new_field_group);
+                    }
+                );
+            });
+        </script>
     @endsection
