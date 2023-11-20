@@ -52,6 +52,7 @@ use App\Http\Controllers\Admin\Activities\MedicineController;
 use App\Http\Controllers\Admin\Export\DoctorExportController;
 use App\Http\Controllers\Admin\Export\PatientExportController;
 use App\Http\Controllers\Admin\Export\AdmissionExportController;
+
 use App\Http\Controllers\Admin\Export\BedExportController;
 
 

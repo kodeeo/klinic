@@ -98,17 +98,18 @@
                 </div>
 
 
-            <div class="form-group col-6">
-                <label for="hospital_rate" class="col-xs-3 col-form-label">Hospital Rate</label>
-                <input name="hospital_rate" type="integer" class="form-control" id="hospital_rate"
-                    placeholder="Hospital Rate" value="1000">
-            </div>
+                <div class="form-group col-6">
+                    <label for="hospital_rate" class="col-xs-3 col-form-label">Hospital Rate</label>
+                    <input name="hospital_rate" type="number" class="form-control" id="hospital_rate"
+                        placeholder="Hospital Rate" value="">
+                </div>
 
-            <div class="form-group col-6">
-                <label for="insurance_rate" class="col-xs-3 col-form-label">Insurance Rate</label>
-                <input name="insurance_rate" type="integer" class="form-control" id="insurance_rate"
-                    placeholder="Insurance Rate" value="200">
-            </div>
+                <div class="form-group col-6">
+                    <label for="insurance_rate" class="col-xs-3 col-form-label">Insurance Rate</label>
+                    <input name="insurance_rate" type="number" class="form-control" id="insurance_rate"
+                        placeholder="Insurance Rate" value="">
+                </div>
+
 
             <div class="form-group col-6">
                 <label for="total" class="col-xs-3 col-form-label">Total</label>

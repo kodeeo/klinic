@@ -48,6 +48,8 @@ class InsuranceController extends Controller
                 toastr::error($validate->getMessageBag()->first());
                 return redirect()->back();
             }
+
+
                 Insurance::create([
                     'name'=>$request->name,
                     'service_tax'=>$request->service_tax,
