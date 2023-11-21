@@ -27,7 +27,7 @@
         <label for="name">Doctor Name <span style="color:red">*</span></label>
         <select class="form-select" name="doctor_name" aria-label="Default select example" required>
             @foreach ($doctor as $item)
-            <option value="{{$item->id}}">{{$item->name}}</option>
+            <option value="{{$item->id}}">{{$item->username}}</option>
             @endforeach
         </select>
     </div><br>
