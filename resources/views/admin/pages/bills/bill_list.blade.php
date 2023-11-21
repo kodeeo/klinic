@@ -1,6 +1,8 @@
 @extends('admin.master')
 @section('content')
     <h4>Bill List<h4>
+
+    <a class="btn btn-success" href="{{route('bill.create')}}">Create New Bill</a>
             <table class="table" id="dataTable" style="text-align: center;">
                 <thead class="thead-dark">
                 <tr>
@@ -30,7 +32,7 @@
                         <td>
                             <div style="display: flex; justify-content: center">
                                 <a class="btn btn-success btn-sm m-1"
-                                   href="{{ route('bill.show',$bill->id) }}"><i class="fas fa-eye"></i></a>
+                                   href="{{route('bill.invoice',$bill->id)}}"><i class="fas fa-eye"></i></a>
                                 <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1"
                                    href="{{ route('bill.edit',$bill->id) }}"><i class="fas fa-edit"></i></a>
                                 <form

@@ -49,7 +49,7 @@
                         <a class="btn btn-info btn-sm m-1"
                             href="{{route('admissions.create',['patient_id'=>$patient->patient_id])}}"><i
                                 class="fa fa-plus"></i></a>
-                        <a class="btn btn-success btn-sm m-1" href="{{route('bill.invoice',$patient->id)}}">Bill</a>
+                       
 
                         <a class="btn btn-success btn-sm m-1" href="{{route('patients.show',$patient->id)}}"><i
                                 class="fa fa-eye"></i></a>

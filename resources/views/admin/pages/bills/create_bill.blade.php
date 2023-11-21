@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
     <div class="panel-body">
-        <form action="" class="billig-form" method="post" accept-charset="utf-8">
+        <form action="{{route('bill.store')}}" class="billig-form" method="post" accept-charset="utf-8">
             @csrf
             <div class="row">
                 <div class="col-sm-9">
@@ -11,15 +11,15 @@
                                 <div class="col-sm-6">
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="admission_id"
-                                               value="{{$admission->admission_id}}" name="admission_id"
-                                               placeholder="AID" readonly>
+                                               value="" name="admission_id"
+                                               placeholder="AID">
                                         <span class="input-group-btn"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="patient_id"
-                                               value="{{$admission->patient_id}}" placeholder="Patient ID" disabled="">
+                                        <input name="patient_id" type="text" class="form-control" id="patient_id"
+                                               value="" placeholder="Patient ID" >
                                     </div>
                                 </div>
                             </div>
@@ -35,12 +35,12 @@
                         <div class="col-xs-12 col-sm-12 col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="patient_name" placeholder="Patient Name"
-                                       disabled value="{{$admission->patients->full_name}}">
+                                       disabled value="">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6">
                             <div class="form-group">
-                                <input type="text" value="{{$admission->patients->mobile}}" class="form-control"
+                                <input type="text" value="" class="form-control"
                                        id="mobile" placeholder="Mobile Number" disabled>
                             </div>
                             <br>
@@ -69,7 +69,7 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-6 mt-2">
                             <div class="form-group">
-                                <input value="{{$admission->doctors->full_name. ' - '.$admission->doctors->gov_reg_no}}"
+                                <input value=""
                                        type="text" class="form-control" id="doctor_name" placeholder="Doctor Name"
                                        disabled="">
                             </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="avatar-img center-block">
-                        <img id="picture" src="{{$admission->patients->patient_image}}"
+                        <img id="picture" src=""
                              class="img-responsive w-50 img-hw-200" alt="patient">
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                         <div class="form-group row">
                             <label for="admission_date" class="col-sm-4 col-form-label">Admission Date</label>
                             <div class="col-sm-8">
-                                <input class="form-control" type="date" value="{{$admission->admission_date}}"
+                                <input class="form-control" type="date" value=""
                                        placeholder="Admission Date" id="admission_date" disabled="">
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                         <div class="form-group row">
                             <label for="discharge_date" class="col-sm-4 col-form-label">Discharge Date</label>
                             <div class="col-sm-8">
-                                <input class="form-control" type="text" value="{{$admission->discharge_date}}"
+                                <input class="form-control" type="text" value=""
                                        placeholder="Discharge Date" id="discharge_date" disabled="">
                             </div>
                         </div>
@@ -149,37 +149,24 @@
                         <table id="fixTable" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th width="100"
-                                    style="background-color: rgb(235, 237, 242); position: relative; top: 0px;"><i
-                                        class="fa fa-cogs" style="font-family: FontAwesome, Bangla530, sans-serif;"></i>
-                                </th>
+                              
                                 <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Service
                                     Name
                                 </th>
                                 <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">
                                     Quantity
                                 </th>
-                                <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Rate
-                                </th>
-                                <th style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">Sub
-                                    Total
+                                
+                                <th  style="background-color: rgb(235, 237, 242); position: relative; top: 0px;">
+                                    Add/Remove
                                 </th>
                             </tr>
                             </thead>
                             <tbody id="table_body">
                             <tr>
+                                
                                 <td>
-                                    <div class="btn btn-group">
-                                        <button type="button" class="table-add btn btn-sm btn-success"
-                                                onclick="create_tr('table_body')">+
-                                        </button>
-                                        <button type="button" class="remove btn btn-sm btn-danger"
-                                                onclick="remove_tr(this)">-
-                                        </button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <select name="service" id="" class="form-control service">
+                                    <select name="service[]" id="" class="form-control service">
                                         @foreach($services as $service)
                                             <option value="{{$service->id}}">{{$service->name}}</option>
                                         @endforeach
@@ -188,8 +175,17 @@
                                 <td>
                                     <input class="form-control  quantity" type="number" name="quantity">
                                 </td>
-                                <td><input class="form-control  amount" type="number" name="amount"></td>
-                                <td><input class="form-control  subtotal" type="number" name="subtotal"></td>
+                                
+                                <td>
+                                <div class="btn btn-group">
+                                        <button type="button" class="table-add btn btn-sm btn-success"
+                                                onclick="create_tr('table_body')">+
+                                        </button>
+                                        <button type="button" class="remove btn btn-sm btn-danger"
+                                                onclick="remove_tr(this)">-
+                                        </button>
+                                    </div>
+                                </td>
 
                             </tr>
 
@@ -224,23 +220,14 @@
                                 <label class="col-sm-4 col-md-4 col-form-label">Payment Method</label>
                                 <div class="col-sm-8 col-md-8">
                                     <select name="payment_method"
-                                            class="form-control basic-single select2-hidden-accessible"
-                                            required="required" tabindex="-1" aria-hidden="true">
+                                            class="form-control basic-single "
+                                             tabindex="-1" aria-hidden="true">
                                         <option value="" selected="selected">Select Option</option>
                                         <option value="Cash">Cash</option>
                                         <option value="Card">Card</option>
                                         <option value="Cheque">Cheque</option>
-                                    </select><span class="select2 select2-container select2-container--default"
-                                                   dir="ltr" style="width: 233.637px;">
-                        <span class="selection">
-                            <span class="select2-selection select2-selection--single" role="combobox"
-                                  aria-haspopup="true" aria-expanded="false" tabindex="0"
-                                  aria-labelledby="select2-payment_method-vy-container">
-                                <span class="select2-selection__rendered" id="select2-payment_method-vy-container"><span
-                                        class="select2-selection__placeholder">Select option</span></span><span
-                                    class="select2-selection__arrow" role="presentation"><b role="presentation"
-                                                                                            style="font-family: themify, Bangla530, sans-serif;"></b></span></span></span><span
-                                            class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                    </select>
+                                    
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -273,7 +260,7 @@
                                     <tbody>
                                     <tr>
                                         <td>Total</td>
-                                        <td><input name="total" type="number" class="form-control grand-calc" id="total"
+                                        <td><input name="total_amount" type="number" class="form-control grand-calc" id="total"
                                                    value="0.00"></td>
                                     </tr>
                                     <tr>
@@ -314,7 +301,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea name="note" class="form-control" rows="5" placeholder="Notes"></textarea>
+                        <textarea name="remarks" class="form-control" rows="5" placeholder="Notes"></textarea>
                     </div>
                     <div class="form-group">
                         <div class="form-check">
