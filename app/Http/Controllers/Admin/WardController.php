@@ -6,6 +6,8 @@ use App\Models\Ward;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Brian2694\Toastr\Toastr as ToastrToastr;
+use Illuminate\Support\Facades\Validator;
 
 class WardController extends Controller
 {
@@ -16,7 +18,8 @@ class WardController extends Controller
      */
     public function index()
     {
-        $wards=Ward::all();
+        $wards=Ward::paginate(2);
+
         return view('admin.pages.ward.index',compact('wards'));
     }
 
@@ -39,6 +42,17 @@ class WardController extends Controller
     public function store(Request $request)
     {  
 
+        $validate=Validator::make($request->all(),[
+            'name'=>'required',
+            'status'=>'required'
+
+        ]);
+
+        if($validate->fails()){
+
+            Toastr::error('Validation failed');
+            return redirect()->back();
+        }
         Ward::create([
             'name'=>$request->name,
             'status'=>$request->status
@@ -63,7 +77,8 @@ class WardController extends Controller
      */
     public function show($id)
     {
-        //
+        $ward=Ward::find($id);
+        return view('admin.pages.ward.view',compact('ward'));
     }
 
     /**
@@ -74,7 +89,8 @@ class WardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ward=Ward::find($id);
+        return view('admin.pages.ward.edit',compact('ward'));
     }
 
     /**
@@ -86,7 +102,27 @@ class WardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $validate=Validator::make($request->all(),[
+
+            'ward_name'=>'required',
+            'status'=>'required'
+            
+        ]);
+      
+        if($validate->fails()){
+
+            Toastr::error('Validation failed');
+            return redirect()->back();
+        }
+        $ward=Ward::find($id);
+        $ward->update([
+            'name'=>$request->ward_name,
+            'status'=>$request->status
+        ]);
+
+        Toastr::success('Ward Updated Successfully');
+        return redirect()->route('ward.index');
     }
 
     /**
@@ -99,5 +135,17 @@ class WardController extends Controller
     {
         Ward::find($id)->delete();
         return redirect()->route('ward.index')->with(Toastr::error('Ward Deleted'));
+    }
+
+    public function statusUpdate(Request $request,$id){
+
+            $ward= Ward::find($id);
+            $ward->update([
+
+                'status'=>$request->status
+            ]);
+
+            Toastr::success('Ward Status Updated Successully');
+            return redirect()->route('ward.index');
     }
 }

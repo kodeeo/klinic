@@ -72,6 +72,7 @@ use App\Http\Controllers\Admin\Activities\OperationalReportController;
 use App\Http\Controllers\Admin\AdvancePaymentController;
 use App\Http\Controllers\Admin\Export\AdvancePaymentExportController;
 use App\Http\Controllers\Admin\Export\HospitalActivitiesExportController;
+use App\Http\Controllers\Admin\Export\WardExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -249,6 +250,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     # ward CRUD
     Route::resource('ward', WardController::class);
+    Route::put('ward/status/update/{id}',[WardController::class,'statusUpdate'])->name('ward.status.update');
 
 
 //Hospital Activities
@@ -322,6 +324,14 @@ Route::controller(DoctorDeptExportController::class)->group(function () {
     Route::get('department/data/csv', 'csv')->name('department.data.csv');
     Route::get('department/data/excel', 'excel')->name('department.data.excel');
     Route::get('department/data/pdf', 'pdf')->name('department.data.pdf');
+});
+
+//ward export
+
+Route::controller(WardExportController::class)->group(function(){
+
+    Route::get('ward/data/csv','csv')->name('ward.data.csv');
+    Route::get('ward/data/excel','excel')->name('ward.data.excel');
 });
 
 //Patient Export

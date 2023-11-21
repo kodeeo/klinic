@@ -1,12 +1,11 @@
 @extends('admin.master')
 @section('content')
     
-<h3> Cabin </h3>
+<h3> Ward Details </h3>
 
-<p><b>Cabin Number: {{$cabin->cabin_number}}</b></p>
-<p><b>Admission ID: {{$cabin->admission_id}}</b></p>
-<p><b>Staff ID: {{$cabin->staff_id}}</b></p>
-<p><b>Nurse ID: {{$cabin->nurse_id}}</b></p>
-<button class="btn btn-success"><p><b>Status: {{$cabin->status}}</b></p></button>
+<p><b>Ward ID: {{$ward->id}}</b></p>
+<p><b>Ward Name: {{$ward->name}}</b></p>
+<p><b>Status: {{$ward->status}}</b></p>
+
 
 @endsection 
