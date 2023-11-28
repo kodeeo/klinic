@@ -327,6 +327,9 @@
                                 <a href="{{ route('advancepayment.index') }}">Advance Payment List</a>
                             </li>
                             <li>
+                                <a href="{{ route('bill.create') }}">Bill Add</a>
+                            </li> 
+                            <li>
                                 <a href="{{ route('bill.index') }}">Bill List</a>
                             </li>
 
