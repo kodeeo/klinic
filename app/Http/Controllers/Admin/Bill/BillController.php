@@ -48,6 +48,7 @@ class BillController extends Controller
         // if(request()->has('admission_id'))
         // {
         $services = Service::where('status', 'active')->get();
+        // dd($services);
         // $admission=Admission::with(['patients','doctors'])->where('admission_id',request()->admission_id)->first();
         return view('admin.pages.bills.create_bill', compact('services'));
         // }
@@ -59,8 +60,8 @@ class BillController extends Controller
     public function store(Request $request)
     {
         $validate = Validator::make($request->all(),[
-            'patient_id' => 'required',
-            'service.*' => 'required',
+            // 'patient_id' => 'required',
+            // 'service.*' => 'required',
         ]);
 
         if ($validate->fails()) {

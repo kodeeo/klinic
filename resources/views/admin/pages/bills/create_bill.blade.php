@@ -3,24 +3,26 @@
 <div class="panel-body">
     <h3><b>Old Patient</b></h3>
     <hr>
-    <form action="{{route('bill.store')}}" class="billig-form" method="post" accept-charset="utf-8">
-        @csrf
-        <div class="row mt-3">
-            <div class="col-md-8">
-                <div class="row ">
-                    <div class="col-md-4 bg-success">
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <div class="row ">
+                <div class="col-md-4 bg-success">
                     <h5>Patient Name or ID :</h5>
-                    </div>
-                    
-                    <div class="col-md-8">
-                        <input type="search" name="patient_name" class="form-control" placeholder=" Search Patient Name or ID">
-                    </div>
+                </div>
+                
+                <div class="col-md-8">
+                    <form action="" method="">
+                        <input type="search" name="patient" class="form-control" placeholder=" Search Patient Name or ID">
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
+    </div>
+    <div class="row mt-3">
         <h3><b>Patient Details</b></h3>
-        <hr>
+            <hr>
+        <form action="{{route('bill.store')}}" class="billig-form" method="post" accept-charset="utf-8">
+            @csrf
             <div class="col-md-12">
                 <table class="table table-bordered border-success">
                     <tbody>
@@ -63,13 +65,20 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-4">
-                <input type="text" name="service" class="form-control" placeholder="Service Name">
-            </div>
+                <select name="service_id"  class="form-control" id="service_id" onchange="changePrice(this)">
+                
+                    @foreach ($services as $service)
+                    
+                        <option service_id="{{ $service->id }}" value="{{ $service->rate }}">{{ $service->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input id="service_price" type="text" value="" name="price" class="form-control" placeholder="Price" disabled>
+                    <input id="service_name" type="hidden" value="">
+                </div>
             <div class="col-md-4">
-                <input type="text" name="price" class="form-control" placeholder="Price">
-            </div>
-            <div class="col-md-4">
-               <button type="submit" class="btn btn-primary">Add Service</button>
+               <button type="button" class="btn btn-primary" onClick="addService()">Add Service</button>
             </div>
         </div>
     </div>
@@ -84,17 +93,31 @@
                     <th>Price</th>
                 </tr>
             </thead>
+            <tbody id="service_table">
+                    
+            </tbody>
+
+            <tbody id="total_price">
+                <tr>
+                    <td colspan="2">Total</td>
+                    <td>0.00 TK.</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered border-success">
+            <thead>
+                <tr>
+                    <th class="text-center"><b>Report Delivery Date&Time</b></th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>X-ray</td>
-                    <td>1000</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>Total</b></td>
-                    <td>1000</td>
-                </tr>
-                <tr> 
                     <td class="p-3" colspan="2">
                         <div class="row">
                             <div class="col-md-4">
@@ -114,8 +137,6 @@
                             </div>
                         </div>
                     </td>
-
-                    <td></td>
                 </tr>
             </tbody>
         </table>
@@ -232,4 +253,36 @@
 </form>
 </div>
 
+@push('js')
+<script>
+    var serviceNo = 1;
+    function changePrice(serviceSelectBox) {
+        
+    // console.log('ggwp');
+      // Set the value of the input field to the selected option's value
+      document.getElementById('service_price').value = serviceSelectBox.value;
+    };
+
+    function addService(){
+        var tableBody = document.getElementById('service_table');
+
+      // Create a new row
+      var newRow = tableBody.insertRow();
+
+      // Add cells to the row
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+      // Add more cells as needed
+      var selectBox = document.getElementById('service_id');
+      // Set the content of the cells (you can customize this)
+      cell1.innerHTML = serviceNo;
+      cell2.innerHTML = selectBox.options[selectBox.selectedIndex].text + '<input type="hidden" name="serviceId[]" value="'+selectBox.options[selectBox.selectedIndex].getAttribute('service_id')+'" />';
+      cell3.innerHTML = document.getElementById('service_price').value;
+      serviceNo++;
+    
+    }
+</script>
+    
+@endpush
 @endsection

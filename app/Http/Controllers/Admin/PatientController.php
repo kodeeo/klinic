@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Cache;
 
 class PatientController extends Controller
 {
-
     public function index()
     {
         if(Cache::has("patients"))
@@ -136,6 +135,11 @@ class PatientController extends Controller
         Patient::find($id)->delete();
         Toastr::error('Patient Deleted Successully');
         return redirect()->back();
+    }
+    
+    public function serchPatient()
+    {
+        
     }
 }
 

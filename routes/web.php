@@ -132,6 +132,7 @@ Route::group(['prefix' => 'admin'], function () {
         //Patient
 
         Route::resource('patients', PatientController::class);
+        Route::get('patients/search',[PatientController::class,'searchPatient'])->name('search.patient');
 
 
 
