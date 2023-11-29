@@ -23,7 +23,7 @@
 
           <div class="mt-2">
             <label for="image" class="form-label">Insert Image</label>
-            <input class="form-control" type="file" id="image" name="image">
+            <input class="form-control" type="file" id="image" name="department_image">
         </div>
 
           <div class="form-group col-12 mt-2">

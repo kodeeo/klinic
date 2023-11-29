@@ -41,32 +41,33 @@
         </thead>
         <tbody>
             
-          @foreach($insurance as $key=>$item)
-              <tr>
-                  <th>{{ $key+1 }}</th>
-                  <td>{{ $item->name}}</td>
-                  <td>{{ $item->insurance_no }}</td>
-                  <td>{{ $item->insurance_rate}}</td>
-                  <td>{{ $item->status}}</td>
-                  <td>{{ $item->remark}}</td>
+                    @foreach($insurance as $key=>$item)
+                        <tr>
+                            <th>{{ $key+1 }}</th>
+                            <td>{{ $item->name}}</td>
+                            <td>{{ $item->insurance_no }}</td>
+                            <td>{{ $item->insurance_rate}}</td>
+                            <td>{{ $item->status}}</td>
+                            <td>{{ $item->remark}}</td>
                  
-                    <td>
-                        <div style="display: flex">
-                        <a class="btn btn-success btn-sm m-1" href="{{route('insurance.show',$item->id)}}"><i
-                                class="fa fa-eye"></i></a>
-                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{ route('insurance.edit',$item->id) }}"><i
-                                    class="fas fa-edit"></i></a>
-                            <form action="{{ route('insurance.destroy',$item->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <div>
-                                    <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-            </thead>
+                            <td>
+                                 <div style="display: flex">
+                                        <a class="btn btn-success btn-sm m-1" href="{{route('insurance.show',$item->id)}}"><i
+                                            class="fa fa-eye"></i></a>
+                                        <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{ route('insurance.edit',$item->id) }}"><i
+                                                class="fas fa-edit"></i></a>
+                                        <form action="{{ route('insurance.destroy',$item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div>
+                                                <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </form>
+                                 </div>
+                            </td>
+                        </tr>
+               
+                     @endforeach
             <tbody>
 
                 @foreach ($insurance as $key => $item)
@@ -103,7 +104,8 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+        </tbody>
+    </table>
 
-    </div>
+</div>
 @endsection
