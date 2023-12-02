@@ -29,6 +29,7 @@ class OperationalReportController extends Controller
     public function create()
     {
         $doctor=Doctor::all();
+        // dd($doctor);
         return view('admin.pages.hospital activities.operational report.create', compact('doctor'));
     }
 
@@ -91,7 +92,7 @@ class OperationalReportController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'doctor_id'=>$request->doctor_name,
-            
+
         ]);
         return redirect()->route('operational_activities.index')->with(Toastr::info('Operation report has been updated'));
     }

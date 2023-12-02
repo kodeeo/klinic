@@ -15,15 +15,14 @@ class PatientController extends Controller
 
     public function index()
     {
-        if(Cache::has("patients"))
-        {
-            $patients = Patient::orderBy("id","desc")->paginate(10);
+        if (Cache::has("patients")) {
+            $patients = Patient::orderBy("id", "desc")->paginate(10);
             Cache::get("patients", $patients);
-        }else{
-            $patients=Patient::orderBy('id','desc')->get();
-            Cache::put('patients',$patients);
+        } else {
+            $patients = Patient::orderBy('id', 'desc')->get();
+            Cache::put('patients', $patients);
         }
-        return view('admin.pages.patient.index',compact('patients'));
+        return view('admin.pages.patient.index', compact('patients'));
     }
 
 
@@ -35,101 +34,98 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-        try{
-            $image_name=null;
-            if ($request->hasFile('patient_image'))
-            {
-                $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
-                 $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
+        // dd($request->all());
+        try {
+
+            $image_name = null;
+            if ($request->hasFile('patient_image')) {
+                $image_name = date('Ymdhis') . '.' . $request->file('patient_image')->getClientOriginalExtension();
+                $request->File('patient_image')->storeAs('/uploads/patients', $image_name);
             }
-                $request->validate([
-                    'first_name'=>'required |string',
-                    'last_name'=>'required',
-                    'email'=>'required|email',
-                    'password'=>'required |string |min:6 |max:16',
-                    'gender'=>'required |string',
-                    'date_of_birth'=>'required |date',
-                    'address'=>'required',
-                    'mobile'=>'required|min:10',
-                    'blood_group'=>'required',
-                //    'patient_image'=>'required'
-                   ]);
-    
-                //creating new patients
-            $patient=new Patient();
-                $patient->create([
-                'patient_id'=>'P'.date('Ymd').$patient->latest()->first()->id+1,
-                'first_name'=>$request->first_name,
-                'last_name'=>$request->last_name,
-                'email'=>$request->email,
-                'password'=>bcrypt($request->password),
-                'date_of_birth'=>$request->date_of_birth,
-                'gender'=>$request->gender,
-                'address'=>$request->address,
-                'mobile'=>$request->mobile,
-                'blood_group'=>$request->blood_group,
-                'patient_image'=>$image_name
+            $request->validate([
+                'first_name' => 'required |string',
+                'last_name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required |string |min:6 |max:16',
+                'gender' => 'required |string',
+                'date_of_birth' => 'required |date',
+                'address' => 'required',
+                'mobile' => 'required|numeric|min:10 |regex:/^([0-9\s\-\+\(\)]*)$/',
+                'blood_group' => 'required',
+                'patient_image' => 'required'
             ]);
-            Toastr::success('Patient has been craeted successfully');
+           // dd($request->all());
+            //creating new patients
+            $patient = new Patient();
+            $patient->create([
+                'patient_id' => 'P' . date('Ymd') . $patient->latest()->first()->id + 1,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'date_of_birth' => $request->date_of_birth,
+                'gender' => $request->gender,
+                'address' => $request->address,
+                'mobile' => $request->mobile,
+                'blood_group' => $request->blood_group,
+                'patient_image' => $image_name
+            ]);
+        } catch (\Exception $e) {
+            Log::channel('custom')->error('Patient' . $e->getMessage());
+            Toastr::error('Something went wrong ! Please try again.');
+            //             return redirect()->back();
             return redirect()->route('patients.index');
 
-        }catch(Exception $e){
-            Log::channel('custom')->error('Patient'.$e->getMessage());
-            Toastr::error('Something went wrong! Please try again.');
-            return redirect()->back();
         }
     }
 
 
     public function show($id)
     {
-        $patient=Patient::find($id);
-        return view('admin.pages.patient.show',compact('patient'));
+        $patient = Patient::find($id);
+        return view('admin.pages.patient.show', compact('patient'));
     }
 
 
     public function edit($id)
     {
-        $patient=Patient::find($id);
-        $genders=['Male','Female'];
-        return view('admin.pages.patient.edit',compact('patient','genders'));
+        $patient = Patient::find($id);
+        $genders = ['Male', 'Female'];
+        return view('admin.pages.patient.edit', compact('patient', 'genders'));
     }
 
     public function update(Request $request, $id)
-        {
-            //dd($request->all());
-           try{
+    {
+        //dd($request->all());
+        try {
 
-               $image_name=null;
-               if ($request->hasFile('patient_image'))
-               {
-                   $image_name=date('Ymdhis').'.'.$request->file('patient_image')->getClientOriginalExtension();
-                    $request->File('patient_image')->storeAs('/uploads/patients',$image_name);
-               }
-    
-        $patient=Patient::find($id);
+            $image_name = null;
+            if ($request->hasFile('patient_image')) {
+                $image_name = date('Ymdhis') . '.' . $request->file('patient_image')->getClientOriginalExtension();
+                $request->File('patient_image')->storeAs('/uploads/patients', $image_name);
+            }
+
+            $patient = Patient::find($id);
             $patient->update([
-            'first_name'=>$request->first_name,
-            'last_name'=>$request->last_name,
-            'email'=>$request->email,
-            'password'=>bcrypt($request->password),
-            'date_of_birth'=>$request->date_of_birth,
-            'gender'=>$request->gender,
-            'address'=>$request->address,
-            'mobile'=>$request->mobile,
-            'blood_group'=>$request->blood_group,
-            'patient_image'=>$image_name
-        ]);
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'date_of_birth' => $request->date_of_birth,
+                'gender' => $request->gender,
+                'address' => $request->address,
+                'mobile' => $request->mobile,
+                'blood_group' => $request->blood_group,
+                'patient_image' => $image_name
+            ]);
 
-        return redirect()->route('patients.index')->with(Toastr::success('Patient has been updated successfully'));
-        }
-           catch(\Exception $e)
-           {
-            Log::channel('custom')->error('Patient'.$e->getMessage());
+            return redirect()->route('patients.index')->with(Toastr::success('Patient has been updated successfully'));
+        } catch (\Exception $e) {
+            Log::channel('custom')->error('Patient' . $e->getMessage());
             Toastr::error('Something went wrong ! Please try again.');
             return redirect()->back();
-           }
         }
+    }
 
     public function destroy($id)
     {
@@ -138,5 +134,3 @@ class PatientController extends Controller
         return redirect()->back();
     }
 }
-
-
