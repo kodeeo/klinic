@@ -6,6 +6,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Log;
 
 class DepartmentController extends Controller
 {
@@ -59,34 +60,32 @@ class DepartmentController extends Controller
       }
       public function update(Request $request,$id)
       {
-
-
-          $department=Department::find($id);
         
-
-          $image_name=$department->image;
+            $image_name=null;
           //              step 1: check image exist in this request.
                   if($request->hasFile('department_image'))
                   {
                       // step 2: generate file name
-                      $image_name=date('Ymdhis') .'.'. $request->file('department_image')->getClientOriginalExtension();
+                      $image_name=date('Ymdhis').'.'.$request->file('department_image')->getClientOriginalExtension();
           
                       //step 3 : store into project directory
           
-                      $request->file('department_image')->storeAs('/uploads/departments',$image_name);
+                      $request->File('department_image')->storeAs('/uploads/departments',$image_name);
           
                   }
-          $department->update([
 
-             'name'=>$request->name,
+        $department=Department::find($id);
+          $department->update([
+            'name'=>$request->name,
              'description'=>$request->description,
              'image'=>$image_name
          ]);
 
          Toastr::success('Department Updated Successfully', 'success');
-
-
          return redirect()->route('show.department');
+       
+
+       
 
       }
 

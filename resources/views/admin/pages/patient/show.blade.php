@@ -17,7 +17,8 @@
                     <p><b>Gender</b></p>
                     <p><b>Blood Group</b></p>
                     <p><b>Status</b></p>
-                    <p><b>Refer By</b></p>
+                    <p><b>Address</b></p>
+                    
                    
                 </div>
                 <div class="col-md-9">
@@ -30,9 +31,9 @@
                     <p><span> : </span><b>{{$patient->date_of_birth}}</b></p>
                     <p><span> : </span><b>{{$patient->gender}}</b></p>
                     <p><span> : </span><b>{{$patient->blood_group}}</b></p>
-                    <p><span> : </span><b>{{$patient->address}}</b></p>
                     <p><span> : </span><b>{{$patient->status}}</b></p>
-                    <p><span> : </span><b>{{$patient->ref_by}}</b></p>
+                    <p><span> : </span><b>{{$patient->address}}</b></p>
+                    
                    
                 </div>
             </div>
@@ -40,7 +41,7 @@
         <div class="col-md-6">
             <img class="mb-3" src="{{$patient->patient_image}}" style="border-radius:4px" width="200px" alt="patient image">
             <p><b><span>Full Name: </span>{{$patient->full_name}}</b></p>
-            <p><b><span>Address: </span>{{$patient->address}}</b></p>
+        
             
 
         </div>
