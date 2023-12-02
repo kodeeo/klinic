@@ -100,10 +100,10 @@
                             <div style="display: flex; align-items: center;">
                                 <div style="padding-right: 10px;">
                                     <select name="status" class="form-select" aria-label="Default select example">
-                                        <option @if($value->status == 'Active') selected @endif value="Active">Active
+                                        <option @if($value->status == 'active') selected @endif value="active">Active
                                         </option>
-                                        <option @if($value->status == 'Inactive') selected @endif
-                                            value="Inactive">Inactive</option>
+                                        <option @if($value->status == 'inactive') selected @endif
+                                            value="inactive">Inactive</option>
                                     </select>
                                 </div>
                                 <div>

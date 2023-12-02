@@ -140,7 +140,7 @@ class NurseController extends Controller
                 'status'=>$request->status
             ]);
         }
-
+        Toastr::success('Nurse Status Updated Successully');
         return redirect()->route('nurses.index');
     }
 }
