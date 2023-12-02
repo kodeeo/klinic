@@ -45,7 +45,7 @@ class ClinicController extends Controller
         {
             $file=$request->file('image');
             $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads/klinicLogo',$filename);
+            $file->storeAs('/uploads/clinikLogo',$filename);
         }
 
         $clinic->update([

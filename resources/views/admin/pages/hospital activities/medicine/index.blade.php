@@ -33,7 +33,6 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Medicine Name</th>
-                <th scope="col">Category Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Manufactured By</th>
                 <th class="d-print-none" scope="col">Action</th>
@@ -44,7 +43,6 @@
                   <tr>
                       <th scope="row">{{$key+1}}</th>
                       <td>{{$item->name}}</td>
-                      <td>{{$item->category->name}}</td>
                       <td>{{$item->price}}</td>
                       <td>{{$item->manufactured_by}}</td>
                       <td class="d-print-none">

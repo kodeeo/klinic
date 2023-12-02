@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Exception;
 use Illuminate\Support\Facades\Cache;
 
 class PatientController extends Controller
@@ -53,7 +54,7 @@ class PatientController extends Controller
                 'blood_group' => 'required',
                 'patient_image' => 'required'
             ]);
-            dd($request->all());
+           // dd($request->all());
             //creating new patients
             $patient = new Patient();
             $patient->create([
@@ -74,6 +75,7 @@ class PatientController extends Controller
             Toastr::error('Something went wrong ! Please try again.');
             //             return redirect()->back();
             return redirect()->route('patients.index');
+
         }
     }
 

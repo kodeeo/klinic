@@ -1,9 +1,10 @@
+
 <div class="leftside-menu">
     <!-- LOGO -->
     <a href="{{ route('admin.dashboard') }}" class="logo text-center logo-light">
         <span class="logo-lg">
 
-            <img src="{{ $klinic->image }}" width="170px" alt="Company Logo">
+            <img src="{{ $klinic->image }}" height="80" width="160" alt="Company Logo">
 
         </span>
         <span class="logo-sm">
@@ -291,11 +292,7 @@
                                     <a href="{{ route('medicine.index') }}">Medicine</a>
                                 </li>
                             @endif
-                            @if (hasAnyPermissions('medicine_category.index'))
-                                <li>
-                                    <a href="{{ route('medicine_category.index') }}">Medicine Category</a>
-                                </li>
-                            @endif
+                           
                         </ul>
                     </div>
                 </li>
@@ -398,13 +395,13 @@
 
             @if (hasAnyPermissions('ward.index'))
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="sidebarTasks"
+                    <!-- <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="sidebarTasks"
                         class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
                         <span> Room </span>
                         <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="room">
+                    </a> -->
+                    <!-- <div class="collapse" id="room"> -->
                         <ul class="side-nav-second-level">
                             @if (hasAnyPermissions('ward.index'))
                                 <li>
@@ -412,12 +409,12 @@
                                 </li>
                             @endif
                             {{-- @if (hasAnyPermissions('cabin.index'))
-                        <li>
+                        <!-- <li>
                             <a href="{{route('cabin.index')}}">Cabin</a>
-                        </li>
+                        </li> -->
                         @endif --}}
                         </ul>
-                    </div>
+                    <!-- </div> -->
                 </li>
             @endif
 

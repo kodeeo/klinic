@@ -26,25 +26,45 @@
     </div>
     <br><br>
 
-    <div style="overflow-x:auto">
-        <table class="table" id="dataTable" style="text-align: center">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Service tax</th>
-                    <th scope="col">Discount</th>
-                    <th scope="col">Remark</th>
 
-                    <th scope="col">Insurance No</th>
-                    <th scope="col">Insurance Code</th>
-                    <th scope="col">Disease name</th>
-                    <th scope="col">Disease charge</th>
-                    <th scope="col">Hospital rate</th>
-                    <th scope="col">Insurance rate</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+<div style="overflow-x:auto">
+    <table class="table" id="dataTable" style="text-align: center">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Insurance No</th>
+                <th scope="col">Insurance Rate</th>
+                <th scope="col">Status</th>
+                <th scope="col">Remark</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+          @foreach($insurance as $key=>$item)
+              <tr>
+                  <th>{{ $key+1 }}</th>
+                  <td>{{ $item->name}}</td>
+                  <td>{{ $item->insurance_no }}</td>
+                  <td>{{ $item->insurance_rate}}</td>
+                  <td>{{ $item->status}}</td>
+                  <td>{{ $item->remark}}</td>
+                 
+                    <td>
+                        <div style="display: flex">
+                        <a class="btn btn-success btn-sm m-1" href="{{route('insurance.show',$item->id)}}"><i
+                                class="fa fa-eye"></i></a>
+                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{ route('insurance.edit',$item->id) }}"><i
+                                    class="fas fa-edit"></i></a>
+                            <form action="{{ route('insurance.destroy',$item->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <div>
+                                    <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
             </thead>
             <tbody>

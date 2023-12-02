@@ -6,9 +6,10 @@
 
   
     @foreach($clinic as $key=>$item)
+   
     <div>
         <div style="text-align:center;">
-      <img src="{{ url('/uploads/clinikLogo/'.$item->image) }}" alt="No Image for Clinic">
+      <img  class="h-auto" width="120" src="{{ $item->image }}" alt="No Image for Clinic">
 
         </div>
         <div class="row p-3">

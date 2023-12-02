@@ -11,10 +11,10 @@
     </div>
 
     <div class="col-4 dt-buttons btn-group">
-        <a class="btn btn-info d-print-none" href="#">
+        <a class="btn btn-info d-print-none" href="{{route('assignbed.csv')}}">
             CSV
         </a>
-        <a class="btn btn-info d-print-none" href="#">
+        <a class="btn btn-info d-print-none" href="{{route('assignbed.excel')}}">
             Excel
         </a>
         <a class="btn btn-info d-print-none" href="#">
@@ -46,24 +46,21 @@
               <tr>
                   <th>{{ $key+1 }}</th>
                   <td>{{ $item->patient_id }}</td>
-                  <td>{{ $item->ward->name }}</td>
-                    <td>{{ $item->bed->type }}-{{ $item->bed->id }}</td>
-                  <td>{{ $item->bed->cabin_type}}</td>
+                  <td>{{ $item->ward->name ??'null' }}</td>
+               
+                    <td>{{ $item->bed->type ??'null' }}</td>
+                    
+                  <td>{{ $item->bed->cabin_type ??'null' }}</td>
 
                 
                   <td>{{ $item->assign_date }}</td>
                   
                     <td>
                         <div style="display: flex">
-                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{route('assign.bed.edit',$item->id)}}"><i
-                                    class="fas fa-edit"></i></a>
-                            <form action="#" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <div>
-                                    <button class="btn btn-danger btn-sm m-1" type="submit"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </form>
+                            <a style="margin-left: 2px" class="btn btn-info btn-sm m-1" href="{{route('assign.bed.show',$item->id)}}"><i class="fas fa-eye"></i></a>
+                            <a style="margin-left: 2px" class="btn btn-warning btn-sm m-1" href="{{ route('assign.bed.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
+                            <a style="margin-left: 2px" class="btn btn-danger btn-sm m-1" href="{{route('assign.bed.delete',$item->id)}}"><i class="fas fa-trash"></i></a>
+                       
                         </div>
                     </td>
                 </tr>
@@ -71,7 +68,7 @@
             @endforeach
         </tbody>
       </table>
-      
+      {{$assign_beds->links()}}
       </div>
       @endsection
                   
